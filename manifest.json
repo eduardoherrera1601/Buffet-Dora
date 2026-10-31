@@ -1,0 +1,18 @@
+﻿{
+  "name": "La Lola - Banquetes & Taquisas",
+  "short_name": "La Lola",
+  "description": "Banquetes & Taquisas Tradicionales en Cazuela de Barro",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#F4ECE0",
+  "theme_color": "#E61C73",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "img/mexican_folk_hero_banner.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

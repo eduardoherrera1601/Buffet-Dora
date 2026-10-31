@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opción B — Mesa de Mercado & Bodegón Rústico | La Lola Banquetes</title>
+    <meta name="description" content="Opción B: Concepto de Mesa de Mercado Rústica, Bodegón Tradicional y Cocina de Humo para La Lola Banquetes & Taquisas.">
+    
+    <!-- Fuentes Google Rústicas y Campiranas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Great+Vibes&family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Paleta de Madera de Cocina, Barro y Especias */
+            --madera-oscura: #2A1509;
+            --madera-veta: #452410;
+            --madera-tabla: #683818;
+            --madera-dorada: #C48E4E;
+            
+            --barro-curado: #B35C37;
+            --barro-rojo: #8D2B05;
+            --barro-tierra: #5C1D06;
+            
+            --cempasuchil: #FF9800;
+            --cempasuchil-oro: #E65100;
+            --amarillo-maiz: #FFCA28;
+            --verde-chile: #2E7D32;
+            
+            --azul-turquesa: #00C2C2;
+            --azul-turquesa-dark: #007A7A;
+            
+            --bg-kraft-claro: #FFFDF7;
+            --text-dark: #2A1509;
+            --text-muted: #5C3E2B;
+            
+            --font-title: 'Playfair Display', Georgia, serif;
+            --font-heading: 'Cinzel', serif;
+            --font-cursive: 'Great Vibes', cursive;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        /* ===== FONDO GENERAL: MESA DE MADERA RÚSTICA DE PAROTA (IMAGEN 3) ===== */
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background-color: #2E160A;
+            background-image: 
+                /* Vetas y textura de madera de cocina */
+                repeating-linear-gradient(0deg, 
+                    rgba(20, 8, 3, 0.4) 0px, 
+                    rgba(20, 8, 3, 0.4) 3px, 
+                    transparent 3px, 
+                    transparent 75px
+                ),
+                repeating-linear-gradient(90deg, 
+                    rgba(255, 255, 255, 0.02) 0px, 
+                    rgba(255, 255, 255, 0.02) 2px, 
+                    transparent 2px, 
+                    transparent 12px
+                ),
+                radial-gradient(ellipse at 50% 30%, #582C13 0%, #30170A 100%);
+            background-attachment: fixed;
+            background-size: 100% auto, 100% auto, 100% 100%;
+        }
+
+        /* Barra Comparativa Superior */
+        .version-switch-bar {
+            background: #180903;
+            color: #FFFFFF;
+            padding: 0.6rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--cempasuchil);
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+        }
+
+        .version-switch-bar a {
+            color: var(--cempasuchil);
+            text-decoration: underline;
+            margin-left: 1rem;
+        }
+
+        /* ===== GUIRNALDA RÚSTICA DE PAPEL PICADO COLGANTE CON CUERDA DE HENEQUÉN ===== */
+        .wood-papel-picado {
+            width: 100%;
+            height: 60px;
+            background-repeat: repeat-x;
+            background-size: 300px 60px;
+            background-position: top center;
+            position: relative;
+            z-index: 100;
+            margin-bottom: -15px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 60' preserveAspectRatio='none'%3E%3Cpath d='M0,10 Q37,20 75,10 Q112,20 150,10 Q187,20 225,10 Q262,20 300,10' stroke='%23C48E4E' stroke-width='3' fill='none'/%3E%3Cg transform='translate(6, 10)'%3E%3Cpath d='M0,0 L52,0 L52,42 C39,48 26,48 0,42 Z' fill='%23FF9800' filter='drop-shadow(0 4px 6px rgba(0,0,0,0.5))'/%3E%3Ccircle cx='26' cy='20' r='7' fill='%23FFFDF7'/%3E%3Ccircle cx='12' cy='15' r='3.5' fill='%23FFFDF7'/%3E%3Ccircle cx='40' cy='15' r='3.5' fill='%23FFFDF7'/%3E%3Cpath d='M26,30 L20,36 L32,36 Z' fill='%23FFFDF7'/%3E%3C/g%3E%3Cg transform='translate(66, 10)'%3E%3Cpath d='M0,0 L52,0 L52,42 C39,48 26,48 0,42 Z' fill='%23C2185B' filter='drop-shadow(0 4px 6px rgba(0,0,0,0.5))'/%3E%3Ccircle cx='26' cy='20' r='7' fill='%23FFFDF7'/%3E%3Ccircle cx='12' cy='15' r='3.5' fill='%23FFFDF7'/%3E%3Ccircle cx='40' cy='15' r='3.5' fill='%23FFFDF7'/%3E%3Cpath d='M26,30 L20,36 L32,36 Z' fill='%23FFFDF7'/%3E%3C/g%3E%3Cg transform='translate(126, 10)'%3E%3Cpath d='M0,0 L52,0 L52,42 C39,48 26,48 0,42 Z' fill='%23FFCA28' filter='drop-shadow(0 4px 6px rgba(0,0,0,0.5))'/%3E%3Ccircle cx='26' cy='20' r='7' fill='%23FFFDF7'/%3E%3Ccircle cx='12' cy='15' r='3.5' fill='%23FFFDF7'/%3E%3Ccircle cx='40' cy='15' r='3.5' fill='%23FFFDF7'/%3E%3Cpath d='M26,30 L20,36 L32,36 Z' fill='%23FFFDF7'/%3E%3C/g%3E%3Cg transform='translate(186, 10)'%3E%3Cpath d='M0,0 L52,0 L52,42 C39,48 26,48 0,42 Z' fill='%232E7D32' filter='drop-shadow(0 4px 6px rgba(0,0,0,0.5))'/%3E%3Ccircle cx='26' cy='20' r='7' fill='%23FFFDF7'/%3E%3Ccircle cx='12' cy='15' r='3.5' fill='%23FFFDF7'/%3E%3Ccircle cx='40' cy='15' r='3.5' fill='%23FFFDF7'/%3E%3Cpath d='M26,30 L20,36 L32,36 Z' fill='%23FFFDF7'/%3E%3C/g%3E%3Cg transform='translate(246, 10)'%3E%3Cpath d='M0,0 L52,0 L52,42 C39,48 26,48 0,42 Z' fill='%2300C2C2' filter='drop-shadow(0 4px 6px rgba(0,0,0,0.5))'/%3E%3Ccircle cx='26' cy='20' r='7' fill='%23FFFDF7'/%3E%3Ccircle cx='12' cy='15' r='3.5' fill='%23FFFDF7'/%3E%3Ccircle cx='40' cy='15' r='3.5' fill='%23FFFDF7'/%3E%3Cpath d='M26,30 L20,36 L32,36 Z' fill='%23FFFDF7'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* ===== ENCABEZADO DE COCINA TRADICIONAL ===== */
+        header {
+            background: rgba(255, 253, 247, 0.98);
+            backdrop-filter: blur(15px);
+            padding: 0.9rem 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 4px solid var(--barro-curado);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+            position: sticky;
+            top: 40px;
+            z-index: 1000;
+        }
+
+        .brand-logo {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+        }
+
+        .brand-name {
+            font-family: var(--font-cursive);
+            font-size: 3.2rem;
+            color: var(--barro-rojo);
+            line-height: 0.9;
+        }
+
+        .brand-tag {
+            font-family: var(--font-title);
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--cempasuchil-oro);
+            margin-top: 3px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            font-family: var(--font-title);
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--madera-oscura);
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover { color: var(--barro-rojo); }
+
+        /* ===== BOTÓN TURQUESA VIVO (#00C2C2) CON RELIEVE 3D ===== */
+        .btn-turquesa-3d {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1.1rem 2.4rem;
+            background-color: var(--azul-turquesa);
+            color: #FFFFFF !important;
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2.5px solid #FFFFFF;
+            box-shadow: 0 6px 0 var(--azul-turquesa-dark), 0 12px 28px rgba(0, 194, 194, 0.45);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-turquesa-3d svg { width: 24px; height: 24px; fill: currentColor; flex-shrink: 0; }
+
+        .btn-turquesa-3d:hover {
+            transform: translateY(2px);
+            box-shadow: 0 4px 0 var(--azul-turquesa-dark), 0 8px 20px rgba(0, 194, 194, 0.6);
+            background-color: #00A8A8;
+        }
+
+        /* ===== CINTAS ADHESIVAS / ETIQUETAS DE MERCADO (IMAGEN 3) ===== */
+        .tape-ribbon-tag {
+            position: absolute;
+            top: 18px;
+            left: -12px;
+            padding: 0.45rem 1.4rem;
+            font-family: var(--font-title);
+            font-size: 0.9rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            border-radius: 2px 10px 10px 0;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+            transform: rotate(-5deg);
+            z-index: 10;
+        }
+
+        .tape-ribbon-tag.amarillo { background: linear-gradient(135deg, #FF9800, #E65100); }
+        .tape-ribbon-tag.rojo { background: linear-gradient(135deg, #D32F2F, #B71C1C); }
+        .tape-ribbon-tag.verde { background: linear-gradient(135deg, #2E7D32, #1B5E20); }
+
+        /* ===== LETRERO COLGANTE DE MADERA TALLADA (ESTILO IMAGEN 3) ===== */
+        .wooden-sign-hero-header {
+            background: linear-gradient(180deg, #683818 0%, #452410 50%, #2A1509 100%);
+            border: 4px solid #C48E4E;
+            border-radius: 24px;
+            padding: 2.2rem 3rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6), inset 0 2px 6px rgba(255,255,255,0.2);
+            text-align: center;
+            position: relative;
+            max-width: 900px;
+            margin: 2rem auto 2.5rem;
+        }
+
+        .wooden-sign-hero-header::before, .wooden-sign-hero-header::after {
+            content: '⚙️';
+            position: absolute;
+            top: 12px;
+            font-size: 1.2rem;
+            opacity: 0.6;
+        }
+        .wooden-sign-hero-header::before { left: 20px; }
+        .wooden-sign-hero-header::after { right: 20px; }
+
+        .sign-title-large {
+            font-family: var(--font-title);
+            font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+            font-weight: 900;
+            color: #FFFFFF;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6), 0 0 20px rgba(255, 152, 0, 0.4);
+            line-height: 1.1;
+        }
+
+        .sign-title-large span {
+            color: var(--amarillo-maiz);
+            display: block;
+            font-family: var(--font-cursive);
+            font-size: 1.2em;
+        }
+
+        /* ===== CONTENEDOR PRINCIPAL ===== */
+        .main-canvas-wrapper {
+            max-width: 1280px;
+            margin: 0 auto 4rem;
+            padding: 0 1.5rem;
+        }
+
+        /* ===== HERO: TABLÓN DE BANQUETE CON CAZUELAS REALES ===== */
+        .hero-market-card {
+            background: var(--bg-kraft-claro);
+            border: 4.5px solid var(--barro-curado);
+            border-radius: 36px;
+            padding: 4rem 3.5rem;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        .hero-desc-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin: 1.5rem 0 2rem;
+            font-weight: 500;
+        }
+
+        .hero-dish-photo-frame {
+            position: relative;
+            border-radius: 28px;
+            padding: 10px;
+            background: linear-gradient(135deg, var(--cempasuchil), var(--barro-rojo));
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            transform: rotate(-1.5deg);
+            cursor: pointer;
+        }
+
+        .hero-dish-photo-frame img {
+            width: 100%;
+            height: 390px;
+            object-fit: cover;
+            border-radius: 20px;
+            display: block;
+        }
+
+        .hero-floating-seal {
+            position: absolute;
+            bottom: -15px;
+            right: -15px;
+            background: var(--amarillo-maiz);
+            color: var(--barro-rojo);
+            border: 3.5px solid #FFFFFF;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: var(--font-title);
+            font-weight: 900;
+            font-size: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transform: rotate(-10deg);
+        }
+
+        .hero-floating-seal strong {
+            font-size: 1.25rem;
+            color: var(--barro-rojo);
+        }
+
+        /* ===== BLOQUES DEL MENÚ MONTADOS SOBRE LA MESA ===== */
+        .section-market-block {
+            background: var(--bg-kraft-claro);
+            border: 4.5px solid var(--barro-curado);
+            border-radius: 36px;
+            padding: 3.8rem;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+            margin-top: 3.5rem;
+            position: relative;
+        }
+
+        .section-header-title {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 3rem;
+        }
+
+        .section-header-title h2 {
+            font-family: var(--font-title);
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            font-weight: 900;
+            color: var(--madera-oscura);
+            line-height: 1.15;
+            margin-bottom: 0.8rem;
+        }
+
+        /* ===== RECORRIDO DE CAZUELAS (3 TARJETAS ESTILO MENÚ DE MERCADO) ===== */
+        .showcase-3cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .showcase-market-card {
+            background: #FFFFFF;
+            border: 3.5px solid var(--barro-curado);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .showcase-market-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--barro-rojo);
+            box-shadow: 0 18px 45px rgba(141, 43, 5, 0.3);
+        }
+
+        .showcase-market-card img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .showcase-market-caption {
+            padding: 1.3rem 1.5rem;
+            font-family: var(--font-title);
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--madera-oscura);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: #FFFFFF;
+            border-top: 2px solid #EFE4D6;
+        }
+
+        /* ===== 32 GUISADOS EN CAZUELA DE BARRO ===== */
+        .filter-buttons-row {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.8rem;
+            border-bottom: 2.5px dashed #DFCAB0;
+        }
+
+        .folk-btn-filter {
+            background: #FFFFFF;
+            border: 2.5px solid var(--barro-curado);
+            padding: 0.8rem 1.6rem;
+            border-radius: 30px;
+            font-family: var(--font-title);
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--madera-oscura);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .folk-btn-filter.active, .folk-btn-filter:hover {
+            background: linear-gradient(135deg, var(--barro-curado), var(--barro-rojo));
+            color: #FFFFFF;
+            border-color: transparent;
+            box-shadow: 0 5px 15px rgba(141, 43, 5, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .guisados-cards-32 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .guisado-card-tile {
+            background: #FFFFFF;
+            border: 2px solid #EAE0D2;
+            border-radius: 20px;
+            padding: 1.2rem 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+            box-shadow: 0 4px 12px rgba(42, 21, 9, 0.06);
+            transition: all 0.25s ease;
+        }
+
+        .guisado-card-tile:hover {
+            transform: translateY(-4px);
+            border-color: var(--barro-rojo);
+            background: #FFFBF6;
+            box-shadow: 0 10px 25px rgba(141, 43, 5, 0.15);
+        }
+
+        .guisado-card-tile.selected {
+            background: #FFF3EB;
+            border-color: var(--barro-rojo);
+            border-width: 2.5px;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 22px rgba(141, 43, 5, 0.25);
+        }
+
+        .guisado-card-left {
+            font-family: var(--font-title);
+            font-size: 0.98rem;
+            font-weight: 800;
+            color: var(--madera-oscura);
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .guisado-check-circle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid #C4A89A;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 900;
+            color: transparent;
+            transition: all 0.2s ease;
+        }
+
+        .guisado-card-tile.selected .guisado-check-circle {
+            background: var(--barro-rojo);
+            border-color: var(--barro-rojo);
+            color: #FFFFFF;
+        }
+
+        /* ===== CHILAQUILES Y TORTAS DE CHILAQUILES ===== */
+        .dishes-row-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
+            align-items: center;
+            background: #FFFFFF;
+            border: 3.5px solid var(--barro-curado);
+            border-radius: 28px;
+            padding: 3.2rem;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.08);
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .dishes-row-2col.reversed { grid-template-columns: 1fr 1fr; }
+
+        .dish-photo-frame {
+            position: relative;
+            border-radius: 24px;
+            padding: 8px;
+            background: linear-gradient(135deg, var(--barro-curado), var(--amarillo-maiz));
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+
+        .dish-photo-frame img {
+            width: 100%;
+            height: 370px;
+            object-fit: cover;
+            border-radius: 18px;
+            display: block;
+        }
+
+        /* ===== FOOTER RÚSTICO ===== */
+        footer {
+            background: #180903;
+            border-top: 5px solid var(--barro-curado);
+            padding: 4.5rem 2rem 2.5rem;
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        .footer-logo {
+            font-family: var(--font-cursive);
+            font-size: 4.5rem;
+            color: #FFFFFF;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .footer-phone {
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--amarillo-maiz);
+            text-decoration: none;
+            display: inline-block;
+            margin: 1rem 0;
+        }
+
+        /* Lightbox */
+        .lightbox-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(24,9,3,0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            padding: 2rem;
+        }
+
+        .lightbox-modal.active { opacity: 1; visibility: visible; }
+        .lightbox-modal img { max-width: 90vw; max-height: 85vh; border-radius: 18px; border: 4px solid var(--amarillo-maiz); }
+
+        @media (max-width: 1024px) {
+            .hero-market-card { grid-template-columns: 1fr; text-align: center; }
+            .showcase-3cards-grid { grid-template-columns: 1fr; }
+            .dishes-row-2col, .dishes-row-2col.reversed { grid-template-columns: 1fr; }
+            header { padding: 0.8rem 1.5rem; }
+            .nav-menu { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA COMPARATIVA SUPERIOR -->
+    <div class="version-switch-bar">
+        <div>🪵 <strong>OPCIÓN B:</strong> Mesa de Mercado & Bodegón Rústico (Inspirado en Imágenes 3 y 4)</div>
+        <div>
+            <span>Comparar con:</span>
+            <a href="opcion-a-sarape-fiesta.html">👉 Ver Opción A (El Sarape & Fiesta Mexicana)</a>
+        </div>
+    </div>
+
+    <!-- GUIRNALDA RÚSTICA DE PAPEL PICADO -->
+    <div class="wood-papel-picado"></div>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <a href="#" class="brand-logo">
+            <span class="brand-name">La Lola</span>
+            <span class="brand-tag">Banquetes & Taquisas Tradicionales</span>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="#menu-cazuelas" class="nav-link">32 Guisados</a></li>
+            <li><a href="#platillos-estrella" class="nav-link">Chilaquiles & Tortas</a></li>
+            <li><a href="#seccion-menudo" class="nav-link">Menudo</a></li>
+            <li><a href="#cotizador" class="nav-link">Cotizador</a></li>
+        </ul>
+        <a href="#cotizador" class="btn-turquesa-3d" style="padding: 0.75rem 1.6rem; font-size: 0.95rem;">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            🎉 Cotizar WhatsApp
+        </a>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL SOBRE LA MESA DE PAROTA -->
+    <div class="main-canvas-wrapper">
+
+        <!-- LETRERO DE MADERA TALLADA (ESTILO IMAGEN 3) -->
+        <div class="wooden-sign-hero-header">
+            <h1 class="sign-title-large">
+                MERCADO DE SABORES
+                <span>La Lola — Banquetes & Taquisas</span>
+            </h1>
+        </div>
+
+        <!-- HERO EN MESA DE MERCADO -->
+        <section class="hero-market-card" id="inicio">
+            <div>
+                <span style="background: #FFF3E0; border: 2px solid var(--cempasuchil); color: var(--barro-rojo); padding: 0.45rem 1.4rem; border-radius: 50px; font-family: var(--font-title); font-size: 0.95rem; font-weight: 800; display: inline-block;">
+                    🏺 Cocina Tradicional a Fuego Lento • León, Gto.
+                </span>
+
+                <h2 style="font-family: var(--font-title); font-size: clamp(2.3rem, 4.5vw, 3.4rem); font-weight: 900; line-height: 1.15; color: var(--madera-oscura); margin-top: 1rem;">
+                    ¡El Auténtico Sazón Casero servido en Cazuela de Barro!
+                </h2>
+
+                <p class="hero-desc-text">
+                    Llevamos la calidez de nuestra cocina tradicional a tus mejores eventos. Cazuelas curadas calientitas, comal con tortillas recién hechas y un servicio con amor familiar que deleitará a todos tus invitados.
+                </p>
+
+                <div style="display: flex; gap: 1.2rem; flex-wrap: wrap;">
+                    <a href="#cotizador" class="btn-turquesa-3d">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Cotizar por WhatsApp
+                    </a>
+                    <a href="#menu-cazuelas" class="btn-turquesa-3d" style="background: var(--barro-rojo); box-shadow: 0 6px 0 var(--barro-tierra);">
+                        🏺 Ver los 32 Guisados
+                    </a>
+                </div>
+            </div>
+
+            <!-- Foto Hero con Sello -->
+            <div class="hero-dish-photo-frame" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.10 (1).jpeg')">
+                <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.10 (1).jpeg" alt="Cazuelas de barro montadas en evento">
+                <div class="hero-floating-seal">
+                    <span>100%</span>
+                    <strong>CASERO</strong>
+                    <span>Y DE FAMILIA</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- RECORRIDO DE CAZUELAS (IMAGEN 3) -->
+        <section class="section-market-block">
+            <div class="section-header-title">
+                <span style="font-family: var(--font-title); font-size: 1rem; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cempasuchil-oro);">Del Comal a tu Mesa</span>
+                <h2>Cazuelas Humeantes & Vitroleros Frescos</h2>
+            </div>
+
+            <div class="showcase-3cards-grid">
+                <div class="showcase-market-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg')">
+                    <span class="tape-ribbon-tag amarillo">🔥 RECIÉN CURADAS</span>
+                    <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg" alt="Cazuelas de barro y vitroleros">
+                    <div class="showcase-market-caption">🏺 Cazuelas & Vitroleros Tradicionales</div>
+                </div>
+
+                <div class="showcase-market-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.05.jpeg')">
+                    <span class="tape-ribbon-tag verde">🫓 AL COMAL</span>
+                    <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05.jpeg" alt="Tortillas hechas a mano">
+                    <div class="showcase-market-caption">🫓 Tortillas al Comal en Vivo</div>
+                </div>
+
+                <div class="showcase-market-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.11 (4).jpeg')">
+                    <span class="tape-ribbon-tag rojo">🌶️ MOLCAJETE</span>
+                    <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.11 (4).jpeg" alt="Salsas y complementos">
+                    <div class="showcase-market-caption">🌶️ Salsas de Molcajete & Limones</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: 32 GUISADOS -->
+        <section class="section-market-block" id="menu-cazuelas">
+            <div class="section-header-title">
+                <span style="font-family: var(--font-title); font-size: 1rem; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; color: var(--barro-rojo);">Recetas de Familia</span>
+                <h2>Los 32 Guisados en Cazuela de Barro</h2>
+                <p style="font-size: 1.1rem; color: var(--text-muted); margin-top: 0.5rem;">Selecciona tus guisados directamente sobre la mesa de menú.</p>
+            </div>
+
+            <!-- Filtros -->
+            <div class="filter-buttons-row">
+                <button class="folk-btn-filter active" data-filter="all">Todos los Guisados (32)</button>
+                <button class="folk-btn-filter" data-filter="carnes">🥩 Carnes y Guisos (12)</button>
+                <button class="folk-btn-filter" data-filter="antojitos">🌶️ Antojitos (9)</button>
+                <button class="folk-btn-filter" data-filter="verduras">🥬 Verduras & Hongos (7)</button>
+                <button class="folk-btn-filter" data-filter="bases">🍚 Arroces & Frijolitos (5)</button>
+            </div>
+
+            <!-- Grid 32 Guisados -->
+            <div class="guisados-cards-32" id="guisadosGrid">
+                <!-- Carnes (12) -->
+                <div class="guisado-card-tile" data-cat="carnes" data-name="Puerco en chile morita"><span class="guisado-card-left">🥩 Puerco en morita</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="carnes" data-name="Puerco en salsa de 3 chiles"><span class="guisado-card-left">🥩 Puerco salsa 3 chiles</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="carnes" data-name="Mole rojo con pollo"><span class="guisado-card-left">🍗 Mole rojo con pollo</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="carnes" data-name="Mole verde con pollo"><span class="guisado-card-left">🍗 Mole verde con pollo</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="carnes" data-name="Bistec con nopales"><span class="guisado-card-left">🥩 Bistec con nopales</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="carnes" data-name="Bistec en chile pasilla"><span class="guisado-card-left">🥩 Bistec en pasilla</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="carnes" data-name="Bistec a la mexicana"><span class="guisado-card-left">🥩 Bistec a la mexicana</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="carnes" data-name="Pollo a la mexicana"><span class="guisado-card-left">🍗 Pollo a la mexicana</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="carnes" data-name="Pollo en crema de poblano"><span class="guisado-card-left">🍗 Pollo crema poblano</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="carnes" data-name="Pollo en crema chile güero"><span class="guisado-card-left">🍗 Pollo chile güero</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="carnes" data-name="Carne deshebrada"><span class="guisado-card-left">🥩 Carne deshebrada</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="carnes" data-name="Picadillo casero"><span class="guisado-card-left">🥩 Picadillo casero</span><div class="guisado-check-circle">✓</div></div>
+
+                <!-- Antojitos (9) -->
+                <div class="guisado-card-tile" data-cat="antojitos" data-name="Rajas con crema"><span class="guisado-card-left">🌶️ Rajas con crema</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="antojitos" data-name="Chorizo con papas"><span class="guisado-card-left">🌶️ Chorizo con papas</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="antojitos" data-name="Chorizo a la mexicana"><span class="guisado-card-left">🌶️ Chorizo mexicana</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="antojitos" data-name="Chicharrón prensado"><span class="guisado-card-left">🥓 Chicharrón prensado</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="antojitos" data-name="Chicharrón duro en salsa"><span class="guisado-card-left">🥓 Chicharrón en salsa</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="antojitos" data-name="Rellena tradicional"><span class="guisado-card-left">🌶️ Rellena tradicional</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="antojitos" data-name="Salchichas guisadas"><span class="guisado-card-left">🌭 Salchichas guisadas</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="antojitos" data-name="Huevo con chile"><span class="guisado-card-left">🍳 Huevo con chile</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="antojitos" data-name="Huevo con salchicha"><span class="guisado-card-left">🍳 Huevo con salchicha</span><div class="guisado-check-circle">✓</div></div>
+
+                <!-- Verduras (7) -->
+                <div class="guisado-card-tile" data-cat="verduras" data-name="Champiñones en crema"><span class="guisado-card-left">🍄 Champiñones crema</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="verduras" data-name="Champiñones al ajillo"><span class="guisado-card-left">🍄 Champiñones ajillo</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="verduras" data-name="Nopales guisados"><span class="guisado-card-left">🌵 Nopales guisados</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="verduras" data-name="Nopales en ensalada"><span class="guisado-card-left">🥗 Nopales ensalada</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="verduras" data-name="Papas guisadas"><span class="guisado-card-left">🥔 Papas guisadas</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="verduras" data-name="Papas con nopales"><span class="guisado-card-left">🥔 Papas con nopales</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="verduras" data-name="Garbanzos guisados"><span class="guisado-card-left">🫘 Garbanzos guisados</span><div class="guisado-check-circle">✓</div></div>
+
+                <!-- Bases (5) -->
+                <div class="guisado-card-tile" data-cat="bases" data-name="Arroz blanco"><span class="guisado-card-left">🍚 Arroz blanco</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="bases" data-name="Arroz rojo"><span class="guisado-card-left">🍚 Arroz rojo</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="bases" data-name="Frijoles refritos"><span class="guisado-card-left">🫘 Frijoles refritos</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="bases" data-name="Frijoles enchilados"><span class="guisado-card-left">🫘 Frijoles enchilados</span><div class="guisado-check-circle">✓</div></div>
+                <div class="guisado-card-tile" data-cat="bases" data-name="Frijoles de la olla"><span class="guisado-card-left">🫘 Frijoles de la olla</span><div class="guisado-check-circle">✓</div></div>
+            </div>
+
+            <!-- Resumen -->
+            <div style="margin-top: 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; border-top: 2.5px dashed #DFCAB0; padding-top: 1.8rem;">
+                <div style="font-family: var(--font-title); font-size: 1.25rem; font-weight: 800;">
+                    Guisados elegidos: <strong id="selectedCount" style="color: var(--barro-rojo); font-size: 1.7rem;">0</strong>
+                </div>
+                <button class="btn-turquesa-3d" onclick="document.getElementById('cotizador').scrollIntoView({behavior:'smooth'})">
+                    Ir al Cotizador con mis Guisados →
+                </button>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: CHILAQUILES Y TORTAS DE CHILAQUILES -->
+        <section class="section-market-block" id="platillos-estrella">
+            <div class="section-header-title">
+                <span style="font-family: var(--font-title); font-size: 1rem; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cempasuchil-oro);">Especialidades de la Casa</span>
+                <h2>Chilaquiles y Famosas Tortas</h2>
+            </div>
+
+            <!-- Chilaquiles -->
+            <div class="dishes-row-2col">
+                <span class="tape-ribbon-tag amarillo">⭐ RECOMENDADO</span>
+                <div>
+                    <h3 style="font-family: var(--font-title); font-size: 2.4rem; font-weight: 900; color: var(--madera-oscura); margin-bottom: 1rem;">Chilaquiles Tradicionales</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        Crujientes totopos de maíz bañados en salsa verde tatemada o roja de molcajete, frijoles refritos, crema de rancho, queso cotija y aguacate tierno.
+                    </p>
+                    <p style="font-weight: 800; color: var(--barro-rojo); margin-bottom: 1.5rem;">
+                        🍗 Incluye 2 Proteínas a elegir (Pollo, Huevo, Milanesa o Carne Asada) + Bolillo calientito.
+                    </p>
+                    <button class="btn-turquesa-3d" onclick="document.getElementById('cotizador').scrollIntoView({behavior:'smooth'})">
+                        + Agregar Chilaquiles al Cotizador
+                    </button>
+                </div>
+                <div class="dish-photo-frame" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg')">
+                    <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg" alt="Chilaquiles con aguacate">
+                </div>
+            </div>
+
+            <!-- Tortas -->
+            <div class="dishes-row-2col reversed">
+                <span class="tape-ribbon-tag rojo">💖 LA CONSENTIDA</span>
+                <div class="dish-photo-frame" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg')">
+                    <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg" alt="Torta de chilaquiles con huevo estrellado">
+                </div>
+                <div>
+                    <h3 style="font-family: var(--font-title); font-size: 2.4rem; font-weight: 900; color: var(--madera-oscura); margin-bottom: 1rem;">Las Famosas Tortas de Chilaquiles</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.5rem;">
+                        Bolillo de agua crujiente y doradito, untado con frijoles refritos y relleno con chilaquiles calientes, crema de rancho, queso cotija, aguacate fresco y tu proteína favorita como huevo estrellado tierno o milanesa.
+                    </p>
+                    <button class="btn-turquesa-3d" onclick="document.getElementById('cotizador').scrollIntoView({behavior:'smooth'})">
+                        + Agregar Tortas de Chilaquiles
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: MENUDO TRADICIONAL -->
+        <section class="section-market-block" id="seccion-menudo">
+            <div class="section-header-title">
+                <span style="font-family: var(--font-title); font-size: 1rem; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; color: var(--barro-rojo);">🍲 El Rey de la Tornafiesta</span>
+                <h2>El Tradicional Menudo en Cazuela</h2>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+                <div class="dish-photo-frame" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg')">
+                    <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg" alt="Menudo calientito en cazuela de barro">
+                </div>
+                <div>
+                    <h3 style="font-family: var(--font-title); font-size: 2.2rem; font-weight: 900; color: var(--barro-rojo); margin-bottom: 1rem;">Piezas y Acompañamientos:</h3>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem; font-size: 1.05rem; font-weight: 600; margin-bottom: 1.8rem;">
+                        <li>🍲 Panza suave, Pata bien cocida, Callo, Libro y Panal</li>
+                        <li>🍲 Bofe y Manzana tradicional</li>
+                        <li>🌶️ Salsita roja picante, cebolla, cilantro, orégano y limones</li>
+                        <li>🫓 Tortillas calientes de tortillería y hechas a mano al comal</li>
+                    </ul>
+                    <button class="btn-turquesa-3d" onclick="document.getElementById('cotizador').scrollIntoView({behavior:'smooth'})">
+                        Cotizar Menudo para mi Evento
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: COTIZADOR DIRECTO A WHATSAPP -->
+        <section class="section-market-block" id="cotizador" style="border-color: var(--cempasuchil);">
+            <div class="section-header-title">
+                <span style="font-family: var(--font-title); font-size: 1rem; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cempasuchil-oro);">Presupuesto Directo</span>
+                <h2>Cotiza tu Banquete en Vivo</h2>
+            </div>
+
+            <form id="quoteForm" onsubmit="handleSendQuote(event)" style="max-width: 800px; margin: 0 auto;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label style="font-family: var(--font-title); font-size: 0.95rem; font-weight: 800;">Tu Nombre Completo</label>
+                        <input type="text" id="clientName" required placeholder="Ej. Mariana González" style="padding: 1rem; border: 2px solid #DFCAB0; border-radius: 14px; font-size: 1rem;">
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label style="font-family: var(--font-title); font-size: 0.95rem; font-weight: 800;">Tipo de Evento</label>
+                        <select id="eventType" required style="padding: 1rem; border: 2px solid #DFCAB0; border-radius: 14px; font-size: 1rem;">
+                            <option value="Taquisa Tradicional en Cazuelas de Barro">🌮 Taquisa Tradicional en Cazuelas de Barro</option>
+                            <option value="Desayuno: Chilaquiles Tradicionales">🍳 Desayuno: Chilaquiles Tradicionales</option>
+                            <option value="Desayuno: Las Famosas Tortas de Chilaquiles">🥖 Desayuno: Las Famosas Tortas de Chilaquiles</option>
+                            <option value="El Tradicional Menudo para Desvelados">🍲 El Tradicional Menudo para Desvelados</option>
+                            <option value="Boda / Aniversario">💍 Boda / Aniversario</option>
+                            <option value="Fiesta Familiar / XV Años">🎉 Fiesta Familiar / XV Años</option>
+                        </select>
+                    </div>
+
+                    <div style="grid-column: span 2; display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label style="font-family: var(--font-title); font-size: 0.95rem; font-weight: 800;">Número de Invitados: <span id="guestCountDisplay" style="color: var(--barro-rojo);">80 Personas</span></label>
+                        <input type="range" id="guestRange" min="20" max="400" step="10" value="80" oninput="document.getElementById('guestCountDisplay').textContent = this.value + ' Personas'" style="accent-color: var(--barro-rojo);">
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label style="font-family: var(--font-title); font-size: 0.95rem; font-weight: 800;">Fecha Estimada</label>
+                        <input type="date" id="eventDate" required style="padding: 1rem; border: 2px solid #DFCAB0; border-radius: 14px; font-size: 1rem;">
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label style="font-family: var(--font-title); font-size: 0.95rem; font-weight: 800;">Ciudad / Municipio</label>
+                        <input type="text" id="eventCity" required placeholder="Ej. León, Gto." style="padding: 1rem; border: 2px solid #DFCAB0; border-radius: 14px; font-size: 1rem;">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-turquesa-3d" style="width: 100%; margin-top: 2rem; font-size: 1.2rem; padding: 1.3rem;">
+                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Enviar Cotización a WhatsApp
+                </button>
+            </form>
+        </section>
+
+    </div>
+
+    <!-- GUIRNALDA FINAL -->
+    <div class="wood-papel-picado"></div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">La Lola</div>
+        <p style="font-family: var(--font-title); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--amarillo-maiz);">Banquetes & Taquisas Tradicionales en Cazuela de Barro</p>
+        <a href="tel:+524778020791" class="footer-phone">477 802 0791</a>
+        <p style="color: rgba(255,255,255,0.85);">León, Guanajuato • Servicio a Domicilio y Jardines</p>
+    </footer>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
+        <img src="" alt="Ampliación" id="lightboxImg">
+    </div>
+
+    <script>
+    (function() {
+        'use strict';
+        const selectedGuisados = new Set();
+        const countDisplay = document.getElementById('selectedCount');
+        const cards = document.querySelectorAll('.guisado-card-tile');
+        const filterBtns = document.querySelectorAll('.folk-btn-filter');
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const name = card.dataset.name;
+                if (selectedGuisados.has(name)) {
+                    selectedGuisados.delete(name);
+                    card.classList.remove('selected');
+                } else {
+                    selectedGuisados.add(name);
+                    card.classList.add('selected');
+                }
+                countDisplay.textContent = selectedGuisados.size;
+            });
+        });
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                cards.forEach(c => {
+                    if (filter === 'all' || c.dataset.cat === filter) c.style.display = 'flex';
+                    else c.style.display = 'none';
+                });
+            });
+        });
+
+        window.openLightbox = function(src) {
+            const modal = document.getElementById('lightboxModal');
+            document.getElementById('lightboxImg').src = src;
+            modal.classList.add('active');
+        };
+
+        window.closeLightbox = function() {
+            document.getElementById('lightboxModal').classList.remove('active');
+        };
+
+        window.handleSendQuote = function(e) {
+            e.preventDefault();
+            const name = document.getElementById('clientName').value.trim();
+            const type = document.getElementById('eventType').value;
+            const guests = document.getElementById('guestRange').value;
+            const date = document.getElementById('eventDate').value;
+            const city = document.getElementById('eventCity').value.trim();
+
+            let guisadosText = selectedGuisados.size > 0 
+                ? `\n🍲 *Guisados Seleccionados (${selectedGuisados.size}):*\n` + Array.from(selectedGuisados).map(g => `  • ${g}`).join('\n')
+                : `\n🍲 *Guisados:* A definir con Claudia`;
+
+            const raw = `¡Hola Claudia! Me gustaría cotizar un banquete con *La Lola* 🌮🎉\n\n` +
+                `👤 *Nombre:* ${name}\n` +
+                `🎉 *Evento:* ${type}\n` +
+                `👥 *Invitados:* ${guests} personas\n` +
+                `📅 *Fecha:* ${date}\n` +
+                `📍 *Lugar:* ${city}\n` +
+                `${guisadosText}\n\n` +
+                `¿Podrías enviarme disponibilidad y opciones de paquete?`;
+
+            window.open(`https://wa.me/524778020791?text=${encodeURIComponent(raw)}`, '_blank');
+        };
+    })();
+    </script>
+</body>
+</html>

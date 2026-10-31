@@ -1,0 +1,14 @@
+# Archivos de respaldo y descargas temporales
+Nueva carpeta/
+*.zip
+*.bak
+
+# Archivos del sistema
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Logs
+*.log
+
