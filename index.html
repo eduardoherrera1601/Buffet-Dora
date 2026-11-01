@@ -12,33 +12,48 @@
 
   <style>
     /* ==========================================================================
-       VARIABLES DE SISTEMA DE DISEÑO • LA LOLA
+       1. VARIABLES DE SISTEMA • PALETA PASTEL DE AUTOR (WARM LUXURY)
        ========================================================================== */
     :root {
+      /* Lienzo Lino & Marfil Orgánico */
       --bg-base: #F7F3EE;
       --bg-surface: #FCFAF7;
+      --bg-white: #FFFFFF;
       --text-main: #241A17;
       --text-muted: #6E5D57;
+      --text-light: #9C8B85;
 
+      /* Acento Rosa Pastel Mexicano */
       --pastel-rosa: #FCE8EF;
+      --pastel-rosa-border: rgba(217, 72, 120, 0.28);
       --pastel-rosa-deep: #D94878;
+      --pastel-rosa-hover: #C43867;
+
+      /* Acento Menta Pastel Tatemado */
       --pastel-menta: #D8F3F1;
+      --pastel-menta-border: rgba(13, 130, 126, 0.3);
       --pastel-menta-deep: #0D827E;
+
+      /* Acento Dorado Maíz / Rancho */
       --pastel-dorado: #FDF2DB;
+      --pastel-dorado-border: rgba(176, 116, 18, 0.28);
       --pastel-dorado-deep: #B07412;
 
-      --border-soft: rgba(36, 26, 23, 0.08);
-      --border-focus: rgba(217, 72, 120, 0.4);
+      /* Bordes y Sombras Profundas */
+      --border-subtle: rgba(36, 26, 23, 0.08);
+      --border-soft: rgba(36, 26, 23, 0.1);
+      --shadow-sm: 0 4px 14px -3px rgba(36, 26, 23, 0.06);
+      --shadow-md: 0 16px 36px -10px rgba(36, 26, 23, 0.09);
+      --shadow-card: 0 24px 50px -14px rgba(36, 26, 23, 0.12), 0 4px 16px rgba(36, 26, 23, 0.03);
+      --shadow-hover: 0 32px 64px -16px rgba(36, 26, 23, 0.18);
 
-      --shadow-soft: 0 16px 36px -10px rgba(36, 26, 23, 0.08);
-      --shadow-card: 0 24px 50px -14px rgba(36, 26, 23, 0.12), 0 4px 16px rgba(36, 26, 23, 0.04);
-      --shadow-hover: 0 30px 60px -15px rgba(36, 26, 23, 0.18);
-
+      /* Tipografía Editorial */
       --font-serif: 'Playfair Display', Georgia, serif;
       --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 
       --radius-pill: 999px;
-      --radius-card: 24px;
+      --radius-card: 26px;
+      --radius-box: 18px;
     }
 
     *, *::before, *::after {
@@ -79,7 +94,7 @@
     }
 
     /* ==========================================================================
-       HEADER MINIMALISTA (NAVBAR GLASSMORPHIC)
+       2. HEADER FLOTANTE CON EFECTO VIDRIO (GLASSMORPHISM)
        ========================================================================== */
     .site-header {
       position: sticky;
@@ -88,9 +103,9 @@
       width: 100%;
       z-index: 1000;
       background: rgba(247, 243, 238, 0.88);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-soft);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-subtle);
       transition: all 0.3s ease;
     }
 
@@ -100,7 +115,7 @@
     }
 
     .nav-wrapper {
-      height: 78px;
+      height: 80px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -109,7 +124,7 @@
 
     .brand-logo {
       font-family: var(--font-serif);
-      font-size: 1.95rem;
+      font-size: 2rem;
       font-weight: 900;
       letter-spacing: -0.02em;
       color: var(--text-main);
@@ -125,7 +140,7 @@
       display: flex;
       align-items: center;
       list-style: none;
-      gap: clamp(18px, 3vw, 36px);
+      gap: clamp(18px, 2.8vw, 36px);
     }
 
     .nav-link {
@@ -157,15 +172,16 @@
       width: 100%;
     }
 
+    /* Botones de Estilo Framer */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 12px 26px;
+      gap: 10px;
+      padding: 13px 28px;
       border-radius: var(--radius-pill);
       font-family: var(--font-sans);
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 700;
       cursor: pointer;
       border: none;
@@ -177,21 +193,21 @@
     .btn-primary {
       background: var(--pastel-rosa-deep);
       color: #FFFFFF;
-      box-shadow: 0 8px 20px -4px rgba(217, 72, 120, 0.38);
+      box-shadow: 0 8px 22px -4px rgba(217, 72, 120, 0.4);
     }
 
     .btn-primary:hover {
-      background: #C43867;
+      background: var(--pastel-rosa-hover);
       transform: translateY(-2px);
-      box-shadow: 0 12px 26px -4px rgba(217, 72, 120, 0.46);
+      box-shadow: 0 12px 28px -4px rgba(217, 72, 120, 0.48);
     }
 
     .btn-glass {
-      background: rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.82);
       color: var(--text-main);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.88);
+      border: 1.5px solid rgba(255, 255, 255, 0.9);
       box-shadow: 0 4px 14px -3px rgba(36, 26, 23, 0.08);
     }
 
@@ -204,24 +220,24 @@
 
     .btn-sm {
       padding: 9px 20px;
-      font-size: 0.84rem;
+      font-size: 0.85rem;
     }
 
     /* ==========================================================================
-       1. HERO CINEMÁTICO (PORTADA A PANTALLA COMPLETA)
+       3. HERO CINEMÁTICO (PORTADA ASIMÉTRICA DE AUTOR)
        ========================================================================== */
     .hero-section {
       min-height: 90vh;
       display: flex;
       align-items: center;
-      padding: clamp(40px, 6vh, 80px) 0 clamp(60px, 8vh, 100px);
+      padding: clamp(36px, 6vh, 72px) 0 clamp(64px, 8vh, 100px);
       position: relative;
       overflow: hidden;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.22fr 0.78fr;
       align-items: center;
       gap: clamp(32px, 4.5vw, 64px);
     }
@@ -233,10 +249,14 @@
       z-index: 2;
     }
 
-    .hero-tag {
+    .hero-badge-slot {
+      margin-bottom: 22px;
+    }
+
+    .pill-hero-tag {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       padding: 6px 16px;
       border-radius: var(--radius-pill);
       background: var(--pastel-rosa);
@@ -245,26 +265,26 @@
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 22px;
-      border: 1px solid rgba(217, 72, 120, 0.25);
+      border: 1px solid var(--pastel-rosa-border);
+      box-shadow: 0 4px 16px -2px rgba(217, 72, 120, 0.2);
     }
 
     .hero-title {
       font-family: var(--font-serif);
-      font-size: clamp(3rem, 5.2vw, 5.2rem);
+      font-size: clamp(3.2rem, 5.4vw, 5.3rem);
       font-weight: 900;
       line-height: 1.02;
       letter-spacing: -0.035em;
       color: var(--text-main);
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .hero-title .word-mexico {
-      color: var(--text-main);
       position: relative;
+      color: var(--text-main);
     }
 
-    .hero-title-sub {
+    .hero-title-italic {
       display: block;
       font-style: italic;
       font-weight: 700;
@@ -272,13 +292,14 @@
       font-size: 0.78em;
       letter-spacing: -0.015em;
       margin-top: 10px;
+      text-shadow: 0 2px 20px rgba(252, 232, 239, 0.85);
     }
 
-    .hero-description {
+    .hero-desc {
       font-size: clamp(1.05rem, 1.3vw, 1.18rem);
       color: var(--text-muted);
       line-height: 1.65;
-      max-width: 48ch;
+      max-width: 46ch;
       margin-bottom: 34px;
     }
 
@@ -290,63 +311,70 @@
       margin-bottom: 38px;
     }
 
-    /* Insignias Flotantes en Lino Translúcido */
+    /* Insignias Flotantes en Lino Translúcido (Rodrigo Olivares Standard) */
     .hero-insignias {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 12px;
       padding-top: 24px;
-      border-top: 1px solid var(--border-soft);
+      border-top: 1px solid var(--border-subtle);
       width: 100%;
     }
 
-    .hero-insignia {
+    .hero-insignia-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 18px;
+      padding: 9px 18px;
       border-radius: var(--radius-pill);
-      background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1.5px solid rgba(255, 255, 255, 0.9);
       font-size: 0.84rem;
       font-weight: 700;
       color: var(--text-main);
-      box-shadow: 0 4px 14px -3px rgba(36, 26, 23, 0.06);
+      box-shadow: 0 6px 18px -4px rgba(36, 26, 23, 0.08);
+      transition: all 0.25s ease;
     }
 
-    /* Columna Visual Hero */
-    .hero-visual {
+    .hero-insignia-pill:hover {
+      background: #FFFFFF;
+      border-color: var(--pastel-rosa-deep);
+      transform: translateY(-2px);
+    }
+
+    /* Columna Visual Derecha con Luz Perimetral */
+    .hero-visual-col {
       position: relative;
       width: 100%;
     }
 
-    .hero-visual-glow {
+    .hero-ambient-glow {
       position: absolute;
       top: 5%;
       right: -5%;
-      width: 100%;
+      width: 105%;
       height: 90%;
-      background: radial-gradient(circle at 60% 40%, rgba(217, 72, 120, 0.22) 0%, rgba(216, 243, 241, 0.35) 45%, transparent 75%);
-      filter: blur(50px);
+      background: radial-gradient(circle at 60% 40%, rgba(217, 72, 120, 0.24) 0%, rgba(216, 243, 241, 0.35) 45%, transparent 75%);
+      filter: blur(52px);
       z-index: 1;
       pointer-events: none;
     }
 
-    .hero-frame {
+    .hero-frame-card {
       position: relative;
-      border-radius: 36px 22px 36px 22px;
+      border-radius: 38px 22px 38px 22px;
       overflow: hidden;
       aspect-ratio: 4 / 4.7;
-      box-shadow: 0 35px 70px -20px rgba(36, 26, 23, 0.22), 0 0 40px rgba(217, 72, 120, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 35px 75px -20px rgba(36, 26, 23, 0.22), 0 0 45px rgba(217, 72, 120, 0.15);
+      border: 1.5px solid rgba(255, 255, 255, 0.85);
       background: #E8E2D9;
       z-index: 2;
     }
 
-    .hero-frame img {
+    .hero-frame-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -354,18 +382,18 @@
       transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .hero-frame:hover img {
+    .hero-frame-card:hover img {
       transform: scale(1.03);
     }
 
-    .hero-float-badge {
+    .hero-floating-tag {
       position: absolute;
       bottom: 18px;
       left: 18px;
       right: 18px;
       padding: 12px 18px;
       border-radius: 16px;
-      background: rgba(250, 248, 245, 0.92);
+      background: rgba(250, 248, 245, 0.94);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.9);
@@ -378,7 +406,7 @@
       box-shadow: 0 10px 24px -6px rgba(36, 26, 23, 0.12);
     }
 
-    .hero-float-badge-dot {
+    .hero-floating-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
@@ -387,19 +415,19 @@
     }
 
     /* ==========================================================================
-       SECCIONES GLOBALES
+       4. SECCIONES GENERALES & HEADERS EDITORIALES
        ========================================================================== */
     .section-wrap {
-      padding: clamp(60px, 8vh, 100px) 0;
+      padding: clamp(64px, 8vh, 108px) 0;
     }
 
     .section-header {
       text-align: center;
-      max-width: 720px;
+      max-width: 740px;
       margin: 0 auto clamp(36px, 5vh, 56px);
     }
 
-    .pill-section {
+    .pill-section-badge {
       display: inline-block;
       font-size: 0.76rem;
       font-weight: 800;
@@ -410,7 +438,7 @@
       padding: 5px 16px;
       border-radius: var(--radius-pill);
       margin-bottom: 12px;
-      border: 1px solid rgba(217, 72, 120, 0.25);
+      border: 1px solid var(--pastel-rosa-border);
     }
 
     .section-title {
@@ -434,7 +462,7 @@
     }
 
     /* ==========================================================================
-       2. GALERÍA VIVA DE EVENTOS (MOSAICO BENTO CON VIDEO #experiencia)
+       5. GALERÍA VIVA (BENTO GRID CON VIDEO CONTINUO #experiencia)
        ========================================================================== */
     .bento-grid {
       display: grid;
@@ -444,7 +472,7 @@
 
     .bento-card {
       position: relative;
-      border-radius: 24px;
+      border-radius: var(--radius-card);
       overflow: hidden;
       background: #FAF7F2;
       min-height: 380px;
@@ -484,7 +512,7 @@
       z-index: 3;
       margin: 18px;
       padding: 20px 24px;
-      border-radius: 18px;
+      border-radius: var(--radius-box);
       background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -507,19 +535,19 @@
     .bento-chip.menta {
       background: var(--pastel-menta);
       color: var(--pastel-menta-deep);
-      border: 1px solid rgba(13, 130, 126, 0.25);
+      border: 1px solid var(--pastel-menta-border);
     }
 
     .bento-chip.dorado {
       background: var(--pastel-dorado);
       color: var(--pastel-dorado-deep);
-      border: 1px solid rgba(176, 116, 18, 0.25);
+      border: 1px solid var(--pastel-dorado-border);
     }
 
     .bento-chip.rosa {
       background: var(--pastel-rosa);
       color: var(--pastel-rosa-deep);
-      border: 1px solid rgba(217, 72, 120, 0.25);
+      border: 1px solid var(--pastel-rosa-border);
     }
 
     .bento-headline {
@@ -536,7 +564,7 @@
       line-height: 1.5;
     }
 
-    .video-controls-bar {
+    .video-ctrl-pill {
       position: absolute;
       top: 16px;
       right: 16px;
@@ -545,11 +573,11 @@
       gap: 8px;
     }
 
-    .btn-video-ctrl {
+    .btn-video-chip {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 14px;
+      padding: 7px 15px;
       border-radius: var(--radius-pill);
       background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(14px);
@@ -563,14 +591,14 @@
       transition: all 0.2s ease;
     }
 
-    .btn-video-ctrl:hover {
+    .btn-video-chip:hover {
       background: #FFFFFF;
       color: var(--pastel-rosa-deep);
       transform: scale(1.04);
     }
 
     /* ==========================================================================
-       3. ESPECIALIDADES DE LA CASA (SHOWCASE COMPLETO #menu)
+       6. ESPECIALIDADES DE LA CASA (SHOWCASE EDITORIAL #menu)
        ========================================================================== */
     .specialties-tabs-wrap {
       display: flex;
@@ -578,7 +606,7 @@
       margin-bottom: 36px;
     }
 
-    .specialties-nav {
+    .specialties-nav-bar {
       display: inline-flex;
       gap: 8px;
       background: rgba(250, 248, 245, 0.95);
@@ -618,12 +646,12 @@
       box-shadow: 0 4px 16px -2px rgba(217, 72, 120, 0.2);
     }
 
-    .specialty-stage {
+    .specialty-stage-box {
       position: relative;
       min-height: 440px;
     }
 
-    .specialty-card-view {
+    .specialty-panel-card {
       display: none;
       grid-template-columns: 1.15fr 0.85fr;
       gap: clamp(28px, 4vw, 48px);
@@ -638,20 +666,20 @@
       transition: opacity 0.35s ease, transform 0.35s ease;
     }
 
-    .specialty-card-view.active {
+    .specialty-panel-card.active {
       display: grid;
       opacity: 1;
       transform: translateY(0);
     }
 
-    .spec-col-text {
+    .spec-text-col {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 16px;
     }
 
-    .spec-col-title {
+    .spec-title {
       font-family: var(--font-serif);
       font-size: clamp(1.85rem, 2.8vw, 2.4rem);
       font-weight: 900;
@@ -659,13 +687,13 @@
       color: var(--text-main);
     }
 
-    .spec-col-desc {
+    .spec-desc {
       font-size: 0.98rem;
       color: var(--text-muted);
       line-height: 1.65;
     }
 
-    .spec-ingredients-box {
+    .spec-ingredients-card {
       background: #FAF7F2;
       border-radius: 16px;
       border: 1px solid var(--border-soft);
@@ -675,13 +703,13 @@
       width: 100%;
     }
 
-    .spec-ingredients-box strong {
+    .spec-ingredients-card strong {
       display: block;
       color: var(--text-main);
       margin-bottom: 4px;
     }
 
-    .spec-col-media {
+    .spec-media-col {
       position: relative;
       border-radius: 20px;
       overflow: hidden;
@@ -690,19 +718,19 @@
       background: #E8E2D9;
     }
 
-    .spec-col-media img {
+    .spec-media-col img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .specialty-card-view:hover .spec-col-media img {
+    .specialty-panel-card:hover .spec-media-col img {
       transform: scale(1.04);
     }
 
     /* ==========================================================================
-       4. CONFIGURADOR DEL BANQUETE (32 GUISADOS + COMANDA #armar)
+       7. CONFIGURADOR DEL BANQUETE (32 GUISADOS + COMANDA #armar)
        ========================================================================== */
     .builder-layout {
       display: grid;
@@ -711,7 +739,7 @@
       align-items: flex-start;
     }
 
-    .builder-box {
+    .builder-panel {
       background: var(--bg-surface);
       border: 1px solid var(--border-soft);
       border-radius: 28px;
@@ -719,14 +747,14 @@
       box-shadow: var(--shadow-card);
     }
 
-    .step-header {
+    .step-head {
       display: flex;
       align-items: center;
       gap: 12px;
       margin-bottom: 18px;
     }
 
-    .step-badge {
+    .step-circle {
       width: 32px;
       height: 32px;
       border-radius: 50%;
@@ -739,7 +767,7 @@
       font-size: 0.88rem;
     }
 
-    .step-label {
+    .step-title {
       font-family: var(--font-serif);
       font-size: 1.35rem;
       font-weight: 800;
@@ -747,35 +775,35 @@
     }
 
     /* Paquetes */
-    .packages-grid {
+    .packages-cards-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
       margin-bottom: 32px;
     }
 
-    .pkg-selector {
+    .pkg-card-box {
       background: var(--bg-base);
       border: 1.5px solid var(--border-soft);
-      border-radius: 18px;
+      border-radius: var(--radius-box);
       padding: 16px;
       text-align: center;
       cursor: pointer;
       transition: all 0.25s ease;
     }
 
-    .pkg-selector:hover {
+    .pkg-card-box:hover {
       border-color: var(--pastel-rosa-deep);
       background: #FFFFFF;
     }
 
-    .pkg-selector.active {
+    .pkg-card-box.active {
       background: #FFF5F8;
       border-color: var(--pastel-rosa-deep);
       box-shadow: 0 6px 18px -4px rgba(217, 72, 120, 0.2);
     }
 
-    .pkg-selector-tag {
+    .pkg-card-tag {
       font-size: 0.72rem;
       font-weight: 800;
       text-transform: uppercase;
@@ -784,7 +812,7 @@
       margin-bottom: 4px;
     }
 
-    .pkg-selector-title {
+    .pkg-card-name {
       font-family: var(--font-serif);
       font-size: 1.05rem;
       font-weight: 800;
@@ -792,57 +820,57 @@
       margin-bottom: 2px;
     }
 
-    .pkg-selector-desc {
+    .pkg-card-desc {
       font-size: 0.8rem;
       color: var(--text-muted);
     }
 
     /* Slider de Invitados */
-    .guests-slider-wrap {
+    .guest-slider-panel {
       background: var(--bg-base);
       border: 1px solid var(--border-soft);
-      border-radius: 18px;
+      border-radius: var(--radius-box);
       padding: 18px 22px;
       margin-bottom: 32px;
     }
 
-    .guests-slider-meta {
+    .guest-slider-info {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 12px;
     }
 
-    .guests-slider-meta strong {
+    .guest-slider-info strong {
       font-family: var(--font-serif);
       font-size: 1.7rem;
       font-weight: 900;
       color: var(--pastel-rosa-deep);
     }
 
-    .slider-range {
+    .custom-range-slider {
       width: 100%;
       accent-color: var(--pastel-rosa-deep);
       cursor: pointer;
     }
 
     /* Canasta Gourmet Reactiva */
-    .basket-bar-box {
+    .basket-progress-box {
       background: #FAF7F2;
       border: 1px solid var(--border-soft);
-      border-radius: 18px;
+      border-radius: var(--radius-box);
       padding: 16px 20px;
       margin-bottom: 24px;
       transition: all 0.3s ease;
     }
 
-    .basket-bar-box.complete {
+    .basket-progress-box.complete {
       background: #EDFBF9;
-      border-color: rgba(13, 130, 126, 0.35);
+      border-color: var(--pastel-menta-border);
       box-shadow: 0 8px 24px -6px rgba(13, 130, 126, 0.2);
     }
 
-    .basket-meta {
+    .basket-progress-meta {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -850,19 +878,19 @@
       font-size: 0.88rem;
     }
 
-    .basket-meta strong {
+    .basket-progress-meta strong {
       font-family: var(--font-serif);
       font-size: 1.05rem;
       color: var(--text-main);
     }
 
-    .basket-meta span {
+    .basket-progress-meta span {
       font-weight: 600;
       color: var(--text-muted);
       font-size: 0.82rem;
     }
 
-    .basket-track {
+    .basket-progress-track {
       width: 100%;
       height: 7px;
       background: rgba(36, 26, 23, 0.08);
@@ -870,26 +898,26 @@
       overflow: hidden;
     }
 
-    .basket-fill {
+    .basket-progress-fill {
       height: 100%;
       background: linear-gradient(90deg, var(--pastel-rosa-deep), #FF6B97);
       border-radius: var(--radius-pill);
       transition: width 0.35s ease, background 0.35s ease;
     }
 
-    .basket-bar-box.complete .basket-fill {
+    .basket-progress-box.complete .basket-progress-fill {
       background: linear-gradient(90deg, var(--pastel-menta-deep), #22C55E);
     }
 
-    /* Filtros de Cazuelas */
-    .filter-buttons-bar {
+    /* Filtros de Categorías */
+    .filters-nav-row {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
       margin-bottom: 20px;
     }
 
-    .filter-btn {
+    .dish-filter-pill {
       background: var(--bg-base);
       border: 1px solid var(--border-soft);
       padding: 7px 16px;
@@ -901,12 +929,12 @@
       transition: all 0.2s ease;
     }
 
-    .filter-btn:hover {
+    .dish-filter-pill:hover {
       border-color: var(--pastel-menta-deep);
       color: var(--text-main);
     }
 
-    .filter-btn.active {
+    .dish-filter-pill.active {
       background: var(--pastel-menta-deep);
       color: #FFFFFF;
       border-color: var(--pastel-menta-deep);
@@ -914,7 +942,7 @@
     }
 
     /* Filas Tipográficas Limpias Numeradas (32 Guisados) */
-    .dishes-rows-grid {
+    .dishes-catalogue-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
@@ -924,7 +952,7 @@
       margin-bottom: 28px;
     }
 
-    .dish-row-item {
+    .dish-clean-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -938,25 +966,25 @@
       transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .dish-row-item:hover {
+    .dish-clean-row:hover {
       border-color: var(--pastel-rosa-deep);
       transform: translateY(-2px);
       box-shadow: 0 6px 16px -4px rgba(36, 26, 23, 0.08);
     }
 
-    .dish-row-item.selected {
+    .dish-clean-row.selected {
       background: var(--pastel-menta);
       border-color: var(--pastel-menta-deep);
       box-shadow: 0 4px 14px -2px rgba(13, 130, 126, 0.22);
     }
 
-    .dish-row-left {
+    .dish-clean-left {
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    .dish-num {
+    .dish-clean-num {
       font-family: var(--font-serif);
       font-size: 0.84rem;
       font-weight: 800;
@@ -964,36 +992,36 @@
       min-width: 22px;
     }
 
-    .dish-row-item.selected .dish-num {
+    .dish-clean-row.selected .dish-clean-num {
       color: var(--pastel-menta-deep);
     }
 
-    .dish-name {
+    .dish-clean-title {
       font-size: 0.88rem;
       font-weight: 600;
       color: var(--text-main);
     }
 
-    .dish-action-sign {
+    .dish-clean-sign {
       font-size: 0.95rem;
       font-weight: 800;
       color: var(--text-muted);
       transition: transform 0.2s ease, color 0.2s ease;
     }
 
-    .dish-row-item.selected .dish-action-sign {
+    .dish-clean-row.selected .dish-clean-sign {
       color: var(--pastel-menta-deep);
       transform: rotate(45deg);
     }
 
-    /* Extras */
-    .extras-box-grid {
+    /* Extras Opcionales */
+    .extras-selector-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
     }
 
-    .extra-card {
+    .extra-clean-card {
       background: var(--bg-base);
       border: 1px solid var(--border-soft);
       padding: 12px 14px;
@@ -1007,21 +1035,21 @@
       transition: all 0.2s ease;
     }
 
-    .extra-card:hover {
+    .extra-clean-card:hover {
       border-color: var(--pastel-dorado-deep);
       background: #FFFFFF;
     }
 
-    .extra-card.selected {
+    .extra-clean-card.selected {
       background: var(--pastel-dorado);
       border-color: var(--pastel-dorado-deep);
       color: var(--pastel-dorado-deep);
     }
 
     /* ==========================================================================
-       COMANDA LATERAL FLOTANTE (CRISTAL LÍQUIDO)
+       8. COMANDA LATERAL STICKY (CRISTAL LÍQUIDO)
        ========================================================================== */
-    .comanda-sticky-card {
+    .comanda-liquid-card {
       position: sticky;
       top: 100px;
       background: rgba(255, 255, 255, 0.94);
@@ -1034,18 +1062,18 @@
       transition: box-shadow 0.35s ease, border-color 0.35s ease;
     }
 
-    .comanda-sticky-card.ready-glow {
+    .comanda-liquid-card.completed-glow {
       box-shadow: 0 0 35px rgba(13, 130, 126, 0.26), 0 30px 60px -15px rgba(36, 26, 23, 0.14);
       border-color: rgba(13, 130, 126, 0.4);
     }
 
-    .comanda-top {
+    .comanda-header-box {
       border-bottom: 1px dashed var(--border-soft);
       padding-bottom: 16px;
       margin-bottom: 18px;
     }
 
-    .comanda-badge {
+    .comanda-top-badge {
       font-size: 0.72rem;
       font-weight: 800;
       text-transform: uppercase;
@@ -1058,7 +1086,7 @@
       margin-bottom: 8px;
     }
 
-    .comanda-package-title {
+    .comanda-pkg-title {
       font-family: var(--font-serif);
       font-size: 1.35rem;
       font-weight: 900;
@@ -1072,7 +1100,7 @@
     .comanda-celebration-banner {
       background: linear-gradient(135deg, #E6FBF8 0%, #D8F3F1 100%);
       color: var(--pastel-menta-deep);
-      border: 1.5px solid rgba(13, 130, 126, 0.3);
+      border: 1.5px solid var(--pastel-menta-border);
       border-radius: 14px;
       padding: 10px 14px;
       font-size: 0.84rem;
@@ -1088,7 +1116,7 @@
       100% { transform: scale(1); opacity: 1; }
     }
 
-    .comanda-stat-row {
+    .comanda-metric-line {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -1096,12 +1124,12 @@
       font-size: 0.92rem;
     }
 
-    .comanda-stat-row strong {
+    .comanda-metric-line strong {
       font-weight: 800;
       color: var(--text-main);
     }
 
-    .comanda-selected-list {
+    .comanda-selected-scroll {
       background: #FAF7F2;
       border: 1px solid var(--border-soft);
       border-radius: 16px;
@@ -1112,14 +1140,14 @@
       overflow-y: auto;
     }
 
-    .comanda-selected-list ul {
+    .comanda-selected-scroll ul {
       list-style: none;
       display: flex;
       flex-direction: column;
       gap: 6px;
     }
 
-    .comanda-selected-list li {
+    .comanda-selected-scroll li {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -1128,12 +1156,12 @@
       border-bottom: 1px dotted rgba(36, 26, 23, 0.1);
     }
 
-    .comanda-selected-list li em {
+    .comanda-selected-scroll li em {
       font-style: normal;
       font-weight: 600;
     }
 
-    .comanda-remove-btn {
+    .btn-comanda-remove {
       background: none;
       border: none;
       color: var(--pastel-rosa-deep);
@@ -1143,7 +1171,7 @@
       padding: 2px 6px;
     }
 
-    .comanda-perks-desc {
+    .comanda-perks-box {
       background: #FFFBF9;
       border: 1px solid var(--border-soft);
       border-radius: 14px;
@@ -1154,11 +1182,11 @@
       margin-bottom: 18px;
     }
 
-    .form-field {
+    .input-field-group {
       margin-bottom: 12px;
     }
 
-    .form-field label {
+    .input-field-group label {
       display: block;
       font-size: 0.74rem;
       font-weight: 700;
@@ -1168,7 +1196,7 @@
       margin-bottom: 4px;
     }
 
-    .form-ctrl {
+    .input-ctrl-box {
       width: 100%;
       background: var(--bg-base);
       border: 1px solid var(--border-soft);
@@ -1180,12 +1208,12 @@
       transition: border-color 0.2s ease;
     }
 
-    .form-ctrl:focus {
+    .input-ctrl-box:focus {
       border-color: var(--pastel-rosa-deep);
       background: #FFFFFF;
     }
 
-    .btn-submit-comanda {
+    .btn-whatsapp-comanda {
       width: 100%;
       background: #25D366;
       color: #FFFFFF;
@@ -1205,36 +1233,139 @@
       transition: all 0.25s ease;
     }
 
-    .btn-submit-comanda:hover {
+    .btn-whatsapp-comanda:hover {
       background: #20BA5A;
       transform: translateY(-2px);
       box-shadow: 0 14px 28px -4px rgba(37, 211, 102, 0.48);
     }
 
     /* ==========================================================================
-       5. CONTACTO & TARJETA OFICIAL (#contacto)
+       9. BENEFICIOS & GARANTÍAS INCLUIDAS (CONFIAZA Y CONVERSIÓN)
        ========================================================================== */
-    .card-presentation-frame {
+    .perks-grid-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 48px;
+    }
+
+    .perk-feature-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-soft);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform 0.25s ease;
+    }
+
+    .perk-feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .perk-feature-icon {
+      font-size: 1.8rem;
+      margin-bottom: 4px;
+    }
+
+    .perk-feature-title {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .perk-feature-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       10. PREGUNTAS FRECUENTES (FAQ ACORDEÓN)
+       ========================================================================== */
+    .faq-container-list {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-accordion-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-soft);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+    }
+
+    .faq-question-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 24px;
+      text-align: left;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .faq-question-btn span.faq-arrow {
+      color: var(--pastel-rosa-deep);
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-accordion-item.open .faq-arrow {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer-content {
+      display: none;
+      padding: 0 24px 20px 24px;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .faq-accordion-item.open .faq-answer-content {
+      display: block;
+    }
+
+    /* ==========================================================================
+       11. CONTACTO & TARJETA OFICIAL (#contacto)
+       ========================================================================== */
+    .card-presentation-box {
       max-width: 480px;
       margin: 28px auto;
-      border-radius: 24px;
+      border-radius: var(--radius-card);
       overflow: hidden;
       box-shadow: var(--shadow-card);
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .card-presentation-frame:hover {
+    .card-presentation-box:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-hover);
     }
 
-    .card-presentation-frame img {
+    .card-presentation-box img {
       width: 100%;
       display: block;
     }
 
-    .contact-buttons-row {
+    .contact-actions-row {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -1244,31 +1375,35 @@
     }
 
     /* ==========================================================================
-       FOOTER EDITORIAL
+       12. FOOTER EDITORIAL
        ========================================================================== */
     .editorial-footer {
       background: #241A17;
       color: rgba(255, 255, 255, 0.75);
-      padding: 64px 20px 36px;
+      padding: 68px 20px 38px;
       text-align: center;
-      margin-top: 40px;
+      margin-top: 48px;
     }
 
-    .footer-brand {
+    .footer-brand-title {
       font-family: var(--font-serif);
-      font-size: 2.6rem;
+      font-size: 2.7rem;
       font-weight: 900;
       color: var(--pastel-rosa);
       margin-bottom: 6px;
     }
 
-    .footer-lead {
+    .footer-brand-title span {
+      color: var(--pastel-rosa-deep);
+    }
+
+    .footer-tagline-text {
       font-weight: 600;
       color: #FFFFFF;
       margin-bottom: 6px;
     }
 
-    .footer-copy {
+    .footer-copy-text {
       margin-top: 28px;
       font-size: 0.8rem;
       color: rgba(255, 255, 255, 0.4);
@@ -1282,17 +1417,20 @@
       .bento-card.span-6 {
         grid-column: span 12;
       }
-      .specialty-card-view {
+      .specialty-panel-card {
         grid-template-columns: 1fr;
       }
       .builder-layout {
         grid-template-columns: 1fr;
       }
-      .comanda-sticky-card {
+      .comanda-liquid-card {
         position: static;
       }
-      .dishes-rows-grid {
+      .dishes-catalogue-grid {
         grid-template-columns: 1fr;
+      }
+      .perks-grid-row {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
@@ -1300,10 +1438,13 @@
       .nav-menu {
         display: none;
       }
-      .packages-grid {
+      .packages-cards-row {
         grid-template-columns: 1fr;
       }
-      .extras-box-grid {
+      .extras-selector-grid {
+        grid-template-columns: 1fr;
+      }
+      .perks-grid-row {
         grid-template-columns: 1fr;
       }
     }
@@ -1312,7 +1453,7 @@
 <body>
 
   <!-- ==========================================================================
-       HEADER MINIMALISTA FLOTANTE
+       HEADER FLOTANTE (GLASSMORPHIC)
        ========================================================================== -->
   <header class="site-header" id="siteHeader">
     <div class="container">
@@ -1324,7 +1465,8 @@
           <ul class="nav-menu">
             <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
             <li><a href="#menu" class="nav-link">Especialidades</a></li>
-            <li><a href="#armar" class="nav-link">Armar Banquete</a></li>
+            <li><a href="#armar" class="nav-link">Cotizador en Vivo</a></li>
+            <li><a href="#faq" class="nav-link">Preguntas</a></li>
             <li><a href="#contacto" class="nav-link">Contacto</a></li>
           </ul>
         </nav>
@@ -1335,21 +1477,23 @@
 
   <main>
     <!-- ==========================================================================
-         1. HERO CINEMÁTICO (PORTADA A PANTALLA COMPLETA)
+         1. HERO CINEMÁTICO (PORTADA ASIMÉTRICA DE AUTOR)
          ========================================================================== -->
     <section class="hero-section" id="heroSection" aria-label="Presentación y bienvenida La Lola">
       <div class="container">
         <div class="hero-grid">
 
           <div class="hero-content">
-            <span class="hero-tag">🏺 Banquetes &amp; Cazuelas • León, Gto.</span>
+            <div class="hero-badge-slot">
+              <span class="pill-hero-tag">🏺 Banquetes &amp; Cazuelas • León, Gto.</span>
+            </div>
 
             <h1 class="hero-title">
               Sabores de <span class="word-mexico">México</span>
-              <span class="hero-title-sub">Sazón y fuego vivo en cazuela</span>
+              <span class="hero-title-italic">Sazón y fuego vivo en cazuela</span>
             </h1>
 
-            <p class="hero-description">
+            <p class="hero-desc">
               Catering tradicional al calor de cazuelas de barro curadas, guisados con sazón de hogar y tortillas infladas al comal para consentir a tus invitados en sus momentos más memorables.
             </p>
 
@@ -1360,28 +1504,28 @@
 
             <!-- Insignias Flotantes en Lino Translúcido -->
             <div class="hero-insignias">
-              <div class="hero-insignia">
+              <div class="hero-insignia-pill">
                 <span>🏺</span> Cazuelas de barro curadas
               </div>
-              <div class="hero-insignia">
+              <div class="hero-insignia-pill">
                 <span>🔥</span> Comal en vivo
               </div>
-              <div class="hero-insignia">
+              <div class="hero-insignia-pill">
                 <span>🎉</span> 30 a 400+ personas
               </div>
             </div>
           </div>
 
-          <div class="hero-visual">
-            <div class="hero-visual-glow" aria-hidden="true"></div>
-            <div class="hero-frame" id="heroVisualFrame">
+          <div class="hero-visual-col">
+            <div class="hero-ambient-glow" aria-hidden="true"></div>
+            <div class="hero-frame-card" id="heroVisualFrame">
               <img 
                 src="img/mexican_folk_hero_banner.jpg" 
                 alt="Banquete de cazuelas tradicionales mexicanas La Lola" 
                 loading="eager"
               >
-              <div class="hero-float-badge">
-                <span class="hero-float-badge-dot" aria-hidden="true"></span>
+              <div class="hero-floating-tag">
+                <span class="hero-floating-dot" aria-hidden="true"></span>
                 <span>Servicio tradicional en vivo • León y el Bajío</span>
               </div>
             </div>
@@ -1392,32 +1536,31 @@
     </section>
 
     <!-- ==========================================================================
-         2. GALERÍA VIVA DE EVENTOS (MOSAICO BENTO CON VIDEO #experiencia)
+         2. GALERÍA VIVA (BENTO GRID CON VIDEO CONTINUO #experiencia)
          ========================================================================== -->
     <section class="section-wrap" id="experiencia" aria-label="Galería Viva de Eventos">
-      <!-- Ancla dual para compatibilidad con #historia -->
       <span id="historia" style="position: absolute; top: 0; left: 0;" aria-hidden="true"></span>
 
       <div class="container">
         <div class="section-header">
-          <span class="pill-section">Galería Viva</span>
+          <span class="pill-section-badge">Galería en Vivo</span>
           <h2 class="section-title">El festín servido en su <span>punto exacto</span></h2>
           <p class="section-desc">Cazuelas humeantes, comales al fuego y servicio cálido para bodas, celebraciones familiares y eventos corporativos.</p>
         </div>
 
         <div class="bento-grid">
           
-          <!-- Tarjeta 1: Video en Reproducción Continua -->
-          <div class="bento-card span-6" id="bentoCardVideo">
-            <video autoplay loop muted playsinline preload="auto" poster="FOTOS/ADE1000/ade1000_comedor_colaboradores.jpg" class="bento-media" id="festinVideo">
+          <!-- 1. Video en Reproducción Continua -->
+          <div class="bento-card span-6" id="bentoVideoCard">
+            <video autoplay loop muted playsinline preload="auto" poster="FOTOS/ADE1000/ade1000_comedor_colaboradores.jpg" class="bento-media" id="eventLiveVideo">
               <source src="FOTOS/ADE1000/ade1000_video_resumen.mp4" type="video/mp4">
             </video>
             
-            <div class="video-controls-bar">
-              <button type="button" class="btn-video-ctrl" onclick="event.stopPropagation(); toggleSound();" id="soundBtn">
-                <span id="soundIcon">🔇</span> <span id="soundTxt">Activar Audio</span>
+            <div class="video-ctrl-pill">
+              <button type="button" class="btn-video-chip" onclick="event.stopPropagation(); toggleVideoAudio();" id="audioToggleBtn">
+                <span id="audioPillIcon">🔇</span> <span id="audioPillTxt">Activar Sonido</span>
               </button>
-              <button type="button" class="btn-video-ctrl" onclick="event.stopPropagation(); toggleFullscreen();" title="Pantalla Completa">
+              <button type="button" class="btn-video-chip" onclick="event.stopPropagation(); toggleVideoFullscreen();" title="Pantalla Completa">
                 <span>⛶</span>
               </button>
             </div>
@@ -1429,7 +1572,7 @@
             </div>
           </div>
 
-          <!-- Tarjeta 2: Cazuelas al Fuego -->
+          <!-- 2. Cazuelas al Fuego -->
           <div class="bento-card span-6">
             <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (4).jpeg" alt="Cazuelas al fuego vivo" class="bento-media" loading="lazy">
             <div class="bento-floating-box">
@@ -1439,7 +1582,7 @@
             </div>
           </div>
 
-          <!-- Tarjeta 3: Tortillas Hechas a Mano al Comal -->
+          <!-- 3. Tortillas Hechas a Mano al Comal -->
           <div class="bento-card span-6">
             <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.09.jpeg" alt="Tortillas hechas a mano al comal vivo" class="bento-media" loading="lazy">
             <div class="bento-floating-box">
@@ -1449,7 +1592,7 @@
             </div>
           </div>
 
-          <!-- Tarjeta 4: Comensales y Fiesta Real -->
+          <!-- 4. Comensales y Fiesta Real -->
           <div class="bento-card span-6">
             <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.jpeg" alt="Comensales felices en fiesta real" class="bento-media" loading="lazy">
             <div class="bento-floating-box">
@@ -1467,91 +1610,90 @@
          3. ESPECIALIDADES DE LA CASA (SHOWCASE COMPLETO #menu)
          ========================================================================== -->
     <section class="section-wrap" id="menu" aria-label="Especialidades de la Casa">
-      <!-- Ancla alias para #especialidades -->
       <span id="especialidades" style="position: absolute; top: 0; left: 0;" aria-hidden="true"></span>
 
       <div class="container">
         <div class="section-header">
-          <span class="pill-section">Especialidades de Fonda</span>
+          <span class="pill-section-badge">Especialidades de Fonda</span>
           <h2 class="section-title">Para iniciar el día o la <span>tornafiesta</span></h2>
           <p class="section-desc">Recetas preparadas con auténtico queso fresco de rancho, salsas tatemadas y sazón leonés hechas con el corazón.</p>
         </div>
 
         <div class="specialties-tabs-wrap">
-          <div class="specialties-nav" role="tablist" aria-label="Selector de Especialidades">
-            <button type="button" class="spec-tab-btn active" data-spec-index="0" onclick="showSpecialty(0, this)">
+          <div class="specialties-nav-bar" role="tablist" aria-label="Selector de Especialidades">
+            <button type="button" class="spec-tab-btn active" data-spec-idx="0" onclick="switchSpecialty(0, this)">
               🍳 01. Chilaquiles Tradicionales
             </button>
-            <button type="button" class="spec-tab-btn" data-spec-index="1" onclick="showSpecialty(1, this)">
+            <button type="button" class="spec-tab-btn" data-spec-idx="1" onclick="switchSpecialty(1, this)">
               🥖 02. Las Famosas Tortas
             </button>
-            <button type="button" class="spec-tab-btn" data-spec-index="2" onclick="showSpecialty(2, this)">
+            <button type="button" class="spec-tab-btn" data-spec-idx="2" onclick="switchSpecialty(2, this)">
               🍲 03. Menudo Tradicional
             </button>
           </div>
         </div>
 
-        <div class="specialty-stage">
+        <div class="specialty-stage-box">
           
           <!-- 1. Chilaquiles Tradicionales -->
-          <article class="specialty-card-view active" id="specCard0">
-            <div class="spec-col-text">
-              <span class="pill-section">🍳 Salsa Verde o Roja</span>
-              <h3 class="spec-col-title">Chilaquiles Tradicionales</h3>
-              <p class="spec-col-desc">
+          <article class="specialty-panel-card active" id="specCard0">
+            <div class="spec-text-col">
+              <span class="pill-section-badge">🍳 Salsa Verde o Roja</span>
+              <h3 class="spec-title">Chilaquiles Tradicionales</h3>
+              <p class="spec-desc">
                 Totopos crujientes de maíz bañados en salsa verde o roja tatemada especial. Servidos con frijolitos refritos de la casa, crema espesa de rancho, queso fresco y rebanadas de aguacate.
               </p>
-              <div class="spec-ingredients-box">
+              <div class="spec-ingredients-card">
                 <strong>🍗 2 Proteínas Incluidas a Elegir:</strong>
                 Pollo deshebrado, huevo al gusto, milanesa dorada o carne asada + bolillo caliente recién horneado.
               </div>
-              <button type="button" class="btn btn-primary" onclick="addSpecialty('Chilaquiles Tradicionales', this)">
+              <button type="button" class="btn btn-primary" onclick="addSpecialtyOrder('Chilaquiles Tradicionales', this)">
                 + Agregar a mi Cotización
               </button>
             </div>
-            <div class="spec-col-media">
+            <div class="spec-media-col">
               <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg" alt="Chilaquiles tradicionales con aguacate La Lola" loading="lazy">
             </div>
           </article>
 
           <!-- 2. Famosas Tortas de Chilaquiles -->
-          <article class="specialty-card-view" id="specCard1">
-            <div class="spec-col-text">
-              <span class="pill-section">🥖 La Consentida de la Fiesta</span>
-              <h3 class="spec-col-title">Las Famosas Tortas de Chilaquiles</h3>
-              <p class="spec-col-desc">
+          <article class="specialty-panel-card" id="specCard1">
+            <div class="spec-text-col">
+              <span class="pill-section-badge">🥖 La Consentida de la Fiesta</span>
+              <h3 class="spec-title">Las Famosas Tortas de Chilaquiles</h3>
+              <p class="spec-desc">
                 Bolillo artesanal crujiente recién horneado untado con frijoles refritos de la olla, colmado de chilaquiles calientes, crema de rancho, queso fresco espolvoreado y tu proteína preferida.
               </p>
-              <div class="spec-ingredients-box">
+              <div class="spec-ingredients-card">
                 <strong>🧀 Ingredientes de Rancho:</strong>
                 Bolillo crujiente artesanal, frijoles de la olla, chilaquiles calientes, crema espesa, queso fresco rallado y proteína dorada al gusto.
               </div>
-              <button type="button" class="btn btn-primary" onclick="addSpecialty('Tortas de Chilaquiles', this)">
+              <button type="button" class="btn btn-primary" onclick="addSpecialtyOrder('Tortas de Chilaquiles', this)">
                 + Agregar a mi Cotización
               </button>
             </div>
-            <div class="spec-col-media">
+            <div class="spec-media-col">
               <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg" alt="Las Famosas Tortas de Chilaquiles La Lola" loading="lazy">
             </div>
           </article>
 
           <!-- 3. Menudo Tradicional -->
-          <article class="specialty-card-view" id="specCard2">
-            <div class="spec-col-text">
-              <span class="pill-section">🍲 Rey de la Tornafiesta</span>
-              <h3 class="spec-col-title">Menudo Tradicional</h3>
-              <p class="spec-col-desc">
+          <article class="specialty-panel-card" id="specCard2">
+            <div class="spec-text-col">
+              <span class="pill-section-badge">🍲 Rey de la Tornafiesta</span>
+              <h3 class="spec-title">Menudo Tradicional</h3>
+              <p class="spec-desc">
                 La receta leonesa curada a fuego lento para bodas y desvelados (a partir de 30 personas): caldo rojo limpio, aromático y reconfortante servido humeante en cazuelas de barro.
               </p>
-              <div class="spec-ingredients-box">
+              <div class="spec-ingredients-card">
                 <strong>🥩 Selección Completa de Carnes y Guarnición:</strong>
                 Panza suave, pata, callo, libro, panal, bofe y manzana leonesa con orégano silvestre, cebolla fresca picada, limones y tortillas calientes.
               </div>
-              <button type="button" class="btn btn-primary" onclick="addSpecialty('Menudo Tradicional', this)">
+              <button type="button" class="btn btn-primary" onclick="addSpecialtyOrder('Menudo Tradicional', this)">
                 + Agregar a mi Cotización
               </button>
             </div>
-            <div class="spec-col-media">
+            <div class="spec-media-col">
               <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg" alt="Menudo tradicional caliente en cazuela de barro" loading="lazy">
             </div>
           </article>
@@ -1564,12 +1706,11 @@
          4. CONFIGURADOR DEL BANQUETE (32 GUISADOS + COMANDA #armar)
          ========================================================================== -->
     <section class="section-wrap" id="armar" aria-label="Configurador de Banquete">
-      <!-- Ancla alias para #degustacion -->
       <span id="degustacion" style="position: absolute; top: 0; left: 0;" aria-hidden="true"></span>
 
       <div class="container">
         <div class="section-header">
-          <span class="pill-section">Cotizador en Vivo</span>
+          <span class="pill-section-badge">Cotizador en Vivo</span>
           <h2 class="section-title">Arma tu banquete en <span>tiempo real</span></h2>
           <p class="section-desc">Selecciona tu paquete, ajusta el número de invitados y elige tus cazuelas favoritas para generar tu cotización por WhatsApp.</p>
         </div>
@@ -1577,44 +1718,44 @@
         <div class="builder-layout">
 
           <!-- COLUMNA IZQUIERDA: CONFIGURADOR -->
-          <div class="builder-box">
+          <div class="builder-panel">
 
             <!-- PASO 1: PAQUETES -->
-            <div class="step-header">
-              <span class="step-badge">1</span>
-              <h3 class="step-label">Elige tu Paquete</h3>
+            <div class="step-head">
+              <span class="step-circle">1</span>
+              <h3 class="step-title">Elige tu Paquete</h3>
             </div>
 
-            <div class="packages-grid">
-              <div class="pkg-selector" id="pkgCard-30-50" onclick="choosePackage('30-50')">
-                <span class="pkg-selector-tag">Tradicional</span>
-                <strong class="pkg-selector-title">30 a 50 Personas</strong>
-                <span class="pkg-selector-desc">7 guisados incluidos</span>
+            <div class="packages-cards-row">
+              <div class="pkg-card-box" id="pkgBox-30-50" onclick="choosePackageTier('30-50')">
+                <span class="pkg-card-tag">Tradicional</span>
+                <strong class="pkg-card-name">30 a 50 Personas</strong>
+                <span class="pkg-card-desc">7 guisados incluidos</span>
               </div>
 
-              <div class="pkg-selector active" id="pkgCard-50-80" onclick="choosePackage('50-80')">
-                <span class="pkg-selector-tag">Fiesta Mexicana</span>
-                <strong class="pkg-selector-title">50 a 80 Personas</strong>
-                <span class="pkg-selector-desc">7 guisados incluidos</span>
+              <div class="pkg-card-box active" id="pkgBox-50-80" onclick="choosePackageTier('50-80')">
+                <span class="pkg-card-tag">Fiesta Mexicana</span>
+                <strong class="pkg-card-name">50 a 80 Personas</strong>
+                <span class="pkg-card-desc">7 guisados incluidos</span>
               </div>
 
-              <div class="pkg-selector" id="pkgCard-80" onclick="choosePackage('80+')">
-                <span class="pkg-selector-tag">Gran Banquete</span>
-                <strong class="pkg-selector-title">80+ Personas</strong>
-                <span class="pkg-selector-desc">8 guisados (¡1 cazuela más!)</span>
+              <div class="pkg-card-box" id="pkgBox-80" onclick="choosePackageTier('80+')">
+                <span class="pkg-card-tag">Gran Banquete</span>
+                <strong class="pkg-card-name">80+ Personas</strong>
+                <span class="pkg-card-desc">8 guisados (¡1 cazuela más!)</span>
               </div>
             </div>
 
             <!-- PASO 2: INVITADOS -->
-            <div class="step-header">
-              <span class="step-badge">2</span>
-              <h3 class="step-label">Invitados Estimados</h3>
+            <div class="step-head">
+              <span class="step-circle">2</span>
+              <h3 class="step-title">Invitados Estimados</h3>
             </div>
 
-            <div class="guests-slider-wrap">
-              <div class="guests-slider-meta">
-                <span>Número de personas:</span>
-                <strong id="guestDisplay">65 Personas</strong>
+            <div class="guest-slider-panel">
+              <div class="guest-slider-info">
+                <span>Número de comensales:</span>
+                <strong id="guestCountDisplay">65 Personas</strong>
               </div>
               <input 
                 type="range" 
@@ -1622,321 +1763,321 @@
                 max="350" 
                 step="5" 
                 value="65" 
-                id="guestsRangeInput" 
-                class="slider-range" 
-                oninput="changeGuests(this.value)"
+                id="guestsSliderInput" 
+                class="custom-range-slider" 
+                oninput="updateGuestSlider(this.value)"
                 aria-label="Seleccionar número de invitados"
               >
             </div>
 
             <!-- PASO 3: CATÁLOGO DE LOS 32 GUISADOS (FILAS TIPOGRÁFICAS NUMERADAS) -->
-            <div class="step-header">
-              <span class="step-badge">3</span>
-              <h3 class="step-label">Selecciona tus Cazuelas</h3>
+            <div class="step-head">
+              <span class="step-circle">3</span>
+              <h3 class="step-title">Selecciona tus Cazuelas</h3>
             </div>
 
             <!-- Barra de Progreso de Canasta Gourmet -->
-            <div class="basket-bar-box" id="basketBox">
-              <div class="basket-meta">
+            <div class="basket-progress-box" id="basketProgressCard">
+              <div class="basket-progress-meta">
                 <strong id="basketCountTxt">Cazuelas Seleccionadas: 0 de 7</strong>
                 <span id="basketRemainingTxt">Te faltan 7 cazuelas para completar tu menú</span>
               </div>
-              <div class="basket-track">
-                <div class="basket-fill" id="basketFillBar" style="width: 0%;"></div>
+              <div class="basket-progress-track">
+                <div class="basket-progress-fill" id="basketProgressFill" style="width: 0%;"></div>
               </div>
             </div>
 
             <!-- 5 Botones de Filtro Escritos en el HTML -->
-            <div class="filter-buttons-bar" role="tablist" aria-label="Filtro de Guisados">
-              <button type="button" class="filter-btn active" data-filter="all" onclick="filterDishes('all', this)">Todos (32)</button>
-              <button type="button" class="filter-btn" data-filter="carnes" onclick="filterDishes('carnes', this)">Carnes (12)</button>
-              <button type="button" class="filter-btn" data-filter="antojitos" onclick="filterDishes('antojitos', this)">Antojitos (9)</button>
-              <button type="button" class="filter-btn" data-filter="verduras" onclick="filterDishes('verduras', this)">Verduras (7)</button>
-              <button type="button" class="filter-btn" data-filter="bases" onclick="filterDishes('bases', this)">Bases (4)</button>
+            <div class="filters-nav-row" role="tablist" aria-label="Filtro de Guisados">
+              <button type="button" class="dish-filter-pill active" data-filter="all" onclick="filterDishesCategory('all', this)">Todos (32)</button>
+              <button type="button" class="dish-filter-pill" data-filter="carnes" onclick="filterDishesCategory('carnes', this)">Carnes (12)</button>
+              <button type="button" class="dish-filter-pill" data-filter="antojitos" onclick="filterDishesCategory('antojitos', this)">Antojitos (9)</button>
+              <button type="button" class="dish-filter-pill" data-filter="verduras" onclick="filterDishesCategory('verduras', this)">Verduras (7)</button>
+              <button type="button" class="dish-filter-pill" data-filter="bases" onclick="filterDishesCategory('bases', this)">Bases (4)</button>
             </div>
 
             <!-- Los 32 Guisados Completos como Filas Tipográficas Limpias Numeradas (01, 02...) -->
-            <div class="dishes-rows-grid" id="dishesGrid">
+            <div class="dishes-catalogue-grid" id="dishesRowsGrid">
               
               <!-- CARNES (12) -->
-              <div class="dish-row-item" data-category="carnes" data-name="Puerco en chile morita" onclick="toggleDish('Puerco en chile morita', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">01</span>
-                  <span class="dish-name">Puerco en chile morita</span>
+              <div class="dish-clean-row" data-category="carnes" data-name="Puerco en chile morita" onclick="toggleDishSelection('Puerco en chile morita', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">01</span>
+                  <span class="dish-clean-title">Puerco en chile morita</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="carnes" data-name="Puerco en salsa 3 chiles" onclick="toggleDish('Puerco en salsa 3 chiles', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">02</span>
-                  <span class="dish-name">Puerco en salsa 3 chiles</span>
+              <div class="dish-clean-row" data-category="carnes" data-name="Puerco en salsa 3 chiles" onclick="toggleDishSelection('Puerco en salsa 3 chiles', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">02</span>
+                  <span class="dish-clean-title">Puerco en salsa 3 chiles</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="carnes" data-name="Mole rojo con pollo" onclick="toggleDish('Mole rojo con pollo', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">03</span>
-                  <span class="dish-name">Mole rojo con pollo</span>
+              <div class="dish-clean-row" data-category="carnes" data-name="Mole rojo con pollo" onclick="toggleDishSelection('Mole rojo con pollo', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">03</span>
+                  <span class="dish-clean-title">Mole rojo con pollo</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="carnes" data-name="Mole verde con pollo" onclick="toggleDish('Mole verde con pollo', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">04</span>
-                  <span class="dish-name">Mole verde con pollo</span>
+              <div class="dish-clean-row" data-category="carnes" data-name="Mole verde con pollo" onclick="toggleDishSelection('Mole verde con pollo', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">04</span>
+                  <span class="dish-clean-title">Mole verde con pollo</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="carnes" data-name="Bistec con nopales" onclick="toggleDish('Bistec con nopales', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">05</span>
-                  <span class="dish-name">Bistec con nopales</span>
+              <div class="dish-clean-row" data-category="carnes" data-name="Bistec con nopales" onclick="toggleDishSelection('Bistec con nopales', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">05</span>
+                  <span class="dish-clean-title">Bistec con nopales</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="carnes" data-name="Bistec en chile pasilla" onclick="toggleDish('Bistec en chile pasilla', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">06</span>
-                  <span class="dish-name">Bistec en chile pasilla</span>
+              <div class="dish-clean-row" data-category="carnes" data-name="Bistec en chile pasilla" onclick="toggleDishSelection('Bistec en chile pasilla', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">06</span>
+                  <span class="dish-clean-title">Bistec en chile pasilla</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="carnes" data-name="Bistec a la mexicana" onclick="toggleDish('Bistec a la mexicana', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">07</span>
-                  <span class="dish-name">Bistec a la mexicana</span>
+              <div class="dish-clean-row" data-category="carnes" data-name="Bistec a la mexicana" onclick="toggleDishSelection('Bistec a la mexicana', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">07</span>
+                  <span class="dish-clean-title">Bistec a la mexicana</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="carnes" data-name="Pollo a la mexicana" onclick="toggleDish('Pollo a la mexicana', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">08</span>
-                  <span class="dish-name">Pollo a la mexicana</span>
+              <div class="dish-clean-row" data-category="carnes" data-name="Pollo a la mexicana" onclick="toggleDishSelection('Pollo a la mexicana', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">08</span>
+                  <span class="dish-clean-title">Pollo a la mexicana</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="carnes" data-name="Pollo en crema poblano" onclick="toggleDish('Pollo en crema poblano', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">09</span>
-                  <span class="dish-name">Pollo en crema poblano</span>
+              <div class="dish-clean-row" data-category="carnes" data-name="Pollo en crema poblano" onclick="toggleDishSelection('Pollo en crema poblano', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">09</span>
+                  <span class="dish-clean-title">Pollo en crema poblano</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="carnes" data-name="Pollo crema chile güero" onclick="toggleDish('Pollo crema chile güero', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">10</span>
-                  <span class="dish-name">Pollo crema chile güero</span>
+              <div class="dish-clean-row" data-category="carnes" data-name="Pollo crema chile güero" onclick="toggleDishSelection('Pollo crema chile güero', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">10</span>
+                  <span class="dish-clean-title">Pollo crema chile güero</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="carnes" data-name="Carne deshebrada" onclick="toggleDish('Carne deshebrada', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">11</span>
-                  <span class="dish-name">Carne deshebrada</span>
+              <div class="dish-clean-row" data-category="carnes" data-name="Carne deshebrada" onclick="toggleDishSelection('Carne deshebrada', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">11</span>
+                  <span class="dish-clean-title">Carne deshebrada</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="carnes" data-name="Picadillo tradicional" onclick="toggleDish('Picadillo tradicional', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">12</span>
-                  <span class="dish-name">Picadillo tradicional</span>
+              <div class="dish-clean-row" data-category="carnes" data-name="Picadillo tradicional" onclick="toggleDishSelection('Picadillo tradicional', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">12</span>
+                  <span class="dish-clean-title">Picadillo tradicional</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
               <!-- ANTOJITOS (9) -->
-              <div class="dish-row-item" data-category="antojitos" data-name="Rajas con crema" onclick="toggleDish('Rajas con crema', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">13</span>
-                  <span class="dish-name">Rajas con crema</span>
+              <div class="dish-clean-row" data-category="antojitos" data-name="Rajas con crema" onclick="toggleDishSelection('Rajas con crema', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">13</span>
+                  <span class="dish-clean-title">Rajas con crema</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="antojitos" data-name="Chorizo con papas" onclick="toggleDish('Chorizo con papas', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">14</span>
-                  <span class="dish-name">Chorizo con papas</span>
+              <div class="dish-clean-row" data-category="antojitos" data-name="Chorizo con papas" onclick="toggleDishSelection('Chorizo con papas', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">14</span>
+                  <span class="dish-clean-title">Chorizo con papas</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="antojitos" data-name="Chorizo a la mexicana" onclick="toggleDish('Chorizo a la mexicana', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">15</span>
-                  <span class="dish-name">Chorizo a la mexicana</span>
+              <div class="dish-clean-row" data-category="antojitos" data-name="Chorizo a la mexicana" onclick="toggleDishSelection('Chorizo a la mexicana', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">15</span>
+                  <span class="dish-clean-title">Chorizo a la mexicana</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="antojitos" data-name="Chicharrón prensado" onclick="toggleDish('Chicharrón prensado', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">16</span>
-                  <span class="dish-name">Chicharrón prensado</span>
+              <div class="dish-clean-row" data-category="antojitos" data-name="Chicharrón prensado" onclick="toggleDishSelection('Chicharrón prensado', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">16</span>
+                  <span class="dish-clean-title">Chicharrón prensado</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="antojitos" data-name="Chicharrón en salsa" onclick="toggleDish('Chicharrón en salsa', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">17</span>
-                  <span class="dish-name">Chicharrón en salsa</span>
+              <div class="dish-clean-row" data-category="antojitos" data-name="Chicharrón en salsa" onclick="toggleDishSelection('Chicharrón en salsa', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">17</span>
+                  <span class="dish-clean-title">Chicharrón en salsa</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="antojitos" data-name="Rellena tradicional" onclick="toggleDish('Rellena tradicional', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">18</span>
-                  <span class="dish-name">Rellena tradicional</span>
+              <div class="dish-clean-row" data-category="antojitos" data-name="Rellena tradicional" onclick="toggleDishSelection('Rellena tradicional', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">18</span>
+                  <span class="dish-clean-title">Rellena tradicional</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="antojitos" data-name="Salchichas guisadas" onclick="toggleDish('Salchichas guisadas', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">19</span>
-                  <span class="dish-name">Salchichas guisadas</span>
+              <div class="dish-clean-row" data-category="antojitos" data-name="Salchichas guisadas" onclick="toggleDishSelection('Salchichas guisadas', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">19</span>
+                  <span class="dish-clean-title">Salchichas guisadas</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="antojitos" data-name="Huevo con chile molcajete" onclick="toggleDish('Huevo con chile molcajete', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">20</span>
-                  <span class="dish-name">Huevo con chile molcajete</span>
+              <div class="dish-clean-row" data-category="antojitos" data-name="Huevo con chile molcajete" onclick="toggleDishSelection('Huevo con chile molcajete', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">20</span>
+                  <span class="dish-clean-title">Huevo con chile molcajete</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="antojitos" data-name="Huevo con salchicha" onclick="toggleDish('Huevo con salchicha', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">21</span>
-                  <span class="dish-name">Huevo con salchicha</span>
+              <div class="dish-clean-row" data-category="antojitos" data-name="Huevo con salchicha" onclick="toggleDishSelection('Huevo con salchicha', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">21</span>
+                  <span class="dish-clean-title">Huevo con salchicha</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
               <!-- VERDURAS (7) -->
-              <div class="dish-row-item" data-category="verduras" data-name="Champiñones a la crema" onclick="toggleDish('Champiñones a la crema', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">22</span>
-                  <span class="dish-name">Champiñones a la crema</span>
+              <div class="dish-clean-row" data-category="verduras" data-name="Champiñones a la crema" onclick="toggleDishSelection('Champiñones a la crema', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">22</span>
+                  <span class="dish-clean-title">Champiñones a la crema</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="verduras" data-name="Champiñones al ajillo" onclick="toggleDish('Champiñones al ajillo', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">23</span>
-                  <span class="dish-name">Champiñones al ajillo</span>
+              <div class="dish-clean-row" data-category="verduras" data-name="Champiñones al ajillo" onclick="toggleDishSelection('Champiñones al ajillo', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">23</span>
+                  <span class="dish-clean-title">Champiñones al ajillo</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="verduras" data-name="Nopales guisados" onclick="toggleDish('Nopales guisados', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">24</span>
-                  <span class="dish-name">Nopales guisados</span>
+              <div class="dish-clean-row" data-category="verduras" data-name="Nopales guisados" onclick="toggleDishSelection('Nopales guisados', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">24</span>
+                  <span class="dish-clean-title">Nopales guisados</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="verduras" data-name="Nopales en ensalada" onclick="toggleDish('Nopales en ensalada', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">25</span>
-                  <span class="dish-name">Nopales en ensalada</span>
+              <div class="dish-clean-row" data-category="verduras" data-name="Nopales en ensalada" onclick="toggleDishSelection('Nopales en ensalada', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">25</span>
+                  <span class="dish-clean-title">Nopales en ensalada</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="verduras" data-name="Papas guisadas" onclick="toggleDish('Papas guisadas', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">26</span>
-                  <span class="dish-name">Papas guisadas</span>
+              <div class="dish-clean-row" data-category="verduras" data-name="Papas guisadas" onclick="toggleDishSelection('Papas guisadas', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">26</span>
+                  <span class="dish-clean-title">Papas guisadas</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="verduras" data-name="Papas con nopales" onclick="toggleDish('Papas con nopales', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">27</span>
-                  <span class="dish-name">Papas con nopales</span>
+              <div class="dish-clean-row" data-category="verduras" data-name="Papas con nopales" onclick="toggleDishSelection('Papas con nopales', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">27</span>
+                  <span class="dish-clean-title">Papas con nopales</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="verduras" data-name="Garbanzos guisados" onclick="toggleDish('Garbanzos guisados', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">28</span>
-                  <span class="dish-name">Garbanzos guisados</span>
+              <div class="dish-clean-row" data-category="verduras" data-name="Garbanzos guisados" onclick="toggleDishSelection('Garbanzos guisados', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">28</span>
+                  <span class="dish-clean-title">Garbanzos guisados</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
               <!-- BASES (4) -->
-              <div class="dish-row-item" data-category="bases" data-name="Arroz blanco" onclick="toggleDish('Arroz blanco', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">29</span>
-                  <span class="dish-name">Arroz blanco</span>
+              <div class="dish-clean-row" data-category="bases" data-name="Arroz blanco" onclick="toggleDishSelection('Arroz blanco', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">29</span>
+                  <span class="dish-clean-title">Arroz blanco</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="bases" data-name="Arroz rojo tradicional" onclick="toggleDish('Arroz rojo tradicional', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">30</span>
-                  <span class="dish-name">Arroz rojo tradicional</span>
+              <div class="dish-clean-row" data-category="bases" data-name="Arroz rojo tradicional" onclick="toggleDishSelection('Arroz rojo tradicional', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">30</span>
+                  <span class="dish-clean-title">Arroz rojo tradicional</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="bases" data-name="Frijoles refritos" onclick="toggleDish('Frijoles refritos', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">31</span>
-                  <span class="dish-name">Frijoles refritos</span>
+              <div class="dish-clean-row" data-category="bases" data-name="Frijoles refritos" onclick="toggleDishSelection('Frijoles refritos', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">31</span>
+                  <span class="dish-clean-title">Frijoles refritos</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
-              <div class="dish-row-item" data-category="bases" data-name="Frijoles de la olla" onclick="toggleDish('Frijoles de la olla', this)">
-                <div class="dish-row-left">
-                  <span class="dish-num">32</span>
-                  <span class="dish-name">Frijoles de la olla</span>
+              <div class="dish-clean-row" data-category="bases" data-name="Frijoles de la olla" onclick="toggleDishSelection('Frijoles de la olla', this)">
+                <div class="dish-clean-left">
+                  <span class="dish-clean-num">32</span>
+                  <span class="dish-clean-title">Frijoles de la olla</span>
                 </div>
-                <span class="dish-action-sign">+</span>
+                <span class="dish-clean-sign">+</span>
               </div>
 
             </div>
 
             <!-- PASO 4: EXTRAS OPCIONALES -->
-            <div class="step-header">
-              <span class="step-badge">4</span>
-              <h3 class="step-label">Complementos Especiales (Opcional)</h3>
+            <div class="step-head">
+              <span class="step-circle">4</span>
+              <h3 class="step-title">Complementos Especiales (Opcional)</h3>
             </div>
 
-            <div class="extras-box-grid">
-              <div class="extra-card" onclick="toggleExtraItem(this, 'Vitrolero extra de agua natural (20L)')">
+            <div class="extras-selector-grid">
+              <div class="extra-clean-card" onclick="toggleExtraAddon(this, 'Vitrolero extra de agua natural (20L)')">
                 <span>🥤</span> Vitrolero Extra (20L)
               </div>
-              <div class="extra-card" onclick="toggleExtraItem(this, 'Servicio de comalera adicional en vivo')">
+              <div class="extra-clean-card" onclick="toggleExtraAddon(this, 'Servicio de comalera adicional en vivo')">
                 <span>👩‍🍳</span> Comalera Adicional
               </div>
-              <div class="extra-card" onclick="toggleExtraItem(this, 'Quesadillas al comal de maíz')">
+              <div class="extra-clean-card" onclick="toggleExtraAddon(this, 'Quesadillas al comal de maíz')">
                 <span>🧀</span> Quesadillas al Comal
               </div>
-              <div class="extra-card" onclick="toggleExtraItem(this, 'Cazuela extra adicional de guisado')">
+              <div class="extra-clean-card" onclick="toggleExtraAddon(this, 'Cazuela extra adicional de guisado')">
                 <span>🥘</span> Cazuela Adicional
               </div>
             </div>
@@ -1944,49 +2085,49 @@
           </div>
 
           <!-- COLUMNA DERECHA: COMANDA LATERAL STICKY (CRISTAL LÍQUIDO) -->
-          <aside class="comanda-sticky-card" id="comandaBox">
-            <div class="comanda-top">
-              <span class="comanda-badge">Comanda de Reserva</span>
-              <h4 class="comanda-package-title" id="comandaPkgTitle">Paquete Fiesta Mexicana</h4>
+          <aside class="comanda-liquid-card" id="comandaBox">
+            <div class="comanda-header-box">
+              <span class="comanda-top-badge">Comanda de Reserva</span>
+              <h4 class="comanda-pkg-title" id="comandaPkgTitle">Paquete Fiesta Mexicana</h4>
             </div>
 
             <div id="comandaCelebrationWrap" class="comanda-celebration-slot"></div>
 
-            <div class="comanda-stat-row">
+            <div class="comanda-metric-line">
               <span>Invitados:</span>
               <strong id="comandaGuestsDisplay">65 Personas</strong>
             </div>
 
-            <div class="comanda-stat-row">
+            <div class="comanda-metric-line">
               <span>Cazuelas Elegidas:</span>
               <strong id="comandaGuisosDisplay">0 / 7</strong>
             </div>
 
-            <div class="comanda-selected-list" id="comandaListContainer">
+            <div class="comanda-selected-scroll" id="comandaListContainer">
               <em>Selecciona tus cazuelas en la lista de la izquierda para armar tu menú.</em>
             </div>
 
-            <div class="comanda-perks-desc" id="comandaPerksText">
+            <div class="comanda-perks-box" id="comandaPerksText">
               <strong>Incluye:</strong> 7 guisados calientes, botana tradicional con ensalada de cueritos, 2 vitroleros de agua fresca natural (40L) y tortillas a mano en comal vivo.
             </div>
 
             <form onsubmit="submitComandaWhatsApp(event)">
-              <div class="form-field">
+              <div class="input-field-group">
                 <label>Tu Nombre Completo *</label>
-                <input type="text" id="custNameInput" required placeholder="Ej. Mariana González" class="form-ctrl">
+                <input type="text" id="custNameInput" required placeholder="Ej. Mariana González" class="input-ctrl-box">
               </div>
 
-              <div class="form-field">
+              <div class="input-field-group">
                 <label>Fecha Estimada del Evento *</label>
-                <input type="date" id="custDateInput" required class="form-ctrl">
+                <input type="date" id="custDateInput" required class="input-ctrl-box">
               </div>
 
-              <div class="form-field">
+              <div class="input-field-group">
                 <label>Ciudad / Salón *</label>
-                <input type="text" id="custCityInput" required value="León, Gto." class="form-ctrl" placeholder="Ej. León, Gto.">
+                <input type="text" id="custCityInput" required value="León, Gto." class="input-ctrl-box" placeholder="Ej. León, Gto.">
               </div>
 
-              <button type="submit" class="btn-submit-comanda">
+              <button type="submit" class="btn-whatsapp-comanda">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                 </svg>
@@ -1996,25 +2137,110 @@
           </aside>
 
         </div>
+
+        <!-- 4 GARANTÍAS DE SERVICIO LA LOLA (CONFIANZA & CONVERSIÓN) -->
+        <div class="perks-grid-row">
+          <div class="perk-feature-card">
+            <span class="perk-feature-icon">🫓</span>
+            <h4 class="perk-feature-title">Comal en Vivo</h4>
+            <p class="perk-feature-desc">Tortillas ilimitadas de maíz infladas al momento frente a tus invitados por comaleras tradicionales.</p>
+          </div>
+
+          <div class="perk-feature-card">
+            <span class="perk-feature-icon">🥣</span>
+            <h4 class="perk-feature-title">Aguas Frescas de Fruta</h4>
+            <p class="perk-feature-desc">Hasta 40 litros de agua natural en vitroleros artesanales (horchata, jamaica, limón con chía o frutas de temporada).</p>
+          </div>
+
+          <div class="perk-feature-card">
+            <span class="perk-feature-icon">🥗</span>
+            <h4 class="perk-feature-title">Botana de Rancho</h4>
+            <p class="perk-feature-desc">Ensalada de cueritos en vinagre de la casa, chicharrón duro, salsas molcajeteadas y limones incluidos.</p>
+          </div>
+
+          <div class="perk-feature-card">
+            <span class="perk-feature-icon">🏺</span>
+            <h4 class="perk-feature-title">Barro Curado Caliente</h4>
+            <p class="perk-feature-desc">Montaje continuo con quemadores que mantienen tus 32 opciones de guisados hirviendo durante todo el evento.</p>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <!-- ==========================================================================
-         5. CONTACTO & TARJETA OFICIAL (#contacto)
+         5. PREGUNTAS FRECUENTES (FAQ ACORDEÓN TIPO FRAMER #faq)
+         ========================================================================== -->
+    <section class="section-wrap" id="faq" aria-label="Preguntas Frecuentes">
+      <div class="container">
+        <div class="section-header">
+          <span class="pill-section-badge">Dudas Resueltas</span>
+          <h2 class="section-title">Preguntas <span>Frecuentes</span></h2>
+          <p class="section-desc">Todo lo que necesitas saber para tener tu banquete tradicional sin preocupaciones.</p>
+        </div>
+
+        <div class="faq-container-list">
+          
+          <div class="faq-accordion-item open">
+            <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+              ¿Con cuánta anticipación debo apartar mi fecha?
+              <span class="faq-arrow">✕</span>
+            </button>
+            <div class="faq-answer-content">
+              Recomendamos apartar con al menos 1 a 3 semanas de anticipación para garantizar disponibilidad de comaleras, cazuelas curadas y equipo, especialmente para fines de semana en temporada alta de bodas y graduaciones.
+            </div>
+          </div>
+
+          <div class="faq-accordion-item">
+            <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+              ¿El servicio incluye platos, desechables y servilletas?
+              <span class="faq-arrow">+</span>
+            </button>
+            <div class="faq-answer-content">
+              ¡Sí! Llevamos todo el menaje desechable resistente y servilletas para que los anfitriones disfruten su evento sin preocuparse por lavar trastes al final.
+            </div>
+          </div>
+
+          <div class="faq-accordion-item">
+            <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+              ¿El comal en vivo es seguro para interiores o salones?
+              <span class="faq-arrow">+</span>
+            </button>
+            <div class="faq-answer-content">
+              Completamente. Utilizamos comales profesionales con quemadores regulados a gas LP limpio, aptos para salones de fiestas, jardines, terrazas y cocheras con ventilación regular.
+            </div>
+          </div>
+
+          <div class="faq-accordion-item">
+            <button type="button" class="faq-question-btn" onclick="toggleFaq(this)">
+              ¿Qué pasa si sobra comida al terminar las horas de servicio?
+              <span class="faq-arrow">+</span>
+            </button>
+            <div class="faq-answer-content">
+              Toda la comida que quede en las cazuelas te pertenece al 100%. Te la vaciamos cuidadosamente en tus recipientes limpios antes de retirarnos para que disfrutes el recalentado.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         6. CONTACTO & TARJETA OFICIAL (#contacto)
          ========================================================================== -->
     <section class="section-wrap" id="contacto" aria-label="Contacto y Tarjeta Oficial" style="text-align: center;">
       <div class="container">
         <div class="section-header">
-          <span class="pill-section">Contacto Directo</span>
+          <span class="pill-section-badge">Contacto Directo</span>
           <h2 class="section-title">¿Tienes una fecha en mente? <span>Hablemos</span></h2>
           <p class="section-desc">Guarda nuestra tarjeta de presentación o llama directamente por teléfono para apartar tu fecha.</p>
         </div>
 
-        <div class="card-presentation-frame" onclick="window.open('https://wa.me/524778020791', '_blank')" title="Abrir chat oficial con Claudia">
+        <div class="card-presentation-box" onclick="window.open('https://wa.me/524778020791', '_blank')" title="Abrir chat oficial con Claudia">
           <img src="FOTOS/WhatsApp Image 2026-07-25 at 20.02.30 (1).jpeg" alt="Tarjeta Oficial Banquetes y Taquizas La Lola">
         </div>
 
-        <div class="contact-buttons-row">
+        <div class="contact-actions-row">
           <a href="https://wa.me/524778020791?text=Hola%20Claudia%2C%20me%20gustar%C3%ADa%20cotizar%20un%20banquete%20con%20La%20Lola%20🍽️" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
             Chatear con Claudia por WhatsApp
           </a>
@@ -2031,10 +2257,10 @@
        ========================================================================== -->
   <footer class="editorial-footer">
     <div class="container">
-      <div class="footer-brand">La Lola<span>.</span></div>
-      <p class="footer-lead">Banquetes &amp; Taquizas Tradicionales en Cazuela de Barro</p>
-      <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">León, Guanajuato • Servicio a Domicilio, Jardines, Salones y Haciendas</p>
-      <div class="footer-copy">© 2026 Banquetes y Taquizas La Lola. Todos los derechos reservados.</div>
+      <div class="footer-brand-title">La Lola<span>.</span></div>
+      <p class="footer-tagline-text">Banquetes &amp; Taquizas Tradicionales en Cazuela de Barro</p>
+      <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">León, Guanajuato • Servicio a Domicilio, Jardines, Salones y Haciendas en el Bajío</p>
+      <div class="footer-copy-text">© 2026 Banquetes y Taquizas La Lola. Todos los derechos reservados.</div>
     </div>
   </footer>
 
@@ -2045,13 +2271,13 @@
     (function () {
       'use strict';
 
-      // 1. Datos de Paquetes
+      // 1. Datos Oficiales de Paquetes
       var packages = {
         '30-50': {
           name: 'Paquete Tradicional',
           max: 7,
           range: '30 a 50 personas',
-          perks: '7 guisados calientes, botana tradicional de rancho, 1 vitrolero de agua fresca natural (20L) y tortillas calientes al momento.'
+          perks: '7 guisados calientes, botana tradicional de rancho con cueritos, 1 vitrolero de agua fresca natural (20L) y tortillas calientes al momento.'
         },
         '50-80': {
           name: 'Paquete Fiesta Mexicana',
@@ -2074,26 +2300,26 @@
       var selectedExtras = new Set();
 
       // 2. Control de Video (Audio y Pantalla Completa)
-      window.toggleSound = function () {
-        var video = document.getElementById('festinVideo');
-        var icon = document.getElementById('soundIcon');
-        var txt = document.getElementById('soundTxt');
+      window.toggleVideoAudio = function () {
+        var video = document.getElementById('eventLiveVideo');
+        var icon = document.getElementById('audioPillIcon');
+        var txt = document.getElementById('audioPillTxt');
         if (!video) return;
 
         video.muted = !video.muted;
         if (icon && txt) {
           if (video.muted) {
             icon.textContent = '🔇';
-            txt.textContent = 'Activar Audio';
+            txt.textContent = 'Activar Sonido';
           } else {
             icon.textContent = '🔊';
-            txt.textContent = 'Silenciar Audio';
+            txt.textContent = 'Silenciar';
           }
         }
       };
 
-      window.toggleFullscreen = function () {
-        var video = document.getElementById('festinVideo');
+      window.toggleVideoFullscreen = function () {
+        var video = document.getElementById('eventLiveVideo');
         if (!video) return;
 
         if (video.requestFullscreen) {
@@ -2106,9 +2332,9 @@
       };
 
       // 3. Showcase de Especialidades
-      window.showSpecialty = function (index, btn) {
+      window.switchSpecialty = function (index, btn) {
         var tabs = document.querySelectorAll('.spec-tab-btn');
-        var cards = document.querySelectorAll('.specialty-card-view');
+        var cards = document.querySelectorAll('.specialty-panel-card');
 
         tabs.forEach(function (t) { t.classList.remove('active'); });
         if (btn) btn.classList.add('active');
@@ -2125,7 +2351,7 @@
         });
       };
 
-      window.addSpecialty = function (name, btn) {
+      window.addSpecialtyOrder = function (name, btn) {
         selectedSpecialties.add(name);
         if (btn) {
           var originalText = btn.innerHTML;
@@ -2142,22 +2368,21 @@
       };
 
       // 4. Cotizador: Paquetes y Slider
-      window.choosePackage = function (pkgKey) {
+      window.choosePackageTier = function (pkgKey) {
         activePkgKey = pkgKey;
-        document.querySelectorAll('.pkg-selector').forEach(function (el) { el.classList.remove('active'); });
+        document.querySelectorAll('.pkg-card-box').forEach(function (el) { el.classList.remove('active'); });
         
-        var card = document.getElementById('pkgCard-' + pkgKey);
+        var card = document.getElementById('pkgBox-' + pkgKey);
         if (card) card.classList.add('active');
 
         var maxLimit = packages[pkgKey].max;
 
-        // Recortar si excede el nuevo límite
         if (selectedDishes.size > maxLimit) {
           var arr = Array.from(selectedDishes);
           while (selectedDishes.size > maxLimit) {
             var removed = arr.pop();
             selectedDishes.delete(removed);
-            var row = document.querySelector('.dish-row-item[data-name="' + removed + '"]');
+            var row = document.querySelector('.dish-clean-row[data-name="' + removed + '"]');
             if (row) row.classList.remove('selected');
           }
         }
@@ -2165,28 +2390,28 @@
         updateComandaUI();
       };
 
-      window.changeGuests = function (val) {
+      window.updateGuestSlider = function (val) {
         guestCount = parseInt(val, 10);
-        var disp = document.getElementById('guestDisplay');
+        var disp = document.getElementById('guestCountDisplay');
         if (disp) disp.textContent = val + ' Personas';
 
         if (guestCount <= 50 && activePkgKey !== '30-50') {
-          choosePackage('30-50');
+          choosePackageTier('30-50');
         } else if (guestCount > 50 && guestCount <= 80 && activePkgKey !== '50-80') {
-          choosePackage('50-80');
+          choosePackageTier('50-80');
         } else if (guestCount > 80 && activePkgKey !== '80+') {
-          choosePackage('80+');
+          choosePackageTier('80+');
         }
 
         updateComandaUI();
       };
 
       // 5. Filtros de Categoría
-      window.filterDishes = function (cat, btn) {
-        document.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
+      window.filterDishesCategory = function (cat, btn) {
+        document.querySelectorAll('.dish-filter-pill').forEach(function (b) { b.classList.remove('active'); });
         if (btn) btn.classList.add('active');
 
-        var rows = document.querySelectorAll('#dishesGrid .dish-row-item');
+        var rows = document.querySelectorAll('#dishesRowsGrid .dish-clean-row');
         rows.forEach(function (row) {
           var dishCat = row.getAttribute('data-category');
           if (cat === 'all' || dishCat === cat) {
@@ -2197,8 +2422,8 @@
         });
       };
 
-      // 6. Selección de Cazuelas con límite
-      window.toggleDish = function (name, el) {
+      // 6. Selección de Cazuelas con Límite y Feedback
+      window.toggleDishSelection = function (name, el) {
         var maxLimit = packages[activePkgKey].max;
 
         if (selectedDishes.has(name)) {
@@ -2219,7 +2444,7 @@
 
       window.removeDishFromComanda = function (name) {
         selectedDishes.delete(name);
-        var row = document.querySelector('.dish-row-item[data-name="' + name + '"]');
+        var row = document.querySelector('.dish-clean-row[data-name="' + name + '"]');
         if (row) row.classList.remove('selected');
         updateComandaUI();
       };
@@ -2230,7 +2455,7 @@
       };
 
       // 7. Extras
-      window.toggleExtraItem = function (el, name) {
+      window.toggleExtraAddon = function (el, name) {
         if (selectedExtras.has(name)) {
           selectedExtras.delete(name);
           el.classList.remove('selected');
@@ -2241,7 +2466,25 @@
         updateComandaUI();
       };
 
-      // 8. Actualización Reactiva de Comanda
+      // 8. Acordeón FAQ
+      window.toggleFaq = function (btn) {
+        var item = btn.parentElement;
+        var isOpen = item.classList.contains('open');
+        var arrow = btn.querySelector('.faq-arrow');
+
+        document.querySelectorAll('.faq-accordion-item').forEach(function (el) {
+          el.classList.remove('open');
+          var a = el.querySelector('.faq-arrow');
+          if (a) a.textContent = '+';
+        });
+
+        if (!isOpen) {
+          item.classList.add('open');
+          if (arrow) arrow.textContent = '✕';
+        }
+      };
+
+      // 9. Actualización Reactiva de Comanda
       function updateComandaUI() {
         var pkg = packages[activePkgKey];
         var max = pkg.max;
@@ -2273,25 +2516,25 @@
           }
         }
 
-        var basketFillBar = document.getElementById('basketFillBar');
+        var basketFillBar = document.getElementById('basketProgressFill');
         if (basketFillBar) {
           var percent = Math.min(100, Math.round((count / max) * 100));
           basketFillBar.style.width = percent + '%';
         }
 
-        var basketBox = document.getElementById('basketBox');
+        var basketCard = document.getElementById('basketProgressCard');
         var comandaBox = document.getElementById('comandaBox');
         var celebrationWrap = document.getElementById('comandaCelebrationWrap');
 
         if (count >= max) {
-          if (basketBox) basketBox.classList.add('complete');
-          if (comandaBox) comandaBox.classList.add('ready-glow');
+          if (basketCard) basketCard.classList.add('complete');
+          if (comandaBox) comandaBox.classList.add('completed-glow');
           if (celebrationWrap && !celebrationWrap.hasChildNodes()) {
             celebrationWrap.innerHTML = '<div class="comanda-celebration-banner">✨ ¡Menú completo, listo para confirmar por WhatsApp!</div>';
           }
         } else {
-          if (basketBox) basketBox.classList.remove('complete');
-          if (comandaBox) comandaBox.classList.remove('ready-glow');
+          if (basketCard) basketCard.classList.remove('complete');
+          if (comandaBox) comandaBox.classList.remove('completed-glow');
           if (celebrationWrap) celebrationWrap.innerHTML = '';
         }
 
@@ -2307,7 +2550,7 @@
             selectedDishes.forEach(function (dish) {
               html += '<li>' +
                 '<span>' + (idx < 10 ? '0' + idx : idx) + '. <em>' + dish + '</em></span>' +
-                '<button type="button" class="comanda-remove-btn" title="Quitar cazuela" onclick="removeDishFromComanda(\'' + dish + '\')">✕</button>' +
+                '<button type="button" class="btn-comanda-remove" title="Quitar cazuela" onclick="removeDishFromComanda(\'' + dish + '\')">✕</button>' +
                 '</li>';
               idx++;
             });
@@ -2315,7 +2558,7 @@
             selectedSpecialties.forEach(function (sp) {
               html += '<li style="color: var(--pastel-menta-deep);">' +
                 '<span>✨ <em>' + sp + '</em></span>' +
-                '<button type="button" class="comanda-remove-btn" title="Quitar especialidad" onclick="removeSpecialtyFromComanda(\'' + sp + '\')">✕</button>' +
+                '<button type="button" class="btn-comanda-remove" title="Quitar especialidad" onclick="removeSpecialtyFromComanda(\'' + sp + '\')">✕</button>' +
                 '</li>';
             });
 
@@ -2331,7 +2574,7 @@
         }
       }
 
-      // 9. Enviar Comanda Compilada a WhatsApp (Claudia: 477 802 0791)
+      // 10. Enviar Comanda Compilada a WhatsApp (Claudia: 477 802 0791)
       window.submitComandaWhatsApp = function (e) {
         if (e && e.preventDefault) e.preventDefault();
 
@@ -2368,7 +2611,7 @@
         window.open(waUrl, '_blank');
       };
 
-      // 10. Navbar Scroll Appearance
+      // 11. Navbar Scroll Appearance
       window.addEventListener('scroll', function () {
         var header = document.getElementById('siteHeader');
         if (header) {
@@ -2377,7 +2620,7 @@
         }
       }, { passive: true });
 
-      // Inicialización Inmediata
+      // Inicialización
       updateComandaUI();
     })();
   </script>
