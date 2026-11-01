@@ -197,7 +197,92 @@
     }
   }, { passive: true });
 
+  /* ==========================================================================
+     HERO: PARALLAX 3D SPLIT & BOTONES MAGNÉTICOS (60 FPS)
+     ========================================================================== */
+  function initHeroParallax() {
+    const heroSection = document.getElementById('heroSection');
+    const heroContent = document.getElementById('heroContent');
+    const heroVisual = document.getElementById('heroVisual');
+    const heroFloatCard = document.getElementById('heroFloatCard');
+
+    if (!heroSection || !heroContent || !heroVisual) return;
+
+    let targetX = 0, targetY = 0;
+    let currentX = 0, currentY = 0;
+    let isHovering = false;
+    let animId = null;
+
+    heroSection.addEventListener('mouseenter', () => {
+      isHovering = true;
+      if (!animId) animId = requestAnimationFrame(render);
+    });
+
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      targetX = (e.clientX - rect.left) / rect.width - 0.5;
+      targetY = (e.clientY - rect.top) / rect.height - 0.5;
+    });
+
+    heroSection.addEventListener('mouseleave', () => {
+      isHovering = false;
+      targetX = 0;
+      targetY = 0;
+    });
+
+    function render() {
+      // Suavizado Lerp a 60fps
+      currentX += (targetX - currentX) * 0.08;
+      currentY += (targetY - currentY) * 0.08;
+
+      // Efecto Split: El contenido textual se desplaza en dirección contraria
+      heroContent.style.transform = `translate3d(${currentX * -22}px, ${currentY * -16}px, 0)`;
+
+      // La imagen se desplaza con el cursor con inclinación tridimensional sutil
+      const rotateY = currentX * 8;
+      const rotateX = -currentY * 8;
+      heroVisual.style.transform = `translate3d(${currentX * 24}px, ${currentY * 18}px, 0) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+
+      // Capa flotante inferior con profundidad desacoplada
+      if (heroFloatCard) {
+        heroFloatCard.style.transform = `translate3d(${currentX * 14}px, ${currentY * 10}px, 0)`;
+      }
+
+      if (isHovering || Math.abs(currentX) > 0.001 || Math.abs(currentY) > 0.001) {
+        animId = requestAnimationFrame(render);
+      } else {
+        animId = null;
+        heroContent.style.transform = '';
+        heroVisual.style.transform = '';
+        if (heroFloatCard) heroFloatCard.style.transform = '';
+      }
+    }
+  }
+
+  function initMagneticButtons() {
+    const magneticBtns = document.querySelectorAll('.btn-magnetic');
+
+    magneticBtns.forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        btn.style.transform = `translate3d(${x * 0.28}px, ${y * 0.28}px, 0)`;
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate3d(0, 0, 0)';
+        setTimeout(() => {
+          btn.style.transform = '';
+        }, 280);
+      });
+    });
+  }
+
   // Inicialización
   renderDishes();
   updateSummary();
+  initHeroParallax();
+  initMagneticButtons();
 })();

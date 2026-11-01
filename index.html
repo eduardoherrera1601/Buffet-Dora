@@ -53,14 +53,14 @@
 
   <main>
     <!-- ==========================================================================
-         2. HERO ASIMÉTRICO (Composición 2 Columnas)
+         2. HERO ASIMÉTRICO (Composición Cinematográfica de Autor)
          ========================================================================== -->
-    <section class="hero-section" aria-label="Presentación y bienvenida La Lola">
-      <div class="container">
-        <div class="hero-grid">
+    <section class="hero-section" id="heroSection" aria-label="Presentación y bienvenida La Lola">
+      <div class="container hero-container">
+        <div class="hero-grid" id="heroGrid">
 
           <!-- Columna Izquierda: Contenido Editorial -->
-          <div class="hero-content">
+          <div class="hero-content" id="heroContent">
             <div class="hero-badge-container">
               <span class="pill-tag">
                 🏺 Banquetes & Cazuelas • León, Gto.
@@ -77,8 +77,8 @@
             </p>
 
             <div class="hero-cta-group">
-              <a href="#armar" class="btn btn-primary">Armar Banquete</a>
-              <a href="#experiencia" class="btn btn-glass">Conocer Experiencia</a>
+              <a href="#armar" class="btn btn-primary btn-glow btn-magnetic">Armar Banquete</a>
+              <a href="#experiencia" class="btn btn-glass btn-magnetic">Conocer Experiencia</a>
             </div>
 
             <!-- 3 viñetas minimalistas con checkmark -->
@@ -112,18 +112,19 @@
             </div>
           </div>
 
-          <!-- Columna Derecha: Tarjeta Visual -->
-          <div class="hero-visual">
-            <div class="hero-image-frame">
+          <!-- Columna Derecha: Tarjeta Visual Flotante con Parallax -->
+          <div class="hero-visual" id="heroVisual">
+            <div class="hero-image-frame floating-frame">
               <img 
                 src="img/mexican_folk_hero_banner.jpg" 
                 alt="Banquete de cazuelas tradicionales mexicanas La Lola" 
                 class="hero-img"
+                id="heroImg"
                 loading="eager"
               >
 
               <!-- Tarjeta flotante translúcida inferior -->
-              <div class="floating-card">
+              <div class="floating-card" id="heroFloatCard">
                 <span class="floating-dot" aria-hidden="true"></span>
                 <span class="floating-text">Servicio tradicional en vivo • León y el Bajío</span>
               </div>
@@ -131,6 +132,14 @@
           </div>
 
         </div>
+
+        <!-- Micro-indicador de Scroll Minimalista Animado -->
+        <a href="#experiencia" class="hero-scroll-indicator" aria-label="Desplazarse hacia la experiencia">
+          <span class="scroll-mouse">
+            <span class="scroll-wheel"></span>
+          </span>
+          <span class="scroll-text">Explora el festín</span>
+        </a>
       </div>
     </section>
 
