@@ -1457,6 +1457,383 @@
             header { padding: 0.6rem 1.2rem; }
             .nav-menu { display: none; }
         }
+
+        /* =======================================================
+           OPTIMIZACIONES RESPONSIVAS PARA TELÉFONOS CELULARES (SMARTPHONES)
+           PANTALLAS <= 768px y <= 480px
+           ======================================================= */
+        @media (max-width: 768px) {
+            header {
+                padding: 0.6rem 0.9rem;
+                justify-content: space-between;
+                gap: 0.5rem;
+            }
+
+            .brand-logo {
+                flex-direction: column;
+            }
+
+            .brand-name {
+                font-size: 2rem;
+                line-height: 1;
+            }
+
+            .brand-tag {
+                font-size: 0.68rem;
+                letter-spacing: 0.08em;
+            }
+
+            header .btn-turquesa-3d {
+                padding: 0.5rem 0.9rem !important;
+                font-size: 0.8rem !important;
+                gap: 0.4rem;
+            }
+
+            header .btn-turquesa-3d svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            /* Hero */
+            .hero-scenic-card {
+                min-height: 480px;
+                padding-bottom: 2rem;
+            }
+
+            .hero-scenic-content {
+                margin-left: 0;
+                padding: 2.2rem 1.1rem 1rem;
+                max-width: 100%;
+            }
+
+            .hero-scenic-title {
+                font-size: 1.95rem;
+                line-height: 1.15;
+            }
+
+            .hero-scenic-title .cursive-highlight {
+                font-size: 1.25em;
+            }
+
+            .hero-scenic-desc {
+                font-size: 0.92rem;
+                line-height: 1.5;
+                margin-bottom: 1.2rem;
+            }
+
+            /* Lienzo y Bloques */
+            .main-folk-canvas {
+                width: 100%;
+                max-width: 100%;
+                margin: 1.2rem auto 2.5rem;
+                padding: 0 0.5rem;
+            }
+
+            .section-folk-block {
+                padding: 1.5rem 0.9rem;
+                border-radius: 18px;
+                margin-top: 1.8rem;
+            }
+
+            .step-block {
+                padding: 1.3rem 0.85rem;
+                border-radius: 16px;
+                margin-bottom: 1.6rem;
+            }
+
+            .section-folk-heading {
+                margin-bottom: 1.4rem;
+            }
+
+            .section-folk-heading h2 {
+                font-size: 1.6rem;
+                line-height: 1.2;
+            }
+
+            .section-folk-heading p {
+                font-size: 0.92rem !important;
+            }
+
+            .step-title {
+                font-size: 1.5rem;
+                line-height: 1.2;
+            }
+
+            .step-desc {
+                font-size: 0.92rem;
+                margin-bottom: 1.2rem;
+            }
+
+            /* Especialidades (4 Cards) */
+            .dish-folk-card-col {
+                padding: 1.2rem 0.9rem;
+                border-radius: 20px;
+            }
+
+            .dish-photo-talavera-frame img {
+                height: 220px;
+            }
+
+            .dish-folk-card-col h3 {
+                font-size: 1.35rem;
+            }
+
+            .dish-folk-card-col p {
+                font-size: 0.88rem;
+            }
+
+            /* Paso 1: Ajuste de Invitados */
+            #sliderGuestCountDisplay {
+                font-size: 1.45rem !important;
+                width: 100%;
+                text-align: center;
+                margin-top: 0.4rem;
+            }
+
+            .btn-preset-guest {
+                padding: 0.28rem 0.6rem;
+                font-size: 0.74rem;
+            }
+
+            .packages-grid {
+                grid-template-columns: 1fr;
+                gap: 1.4rem;
+            }
+
+            .package-card {
+                padding: 1.6rem 1.1rem;
+                border-radius: 20px;
+            }
+
+            .package-title {
+                font-size: 1.65rem;
+            }
+
+            .package-capacity {
+                font-size: 1.05rem;
+                margin-bottom: 1rem;
+            }
+
+            .package-feature-item {
+                font-size: 0.88rem;
+            }
+
+            /* Paso 2: Base & Guisados */
+            .base-option-card {
+                padding: 0.75rem 0.85rem;
+            }
+
+            .base-option-card .base-name {
+                font-size: 0.84rem;
+            }
+
+            .guisado-progress-box {
+                padding: 1rem 0.9rem;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.75rem;
+            }
+
+            .progress-info {
+                font-size: 1rem;
+                justify-content: space-between;
+            }
+
+            .progress-info strong {
+                font-size: 1.4rem;
+            }
+
+            .progress-bar-track {
+                min-width: 100%;
+                height: 15px;
+            }
+
+            .progress-status-badge {
+                font-size: 0.82rem;
+                text-align: center;
+                justify-content: center;
+                width: 100%;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .filter-tabs-row {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                gap: 0.45rem;
+                padding-bottom: 0.5rem;
+                justify-content: flex-start;
+                scrollbar-width: none;
+            }
+
+            .filter-tabs-row::-webkit-scrollbar {
+                display: none;
+            }
+
+            .folk-tab-btn {
+                flex-shrink: 0;
+                padding: 0.45rem 0.85rem;
+                font-size: 0.78rem;
+                white-space: nowrap;
+            }
+
+            .guisados-grid-32 {
+                grid-template-columns: 1fr;
+                gap: 0.55rem;
+            }
+
+            .guisado-item-card {
+                padding: 0.7rem 0.85rem;
+                border-radius: 14px;
+            }
+
+            .guisado-item-name {
+                font-size: 0.84rem;
+            }
+
+            .guisado-check-box {
+                width: 24px;
+                height: 24px;
+                font-size: 0.78rem;
+            }
+
+            /* Paso 3: Extras */
+            .extras-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .extra-card {
+                padding: 1rem 0.85rem;
+            }
+
+            /* Paso 4: Formulario y Resumen */
+            #unifiedQuoteForm input[type="text"],
+            #unifiedQuoteForm input[type="date"],
+            #unifiedQuoteForm select {
+                font-size: 16px !important; /* Previene auto-zoom molesto en iOS Safari */
+                padding: 0.75rem 0.85rem !important;
+                width: 100%;
+            }
+
+            .live-summary-box {
+                padding: 1.2rem 0.85rem;
+                border-radius: 16px;
+            }
+
+            .summary-header-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.4rem;
+            }
+
+            #summaryPackageTitle {
+                font-size: 1.45rem !important;
+            }
+
+            #summaryGuestCount {
+                font-size: 1.35rem !important;
+            }
+
+            #unifiedQuoteForm button[type="submit"] {
+                font-size: 0.98rem !important;
+                padding: 1rem 0.8rem !important;
+                white-space: normal;
+                line-height: 1.3;
+            }
+
+            /* Banner Bodegón & Tarjeta */
+            .festive-flatlay-banner {
+                height: 200px;
+                border-radius: 16px;
+            }
+
+            .festive-flatlay-banner-text h3 {
+                font-size: 1.35rem;
+            }
+
+            .festive-flatlay-banner-text p {
+                font-size: 0.85rem !important;
+            }
+
+            #tarjeta-contacto .btn-turquesa-3d {
+                width: 100%;
+                justify-content: center;
+                font-size: 0.88rem;
+                padding: 0.85rem 1rem;
+            }
+
+            /* Carrete de fotos */
+            .marquee-photo-card {
+                width: 195px;
+            }
+
+            .marquee-photo-img {
+                height: 140px;
+            }
+
+            .marquee-photo-caption {
+                padding: 0.55rem 0.75rem;
+                font-size: 0.8rem;
+            }
+
+            /* Footer */
+            footer {
+                padding: 3.2rem 1rem 2rem;
+            }
+
+            .footer-logo {
+                font-size: 3.4rem;
+            }
+
+            .footer-phone {
+                font-size: 1.85rem;
+            }
+
+            footer p {
+                font-size: 0.9rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .brand-name {
+                font-size: 1.7rem;
+            }
+
+            .brand-tag {
+                display: none;
+            }
+
+            header .btn-turquesa-3d {
+                padding: 0.42rem 0.75rem !important;
+                font-size: 0.74rem !important;
+            }
+
+            .hero-scenic-card {
+                min-height: 420px;
+            }
+
+            .hero-scenic-title {
+                font-size: 1.6rem;
+            }
+
+            .section-folk-heading h2 {
+                font-size: 1.4rem;
+            }
+
+            .step-title {
+                font-size: 1.35rem;
+            }
+
+            .footer-logo {
+                font-size: 2.8rem;
+            }
+
+            .footer-phone {
+                font-size: 1.6rem;
+            }
+        }
     </style>
 </head>
 <body>
