@@ -127,8 +127,13 @@
      2. ESPECIALIDADES DE LA CASA (VISOR INTERACTIVO SHOWCASE TABS)
      ========================================================================== */
   window.switchSpecialtyTab = function(key, btn) {
-    document.querySelectorAll('.spec-tab-btn').forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
+    document.querySelectorAll('.spec-tab, .spec-tab-btn').forEach(b => b.classList.remove('active'));
+    if (btn) {
+      btn.classList.add('active');
+    } else {
+      const match = document.querySelector(`.spec-tab[data-target="${key}"], .spec-tab-btn[data-target="${key}"]`);
+      if (match) match.classList.add('active');
+    }
 
     const views = document.querySelectorAll('.specialty-panel-view');
     views.forEach(v => {
@@ -168,8 +173,13 @@
      3. FILTRADO Y SELECCIÓN DEL MENÚ DE DEGUSTACIÓN (#degustacion)
      ========================================================================== */
   window.applyDishCategoryFilter = function(cat, btn) {
-    document.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
+    document.querySelectorAll('.filter-btn, .cat-filter-btn').forEach(b => b.classList.remove('active'));
+    if (btn) {
+      btn.classList.add('active');
+    } else {
+      const match = document.querySelector(`.filter-btn[data-filter="${cat}"], .cat-filter-btn[data-filter="${cat}"]`);
+      if (match) match.classList.add('active');
+    }
 
     const dishes = document.querySelectorAll('#tastingDishesContainer .dish-entry');
     dishes.forEach(dish => {
@@ -395,6 +405,22 @@
   function initApp() {
     if (isReady) return;
     isReady = true;
+
+    // Listeners para pestañas de especialidades
+    document.querySelectorAll('.spec-tab, .spec-tab-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const target = this.getAttribute('data-target');
+        if (target) window.switchSpecialtyTab(target, this);
+      });
+    });
+
+    // Listeners para botones de filtro
+    document.querySelectorAll('.filter-btn, .cat-filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+        if (filter) window.applyDishCategoryFilter(filter, this);
+      });
+    });
 
     initScrollytelling();
     updateComandaUI();

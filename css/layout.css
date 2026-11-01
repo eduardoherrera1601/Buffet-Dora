@@ -306,6 +306,7 @@
   margin-bottom: clamp(32px, 4vh, 48px);
 }
 
+.spec-tab,
 .spec-tab-btn {
   display: inline-flex;
   align-items: center;
@@ -323,12 +324,14 @@
   box-shadow: 0 4px 14px -4px rgba(36, 26, 23, 0.06);
 }
 
+.spec-tab:hover,
 .spec-tab-btn:hover {
   border-color: var(--pastel-rosa-deep);
   color: var(--text-main);
   transform: translateY(-2px);
 }
 
+.spec-tab.active,
 .spec-tab-btn.active {
   background: var(--pastel-rosa-deep);
   color: #FFFFFF;
@@ -478,7 +481,8 @@
   margin-bottom: 2rem;
 }
 
-.cat-filter-btn, .filter-btn {
+.cat-filter-btn,
+.filter-btn {
   background: transparent;
   border: 1px solid var(--border-soft);
   color: var(--text-muted);
@@ -491,13 +495,15 @@
   transition: all 0.22s ease;
 }
 
-.cat-filter-btn:hover, .filter-btn:hover {
+.cat-filter-btn:hover,
+.filter-btn:hover {
   background: rgba(255, 255, 255, 0.9);
   color: var(--text-main);
   border-color: var(--pastel-rosa-deep);
 }
 
-.cat-filter-btn.active, .filter-btn.active {
+.cat-filter-btn.active,
+.filter-btn.active {
   background: var(--pastel-rosa-deep);
   color: #FFFFFF;
   border-color: var(--pastel-rosa-deep);
@@ -963,21 +969,27 @@
   .scrolly-stage {
     grid-template-columns: 1fr;
   }
+
   .scrolly-right {
     display: none;
   }
+
   .scrolly-left {
     min-height: 100vh;
   }
+
   .specialty-panel-view {
     grid-template-columns: 1fr;
   }
+
   .specialty-visual-col {
     height: 280px;
   }
+
   .degustacion-layout {
     grid-template-columns: 1fr;
   }
+
   .comanda-aside-wrap {
     position: static;
   }
@@ -987,6 +999,7 @@
   .tasting-dishes-grid {
     grid-template-columns: 1fr;
   }
+
   .nav-menu {
     display: none;
   }
