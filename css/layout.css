@@ -1,6 +1,6 @@
 /* ==========================================================================
    ESTRUCTURA Y LAYOUT • LA LOLA
-   Arquitectura Cinemática de Pantalla Fija (Pin-Scroll) & Menú de Degustación
+   Arquitectura Scrollytelling, Showcase Tabs & Menú de Degustación Editorial
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -16,7 +16,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   2. HEADER MINIMALISTA EDITORIAL
+   2. HEADER MINIMALISTA FLOTANTE
    -------------------------------------------------------------------------- */
 .site-header {
   position: fixed;
@@ -24,7 +24,7 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(245, 239, 235, 0.88);
+  background: rgba(245, 239, 235, 0.90);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
@@ -32,7 +32,7 @@
 }
 
 .site-header.scrolled {
-  background: rgba(245, 239, 235, 0.96);
+  background: rgba(245, 239, 235, 0.98);
   box-shadow: 0 10px 30px -10px rgba(36, 26, 23, 0.08);
 }
 
@@ -56,10 +56,6 @@
   transition: var(--transition-smooth);
 }
 
-.brand-logo:hover {
-  opacity: 0.85;
-}
-
 .brand-logo-dot {
   color: var(--color-pink-primary);
 }
@@ -79,7 +75,6 @@
   text-decoration: none;
   position: relative;
   padding: 6px 0;
-  letter-spacing: 0.04em;
   transition: var(--transition-smooth);
 }
 
@@ -103,542 +98,447 @@
   width: 100%;
 }
 
-.header-actions {
-  display: flex;
-  align-items: center;
-}
-
 .btn-header-cta {
   font-size: 0.84rem;
   padding: 10px 22px;
 }
 
 /* --------------------------------------------------------------------------
-   3. CINEMATIC PIN-SCROLL STAGE (SCROLL-DRIVEN VIEWPORT 380vh)
+   3. SCROLLYTELLING EN PANTALLA COMPLETA (#historia)
    -------------------------------------------------------------------------- */
-.pin-scroll-container {
+.scrolly-container {
+  height: 350vh;
   position: relative;
-  height: 380vh;
-  background-color: #17110F;
+  background-color: #1A1311;
 }
 
-.pin-scroll-stage {
+.scrolly-stage {
   position: sticky;
   top: 0;
+  width: 100vw;
   height: 100vh;
-  width: 100%;
   overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Lado Izquierdo: Textos Sincronizados */
+.scrolly-left {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: clamp(32px, 5vw, 72px);
+  background: radial-gradient(circle at center, rgba(38, 28, 25, 0.96) 0%, rgba(26, 19, 17, 0.98) 100%);
+  color: #FFFFFF;
+  z-index: 5;
 }
 
-/* Diapositivas de Fondo Visual (Imágenes con Fade & Scale) */
-.pin-slides-layer {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.pin-slide {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transform: scale(1.06);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-.pin-slide.active {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.pin-slide-media {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* Máscara de Iluminación Radial y Calidez Orgánica */
-.pin-slide-overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(36, 26, 23, 0.45) 0%, rgba(23, 17, 15, 0.82) 75%, rgba(15, 11, 10, 0.94) 100%);
-  z-index: 2;
-}
-
-/* Escenario de Textos Narrativos (Relevo en el Centro) */
-.pin-narrative-stage {
+.scrolly-layers-wrapper {
   position: relative;
-  z-index: 10;
-  max-width: 860px;
-  width: 90%;
-  text-align: center;
-  padding: 2rem;
-  pointer-events: none;
+  width: 100%;
+  max-width: 580px;
+  min-height: 320px;
 }
 
-.pin-narrative-item {
+.scrolly-layer {
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -46%) scale(0.96);
-  width: 100%;
+  left: 0;
+  transform: translateY(calc(-50% + 25px));
   opacity: 0;
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+  transition: opacity 0.5s ease, transform 0.5s ease;
   pointer-events: none;
 }
 
-.pin-narrative-item.active {
+.scrolly-layer.active {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translateY(-50%);
   pointer-events: auto;
 }
 
-.pin-pill-tag {
+.scrolly-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #FCE8EF;
-  background: rgba(217, 72, 120, 0.28);
-  border: 1px solid rgba(217, 72, 120, 0.4);
-  backdrop-filter: blur(12px);
-  padding: 0.45rem 1.2rem;
+  background: rgba(217, 72, 120, 0.32);
+  border: 1px solid rgba(217, 72, 120, 0.45);
+  padding: 0.4rem 1.1rem;
   border-radius: 999px;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.2rem;
 }
 
-.pin-title {
+.scrolly-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.6rem, 5.2vw, 4.4rem);
-  font-weight: 900;
-  line-height: 1.1;
-  color: #FFFFFF;
-  letter-spacing: -0.015em;
-  margin-bottom: 0.7rem;
-  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
-}
-
-.pin-title-serif-italic {
-  display: block;
-  font-family: var(--font-serif);
-  font-size: clamp(1.4rem, 2.5vw, 2rem);
-  font-weight: 700;
-  font-style: italic;
-  color: #F8B4C8;
-  margin-top: 0.4rem;
-}
-
-.pin-desc {
-  font-family: var(--font-sans);
-  font-size: clamp(1rem, 1.35vw, 1.2rem);
-  color: #E8DFD8;
-  line-height: 1.7;
-  max-width: 680px;
-  margin: 1.2rem auto 2rem;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
-}
-
-.pin-cta-row {
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-/* Indicador Lateral Vertical de Progreso */
-.pin-indicators-rail {
-  position: absolute;
-  right: clamp(20px, 3.5vw, 44px);
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 20;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.pin-dot-step {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: rgba(255, 255, 255, 0.45);
-  font-family: var(--font-sans);
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-  padding: 4px 0;
-}
-
-.pin-dot-bullet {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 0 0 0 rgba(217, 72, 120, 0.4);
-}
-
-.pin-dot-step.active {
-  color: #FFFFFF;
-}
-
-.pin-dot-step.active .pin-dot-bullet {
-  background: var(--pastel-rosa-deep);
-  transform: scale(1.4);
-  box-shadow: 0 0 14px var(--pastel-rosa-deep);
-}
-
-.pin-dot-step:hover {
-  color: #FFFFFF;
-}
-
-/* Micro-indicador de Scroll Inferior */
-.pin-scroll-cue {
-  position: absolute;
-  bottom: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 20;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.74rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  font-weight: 700;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.pin-scroll-cue:hover {
-  color: #FFFFFF;
-}
-
-.pin-scroll-mouse {
-  width: 20px;
-  height: 32px;
-  border: 1.5px solid rgba(255, 255, 255, 0.45);
-  border-radius: 12px;
-  display: flex;
-  justify-content: center;
-  padding-top: 5px;
-}
-
-.pin-scroll-wheel {
-  width: 3px;
-  height: 6px;
-  background-color: var(--pastel-rosa-deep);
-  border-radius: 3px;
-  animation: wheelRoll 1.8s infinite ease-in-out;
-}
-
-@keyframes wheelRoll {
-  0% { transform: translateY(0); opacity: 1; }
-  60% { transform: translateY(10px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 0; }
-}
-
-/* --------------------------------------------------------------------------
-   4. ESPECIALIDADES DE FONDA (DEGUSTACIÓN DE AUTOR)
-   -------------------------------------------------------------------------- */
-.editorial-section {
-  padding: clamp(80px, 10vh, 130px) 0;
-  position: relative;
-}
-
-.editorial-header {
-  text-align: center;
-  max-width: 780px;
-  margin: 0 auto clamp(40px, 6vh, 64px);
-}
-
-.editorial-tag {
-  display: inline-block;
-  font-size: 0.76rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--pastel-rosa-deep);
-  background: var(--pastel-rosa);
-  padding: 0.35rem 1.15rem;
-  border-radius: 999px;
-  margin-bottom: 0.9rem;
-}
-
-.editorial-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-size: clamp(2.3rem, 3.8vw, 3.4rem);
   font-weight: 900;
   line-height: 1.15;
-  color: var(--text-main);
+  color: #FFFFFF;
   letter-spacing: -0.015em;
+  margin-bottom: 0.6rem;
 }
 
-.editorial-title span {
+.scrolly-title-italic {
+  display: block;
+  font-family: var(--font-serif);
   font-style: italic;
-  color: var(--pastel-rosa-deep);
+  font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+  color: #F8B4C8;
+  margin-top: 0.35rem;
 }
 
-.editorial-desc {
+.scrolly-desc {
+  font-family: var(--font-sans);
   font-size: 1.05rem;
-  color: var(--text-muted);
-  line-height: 1.65;
-  margin-top: 0.9rem;
+  color: #E6DDD6;
+  line-height: 1.7;
+  margin: 1.2rem 0 1.8rem;
 }
 
-/* Galería de Especialidades en Tríptico */
-.specialties-triptych {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-.specialty-card-author {
-  background: var(--bg-surface);
-  border-radius: 24px;
-  overflow: hidden;
-  border: 1px solid var(--border-soft);
-  box-shadow: var(--shadow-card);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.32s ease;
-}
-
-.specialty-card-author:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-hover);
-}
-
-.specialty-card-img-wrap {
+/* Lado Derecho: Media Dinámica */
+.scrolly-right {
   position: relative;
-  height: 240px;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-  background-color: #E6DFD5;
+  background: #0E0908;
 }
 
-.specialty-card-img-wrap img {
+.scrolly-media {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  transition: opacity 0.6s ease;
 }
 
-.specialty-card-author:hover .specialty-card-img-wrap img {
-  transform: scale(1.06);
+.scrolly-media.active {
+  opacity: 1;
 }
 
-.specialty-badge-floating {
+/* Riel de progreso vertical */
+.scrolly-progress-rail {
   position: absolute;
-  top: 14px;
-  left: 14px;
-  background: rgba(245, 239, 235, 0.92);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  font-size: 0.74rem;
-  font-weight: 800;
-  color: var(--text-main);
-  padding: 0.3rem 0.85rem;
-  border-radius: 999px;
-  letter-spacing: 0.04em;
-}
-
-.specialty-card-body {
-  padding: 1.8rem;
+  left: 28px;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  gap: 16px;
+  z-index: 10;
 }
 
-.specialty-card-title {
-  font-family: var(--font-serif);
-  font-size: 1.45rem;
-  font-weight: 800;
-  color: var(--text-main);
-  margin-bottom: 0.6rem;
-  line-height: 1.25;
+.scrolly-step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
 }
 
-.specialty-card-desc {
-  font-size: 0.92rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: 1.2rem;
-  flex-grow: 1;
-}
-
-.specialty-card-perks {
-  background: rgba(245, 239, 235, 0.6);
-  border-radius: 12px;
-  padding: 0.75rem 0.95rem;
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  margin-bottom: 1.4rem;
-  border: 1px solid var(--border-soft);
-}
-
-.btn-add-specialty {
-  width: 100%;
-  padding: 11px 18px;
-  font-size: 0.88rem;
-  border-radius: 999px;
-  font-weight: 700;
-  cursor: pointer;
-  background: transparent;
-  color: var(--pastel-rosa-deep);
-  border: 1.5px solid var(--pastel-rosa-deep);
-  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.btn-add-specialty:hover {
-  background: var(--pastel-rosa);
-  transform: translateY(-1px);
-}
-
-.btn-add-specialty.is-active {
-  background: var(--pastel-menta-deep);
-  border-color: var(--pastel-menta-deep);
-  color: #FFFFFF;
+.scrolly-step-dot.active {
+  background: var(--pastel-rosa-deep);
+  transform: scale(1.6);
+  box-shadow: 0 0 12px var(--pastel-rosa-deep);
 }
 
 /* --------------------------------------------------------------------------
-   5. MENÚ DE DEGUSTACIÓN EDITORIAL (32 GUISADOS) & COMANDA FLOTANTE
+   4. ESPECIALIDADES DE LA CASA (VISOR INTERACTIVO CON PESTAÑAS)
+   -------------------------------------------------------------------------- */
+.specialties-section {
+  padding: clamp(80px, 10vh, 120px) 0;
+  background-color: var(--color-bg-base);
+}
+
+.section-head-center {
+  text-align: center;
+  max-width: 740px;
+  margin: 0 auto clamp(36px, 5vh, 56px);
+}
+
+.pill-section-tag {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pastel-rosa-deep);
+  background: var(--pastel-rosa);
+  padding: 0.35rem 1.1rem;
+  border-radius: 999px;
+  margin-bottom: 0.8rem;
+}
+
+.section-title-editorial {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 900;
+  line-height: 1.18;
+  color: var(--text-main);
+}
+
+.section-title-editorial span {
+  font-style: italic;
+  color: var(--pastel-rosa-deep);
+}
+
+.section-desc-editorial {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-top: 0.8rem;
+}
+
+/* Barra de Pestañas Tipo Pastilla */
+.specialty-tabs-bar {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(32px, 4vh, 48px);
+}
+
+.spec-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-soft);
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px -4px rgba(36, 26, 23, 0.06);
+}
+
+.spec-tab-btn:hover {
+  border-color: var(--pastel-rosa-deep);
+  color: var(--text-main);
+  transform: translateY(-2px);
+}
+
+.spec-tab-btn.active {
+  background: var(--pastel-rosa-deep);
+  color: #FFFFFF;
+  border-color: var(--pastel-rosa-deep);
+  box-shadow: 0 6px 18px -4px rgba(217, 72, 120, 0.45);
+}
+
+/* Visor de 2 Columnas */
+.specialty-stage-container {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.specialty-panel-view {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 56px);
+  align-items: center;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 30px;
+  padding: clamp(28px, 4vw, 44px);
+  box-shadow: var(--shadow-card);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.specialty-panel-view.active {
+  display: grid;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.specialty-visual-col {
+  border-radius: 20px;
+  overflow: hidden;
+  height: 380px;
+  background: #E8E0D5;
+  box-shadow: 0 16px 36px -12px rgba(36, 26, 23, 0.16);
+}
+
+.specialty-visual-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.specialty-panel-view:hover .specialty-visual-col img {
+  transform: scale(1.04);
+}
+
+.specialty-info-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.specialty-info-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 2.6vw, 2.3rem);
+  font-weight: 900;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.specialty-info-desc {
+  font-size: 0.98rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.specialty-ingredients-card {
+  width: 100%;
+  background: rgba(245, 239, 235, 0.65);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  padding: 1.1rem 1.3rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.specialty-ingredients-card strong {
+  color: var(--text-main);
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   5. MENÚ DE DEGUSTACIÓN EDITORIAL (32 GUISADOS) & COMANDA LATERAL (#degustacion)
    -------------------------------------------------------------------------- */
 .degustacion-section {
-  background: #F2EBE5;
+  background: #EFE7E0;
   padding: clamp(80px, 10vh, 120px) 0;
   border-top: 1px solid var(--border-subtle);
 }
 
-.degustacion-grid {
+.degustacion-layout {
   display: grid;
   grid-template-columns: 1.35fr 0.85fr;
   gap: clamp(32px, 4vw, 54px);
   align-items: start;
 }
 
-/* Columna Izquierda: Menú Tipográfico */
-.degustacion-left {
+/* Contenedor del Menú de Degustación */
+.tasting-board {
   background: var(--bg-surface);
   border-radius: 28px;
-  padding: clamp(28px, 4vw, 48px);
+  padding: clamp(28px, 4vw, 44px);
   box-shadow: var(--shadow-card);
   border: 1px solid var(--border-soft);
 }
 
-.tasting-head-row {
+.tasting-board-head {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.6rem;
   padding-bottom: 1.2rem;
   border-bottom: 1px solid var(--border-subtle);
 }
 
-.tasting-main-title {
+.tasting-board-title {
   font-family: var(--font-serif);
   font-size: clamp(1.8rem, 2.6vw, 2.4rem);
   font-weight: 900;
   color: var(--text-main);
-  letter-spacing: -0.015em;
 }
 
-.tasting-serving-limit {
+.tasting-package-limit {
   font-family: var(--font-sans);
   font-size: 0.88rem;
   font-weight: 700;
   color: var(--pastel-rosa-deep);
 }
 
-/* Filtros Editoriales Limpios (Sin aspecto de formulario) */
-.tasting-filters-bar {
+/* Filtros por Categoría */
+.tasting-categories-bar {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
   margin-bottom: 2rem;
 }
 
-.tasting-filter-btn {
+.cat-filter-btn {
   background: transparent;
   border: 1px solid var(--border-soft);
   color: var(--text-muted);
   font-family: var(--font-sans);
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
   padding: 8px 18px;
   border-radius: 999px;
   cursor: pointer;
-  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.22s ease;
 }
 
-.tasting-filter-btn:hover {
+.cat-filter-btn:hover {
   background: rgba(255, 255, 255, 0.9);
   color: var(--text-main);
-  border-color: var(--border-pink);
+  border-color: var(--pastel-rosa-deep);
 }
 
-.tasting-filter-btn.active {
+.cat-filter-btn.active {
   background: var(--pastel-rosa-deep);
   color: #FFFFFF;
   border-color: var(--pastel-rosa-deep);
   box-shadow: 0 4px 14px -3px rgba(217, 72, 120, 0.4);
 }
 
-/* Lista Tipográfica a 2 Columnas */
-.tasting-menu-list {
+/* Lista Tipográfica a 2 Columnas de Filas Interactivas (.dish-entry) */
+.tasting-dishes-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px 18px;
+  gap: 8px 16px;
 }
 
-/* Fila Tipográfica de Guisado Individual */
-.tasting-dish-row {
+.dish-entry {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
   padding: 12px 14px;
   border-radius: 12px;
   cursor: pointer;
-  border-bottom: 1px solid rgba(36, 26, 23, 0.05);
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  background: transparent;
+  border: 1px solid rgba(36, 26, 23, 0.05);
+  border-bottom: 1px solid rgba(36, 26, 23, 0.08);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
 }
 
-.tasting-dish-row:hover {
+.dish-entry:hover {
   background: rgba(245, 239, 235, 0.7);
   transform: translateX(3px);
+  border-color: rgba(217, 72, 120, 0.2);
 }
 
-.tasting-dish-left {
+.dish-entry-content {
   display: flex;
   align-items: baseline;
   gap: 10px;
   overflow: hidden;
 }
 
-.tasting-dish-num {
+.dish-entry-num {
   font-family: var(--font-serif);
   font-size: 0.95rem;
   font-weight: 700;
@@ -647,7 +547,7 @@
   min-width: 24px;
 }
 
-.tasting-dish-title {
+.dish-entry-title {
   font-family: var(--font-sans);
   font-size: 0.92rem;
   font-weight: 600;
@@ -658,18 +558,7 @@
   transition: color 0.2s ease;
 }
 
-.tasting-dish-tag-served {
-  display: none;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 0.78rem;
-  color: var(--pastel-rosa-deep);
-  font-weight: 700;
-  white-space: nowrap;
-  margin-left: 6px;
-}
-
-.tasting-dish-action-sign {
+.dish-entry-sign {
   font-size: 1rem;
   font-weight: 700;
   color: var(--text-muted);
@@ -677,39 +566,36 @@
   transition: all 0.2s ease;
 }
 
-/* Estado Servido (Platillo Elegido en Degustación) */
-.tasting-dish-row.is-served {
-  background: #FFF2F6;
-  border-bottom-color: rgba(217, 72, 120, 0.18);
+/* Platillo Seleccionado: Fondo suave menta pastel (#D8F3F1) */
+.dish-entry.selected {
+  background-color: #D8F3F1;
+  border-color: #0D827E;
+  color: #0D827E;
 }
 
-.tasting-dish-row.is-served .tasting-dish-title {
-  color: var(--pastel-rosa-deep);
+.dish-entry.selected .dish-entry-title {
+  color: #0D827E;
   font-weight: 700;
 }
 
-.tasting-dish-row.is-served .tasting-dish-num {
-  color: var(--pastel-rosa-deep);
+.dish-entry.selected .dish-entry-num {
+  color: #0D827E;
   opacity: 1;
 }
 
-.tasting-dish-row.is-served .tasting-dish-tag-served {
-  display: inline-block;
-}
-
-.tasting-dish-row.is-served .tasting-dish-action-sign {
-  color: var(--pastel-rosa-deep);
+.dish-entry.selected .dish-entry-sign {
+  color: #0D827E;
   opacity: 1;
   transform: rotate(45deg);
 }
 
-/* Columna Derecha: Comanda Flotante de Reserva */
-.comanda-sticky-wrap {
+/* Columna Derecha: Comanda Sticky */
+.comanda-aside-wrap {
   position: sticky;
   top: 96px;
 }
 
-.comanda-card-author {
+.comanda-box {
   background: #FFFFFF;
   border-radius: 28px;
   border: 1px solid var(--border-soft);
@@ -719,7 +605,7 @@
   overflow: hidden;
 }
 
-.comanda-card-author::before {
+.comanda-box::before {
   content: '';
   position: absolute;
   top: 0;
@@ -729,13 +615,13 @@
   background: linear-gradient(90deg, var(--pastel-rosa-deep), #F8B4C8, var(--pastel-menta-deep));
 }
 
-.comanda-editorial-head {
+.comanda-head-row {
   margin-bottom: 1.4rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--border-subtle);
 }
 
-.comanda-super-title {
+.comanda-pill-badge {
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.16em;
@@ -745,16 +631,16 @@
   margin-bottom: 4px;
 }
 
-.comanda-title-serif {
+.comanda-box-title {
   font-family: var(--font-serif);
-  font-size: 1.7rem;
+  font-size: 1.65rem;
   font-weight: 900;
   color: var(--text-main);
   line-height: 1.2;
 }
 
-/* Selector de Paquetes en Comanda */
-.comanda-pkg-switch {
+/* Selector de Paquetes */
+.comanda-packages-nav {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 6px;
@@ -764,7 +650,7 @@
   margin-bottom: 1.4rem;
 }
 
-.comanda-pkg-btn {
+.pkg-nav-btn {
   background: transparent;
   border: none;
   font-family: var(--font-sans);
@@ -778,38 +664,38 @@
   transition: all 0.2s ease;
 }
 
-.comanda-pkg-btn.active {
+.pkg-nav-btn.active {
   background: #FFFFFF;
   color: var(--pastel-rosa-deep);
   box-shadow: 0 2px 8px rgba(36, 26, 23, 0.08);
 }
 
-/* Dial Tipográfico de Personas */
-.comanda-dial-row {
+/* Slider de Invitados */
+.comanda-slider-section {
   margin-bottom: 1.4rem;
 }
 
-.comanda-dial-label {
+.comanda-slider-meta {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   margin-bottom: 8px;
 }
 
-.comanda-dial-label span {
+.comanda-slider-meta span {
   font-size: 0.82rem;
   font-weight: 700;
   color: var(--text-muted);
 }
 
-.comanda-dial-value {
+.comanda-guest-number {
   font-family: var(--font-serif);
   font-size: 1.25rem;
   font-weight: 900;
   color: var(--text-main);
 }
 
-.comanda-range-input {
+.comanda-slider-range {
   width: 100%;
   -webkit-appearance: none;
   appearance: none;
@@ -819,7 +705,7 @@
   outline: none;
 }
 
-.comanda-range-input::-webkit-slider-thumb {
+.comanda-slider-range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 20px;
@@ -831,16 +717,16 @@
   transition: transform 0.15s ease;
 }
 
-.comanda-range-input::-webkit-slider-thumb:hover {
+.comanda-slider-range::-webkit-slider-thumb:hover {
   transform: scale(1.15);
 }
 
-/* Lista Numerada en Comanda */
-.comanda-list-section {
+/* Lista Dinámica de Cazuelas en Cursiva Elegante */
+.comanda-dishes-section {
   margin-bottom: 1.4rem;
 }
 
-.comanda-list-header {
+.comanda-dishes-meta {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -850,7 +736,7 @@
   margin-bottom: 8px;
 }
 
-.comanda-progress-bar-wrap {
+.comanda-dishes-bar-wrap {
   height: 4px;
   background: #EDE7DF;
   border-radius: 999px;
@@ -858,14 +744,14 @@
   margin-bottom: 12px;
 }
 
-.comanda-progress-fill {
+.comanda-dishes-bar-fill {
   height: 100%;
   width: 0%;
   background: linear-gradient(90deg, var(--pastel-rosa-deep), var(--pastel-menta-deep));
   transition: width 0.3s ease;
 }
 
-.comanda-ordered-dishes {
+.comanda-dishes-ul {
   list-style: none;
   max-height: 200px;
   overflow-y: auto;
@@ -875,7 +761,7 @@
   line-height: 1.5;
 }
 
-.comanda-ordered-dishes li {
+.comanda-dishes-ul li {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -885,12 +771,14 @@
   animation: fadeInDish 0.25s ease-out forwards;
 }
 
-@keyframes fadeInDish {
-  from { opacity: 0; transform: translateX(-6px); }
-  to { opacity: 1; transform: translateX(0); }
+.comanda-dishes-ul li em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 700;
+  color: var(--pastel-rosa-deep);
 }
 
-.comanda-dish-remove-btn {
+.comanda-remove-item-btn {
   background: none;
   border: none;
   color: var(--text-muted);
@@ -902,30 +790,57 @@
   transition: all 0.2s ease;
 }
 
-.comanda-dish-remove-btn:hover {
+.comanda-remove-item-btn:hover {
   color: var(--pastel-rosa-deep);
   opacity: 1;
   background: var(--pastel-rosa);
 }
 
-.comanda-empty-cue {
+.comanda-empty-notice {
   font-style: italic;
   font-size: 0.84rem;
   color: var(--text-muted);
-  padding: 10px 0;
+  padding: 8px 0;
 }
 
-/* Campos de Contacto en Comanda */
-.comanda-form-fields {
+/* Aviso Sutil de Límite Alcanzado */
+.comanda-limit-warning {
+  display: none;
+  background: #FFF2F6;
+  border: 1px solid rgba(217, 72, 120, 0.3);
+  color: var(--pastel-rosa-deep);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 10px;
+  margin-top: 8px;
+}
+
+/* Beneficios del Paquete */
+.comanda-perks-box {
+  background: #FAF7F2;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.4rem;
+  border: 1px solid var(--border-soft);
+}
+
+.comanda-perks-box strong {
+  color: var(--text-main);
+}
+
+/* Formulario de Reserva */
+.comanda-form-inputs {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 1.4rem;
-  padding-top: 10px;
-  border-top: 1px solid var(--border-subtle);
 }
 
-.comanda-field-input {
+.comanda-input-ctrl {
   width: 100%;
   padding: 10px 14px;
   border: 1px solid var(--border-soft);
@@ -938,13 +853,13 @@
   transition: border-color 0.2s ease;
 }
 
-.comanda-field-input:focus {
+.comanda-input-ctrl:focus {
   border-color: var(--pastel-rosa-deep);
   background: #FFFFFF;
 }
 
-/* Botón de Confirmación WhatsApp */
-.btn-confirm-comanda {
+/* Botón Oficial de WhatsApp */
+.btn-whatsapp-comanda {
   width: 100%;
   display: flex;
   align-items: center;
@@ -963,7 +878,7 @@
   transition: all 0.26s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btn-confirm-comanda:hover {
+.btn-whatsapp-comanda:hover {
   background: #20BA5A;
   transform: translateY(-2px);
   box-shadow: 0 12px 28px -4px rgba(37, 211, 102, 0.5);
@@ -983,7 +898,7 @@
   margin: 0 auto 2.5rem;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 24px 50px -12px rgba(36, 26, 23, 0.16);
   border: 1px solid var(--border-soft);
   cursor: pointer;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1045,25 +960,34 @@
    8. RESPONSIVE DESIGN
    -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
-  .degustacion-grid {
+  .scrolly-stage {
     grid-template-columns: 1fr;
   }
-  .comanda-sticky-wrap {
+  .scrolly-right {
+    display: none;
+  }
+  .scrolly-left {
+    min-height: 100vh;
+  }
+  .specialty-panel-view {
+    grid-template-columns: 1fr;
+  }
+  .specialty-visual-col {
+    height: 280px;
+  }
+  .degustacion-layout {
+    grid-template-columns: 1fr;
+  }
+  .comanda-aside-wrap {
     position: static;
-  }
-  .specialties-triptych {
-    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 768px) {
-  .tasting-menu-list {
+  .tasting-dishes-grid {
     grid-template-columns: 1fr;
   }
   .nav-menu {
-    display: none;
-  }
-  .pin-indicators-rail {
     display: none;
   }
 }

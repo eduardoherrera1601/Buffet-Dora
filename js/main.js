@@ -1,109 +1,90 @@
 /**
  * LA LOLA • BANQUETES & CATERING TRADICIONAL
- * Arquitectura Interactiva: Pin-Scroll Cinematic Viewport & Menú de Degustación
+ * Script Principal de Scrollytelling, Visor de Especialidades y Menú de Degustación
  */
 
 (function() {
   'use strict';
 
-  /* ==========================================================================
-     1. CATÁLOGO COMPLETO DE LOS 32 GUISADOS TRADICIONALES
-     ========================================================================== */
-  const dishes = [
-    { name: "Mole rojo con pollo", cat: "carnes", num: "01", desc: "Receta tradicional con pollo tierno deshebrado" },
-    { name: "Mole verde con pollo", cat: "carnes", num: "02", desc: "Pepita verde molida, hierbas frescas y pollo" },
-    { name: "Puerco en chile morita", cat: "carnes", num: "03", desc: "Trozos de lomo suave en salsa ahumada de morita" },
-    { name: "Puerco en salsa 3 chiles", cat: "carnes", num: "04", desc: "Combinación de anchos, guajillos y pasillas" },
-    { name: "Bistec con nopales", cat: "carnes", num: "05", desc: "Tiras de res en cazuela con nopales tiernos" },
-    { name: "Bistec en chile pasilla", cat: "carnes", num: "06", desc: "Carne de res jugosa en adobo negro de pasilla" },
-    { name: "Bistec a la mexicana", cat: "carnes", num: "07", desc: "Jitomate, cebolla y serrano picado al fuego" },
-    { name: "Pollo a la mexicana", cat: "carnes", num: "08", desc: "Pollo en salsa rústica con jitomate y chiles" },
-    { name: "Pollo en crema poblano", cat: "carnes", num: "09", desc: "Rajas poblanas tatemadas con crema de rancho" },
-    { name: "Pollo crema chile güero", cat: "carnes", num: "10", desc: "Salsa cremosa suave con chile caribeño güero" },
-    { name: "Carne deshebrada", cat: "carnes", num: "11", desc: "Falda de res deshebrada sazonada con orégano" },
-    { name: "Picadillo tradicional", cat: "carnes", num: "12", desc: "Carne molida con papa y zanahoria al vapor" },
-    { name: "Rajas con crema", cat: "antojitos", num: "13", desc: "Chile poblano asado con crema espesa y elote" },
-    { name: "Chorizo con papas", cat: "antojitos", num: "14", desc: "Chorizo doradito con cubos de papa tierna" },
-    { name: "Chorizo a la mexicana", cat: "antojitos", num: "15", desc: "Embutido artesanal guisado con verdura fresca" },
-    { name: "Chicharrón prensado", cat: "antojitos", num: "16", desc: "Fritura de cerdo guisada en salsa de guajillo" },
-    { name: "Chicharrón en salsa", cat: "antojitos", num: "17", desc: "Corteza inflada en salsa verde tatemada" },
-    { name: "Rellena tradicional", cat: "antojitos", num: "18", desc: "Moronga sazonada con hierbabuena y cebolla" },
-    { name: "Salchichas guisadas", cat: "antojitos", num: "19", desc: "Salchichas en salsa roja de chipotle casero" },
-    { name: "Huevo con chile molcajete", cat: "antojitos", num: "20", desc: "Huevos revueltos bañados en salsa martajada" },
-    { name: "Huevo con salchicha", cat: "antojitos", num: "21", desc: "Desayuno clásico de cazuela caliente" },
-    { name: "Champiñones a la crema", cat: "verduras", num: "22", desc: "Hongos frescos laminados con crema y epazote" },
-    { name: "Champiñones al ajillo", cat: "verduras", num: "23", desc: "Ajo dorado en aceite de oliva y chile guajillo" },
-    { name: "Nopales guisados", cat: "verduras", num: "24", desc: "Nopales con cebolla y orégano de monte" },
-    { name: "Nopales en ensalada", cat: "verduras", num: "25", desc: "Frescos con jitomate, cilantro y queso de rancho" },
-    { name: "Papas guisadas", cat: "verduras", num: "26", desc: "Papas en adobo ligero con comino y laurel" },
-    { name: "Papas con nopales", cat: "verduras", num: "27", desc: "Guisado campero tradicional en cazuela" },
-    { name: "Garbanzos guisados", cat: "verduras", num: "28", desc: "Leguminosas cocidas a fuego lento con recaudo" },
-    { name: "Arroz blanco", cat: "bases", num: "29", desc: "Arroz esponjado con elote y mantequilla" },
-    { name: "Arroz rojo tradicional", cat: "bases", num: "30", desc: "Arroz con jitomate de rancho y verduras" },
-    { name: "Frijoles refritos", cat: "bases", num: "31", desc: "Frijol bayo refrito con manteca y epazote" },
-    { name: "Frijoles de la olla", cat: "bases", num: "32", desc: "Caldo de frijol recién hervido en barro curado" }
-  ];
-
+  // Configuración de los 3 Paquetes
   const packages = {
-    '30-50': { name: 'Paquete Tradicional', max: 7, desc: '30 a 50 personas • 7 Guisos' },
-    '50-80': { name: 'Paquete Fiesta Mexicana', max: 7, desc: '50 a 80 personas • 7 Guisos' },
-    '80+': { name: 'Paquete Gran Banquete', max: 8, desc: '80+ personas • 8 Guisos' }
+    '30-50': { 
+      name: 'Paquete Tradicional', 
+      max: 7, 
+      range: '30 a 50 personas',
+      perks: '7 guisados calientes, botana tradicional de rancho, 1 vitrolero de agua fresca natural (20L) y tortillas calientes al momento.' 
+    },
+    '50-80': { 
+      name: 'Paquete Fiesta Mexicana', 
+      max: 7, 
+      range: '50 a 80 personas',
+      perks: '7 guisados calientes, botana tradicional con ensalada de cueritos, 2 vitroleros de agua fresca natural (40L) y tortillas a mano en comal vivo.' 
+    },
+    '80+': { 
+      name: 'Paquete Gran Banquete', 
+      max: 8, 
+      range: '80+ personas',
+      perks: '8 guisados calientes (¡1 cazuela más!), botana monumental completa, 2 vitroleros de agua natural (40L) y servicio continuo en comal.' 
+    }
   };
 
   let currentPkgKey = '50-80';
   let guestCount = 65;
   const selectedDishes = new Set();
   const selectedSpecialties = new Set();
-  let currentFilter = 'all';
 
   /* ==========================================================================
-     2. PIN-SCROLL CINEMATIC STAGE (PANTALLA FIJA CON RELEVO SCROLL-DRIVEN)
+     1. SCROLLYTELLING EN PANTALLA COMPLETA (#historia)
      ========================================================================== */
-  function initPinScroll() {
+  function initScrollytelling() {
     const container = document.getElementById('historia');
-    const stage = document.getElementById('pinStage');
-    const dots = document.querySelectorAll('.pin-dot-step');
-    const slides = [
-      document.getElementById('slide-0'),
-      document.getElementById('slide-1'),
-      document.getElementById('slide-2')
+    const stage = document.getElementById('scrollyStage');
+    const layers = [
+      document.getElementById('layer-0'),
+      document.getElementById('layer-1'),
+      document.getElementById('layer-2')
     ];
-    const narratives = [
-      document.getElementById('narrative-0'),
-      document.getElementById('narrative-1'),
-      document.getElementById('narrative-2')
+    const medias = [
+      document.getElementById('media-0'),
+      document.getElementById('media-1'),
+      document.getElementById('media-2')
+    ];
+    const dots = [
+      document.getElementById('dot-0'),
+      document.getElementById('dot-1'),
+      document.getElementById('dot-2')
     ];
 
     if (!container || !stage) return;
 
-    let currentStep = 0;
+    let currentStep = -1;
     let ticking = false;
 
-    function onScroll() {
+    function handleScroll() {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          updatePinState();
+          updateScrollyProgress();
           ticking = false;
         });
         ticking = true;
       }
     }
 
-    function updatePinState() {
+    function updateScrollyProgress() {
       const rect = container.getBoundingClientRect();
       const totalScrollable = container.offsetHeight - window.innerHeight;
-      
+
       if (totalScrollable <= 0) return;
 
-      // Progreso de 0.0 a 1.0 dentro de la sección fijada
+      // Progreso normalizado de 0 a 1
       const rawProgress = -rect.top / totalScrollable;
       const progress = Math.min(Math.max(rawProgress, 0), 1);
 
-      // Determinación de la etapa activa (0, 1 o 2)
+      // 0% - 33%: Capa 0 | 34% - 66%: Capa 1 | 67% - 100%: Capa 2
       let activeStep = 0;
-      if (progress >= 0.62) {
+      if (progress > 0.66) {
         activeStep = 2;
-      } else if (progress >= 0.31) {
+      } else if (progress > 0.33) {
         activeStep = 1;
       } else {
         activeStep = 0;
@@ -111,251 +92,263 @@
 
       if (activeStep !== currentStep) {
         currentStep = activeStep;
-        applyStepVisuals(activeStep);
+        applyStep(activeStep);
       }
     }
 
-    function applyStepVisuals(step) {
-      // Diapositivas
-      slides.forEach((s, idx) => {
-        if (!s) return;
-        if (idx === step) {
-          s.classList.add('active');
-        } else {
-          s.classList.remove('active');
-        }
+    function applyStep(step) {
+      // Alternar medios derechos
+      medias.forEach((m, idx) => {
+        if (!m) return;
+        if (idx === step) m.classList.add('active');
+        else m.classList.remove('active');
       });
 
-      // Textos Narrativos
-      narratives.forEach((n, idx) => {
-        if (!n) return;
-        if (idx === step) {
-          n.classList.add('active');
-        } else {
-          n.classList.remove('active');
-        }
+      // Alternar textos sincronizados izquierdos
+      layers.forEach((l, idx) => {
+        if (!l) return;
+        if (idx === step) l.classList.add('active');
+        else l.classList.remove('active');
       });
 
-      // Indicadores laterales de puntos
+      // Alternar puntos de progreso
       dots.forEach((d, idx) => {
-        if (idx === step) {
-          d.classList.add('active');
-        } else {
-          d.classList.remove('active');
-        }
+        if (!d) return;
+        if (idx === step) d.classList.add('active');
+        else d.classList.remove('active');
       });
     }
 
-    window.scrollToPinStep = function(targetStep) {
-      const containerTop = container.offsetTop;
-      const totalScrollable = container.offsetHeight - window.innerHeight;
-      const stepTarget = containerTop + (targetStep / 2) * totalScrollable;
-      window.scrollTo({ top: stepTarget + 10, behavior: 'smooth' });
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    updatePinState();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    updateScrollyProgress();
   }
 
   /* ==========================================================================
-     3. MENÚ DE DEGUSTACIÓN EDITORIAL (RENDERIZADO Y SELECCIÓN DE GUISADOS)
+     2. ESPECIALIDADES DE LA CASA (VISOR INTERACTIVO SHOWCASE TABS)
      ========================================================================== */
-  function renderTastingMenu(filter = 'all') {
-    currentFilter = filter;
-    const listWrap = document.getElementById('tastingMenuList');
-    if (!listWrap) return;
+  window.switchSpecialtyTab = function(key, btn) {
+    document.querySelectorAll('.spec-tab-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
 
-    listWrap.innerHTML = '';
-    const filtered = dishes.filter(d => filter === 'all' || d.cat === filter);
-
-    filtered.forEach(d => {
-      const isServed = selectedDishes.has(d.name);
-      const row = document.createElement('div');
-      row.className = 'tasting-dish-row' + (isServed ? ' is-served' : '');
-      row.setAttribute('data-name', d.name);
-      row.setAttribute('data-category', d.cat);
-
-      row.innerHTML = `
-        <div class="tasting-dish-left">
-          <span class="tasting-dish-num">${d.num}</span>
-          <span class="tasting-dish-title">${d.name}</span>
-          <span class="tasting-dish-tag-served">Servido en cazuela</span>
-        </div>
-        <div class="tasting-dish-action-sign">${isServed ? '✕' : '+'}</div>
-      `;
-
-      row.addEventListener('click', () => toggleTastingDish(d.name, row));
-      listWrap.appendChild(row);
+    const views = document.querySelectorAll('.specialty-panel-view');
+    views.forEach(v => {
+      v.classList.remove('active');
+      v.style.display = 'none';
     });
-  }
 
-  function toggleTastingDish(name, rowEl) {
+    const activeView = document.getElementById(`spec-view-${key}`);
+    if (activeView) {
+      activeView.style.display = 'grid';
+      void activeView.offsetWidth; // Forzar reflow para disparo suave de fade-in
+      activeView.classList.add('active');
+    }
+  };
+
+  window.addSpecialtyToOrder = function(name, btn) {
+    selectedSpecialties.add(name);
+
+    if (btn) {
+      const origText = btn.innerHTML;
+      btn.innerHTML = '✓ ¡Agregado a tu Cotización!';
+      btn.style.background = 'var(--pastel-menta-deep)';
+      btn.style.borderColor = 'var(--pastel-menta-deep)';
+      btn.style.color = '#FFFFFF';
+      setTimeout(() => {
+        btn.innerHTML = origText;
+        btn.style.background = '';
+        btn.style.borderColor = '';
+        btn.style.color = '';
+      }, 2200);
+    }
+
+    updateComandaUI();
+  };
+
+  /* ==========================================================================
+     3. FILTRADO Y SELECCIÓN DEL MENÚ DE DEGUSTACIÓN (#degustacion)
+     ========================================================================== */
+  window.applyDishCategoryFilter = function(cat, btn) {
+    document.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    const dishes = document.querySelectorAll('#tastingDishesContainer .dish-entry');
+    dishes.forEach(dish => {
+      const dishCat = dish.getAttribute('data-category');
+      if (cat === 'all' || dishCat === cat) {
+        dish.style.display = 'flex';
+      } else {
+        dish.style.display = 'none';
+      }
+    });
+  };
+
+  window.toggleDishSelection = function(name, rowEl) {
     const max = packages[currentPkgKey].max;
+    const warningEl = document.getElementById('limitNoticeMsg');
 
     if (selectedDishes.has(name)) {
       selectedDishes.delete(name);
       if (rowEl) {
-        rowEl.classList.remove('is-served');
-        const sign = rowEl.querySelector('.tasting-dish-action-sign');
+        rowEl.classList.remove('selected');
+        const sign = rowEl.querySelector('.dish-entry-sign');
         if (sign) sign.textContent = '+';
       }
+      if (warningEl) warningEl.style.display = 'none';
     } else {
       if (selectedDishes.size >= max) {
-        alert(`Tu paquete incluye hasta ${max} cazuelas. Retira alguna si deseas cambiarla.`);
+        if (warningEl) {
+          warningEl.style.display = 'block';
+          warningEl.textContent = `Has alcanzado el límite de ${max} cazuelas de tu paquete. Quita una para elegir otra.`;
+          setTimeout(() => {
+            if (warningEl) warningEl.style.display = 'none';
+          }, 3500);
+        }
         return;
       }
+
       selectedDishes.add(name);
       if (rowEl) {
-        rowEl.classList.add('is-served');
-        const sign = rowEl.querySelector('.tasting-dish-action-sign');
+        rowEl.classList.add('selected');
+        const sign = rowEl.querySelector('.dish-entry-sign');
         if (sign) sign.textContent = '✕';
       }
+      if (warningEl) warningEl.style.display = 'none';
     }
 
-    updateComandaState();
-  }
-
-  window.filterTastingMenu = function(cat, btn) {
-    document.querySelectorAll('.tasting-filter-btn').forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
-    renderTastingMenu(cat);
+    updateComandaUI();
   };
 
   /* ==========================================================================
-     4. ESPECIALIDADES DE FONDA
+     4. COMANDA LATERAL & LÓGICA DE PAQUETES
      ========================================================================== */
-  window.toggleSpecialtyItem = function(name, btn) {
-    if (selectedSpecialties.has(name)) {
-      selectedSpecialties.delete(name);
-      if (btn) {
-        btn.classList.remove('is-active');
-        btn.textContent = '+ Incluir en Comanda';
-      }
-    } else {
-      selectedSpecialties.add(name);
-      if (btn) {
-        btn.classList.add('is-active');
-        btn.textContent = '✓ Servido en Comanda';
-      }
-    }
-
-    updateComandaState();
-  };
-
-  /* ==========================================================================
-     5. COMANDA FLOTANTE DE RESERVA & LÓGICA DE PAQUETES
-     ========================================================================== */
-  window.selectComandaPackage = function(pkgKey) {
+  window.choosePackagePlan = function(pkgKey) {
     currentPkgKey = pkgKey;
-    document.querySelectorAll('.comanda-pkg-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.pkg-nav-btn').forEach(b => b.classList.remove('active'));
     
     const targetBtn = document.getElementById(`btn-pkg-${pkgKey}`);
     if (targetBtn) targetBtn.classList.add('active');
 
-    const max = packages[pkgKey].max;
-    const badge = document.getElementById('currentPkgLimitDisplay');
-    if (badge) badge.textContent = `${max} Cazuelas`;
+    const pkg = packages[pkgKey];
+    const max = pkg.max;
+    
+    const maxDisplay = document.getElementById('pkgLimitMaxDisplay');
+    if (maxDisplay) maxDisplay.textContent = `${max} Cazuelas`;
 
-    // Si se redujo el límite y hay más guisados de los permitidos
+    const perksBox = document.getElementById('comandaPerksBox');
+    if (perksBox) {
+      perksBox.innerHTML = `<strong>Incluye:</strong> ${pkg.perks}`;
+    }
+
+    // Si se redujo el límite y hay más guisados seleccionados
     if (selectedDishes.size > max) {
       const arr = Array.from(selectedDishes);
       while (selectedDishes.size > max) {
-        selectedDishes.delete(arr.pop());
+        const removed = arr.pop();
+        selectedDishes.delete(removed);
+        const row = document.querySelector(`.dish-entry[data-name="${removed}"]`);
+        if (row) {
+          row.classList.remove('selected');
+          const sign = row.querySelector('.dish-entry-sign');
+          if (sign) sign.textContent = '+';
+        }
       }
-      renderTastingMenu(currentFilter);
     }
 
-    updateComandaState();
+    updateComandaUI();
   };
 
-  window.onGuestDialChange = function(val) {
+  window.handleGuestSlider = function(val) {
     guestCount = parseInt(val, 10);
-    const display = document.getElementById('dialGuestCount');
-    if (display) display.textContent = `${val} Personas`;
+    const label = document.getElementById('guestCountLabel');
+    if (label) label.textContent = `${val} Personas`;
 
-    // Sincronizar paquete sugerido automáticamente
+    // Sincronización automática de paquete sugerido
     if (guestCount <= 50 && currentPkgKey !== '30-50') {
-      window.selectComandaPackage('30-50');
+      window.choosePackagePlan('30-50');
     } else if (guestCount > 50 && guestCount <= 80 && currentPkgKey !== '50-80') {
-      window.selectComandaPackage('50-80');
+      window.choosePackagePlan('50-80');
     } else if (guestCount > 80 && currentPkgKey !== '80+') {
-      window.selectComandaPackage('80+');
+      window.choosePackagePlan('80+');
     }
 
-    updateComandaState();
+    updateComandaUI();
   };
 
-  function updateComandaState() {
+  window.removeDishFromOrder = function(name) {
+    if (selectedDishes.has(name)) {
+      selectedDishes.delete(name);
+      const row = document.querySelector(`.dish-entry[data-name="${name}"]`);
+      if (row) {
+        row.classList.remove('selected');
+        const sign = row.querySelector('.dish-entry-sign');
+        if (sign) sign.textContent = '+';
+      }
+      updateComandaUI();
+    }
+  };
+
+  function updateComandaUI() {
     const pkg = packages[currentPkgKey];
-    const countDisplay = document.getElementById('comandaCountDisplay');
-    const fillBar = document.getElementById('comandaProgressFill');
-    const dishesList = document.getElementById('comandaDishesList');
-    const specSlot = document.getElementById('comandaSpecialtiesSlot');
-    const specList = document.getElementById('comandaSpecialtiesList');
+    const counter = document.getElementById('comandaDishesCounter');
+    const bar = document.getElementById('comandaProgressBar');
+    const listUl = document.getElementById('comandaSelectedUl');
 
     const count = selectedDishes.size;
     const max = pkg.max;
 
-    if (countDisplay) countDisplay.textContent = `${count} de ${max}`;
+    if (counter) counter.textContent = `${count} de ${max}`;
 
-    if (fillBar) {
-      const pct = Math.min(100, Math.round((count / max) * 100));
-      fillBar.style.width = `${pct}%`;
+    if (bar) {
+      const percent = Math.min(100, Math.round((count / max) * 100));
+      bar.style.width = `${percent}%`;
     }
 
-    // Lista ordenada de guisados en la comanda
-    if (dishesList) {
-      if (selectedDishes.size === 0) {
-        dishesList.innerHTML = `<li class="comanda-empty-cue">Selecciona tus platillos en el menú de degustación a la izquierda.</li>`;
+    if (listUl) {
+      if (selectedDishes.size === 0 && selectedSpecialties.size === 0) {
+        listUl.innerHTML = `<li class="comanda-empty-notice">Selecciona tus platillos en el menú de degustación a la izquierda.</li>`;
       } else {
-        dishesList.innerHTML = '';
+        listUl.innerHTML = '';
+
+        // Guisados en Cursiva Elegante
         let idx = 1;
         selectedDishes.forEach(name => {
           const li = document.createElement('li');
           li.innerHTML = `
-            <span><strong>${idx < 10 ? '0' + idx : idx}.</strong> ${name}</span>
-            <button type="button" class="comanda-dish-remove-btn" title="Quitar de comanda" onclick="removeDishFromComanda('${name}')">✕</button>
+            <span>${idx < 10 ? '0' + idx : idx}. <em>${name}</em></span>
+            <button type="button" class="comanda-remove-item-btn" title="Quitar cazuela" onclick="removeDishFromOrder('${name}')">✕</button>
           `;
-          dishesList.appendChild(li);
+          listUl.appendChild(li);
           idx++;
         });
-      }
-    }
 
-    // Especialidades en comanda
-    if (specSlot && specList) {
-      if (selectedSpecialties.size === 0) {
-        specSlot.style.display = 'none';
-        specList.innerHTML = '';
-      } else {
-        specSlot.style.display = 'block';
-        specList.innerHTML = '';
+        // Especialidades agregadas
         selectedSpecialties.forEach(sp => {
           const li = document.createElement('li');
-          li.innerHTML = `<span>✨ ${sp}</span>`;
-          specList.appendChild(li);
+          li.style.color = 'var(--pastel-menta-deep)';
+          li.innerHTML = `
+            <span>✨ <em>${sp}</em></span>
+            <button type="button" class="comanda-remove-item-btn" title="Quitar especialidad" onclick="removeSpecialtyFromOrder('${sp}')">✕</button>
+          `;
+          listUl.appendChild(li);
         });
       }
     }
   }
 
-  window.removeDishFromComanda = function(name) {
-    if (selectedDishes.has(name)) {
-      selectedDishes.delete(name);
-      renderTastingMenu(currentFilter);
-      updateComandaState();
-    }
+  window.removeSpecialtyFromOrder = function(sp) {
+    selectedSpecialties.delete(sp);
+    updateComandaUI();
   };
 
   /* ==========================================================================
-     6. COMPILACIÓN FORMAL DE WHATSAPP PARA CLAUDIA
+     5. COMPILACIÓN FORMAL DE WHATSAPP PARA CLAUDIA AL 477 802 0791
      ========================================================================== */
-  window.confirmOrderWhatsApp = function(e) {
+  window.submitComandaWhatsApp = function(e) {
     if (e && e.preventDefault) e.preventDefault();
 
-    const nameInput = document.getElementById('orderCustName');
-    const dateInput = document.getElementById('orderCustDate');
-    const cityInput = document.getElementById('orderCustCity');
+    const nameInput = document.getElementById('guestNameInput');
+    const dateInput = document.getElementById('eventDateInput');
+    const cityInput = document.getElementById('eventCityInput');
 
     const name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : 'Cliente interesado';
     const date = dateInput && dateInput.value ? dateInput.value : 'Por definir';
@@ -363,25 +356,25 @@
     const pkg = packages[currentPkgKey];
 
     let dishesText = selectedDishes.size > 0
-      ? '\n\n🍲 *Guisados Elegidos para Comanda (' + selectedDishes.size + ' de ' + pkg.max + '):*\n' + 
+      ? '\n\n🍲 *Cazuelas Elegidas (' + selectedDishes.size + ' de ' + pkg.max + '):*\n' + 
         Array.from(selectedDishes).map((d, i) => `  ${i + 1 < 10 ? '0' + (i + 1) : i + 1}. ${d}`).join('\n')
-      : '\n\n🍲 *Guisados:* ' + pkg.max + ' cazuelas tradicionales a convenir';
+      : '\n\n🍲 *Cazuelas:* ' + pkg.max + ' cazuelas tradicionales a convenir';
 
     let specialtiesText = selectedSpecialties.size > 0
-      ? '\n\n✨ *Especialidades Adicionales:*\n' + 
+      ? '\n\n✨ *Especialidades Agregadas:*\n' + 
         Array.from(selectedSpecialties).map(s => `  • ${s}`).join('\n')
       : '';
 
-    const message = `¡Hola Claudia! Me gustaría solicitar cotización formal para un banquete con *La Lola* 🌮🎉\n\n` +
+    const text = `¡Hola Claudia! Me gustaría cotizar un banquete tradicional con *La Lola* 🌮🎉\n\n` +
       `👤 *Nombre:* ${name}\n` +
       `👥 *Invitados:* ${guestCount} personas\n` +
-      `📦 *Paquete Seleccionado:* ${pkg.name} (${pkg.desc})\n` +
-      `📅 *Fecha Estimada:* ${date}\n` +
+      `📦 *Paquete:* ${pkg.name} (${pkg.range})\n` +
+      `📅 *Fecha:* ${date}\n` +
       `📍 *Ciudad / Lugar:* ${city}` +
       dishesText + specialtiesText +
-      `\n\n¿Podrías confirmarme disponibilidad de fecha y el presupuesto final? ¡Muchas gracias!`;
+      `\n\n¿Podrías confirmarme disponibilidad de fecha y el presupuesto formal? ¡Muchas gracias!`;
 
-    const waUrl = 'https://wa.me/524778020791?text=' + encodeURIComponent(message);
+    const waUrl = 'https://wa.me/524778020791?text=' + encodeURIComponent(text);
     window.open(waUrl, '_blank');
   };
 
@@ -395,17 +388,21 @@
   }, { passive: true });
 
   /* ==========================================================================
-     7. INICIALIZACIÓN ROBUSTA EN DOMContentLoaded
+     6. INICIALIZACIÓN ROBUSTA DENTRO DE DOMContentLoaded
      ========================================================================== */
-  function init() {
-    initPinScroll();
-    renderTastingMenu('all');
-    updateComandaState();
+  let isReady = false;
+
+  function initApp() {
+    if (isReady) return;
+    isReady = true;
+
+    initScrollytelling();
+    updateComandaUI();
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', initApp);
   } else {
-    init();
+    initApp();
   }
 })();

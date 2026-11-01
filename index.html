@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La Lola • Banquetes & Catering Tradicional de Autor</title>
+  <title>La Lola • Banquetes & Catering Tradicional Mexicano</title>
 
   <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +32,7 @@
           La Lola<span class="brand-logo-dot">.</span>
         </a>
 
-        <!-- Navegación sutil -->
+        <!-- Enlaces principales -->
         <nav aria-label="Navegación principal">
           <ul class="nav-menu">
             <li><a href="#historia" class="nav-link">Historia & Fuego</a></li>
@@ -53,171 +53,185 @@
 
   <main>
     <!-- ==========================================================================
-         2. CINEMATIC PIN-SCROLL STAGE (SCROLL-DRIVEN VIEWPORT)
+         2. SCROLLYTELLING EN PANTALLA COMPLETA (#historia)
          ========================================================================== -->
-    <section class="pin-scroll-container" id="historia" aria-label="Experiencia Inmersiva La Lola">
-      <div class="pin-scroll-stage" id="pinStage">
+    <section class="scrolly-container" id="historia" aria-label="Historia y Sazón La Lola">
+      <div class="scrolly-stage" id="scrollyStage">
 
-        <!-- Capa de Diapositivas con Fade & Scale -->
-        <div class="pin-slides-layer">
-          <div class="pin-slide active" id="slide-0">
-            <img src="img/mexican_folk_hero_banner.jpg" alt="Banquete de cazuelas mexicanas de autor" class="pin-slide-media">
-          </div>
-          <div class="pin-slide" id="slide-1">
-            <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.09.jpeg" alt="Comaleras echando tortillas a mano en vivo" class="pin-slide-media">
-          </div>
-          <div class="pin-slide" id="slide-2">
-            <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (4).jpeg" alt="Cazuelas de barro curadas al fuego vivo" class="pin-slide-media">
-          </div>
-        </div>
-
-        <!-- Máscara Radial Cálida -->
-        <div class="pin-slide-overlay" aria-hidden="true"></div>
-
-        <!-- Escenario de Relevo Tipográfico en el Centro -->
-        <div class="pin-narrative-stage">
+        <!-- LADO IZQUIERDO: TEXTOS SINCRONIZADOS -->
+        <div class="scrolly-left">
           
-          <!-- Narrativa 01: Origen & Tradición -->
-          <div class="pin-narrative-item active" id="narrative-0">
-            <span class="pin-pill-tag">🏺 Origen & Tradición • León, Gto.</span>
-            <h1 class="pin-title">
-              Sabores de México
-              <span class="pin-title-serif-italic">Sazón de hogar y fuego vivo en cazuela</span>
-            </h1>
-            <p class="pin-desc">
-              Catering tradicional al calor de cazuelas de barro curadas y recetas con memoria familiar, preparadas para compartir tus momentos más memorables.
-            </p>
-            <div class="pin-cta-row">
-              <a href="#degustacion" class="btn btn-primary btn-glow">Ver Menú de Degustación</a>
+          <!-- Riel de progreso visual -->
+          <div class="scrolly-progress-rail" aria-hidden="true">
+            <span class="scrolly-step-dot active" id="dot-0"></span>
+            <span class="scrolly-step-dot" id="dot-1"></span>
+            <span class="scrolly-step-dot" id="dot-2"></span>
+          </div>
+
+          <div class="scrolly-layers-wrapper">
+            
+            <!-- Capa 1: 0% - 33% -->
+            <div class="scrolly-layer active" id="layer-0">
+              <span class="scrolly-badge">🏺 Origen & Tradición • León, Gto.</span>
+              <h1 class="scrolly-title">
+                Sabores de México
+                <span class="scrolly-title-italic">Sazón de hogar y fuego vivo en cazuela</span>
+              </h1>
+              <p class="scrolly-desc">
+                Catering tradicional al calor de cazuelas de barro curadas y recetas con memoria familiar, preparadas para consentir a tus invitados en sus momentos más memorables.
+              </p>
+              <div>
+                <a href="#degustacion" class="btn btn-primary btn-glow">Ver Menú de Degustación</a>
+              </div>
             </div>
-          </div>
 
-          <!-- Narrativa 02: Tortillas al Comal -->
-          <div class="pin-narrative-item" id="narrative-1">
-            <span class="pin-pill-tag">🫓 Al Comal Vivo</span>
-            <h2 class="pin-title">
-              Tortillas Hechas a Mano
-              <span class="pin-title-serif-italic">Masa de maíz fresco inflada al instante</span>
-            </h2>
-            <p class="pin-desc">
-              Nuestras maestras comaleras inflan cada tortilla al momento frente a tus invitados, llenando la celebración del inconfundible aroma del maíz nixtamalizado.
-            </p>
-          </div>
-
-          <!-- Narrativa 03: Banquete Compartido -->
-          <div class="pin-narrative-item" id="narrative-2">
-            <span class="pin-pill-tag">🥘 El Festín Servido</span>
-            <h2 class="pin-title">
-              32 Guisados al Fuego
-              <span class="pin-title-serif-italic">Montaje continuo, servicio cálido y generoso</span>
-            </h2>
-            <p class="pin-desc">
-              Barro curado y fuego lento para que nadie coma frío. Atención personalizada para bodas, bautizos, aniversarios y encuentros corporativos de autor.
-            </p>
-            <div class="pin-cta-row">
-              <a href="#degustacion" class="btn btn-primary btn-glow">Diseñar mi Banquete</a>
+            <!-- Capa 2: 34% - 66% -->
+            <div class="scrolly-layer" id="layer-1">
+              <span class="scrolly-badge">🫓 Al Comal Vivo</span>
+              <h2 class="scrolly-title">
+                Tortillas Hechas a Mano
+                <span class="scrolly-title-italic">Masa fresca inflada al comal al momento</span>
+              </h2>
+              <p class="scrolly-desc">
+                Nuestras maestras comaleras inflan cada tortilla al instante frente a tus invitados, llenando la celebración del aroma inconfundible del maíz nixtamalizado y el fuego vivo.
+              </p>
             </div>
-          </div>
 
+            <!-- Capa 3: 67% - 100% -->
+            <div class="scrolly-layer" id="layer-2">
+              <span class="scrolly-badge">🥘 Banquete Continuo</span>
+              <h2 class="scrolly-title">
+                32 Guisados al Fuego
+                <span class="scrolly-title-italic">Montaje continuo y atención familiar para tu evento</span>
+              </h2>
+              <p class="scrolly-desc">
+                Barro curado y calor continuo para que nadie coma frío en jardines, haciendas, salones o reuniones privadas en León y todo el Bajío.
+              </p>
+              <div>
+                <a href="#degustacion" class="btn btn-primary btn-glow">Diseñar mi Banquete</a>
+              </div>
+            </div>
+
+          </div>
         </div>
 
-        <!-- Indicador Lateral Vertical de Etapas (01, 02, 03) -->
-        <nav class="pin-indicators-rail" id="pinIndicators" aria-label="Etapas de la historia">
-          <button type="button" class="pin-dot-step active" data-step="0" onclick="scrollToPinStep(0)">
-            <span class="pin-dot-bullet"></span>
-            <span>01 • Origen</span>
-          </button>
-          <button type="button" class="pin-dot-step" data-step="1" onclick="scrollToPinStep(1)">
-            <span class="pin-dot-bullet"></span>
-            <span>02 • Al Comal</span>
-          </button>
-          <button type="button" class="pin-dot-step" data-step="2" onclick="scrollToPinStep(2)">
-            <span class="pin-dot-bullet"></span>
-            <span>03 • El Festín</span>
-          </button>
-        </nav>
-
-        <!-- Micro-indicador de Scroll Inferior -->
-        <a href="#especialidades" class="pin-scroll-cue" aria-label="Deslizarse hacia abajo">
-          <span class="pin-scroll-mouse"><span class="pin-scroll-wheel"></span></span>
-          <span>Desliza para explorar</span>
-        </a>
+        <!-- LADO DERECHO: MEDIA DINÁMICA -->
+        <div class="scrolly-right">
+          <!-- Imagen 1: Montaje y cazuelas curadas (0% - 33%) -->
+          <img 
+            src="img/mexican_folk_hero_banner.jpg" 
+            alt="Montaje de cazuelas curadas al fuego vivo La Lola" 
+            class="scrolly-media active" 
+            id="media-0"
+          >
+          <!-- Imagen 2: Comaleras y tortillas hechas a mano en vivo (34% - 66%) -->
+          <img 
+            src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.09.jpeg" 
+            alt="Comaleras echando tortillas a mano en comal vivo" 
+            class="scrolly-media" 
+            id="media-1"
+          >
+          <!-- Imagen 3: Buffet caliente y servicio continuo (67% - 100%) -->
+          <img 
+            src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (4).jpeg" 
+            alt="Buffet tradicional de cazuelas humeantes para eventos" 
+            class="scrolly-media" 
+            id="media-2"
+          >
+        </div>
 
       </div>
     </section>
 
     <!-- ==========================================================================
-         3. ESPECIALIDADES DE FONDA (DEGUSTACIÓN DE AUTOR)
+         3. ESPECIALIDADES DE LA CASA (VISOR INTERACTIVO SHOWCASE TABS)
          ========================================================================== -->
-    <section class="editorial-section" id="especialidades">
+    <section class="specialties-section" id="especialidades">
       <div class="container">
         
-        <div class="editorial-header">
-          <span class="editorial-tag">Especialidades de la Casa</span>
-          <h2 class="editorial-title">El Toque Especial para Desayunos y <span>Tornafiestas</span></h2>
-          <p class="editorial-desc">
-            Platillos icónicos con queso fresco de rancho y bolillo recién horneado, preparados para consentir a tus invitados desde la primera hora o al calor del desvelo.
+        <div class="section-head-center">
+          <span class="pill-section-tag">Especialidades de la Casa</span>
+          <h2 class="section-title-editorial">Para Iniciar el Día o la <span>Tornafiesta</span></h2>
+          <p class="section-desc-editorial">
+            Recetas preparadas con auténtico queso fresco de rancho, salsas tatemadas y sazón leonés hechas con el corazón.
           </p>
         </div>
 
-        <div class="specialties-triptych">
+        <!-- 3 Botones Tipo Pastilla -->
+        <div class="specialty-tabs-bar" role="tablist" aria-label="Especialidades de la Casa">
+          <button type="button" class="spec-tab-btn active" data-target="chilaquiles" onclick="switchSpecialtyTab('chilaquiles', this)">
+            🍳 Chilaquiles Tradicionales
+          </button>
+          <button type="button" class="spec-tab-btn" data-target="tortas" onclick="switchSpecialtyTab('tortas', this)">
+            🥖 Las Famosas Tortas
+          </button>
+          <button type="button" class="spec-tab-btn" data-target="menudo" onclick="switchSpecialtyTab('menudo', this)">
+            🍲 Menudo Tradicional
+          </button>
+        </div>
+
+        <!-- Contenedor de Visor Interactivo (2 Columnas con Fade-In) -->
+        <div class="specialty-stage-container">
           
-          <!-- Especialidad 1: Chilaquiles Tradicionales -->
-          <article class="specialty-card-author">
-            <div class="specialty-card-img-wrap">
-              <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg" alt="Chilaquiles tradicionales La Lola" loading="lazy">
-              <span class="specialty-badge-floating">🍳 Salsa Verde o Roja</span>
+          <!-- Panel 1: Chilaquiles Tradicionales -->
+          <article class="specialty-panel-view active" id="spec-view-chilaquiles">
+            <div class="specialty-visual-col">
+              <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg" alt="Chilaquiles tradicionales con aguacate La Lola" loading="lazy">
             </div>
-            <div class="specialty-card-body">
-              <h3 class="specialty-card-title">Chilaquiles Tradicionales</h3>
-              <p class="specialty-card-desc">
-                Totopos crujientes de maíz bañados en salsa tatemada al gusto, acompañados de frijolitos bayos de la olla, crema espesa de rancho, queso fresco y aguacate.
+            <div class="specialty-info-col">
+              <span class="pill-section-tag">🍳 Salsa Verde o Roja</span>
+              <h3 class="specialty-info-title">Chilaquiles Tradicionales</h3>
+              <p class="specialty-info-desc">
+                Totopos crujientes de maíz bañados en salsa verde o roja tatemada especial. Servidos con frijolitos refritos de la casa, crema espesa de rancho, queso fresco y rebanadas de aguacate.
               </p>
-              <div class="specialty-card-perks">
-                <strong>Proteínas Incluidas:</strong> Pollo deshebrado, huevo al gusto, milanesa o carne asada + bolillo crujiente caliente.
+              <div class="specialty-ingredients-card">
+                <strong>🍗 2 Proteínas Incluidas a Elegir:</strong>
+                Pollo deshebrado, huevo al gusto, milanesa dorada o carne asada + bolillo caliente recién horneado.
               </div>
-              <button type="button" class="btn-add-specialty" onclick="toggleSpecialtyItem('Chilaquiles Tradicionales', this)">
-                + Incluir en Comanda
+              <button type="button" class="btn btn-primary btn-glow" onclick="addSpecialtyToOrder('Chilaquiles Tradicionales', this)">
+                + Agregar a mi Cotización
               </button>
             </div>
           </article>
 
-          <!-- Especialidad 2: Las Famosas Tortas -->
-          <article class="specialty-card-author">
-            <div class="specialty-card-img-wrap">
-              <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg" alt="Famosas Tortas de Chilaquiles La Lola" loading="lazy">
-              <span class="specialty-badge-floating">🥖 La Favorita del Bajío</span>
+          <!-- Panel 2: Las Famosas Tortas -->
+          <article class="specialty-panel-view" id="spec-view-tortas">
+            <div class="specialty-visual-col">
+              <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg" alt="Las Famosas Tortas de Chilaquiles La Lola" loading="lazy">
             </div>
-            <div class="specialty-card-body">
-              <h3 class="specialty-card-title">Las Famosas Tortas</h3>
-              <p class="specialty-card-desc">
-                Bolillo crujiente untado con frijoles refritos de la casa, colmado de chilaquiles calientes, crema de rancho, queso espolvoreado y tu proteína elegida.
+            <div class="specialty-info-col">
+              <span class="pill-section-tag">🥖 La Consentida de la Fiesta</span>
+              <h3 class="specialty-info-title">Las Famosas Tortas</h3>
+              <p class="specialty-info-desc">
+                Bolillo crujiente recién horneado untado con frijoles refritos de la olla, colmado de chilaquiles calientes, crema de rancho, queso fresco espolvoreado y tu proteína preferida.
               </p>
-              <div class="specialty-card-perks">
-                <strong>Sabor de Rancho:</strong> Bolillo artesanal crujiente, crema ácida de rancho y queso fresco rallado al comal.
+              <div class="specialty-ingredients-card">
+                <strong>🧀 Ingredientes de Rancho:</strong>
+                Bolillo crujiente artesanal, frijolitos bayos, crema ácida espesa, queso fresco rallado y proteína dorada al gusto.
               </div>
-              <button type="button" class="btn-add-specialty" onclick="toggleSpecialtyItem('Tortas de Chilaquiles', this)">
-                + Incluir en Comanda
+              <button type="button" class="btn btn-primary btn-glow" onclick="addSpecialtyToOrder('Tortas de Chilaquiles', this)">
+                + Agregar a mi Cotización
               </button>
             </div>
           </article>
 
-          <!-- Especialidad 3: Menudo Tradicional -->
-          <article class="specialty-card-author">
-            <div class="specialty-card-img-wrap">
-              <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg" alt="Menudo tradicional caliente en cazuela" loading="lazy">
-              <span class="specialty-badge-floating">🍲 Rey de la Tornafiesta</span>
+          <!-- Panel 3: Menudo Tradicional -->
+          <article class="specialty-panel-view" id="spec-view-menudo">
+            <div class="specialty-visual-col">
+              <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg" alt="Menudo tradicional caliente en cazuela de barro" loading="lazy">
             </div>
-            <div class="specialty-card-body">
-              <h3 class="specialty-card-title">Menudo Tradicional</h3>
-              <p class="specialty-card-desc">
-                La receta leonesa curada a fuego lento para desvelados y tornabodas (a partir de 30 personas): caldo rojo limpio, aromático y servido humeante.
+            <div class="specialty-info-col">
+              <span class="pill-section-tag">🍲 Rey de la Tornafiesta</span>
+              <h3 class="specialty-info-title">Menudo Tradicional</h3>
+              <p class="specialty-info-desc">
+                La receta leonesa curada a fuego lento para eventos y desvelados (a partir de 30 personas): caldo rojo limpio, aromático y reconfortante servido humeante en cazuelas de barro.
               </p>
-              <div class="specialty-card-perks">
-                <strong>Guarnición Completa:</strong> Panza suave, pata, libro y manzana leonesa con orégano, cebolla picada y tortillas calientes.
+              <div class="specialty-ingredients-card">
+                <strong>🥩 Selección Completa de Carnes y Guarnición:</strong>
+                Panza suave, pata, callo, libro, panal, bofe y manzana leonesa con orégano silvestre, cebolla fresca picada, limones y tortillas calientes.
               </div>
-              <button type="button" class="btn-add-specialty" onclick="toggleSpecialtyItem('Menudo Tradicional', this)">
-                + Incluir en Comanda
+              <button type="button" class="btn btn-primary btn-glow" onclick="addSpecialtyToOrder('Menudo Tradicional', this)">
+                + Agregar a mi Cotización
               </button>
             </div>
           </article>
@@ -228,123 +242,392 @@
     </section>
 
     <!-- ==========================================================================
-         4. MENÚ DE DEGUSTACIÓN EDITORIAL (32 GUISADOS) & COMANDA FLOTANTE
+         4. MENÚ DE DEGUSTACIÓN EDITORIAL (32 GUISADOS) & COMANDA LATERAL (#degustacion)
          ========================================================================== -->
     <section class="degustacion-section" id="degustacion">
       <div class="container">
 
-        <div class="degustacion-grid">
+        <div class="degustacion-layout">
           
           <!-- COLUMNA IZQUIERDA: MENÚ TIPOGRÁFICO DE DEGUSTACIÓN -->
-          <div class="degustacion-left">
+          <div class="tasting-board">
             
-            <div class="tasting-head-row">
+            <div class="tasting-board-head">
               <div>
-                <span class="editorial-tag">Catálogo de Cazuelas</span>
-                <h2 class="tasting-main-title">Menú de Degustación</h2>
+                <span class="pill-section-tag">Catálogo de Cazuelas</span>
+                <h2 class="tasting-board-title">Menú de Degustación</h2>
               </div>
-              <div class="tasting-serving-limit" id="servingLimitBadge">
-                Límite de paquete: <span id="currentPkgLimitDisplay">7 Cazuelas</span>
+              <div class="tasting-package-limit" id="pkgLimitLabel">
+                Límite de paquete: <span id="pkgLimitMaxDisplay">7 Cazuelas</span>
               </div>
             </div>
 
-            <!-- Filtros Editoriales (Sin aspecto de formulario) -->
-            <div class="tasting-filters-bar" role="tablist" aria-label="Filtro de Guisados">
-              <button type="button" class="tasting-filter-btn active" onclick="filterTastingMenu('all', this)">Todos (32)</button>
-              <button type="button" class="tasting-filter-btn" onclick="filterTastingMenu('carnes', this)">Carnes (12)</button>
-              <button type="button" class="tasting-filter-btn" onclick="filterTastingMenu('antojitos', this)">Antojitos (9)</button>
-              <button type="button" class="tasting-filter-btn" onclick="filterTastingMenu('verduras', this)">Verduras (7)</button>
-              <button type="button" class="tasting-filter-btn" onclick="filterTastingMenu('bases', this)">Bases (4)</button>
+            <!-- Filtros por Categoría: Todos (32), Carnes (12), Antojitos (9), Verduras (7), Bases (5) -->
+            <div class="tasting-categories-bar" role="tablist" aria-label="Filtro de Guisados">
+              <button type="button" class="cat-filter-btn active" onclick="applyDishCategoryFilter('all', this)">Todos (32)</button>
+              <button type="button" class="cat-filter-btn" onclick="applyDishCategoryFilter('carnes', this)">Carnes (12)</button>
+              <button type="button" class="cat-filter-btn" onclick="applyDishCategoryFilter('antojitos', this)">Antojitos (9)</button>
+              <button type="button" class="cat-filter-btn" onclick="applyDishCategoryFilter('verduras', this)">Verduras (7)</button>
+              <button type="button" class="cat-filter-btn" onclick="applyDishCategoryFilter('bases', this)">Bases (5)</button>
             </div>
 
-            <!-- Lista Tipográfica a 2 Columnas -->
-            <div class="tasting-menu-list" id="tastingMenuList">
-              <!-- Renderizado dinámico de los 32 guisados en js/main.js -->
+            <!-- Lista Tipográfica a 2 Columnas de Filas Interactivas (.dish-entry) -->
+            <div class="tasting-dishes-grid" id="tastingDishesContainer">
+              <!-- CARNES (12) -->
+              <div class="dish-entry" data-category="carnes" data-name="Puerco en chile morita" onclick="toggleDishSelection('Puerco en chile morita', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">01</span>
+                  <span class="dish-entry-title">Puerco en chile morita</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="carnes" data-name="Puerco salsa 3 chiles" onclick="toggleDishSelection('Puerco salsa 3 chiles', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">02</span>
+                  <span class="dish-entry-title">Puerco salsa 3 chiles</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="carnes" data-name="Mole rojo con pollo" onclick="toggleDishSelection('Mole rojo con pollo', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">03</span>
+                  <span class="dish-entry-title">Mole rojo con pollo</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="carnes" data-name="Mole verde con pollo" onclick="toggleDishSelection('Mole verde con pollo', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">04</span>
+                  <span class="dish-entry-title">Mole verde con pollo</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="carnes" data-name="Bistec con nopales" onclick="toggleDishSelection('Bistec con nopales', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">05</span>
+                  <span class="dish-entry-title">Bistec con nopales</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="carnes" data-name="Bistec en pasilla" onclick="toggleDishSelection('Bistec en pasilla', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">06</span>
+                  <span class="dish-entry-title">Bistec en pasilla</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="carnes" data-name="Bistec a la mexicana" onclick="toggleDishSelection('Bistec a la mexicana', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">07</span>
+                  <span class="dish-entry-title">Bistec a la mexicana</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="carnes" data-name="Pollo a la mexicana" onclick="toggleDishSelection('Pollo a la mexicana', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">08</span>
+                  <span class="dish-entry-title">Pollo a la mexicana</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="carnes" data-name="Pollo crema poblano" onclick="toggleDishSelection('Pollo crema poblano', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">09</span>
+                  <span class="dish-entry-title">Pollo crema poblano</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="carnes" data-name="Pollo crema chile güero" onclick="toggleDishSelection('Pollo crema chile güero', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">10</span>
+                  <span class="dish-entry-title">Pollo crema chile güero</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="carnes" data-name="Carne deshebrada" onclick="toggleDishSelection('Carne deshebrada', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">11</span>
+                  <span class="dish-entry-title">Carne deshebrada</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="carnes" data-name="Picadillo casero" onclick="toggleDishSelection('Picadillo casero', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">12</span>
+                  <span class="dish-entry-title">Picadillo casero</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <!-- ANTOJITOS (9) -->
+              <div class="dish-entry" data-category="antojitos" data-name="Rajas con crema" onclick="toggleDishSelection('Rajas con crema', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">13</span>
+                  <span class="dish-entry-title">Rajas con crema</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="antojitos" data-name="Chorizo con papas" onclick="toggleDishSelection('Chorizo con papas', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">14</span>
+                  <span class="dish-entry-title">Chorizo con papas</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="antojitos" data-name="Chorizo a la mexicana" onclick="toggleDishSelection('Chorizo a la mexicana', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">15</span>
+                  <span class="dish-entry-title">Chorizo a la mexicana</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="antojitos" data-name="Chicharrón prensado" onclick="toggleDishSelection('Chicharrón prensado', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">16</span>
+                  <span class="dish-entry-title">Chicharrón prensado</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="antojitos" data-name="Chicharrón en salsa" onclick="toggleDishSelection('Chicharrón en salsa', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">17</span>
+                  <span class="dish-entry-title">Chicharrón en salsa</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="antojitos" data-name="Rellena tradicional" onclick="toggleDishSelection('Rellena tradicional', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">18</span>
+                  <span class="dish-entry-title">Rellena tradicional</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="antojitos" data-name="Salchichas guisadas" onclick="toggleDishSelection('Salchichas guisadas', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">19</span>
+                  <span class="dish-entry-title">Salchichas guisadas</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="antojitos" data-name="Huevo con chile molcajete" onclick="toggleDishSelection('Huevo con chile molcajete', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">20</span>
+                  <span class="dish-entry-title">Huevo con chile molcajete</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="antojitos" data-name="Huevo con salchicha" onclick="toggleDishSelection('Huevo con salchicha', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">21</span>
+                  <span class="dish-entry-title">Huevo con salchicha</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <!-- VERDURAS (7) -->
+              <div class="dish-entry" data-category="verduras" data-name="Champiñones crema" onclick="toggleDishSelection('Champiñones crema', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">22</span>
+                  <span class="dish-entry-title">Champiñones crema</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="verduras" data-name="Champiñones ajillo" onclick="toggleDishSelection('Champiñones ajillo', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">23</span>
+                  <span class="dish-entry-title">Champiñones ajillo</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="verduras" data-name="Nopales guisados" onclick="toggleDishSelection('Nopales guisados', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">24</span>
+                  <span class="dish-entry-title">Nopales guisados</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="verduras" data-name="Nopales ensalada" onclick="toggleDishSelection('Nopales ensalada', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">25</span>
+                  <span class="dish-entry-title">Nopales ensalada</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="verduras" data-name="Papas guisadas" onclick="toggleDishSelection('Papas guisadas', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">26</span>
+                  <span class="dish-entry-title">Papas guisadas</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="verduras" data-name="Papas con nopales" onclick="toggleDishSelection('Papas con nopales', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">27</span>
+                  <span class="dish-entry-title">Papas con nopales</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="verduras" data-name="Garbanzos guisados" onclick="toggleDishSelection('Garbanzos guisados', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">28</span>
+                  <span class="dish-entry-title">Garbanzos guisados</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <!-- BASES (5) -->
+              <div class="dish-entry" data-category="bases" data-name="Arroz blanco" onclick="toggleDishSelection('Arroz blanco', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">29</span>
+                  <span class="dish-entry-title">Arroz blanco</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="bases" data-name="Arroz rojo" onclick="toggleDishSelection('Arroz rojo', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">30</span>
+                  <span class="dish-entry-title">Arroz rojo</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="bases" data-name="Frijoles refritos" onclick="toggleDishSelection('Frijoles refritos', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">31</span>
+                  <span class="dish-entry-title">Frijoles refritos</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="bases" data-name="Frijoles enchilados" onclick="toggleDishSelection('Frijoles enchilados', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">32</span>
+                  <span class="dish-entry-title">Frijoles enchilados</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
+              <div class="dish-entry" data-category="bases" data-name="Frijoles de la olla" onclick="toggleDishSelection('Frijoles de la olla', this)">
+                <div class="dish-entry-content">
+                  <span class="dish-entry-num">33</span>
+                  <span class="dish-entry-title">Frijoles de la olla</span>
+                </div>
+                <span class="dish-entry-sign">+</span>
+              </div>
+
             </div>
 
           </div>
 
-          <!-- COLUMNA DERECHA: COMANDA FLOTANTE DE RESERVA -->
-          <div class="comanda-sticky-wrap">
-            <aside class="comanda-card-author" id="comandaCard">
+          <!-- COLUMNA DERECHA: COMANDA LATERAL EN VIEWPORT STICKY -->
+          <div class="comanda-aside-wrap">
+            <aside class="comanda-box" id="comandaBox">
               
-              <div class="comanda-editorial-head">
-                <span class="comanda-super-title">Comanda de Banquete</span>
-                <h3 class="comanda-title-serif">Reserva de Evento</h3>
+              <div class="comanda-head-row">
+                <span class="comanda-pill-badge">Comanda de Banquete</span>
+                <h3 class="comanda-box-title">Reserva de Evento</h3>
               </div>
 
               <!-- Selector de Paquetes -->
-              <div class="comanda-pkg-switch">
-                <button type="button" class="comanda-pkg-btn" id="btn-pkg-30-50" onclick="selectComandaPackage('30-50')">
+              <div class="comanda-packages-nav">
+                <button type="button" class="pkg-nav-btn" id="btn-pkg-30-50" onclick="choosePackagePlan('30-50')">
                   Tradicional (7)
                 </button>
-                <button type="button" class="comanda-pkg-btn active" id="btn-pkg-50-80" onclick="selectComandaPackage('50-80')">
+                <button type="button" class="pkg-nav-btn active" id="btn-pkg-50-80" onclick="choosePackagePlan('50-80')">
                   Fiesta (7)
                 </button>
-                <button type="button" class="comanda-pkg-btn" id="btn-pkg-80" onclick="selectComandaPackage('80+')">
+                <button type="button" class="pkg-nav-btn" id="btn-pkg-80" onclick="choosePackagePlan('80+')">
                   Gran Banquete (8)
                 </button>
               </div>
 
-              <!-- Dial Tipográfico de Personas -->
-              <div class="comanda-dial-row">
-                <div class="comanda-dial-label">
+              <!-- Slider de Invitados (30 a 350+ personas) -->
+              <div class="comanda-slider-section">
+                <div class="comanda-slider-meta">
                   <span>Invitados Estimados:</span>
-                  <span class="comanda-dial-value" id="dialGuestCount">65 Personas</span>
+                  <span class="comanda-guest-number" id="guestCountLabel">65 Personas</span>
                 </div>
                 <input 
                   type="range" 
                   min="30" 
-                  max="400" 
+                  max="350" 
                   step="5" 
                   value="65" 
-                  id="guestRangeDial" 
-                  class="comanda-range-input" 
-                  oninput="onGuestDialChange(this.value)"
+                  id="guestCountSlider" 
+                  class="comanda-slider-range" 
+                  oninput="handleGuestSlider(this.value)"
                   aria-label="Seleccionar número de personas para el banquete"
                 >
               </div>
 
-              <!-- Lista Numerada de Cazuelas Elegidas -->
-              <div class="comanda-list-section">
-                <div class="comanda-list-header">
+              <!-- Desglose Dinámico de Cazuelas -->
+              <div class="comanda-dishes-section">
+                <div class="comanda-dishes-meta">
                   <span>Cazuelas Seleccionadas:</span>
-                  <span id="comandaCountDisplay">0 de 7</span>
+                  <span id="comandaDishesCounter">0 de 7</span>
                 </div>
 
-                <div class="comanda-progress-bar-wrap">
-                  <div class="comanda-progress-fill" id="comandaProgressFill"></div>
+                <div class="comanda-dishes-bar-wrap">
+                  <div class="comanda-dishes-bar-fill" id="comandaProgressBar"></div>
                 </div>
 
-                <ul class="comanda-ordered-dishes" id="comandaDishesList">
-                  <li class="comanda-empty-cue">
+                <ul class="comanda-dishes-ul" id="comandaSelectedUl">
+                  <li class="comanda-empty-notice">
                     Selecciona tus platillos en el menú de degustación a la izquierda.
                   </li>
                 </ul>
+
+                <!-- Aviso sutil cuando se alcanza el límite -->
+                <div class="comanda-limit-warning" id="limitNoticeMsg">
+                  ¡Límite del paquete alcanzado! Quita una cazuela si deseas cambiarla.
+                </div>
               </div>
 
-              <!-- Especialidades Agregadas a la Comanda -->
-              <div id="comandaSpecialtiesSlot" style="margin-bottom: 1rem; display: none;">
-                <div class="comanda-list-header">
-                  <span>Especialidades Incluidas:</span>
-                </div>
-                <ul class="comanda-ordered-dishes" id="comandaSpecialtiesList"></ul>
+              <!-- Beneficios del Paquete -->
+              <div class="comanda-perks-box" id="comandaPerksBox">
+                <strong>Incluye:</strong> 7 guisados calientes, botana tradicional con ensalada de cueritos, 2 vitroleros de agua fresca natural (40L) y tortillas a mano en comal vivo.
               </div>
 
-              <!-- Datos de Contacto Directo -->
-              <form onsubmit="confirmOrderWhatsApp(event)">
-                <div class="comanda-form-fields">
-                  <input type="text" id="orderCustName" placeholder="Tu Nombre Completo *" required class="comanda-field-input">
-                  <input type="date" id="orderCustDate" required class="comanda-field-input" title="Fecha del evento">
-                  <input type="text" id="orderCustCity" value="León, Gto." required class="comanda-field-input" placeholder="Ciudad o Salón *">
+              <!-- Formulario de Contacto -->
+              <form onsubmit="submitComandaWhatsApp(event)">
+                <div class="comanda-form-inputs">
+                  <input type="text" id="guestNameInput" placeholder="Tu Nombre Completo *" required class="comanda-input-ctrl">
+                  <input type="date" id="eventDateInput" required class="comanda-input-ctrl" title="Fecha del evento">
+                  <input type="text" id="eventCityInput" value="León, Gto." required class="comanda-input-ctrl" placeholder="Ciudad o Salón *">
                 </div>
 
-                <!-- Botón Limpio de Confirmación por WhatsApp -->
-                <button type="submit" class="btn-confirm-comanda">
+                <!-- Botón Oficial de WhatsApp -->
+                <button type="submit" class="btn-whatsapp-comanda">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                   </svg>
-                  Confirmar Propuesta con Claudia
+                  Confirmar Propuesta por WhatsApp
                 </button>
               </form>
 
@@ -362,22 +645,22 @@
     <section class="contact-section-editorial" id="contacto">
       <div class="container">
         
-        <div class="editorial-header">
-          <span class="editorial-tag">Contacto Oficial</span>
-          <h2 class="editorial-title">¿Tienes una Fecha en Mente? <span>Conversemos</span></h2>
-          <p class="editorial-desc">
-            Atención personalizada de Claudia en León y todo el Bajío para salones, jardines, haciendas y domicilios particulares.
+        <div class="section-head-center">
+          <span class="pill-section-tag">Contacto Oficial</span>
+          <h2 class="section-title-editorial">¿Tienes una Fecha en Mente? <span>Hablemos</span></h2>
+          <p class="section-desc-editorial">
+            Atención directa y personalizada con Claudia en León, Guanajuato y todo el Bajío para salones, jardines, haciendas y domicilios.
           </p>
         </div>
 
-        <!-- Tarjeta Oficial con Enlace a WhatsApp -->
-        <div class="official-business-card" onclick="window.open('https://wa.me/524778020791', '_blank')" title="Abrir chat oficial de WhatsApp">
-          <img src="FOTOS/WhatsApp Image 2026-07-25 at 20.02.30 (1).jpeg" alt="Tarjeta Oficial de Presentación Banquetes La Lola">
+        <!-- Tarjeta Oficial con Enlace a WhatsApp y Sombra Difusa -->
+        <div class="official-business-card" onclick="window.open('https://wa.me/524778020791', '_blank')" title="Abrir chat oficial de WhatsApp con Claudia">
+          <img src="FOTOS/WhatsApp Image 2026-07-25 at 20.02.30 (1).jpeg" alt="Tarjeta Oficial Banquetes La Lola con sombra difusa">
         </div>
 
         <!-- Botones de Acción Telefónica y Chat -->
         <div class="contact-button-row">
-          <a href="https://wa.me/524778020791?text=Hola%20Claudia%2C%20me%20gustar%C3%ADa%20cotizar%20un%20evento%20con%20La%20Lola%20🍽️" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          <a href="https://wa.me/524778020791?text=Hola%20Claudia%2C%20me%20gustar%C3%ADa%20cotizar%20un%20banquete%20con%20La%20Lola%20🍽️" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
             Chatear con Claudia por WhatsApp
           </a>
           <a href="tel:+524778020791" class="btn btn-glass">
