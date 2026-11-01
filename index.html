@@ -155,9 +155,9 @@
 
         <!-- 3 Botones de Pestaña Pintados Directamente en HTML -->
         <div class="specialty-tabs-bar" role="tablist" aria-label="Especialidades de la Casa">
-          <button type="button" class="spec-tab active" data-spec="chilaquiles">🍳 Chilaquiles Tradicionales</button>
-          <button type="button" class="spec-tab" data-spec="tortas">🥖 Las Famosas Tortas</button>
-          <button type="button" class="spec-tab" data-spec="menudo">🍲 Menudo Tradicional</button>
+          <button type="button" class="spec-tab active" data-index="0">🍳 Chilaquiles Tradicionales</button>
+          <button type="button" class="spec-tab" data-index="1">🥖 Las Famosas Tortas</button>
+          <button type="button" class="spec-tab" data-index="2">🍲 Menudo Tradicional</button>
         </div>
 
         <!-- Contenedor de Visor Interactivo (2 Columnas con Fade-In) -->
@@ -812,27 +812,34 @@
       }
 
       /* 2. PESTAÑAS DE ESPECIALIDADES */
-      window.switchSpecialtyTab = function (key, btn) {
-        document.querySelectorAll('.spec-tab, .spec-tab-btn').forEach(function (b) {
-          b.classList.remove('active');
-        });
+      window.switchSpecialtyTab = function (target, btn) {
+        var tabs = document.querySelectorAll('.spec-tab, .spec-tab-btn');
+        var articles = document.querySelectorAll('.specialty-stage-container article');
+
+        tabs.forEach(function (b) { b.classList.remove('active'); });
         if (btn) {
           btn.classList.add('active');
-        } else {
-          var matching = document.querySelector('.spec-tab[data-spec="' + key + '"], .spec-tab[data-target="' + key + '"], .spec-tab-btn[data-spec="' + key + '"], .spec-tab-btn[data-target="' + key + '"]');
-          if (matching) matching.classList.add('active');
         }
 
-        document.querySelectorAll('.specialty-panel-view').forEach(function (v) {
+        articles.forEach(function (v) {
           v.classList.remove('active');
           v.style.display = 'none';
         });
 
-        var activeView = document.getElementById('spec-view-' + key) || document.querySelector('.specialty-panel-view[data-spec="' + key + '"]');
-        if (activeView) {
-          activeView.style.display = 'grid';
-          void activeView.offsetWidth;
-          activeView.classList.add('active');
+        var activeArticle = null;
+        var parsedIndex = parseInt(target, 10);
+        if (!isNaN(parsedIndex) && articles[parsedIndex]) {
+          activeArticle = articles[parsedIndex];
+          if (!btn && tabs[parsedIndex]) tabs[parsedIndex].classList.add('active');
+        } else {
+          activeArticle = document.getElementById('spec-view-' + target) ||
+                          document.querySelector('.specialty-panel-view[data-spec="' + target + '"]');
+        }
+
+        if (activeArticle) {
+          activeArticle.style.display = 'grid';
+          void activeArticle.offsetWidth;
+          activeArticle.classList.add('active');
         }
       };
 
@@ -1068,10 +1075,12 @@
       }, { passive: true });
 
       // Listeners para pestañas de especialidades
-      document.querySelectorAll('.spec-tab, .spec-tab-btn').forEach(function (btn) {
+      document.querySelectorAll('.spec-tab, .spec-tab-btn').forEach(function (btn, idx) {
         btn.addEventListener('click', function () {
-          var target = this.getAttribute('data-spec') || this.getAttribute('data-target');
-          if (target) window.switchSpecialtyTab(target, this);
+          var target = this.getAttribute('data-index') !== null 
+            ? this.getAttribute('data-index') 
+            : (this.getAttribute('data-spec') || this.getAttribute('data-target') || idx);
+          window.switchSpecialtyTab(target, this);
         });
       });
 
