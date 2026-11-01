@@ -3,7 +3,7 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. CONTENEDOR GENERAL
+   1. CONTENEDOR & SECCIONES GENERALES
    -------------------------------------------------------------------------- */
 .container {
   max-width: var(--container-max-width);
@@ -12,6 +12,50 @@
   padding-left: clamp(20px, 4vw, 48px);
   padding-right: clamp(20px, 4vw, 48px);
   width: 100%;
+}
+
+.section-padding {
+  padding-top: clamp(64px, 8vh, 100px);
+  padding-bottom: clamp(64px, 8vh, 100px);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto clamp(40px, 5vh, 64px) auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.section-header.text-left {
+  text-align: left;
+  align-items: flex-start;
+  margin-left: 0;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-text-main);
+}
+
+.section-title .italic-sub {
+  display: block;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--color-pink-primary);
+  margin-top: 4px;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
 }
 
 /* --------------------------------------------------------------------------
@@ -43,7 +87,6 @@
   gap: 24px;
 }
 
-/* Logotipo */
 .brand-logo {
   font-family: var(--font-serif);
   font-size: 1.95rem;
@@ -63,12 +106,11 @@
   color: var(--color-pink-primary);
 }
 
-/* Menú central sutil */
 .nav-menu {
   display: flex;
   align-items: center;
   list-style: none;
-  gap: clamp(20px, 3.2vw, 40px);
+  gap: clamp(18px, 2.8vw, 36px);
 }
 
 .nav-link {
@@ -101,7 +143,6 @@
   width: 100%;
 }
 
-/* Acciones header */
 .header-actions {
   display: flex;
   align-items: center;
@@ -127,7 +168,6 @@
   width: 100%;
 }
 
-/* Columna Izquierda: Contenido Editorial */
 .hero-content {
   display: flex;
   flex-direction: column;
@@ -175,7 +215,6 @@
   margin-bottom: 40px;
 }
 
-/* Viñetas minimalistas de beneficios */
 .hero-benefits {
   display: flex;
   flex-wrap: wrap;
@@ -186,7 +225,6 @@
   width: 100%;
 }
 
-/* Columna Derecha: Tarjeta Visual */
 .hero-visual {
   position: relative;
   width: 100%;
@@ -214,9 +252,140 @@
 }
 
 /* --------------------------------------------------------------------------
-   4. RESPONSIVE DESIGN (Tablets y Móviles)
+   4. SECCIÓN: EXPERIENCIA & BENTO GRID ASIMÉTRICO (4 TARJETAS)
    -------------------------------------------------------------------------- */
-@media (max-width: 992px) {
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+
+.bento-card-large {
+  grid-column: span 7;
+  min-height: 400px;
+}
+
+.bento-card-medium {
+  grid-column: span 5;
+  min-height: 400px;
+}
+
+.bento-card-video {
+  grid-column: span 5;
+  min-height: 380px;
+}
+
+.bento-card-community {
+  grid-column: span 7;
+  min-height: 380px;
+}
+
+/* --------------------------------------------------------------------------
+   5. SECCIÓN: ESPECIALIDADES DE LA CASA
+   -------------------------------------------------------------------------- */
+.specialties-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* --------------------------------------------------------------------------
+   6. SECCIÓN: ARMADOR DE BANQUETE (2 COLUMNAS)
+   -------------------------------------------------------------------------- */
+.armador-layout {
+  display: grid;
+  grid-template-columns: 1.4fr 0.95fr;
+  gap: clamp(32px, 4vw, 56px);
+  align-items: flex-start;
+}
+
+.armador-controls {
+  display: flex;
+  flex-direction: column;
+}
+
+.step-block {
+  margin-bottom: 44px;
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-pink-soft);
+  color: var(--color-pink-primary);
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-text-main);
+}
+
+/* --------------------------------------------------------------------------
+   7. FOOTER
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background: #F4EFEA;
+  border-top: 1px solid var(--border-subtle);
+  padding: 60px 0 36px 0;
+  margin-top: 60px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid rgba(36, 26, 23, 0.08);
+}
+
+.footer-bottom {
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   8. MEDIA QUERIES (Tablets & Móviles)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .armador-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .comanda-card {
+    position: static;
+    margin-top: 24px;
+  }
+
+  .packages-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 48px;
@@ -226,8 +395,30 @@
     aspect-ratio: 16 / 11;
   }
 
-  .hero-description {
-    max-width: 100%;
+  .bento-card-large,
+  .bento-card-medium,
+  .bento-card-video,
+  .bento-card-community {
+    grid-column: span 12;
+    min-height: 320px;
+  }
+
+  .specialty-card,
+  .specialty-card.reverse {
+    grid-template-columns: 1fr;
+    direction: ltr !important;
+  }
+
+  .specialty-img-wrap {
+    min-height: 280px;
+  }
+
+  .contact-official-card {
+    grid-template-columns: 1fr;
+  }
+
+  .packages-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -243,7 +434,7 @@
   .hero-section {
     min-height: auto;
     padding-top: 24px;
-    padding-bottom: 56px;
+    padding-bottom: 48px;
   }
 
   .hero-cta-group {
