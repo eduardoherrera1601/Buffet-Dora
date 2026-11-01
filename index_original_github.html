@@ -2673,22 +2673,47 @@
             if (el) el.textContent = newVal;
 
             var btn = document.getElementById('btn-select-' + type);
-            if (btn) {
-                if (newVal > 0) {
-                    btn.innerHTML = '✓ Elegir (' + newVal + ' pers.) → Ir a Reservar';
-                    btn.style.background = 'linear-gradient(135deg, var(--rosa-mexicano), #D81B60)';
-                    btn.style.color = '#FFFFFF';
-                    btn.style.boxShadow = '0 6px 18px rgba(233, 30, 99, 0.45)';
-                } else {
+            var isCurrentlySelected = window.selectedIndependentSpecialty && window.selectedIndependentSpecialty.type === type;
+
+            if (newVal === 0) {
+                if (isCurrentlySelected) {
+                    window.selectedIndependentSpecialty = null;
+                }
+                if (btn) {
                     btn.innerHTML = 'Elegir Menú (Mín. 30 pers.)';
                     btn.style.background = '';
                     btn.style.color = '';
                     btn.style.boxShadow = '';
                 }
+            } else {
+                if (isCurrentlySelected) {
+                    window.selectedIndependentSpecialty.guests = newVal;
+                    if (btn) {
+                        btn.innerHTML = '✓ Elegido (' + newVal + ' pers.) → Ir al Paso 4';
+                        btn.style.background = 'linear-gradient(135deg, var(--rosa-mexicano), #D81B60)';
+                        btn.style.color = '#FFFFFF';
+                        btn.style.boxShadow = '0 6px 18px rgba(233, 30, 99, 0.45)';
+                    }
+                } else {
+                    if (btn) {
+                        btn.innerHTML = '✓ Elegir (' + newVal + ' pers.) → Ir a Reservar';
+                        btn.style.background = 'linear-gradient(135deg, var(--rosa-mexicano), #D81B60)';
+                        btn.style.color = '#FFFFFF';
+                        btn.style.boxShadow = '0 6px 18px rgba(233, 30, 99, 0.45)';
+                    }
+                }
             }
+
+            window.updateLiveSummary();
         };
 
         window.acceptSpecialtyAndGoToStep4 = function(type) {
+            // Si ya está elegida esta misma especialidad y vuelven a presionar el botón, se deselecciona
+            if (window.selectedIndependentSpecialty && window.selectedIndependentSpecialty.type === type) {
+                window.cancelIndependentSpecialty();
+                return;
+            }
+
             var count = specialtyGuests[type] || 0;
             if (count < 30) {
                 count = 30;
