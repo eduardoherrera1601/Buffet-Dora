@@ -1856,16 +1856,16 @@
                             <span style="font-family: var(--font-folk); font-size: 1rem; font-weight: 800; color: var(--chocolate-texto);">👥 Ajustar Invitados:</span>
                             <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
                                 <button type="button" class="btn-preset-guest" data-guests="40" onclick="setGuestsFromPreset(40)">40 pers.</button>
-                                <button type="button" class="btn-preset-guest active" data-guests="70" onclick="setGuestsFromPreset(70)">70 pers.</button>
+                                <button type="button" class="btn-preset-guest" data-guests="70" onclick="setGuestsFromPreset(70)">70 pers.</button>
                                 <button type="button" class="btn-preset-guest" data-guests="100" onclick="setGuestsFromPreset(100)">100 pers.</button>
                                 <button type="button" class="btn-preset-guest" data-guests="150" onclick="setGuestsFromPreset(150)">150 pers.</button>
                             </div>
                         </div>
-                        <span id="sliderGuestCountDisplay" style="font-family: var(--font-title); font-size: 2.2rem; font-weight: 900; color: var(--chocolate-texto);">70 Personas</span>
+                        <span id="sliderGuestCountDisplay" style="font-family: var(--font-title); font-size: 1.9rem; font-weight: 900; color: var(--chocolate-texto);">Elige tus Invitados</span>
                     </div>
 
                     <!-- Range input calibrado de 10 en 10: 30 a 150 (indices 0 a 12) -->
-                    <input type="range" id="mainGuestSlider" min="0" max="12" step="1" value="4" oninput="handleSliderIndexChange(this.value)" style="width: 100%; height: 10px; accent-color: var(--cempasuchil-fuego); cursor: pointer;">
+                    <input type="range" id="mainGuestSlider" min="0" max="12" step="1" value="0" oninput="handleSliderIndexChange(this.value)" style="width: 100%; height: 10px; accent-color: var(--cempasuchil-fuego); cursor: pointer;">
                     
                     <!-- Marcadores alineados con escala exacta de 10 en 10 -->
                     <div style="position: relative; width: 100%; height: 26px; margin-top: 0.5rem; font-family: var(--font-folk); font-size: 0.82rem; font-weight: 800;">
@@ -1911,8 +1911,8 @@
                         </button>
                     </div>
 
-                    <!-- PAQUETE 2: 50 A 80 (DESTACADO & ACTIVO POR DEFECTO) -->
-                    <div class="package-card featured selected-active" id="card-pkg-50-80" onclick="choosePackage('50-80')">
+                    <!-- PAQUETE 2: 50 A 80 -->
+                    <div class="package-card featured" id="card-pkg-50-80" onclick="choosePackage('50-80')">
                         <div class="package-selected-marker">✓ PAQUETE SELECCIONADO</div>
                         <div>
                             <span class="package-badge rosa">Fiestas & Celebraciones</span>
@@ -1992,7 +1992,7 @@
             <div class="step-block" id="paso-2">
                 <span class="step-badge">Paso 2 de 4</span>
                 <h3 class="step-title">Selecciona tu Base & Guisados</h3>
-                <p class="step-desc">Tu paquete incluye <strong>1 Arroz o Frijol</strong> de base + tus <strong id="maxGuisadosLabel" style="color: var(--chocolate-texto); font-size: 1.15rem;">7 guisados</strong> a elegir. Haz clic en las opciones para armar tu banquete.</p>
+                <p class="step-desc">Tu paquete incluye <strong>1 Arroz o Frijol</strong> de base + tus <strong id="maxGuisadosLabel" style="color: var(--chocolate-texto); font-size: 1.15rem;">guisados incluidos</strong>. Haz clic en las opciones para armar tu banquete.</p>
 
                 <!-- 1. GUARNICIÓN BASE INCLUIDA (ELIGE 1 ARROZ O FRIJOL) -->
                 <div style="background: linear-gradient(135deg, #FFFDF9 0%, #FFF8E7 100%); border: 2.5px solid #E2CCA8; border-radius: 20px; padding: 1.3rem 1.6rem; margin-bottom: 2rem; box-shadow: 0 4px 16px rgba(45, 24, 8, 0.05);">
@@ -2054,14 +2054,14 @@
                 <!-- 2. SELECCIÓN DE GUISADOS SEGÚN EL PAQUETE -->
                 <div style="margin-bottom: 0.9rem;">
                     <span style="font-family: var(--font-folk); font-size: 0.78rem; font-weight: 900; text-transform: uppercase; color: var(--cempasuchil-fuego); letter-spacing: 0.08em; display: block;">2. Guisados del Banquete</span>
-                    <strong style="font-family: var(--font-folk); font-size: 1.15rem; color: var(--chocolate-texto);">Ahora selecciona tus guisados (<span id="maxGuisadosSubheading">7</span> incluidos):</strong>
+                    <strong style="font-family: var(--font-folk); font-size: 1.15rem; color: var(--chocolate-texto);">Ahora selecciona tus guisados (<span id="maxGuisadosSubheading">0</span> incluidos):</strong>
                 </div>
 
                 <!-- Barra de Progreso y Contador Dinámico -->
                 <div class="guisado-progress-box">
                     <div class="progress-info">
                         <span>Guisados Elegidos:</span>
-                        <strong><span id="chosenCountDisplay">0</span> / <span id="limitCountDisplay">7</span></strong>
+                        <strong><span id="chosenCountDisplay">0</span> / <span id="limitCountDisplay">0</span></strong>
                     </div>
                     
                     <div class="progress-bar-track">
@@ -2069,7 +2069,7 @@
                     </div>
 
                     <div class="progress-status-badge" id="progressStatusBadge">
-                        <span>⏳ Faltan <span id="missingCountDisplay">7</span> por elegir</span>
+                        <span>👉 Selecciona primero tu paquete en el Paso 1</span>
                     </div>
                 </div>
 
@@ -2204,16 +2204,16 @@
                         <div class="summary-header-row">
                             <div>
                                 <span style="font-family: var(--font-folk); font-size: 0.82rem; font-weight: 800; text-transform: uppercase; color: var(--cempasuchil-fuego); letter-spacing: 0.1em;">Resumen de tu Cotización</span>
-                                <h4 style="font-family: var(--font-title); font-size: 1.8rem; font-weight: 900; color: var(--chocolate-texto); margin-top: 0.2rem;" id="summaryPackageTitle">Paquete Fiesta Mexicana</h4>
+                                <h4 style="font-family: var(--font-title); font-size: 1.8rem; font-weight: 900; color: var(--chocolate-texto); margin-top: 0.2rem;" id="summaryPackageTitle">Elige tu Paquete en el Paso 1</h4>
                             </div>
                             <div style="text-align: right;">
                                 <span style="font-family: var(--font-folk); font-size: 0.9rem; font-weight: 700; color: #7A6251;">Capacidad estimada:</span>
-                                <div style="font-family: var(--font-title); font-size: 1.7rem; font-weight: 900; color: var(--chocolate-texto);" id="summaryGuestCount">70 Personas</div>
+                                <div style="font-family: var(--font-title); font-size: 1.7rem; font-weight: 900; color: var(--chocolate-texto);" id="summaryGuestCount">Por definir</div>
                             </div>
                         </div>
 
                         <!-- Guarnición Base Seleccionada -->
-                        <div id="summaryBaseRow" style="margin-bottom: 1.1rem; background: #FFF8E7; border: 1.5px solid #E2CCA8; border-radius: 12px; padding: 0.75rem 1.1rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+                        <div id="summaryBaseRow" style="margin-bottom: 1.1rem; background: #FFF8E7; border: 1.5px solid #E2CCA8; border-radius: 12px; padding: 0.75rem 1.1rem; display: none; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
                             <div>
                                 <span style="font-family: var(--font-folk); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--cempasuchil-fuego); letter-spacing: 0.08em; display: block;">Guarnición Base Incluida</span>
                                 <strong style="font-family: var(--font-folk); font-size: 1rem; color: var(--chocolate-texto);"><span id="summaryBaseIcon">⚪</span> <span id="summaryBaseName">Sin seleccionar (a definir con Claudia)</span></strong>
@@ -2224,10 +2224,10 @@
                         <!-- Desglose de Guisados Seleccionados -->
                         <div style="margin-bottom: 1.2rem;" id="summaryCazuelasSection">
                             <strong style="display: block; font-family: var(--font-folk); font-size: 0.95rem; color: var(--chocolate-texto); margin-bottom: 0.5rem;" id="summaryGuisadosLabel">
-                                🥘 Guisados Seleccionados (<span id="summaryGuisadosCount">0</span> de <span id="summaryGuisadosLimit">7</span>):
+                                🥘 Guisados Seleccionados (<span id="summaryGuisadosCount">0</span> de <span id="summaryGuisadosLimit">0</span>):
                             </strong>
                             <div id="summaryGuisadosList" style="font-size: 0.92rem; color: var(--chocolate-suave); line-height: 1.6; background: #FFFDF9; border: 1.5px solid #E6D7C5; border-radius: 12px; padding: 0.8rem 1.2rem;">
-                                <em>Aún no has seleccionado ningún guisado en el Paso 2. Haz clic en las tarjetas de arriba para elegirlos.</em>
+                                <em>Selecciona primero un paquete en el Paso 1 para comenzar a armar tu banquete.</em>
                             </div>
                         </div>
 
@@ -2235,7 +2235,7 @@
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; font-size: 0.9rem;">
                             <div style="background: #FFFDF9; border: 1.5px solid #E6D7C5; border-radius: 12px; padding: 0.8rem 1rem;">
                                 <strong style="display: block; color: var(--chocolate-texto); margin-bottom: 0.2rem;">📦 Lo que Incluye tu Paquete:</strong>
-                                <span id="summaryPackageBenefits" style="color: var(--chocolate-suave);">7 guisados, botana con ensalada de cueritos, 2 vitroleros de agua (40L) y tortillas hechas a mano al comal.</span>
+                                <span id="summaryPackageBenefits" style="color: var(--chocolate-suave);">Elige un paquete para ver los beneficios incluidos (botana, vitroleros de agua fresca, tortillas y guisados).</span>
                             </div>
 
                             <div style="background: #FFFDF9; border: 1.5px solid #E6D7C5; border-radius: 12px; padding: 0.8rem 1rem;">
@@ -2382,9 +2382,9 @@
         'use strict';
 
         // ESTADO GLOBAL DEL ARMADOR
-        let currentPackage = '50-80'; // '30-50', '50-80', '80+'
-        let maxGuisados = 7;
-        let guestCount = 70;
+        let currentPackage = null; // Inicia desmarcado: el cliente elige su paquete
+        let maxGuisados = 0;
+        let guestCount = 0;
         let selectedBase = null; // Inicia desmarcado: el cliente decide si elige arroz, frijoles o ninguno
         const selectedGuisados = new Set();
         const selectedExtras = new Set();
@@ -2442,6 +2442,14 @@
         // SELECCIÓN DE GUISADOS CON LÍMITE ESTRICTO Y CLARO
         cards.forEach(card => {
             card.addEventListener('click', () => {
+                if (!currentPackage) {
+                    if (limitAlertText) limitAlertText.textContent = '¡Por favor selecciona primero tu paquete en el Paso 1 para conocer la cantidad de guisados incluidos en tu banquete!';
+                    if (limitAlert) {
+                        limitAlert.style.display = 'flex';
+                        limitAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    return;
+                }
                 const name = card.dataset.name;
                 if (selectedGuisados.has(name)) {
                     selectedGuisados.delete(name);
@@ -2486,6 +2494,23 @@
             window.selectedIndependentSpecialty = null;
             const notice = document.getElementById('independentNoticeBanner');
             if (notice) notice.style.display = 'none';
+
+            // Si se hace clic sobre el paquete ya activo, se deselecciona
+            if (currentPackage === pkgKey && adjustSlider) {
+                currentPackage = null;
+                maxGuisados = 0;
+                document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected-active'));
+                document.querySelectorAll('.btn-preset-guest').forEach(b => b.classList.remove('active'));
+                if (sliderGuestDisplay) sliderGuestDisplay.textContent = 'Elige tus Invitados';
+                if (maxLabel) maxLabel.textContent = 'guisados según tu paquete';
+                const maxGuisadosSubheading = document.getElementById('maxGuisadosSubheading');
+                if (maxGuisadosSubheading) maxGuisadosSubheading.textContent = '0';
+                if (limitDisplay) limitDisplay.textContent = '0';
+                updateGuisadosTracker();
+                updateLiveSummary();
+                return;
+            }
+
             currentPackage = pkgKey;
             const meta = packageMeta[pkgKey];
             maxGuisados = meta.max;
@@ -2530,7 +2555,7 @@
         // FUNCIÓN: SLIDER CON ÍNDICE CALIBRADO (DE 10 EN 10 HASTA 150)
         window.handleSliderIndexChange = function(indexVal) {
             const idx = parseInt(indexVal, 10);
-            const val = guestScale[idx] || 70;
+            const val = guestScale[idx] || 30;
             guestCount = val;
 
             if (sliderGuestDisplay) {
@@ -2569,8 +2594,21 @@
         function updateGuisadosTracker() {
             const count = selectedGuisados.size;
             if (chosenDisplay) chosenDisplay.textContent = count;
+
+            if (!currentPackage || maxGuisados <= 0) {
+                if (limitDisplay) limitDisplay.textContent = '0';
+                if (missingDisplay) missingDisplay.textContent = '0';
+                if (progressFill) progressFill.style.width = '0%';
+                if (progressBadge) {
+                    progressBadge.className = 'progress-status-badge';
+                    progressBadge.innerHTML = '<span>👉 Selecciona primero tu paquete en el Paso 1</span>';
+                }
+                return;
+            }
+
             const missing = maxGuisados - count;
             if (missingDisplay) missingDisplay.textContent = missing > 0 ? missing : 0;
+            if (limitDisplay) limitDisplay.textContent = maxGuisados;
 
             const percentage = Math.min(100, Math.round((count / maxGuisados) * 100));
             if (progressFill) progressFill.style.width = percentage + '%';
@@ -2752,7 +2790,7 @@
                         '<p style="margin: 0.35rem 0 0 0; color: var(--chocolate-suave); font-size: 0.88rem;">Servicio completo e independiente para ' + spec.guests + ' personas (Mínimo 30 personas). Incluye complementos, salsas y montaje en cazuela tradicional.</p>';
                 }
                 if (summaryBenefits) summaryBenefits.textContent = 'Servicio completo de ' + spec.name + ' con barra de complementos, salsas y atención tradicional.';
-            } else {
+            } else if (currentPackage) {
                 if (notice) notice.style.display = 'none';
                 if (baseRow) baseRow.style.display = 'flex';
                 const baseIconEl = document.getElementById('summaryBaseIcon');
@@ -2779,7 +2817,7 @@
                 if (guisadosLabel) guisadosLabel.innerHTML = '🥘 Guisados Seleccionados (<span id="summaryGuisadosCount">' + selectedGuisados.size + '</span> de <span id="summaryGuisadosLimit">' + maxGuisados + '</span>):';
                 const meta = packageMeta[currentPackage];
                 if (summaryTitle) summaryTitle.textContent = meta.title;
-                if (summaryGuests) summaryGuests.textContent = guestCount + ' Personas';
+                if (summaryGuests) summaryGuests.textContent = (guestCount > 0 ? guestCount : meta.defaultGuests) + ' Personas';
                 if (summaryGuisadosCount) summaryGuisadosCount.textContent = selectedGuisados.size;
                 if (summaryGuisadosLimit) summaryGuisadosLimit.textContent = maxGuisados;
                 if (summaryBenefits) summaryBenefits.textContent = meta.benefits;
@@ -2793,6 +2831,16 @@
                             '</ol>';
                     }
                 }
+            } else {
+                if (notice) notice.style.display = 'none';
+                if (baseRow) baseRow.style.display = 'none';
+                if (summaryTitle) summaryTitle.textContent = 'Elige tu Paquete en el Paso 1';
+                if (summaryGuests) summaryGuests.textContent = guestCount > 0 ? (guestCount + ' Personas') : 'Por definir';
+                if (guisadosLabel) guisadosLabel.innerHTML = '🥘 Guisados: (Elige tu paquete en el Paso 1)';
+                if (summaryGuisadosCount) summaryGuisadosCount.textContent = '0';
+                if (summaryGuisadosLimit) summaryGuisadosLimit.textContent = '0';
+                if (summaryList) summaryList.innerHTML = '<em>Selecciona primero un paquete en el Paso 1 para comenzar a armar tu banquete.</em>';
+                if (summaryBenefits) summaryBenefits.textContent = 'Elige un paquete para ver los beneficios incluidos (botana, vitroleros de agua fresca, tortillas y guisados).';
             }
 
             if (summaryExtras) {
@@ -2832,6 +2880,13 @@
                 return;
             }
 
+            if (!currentPackage) {
+                alert('Por favor selecciona primero tu paquete en el Paso 1 para cotizar tu banquete.');
+                const paso1 = document.getElementById('paso-1');
+                if (paso1) paso1.scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+
             const meta = packageMeta[currentPackage];
             let baseText = selectedBase
                 ? '\n\n🍚 *Guarnición Base Incluida:* ' + selectedBase
@@ -2863,8 +2918,9 @@
             window.open('https://wa.me/524778020791?text=' + encodeURIComponent(raw), '_blank');
         };
 
-        // INICIALIZACIÓN
-        window.choosePackage('50-80');
+        // INICIALIZACIÓN (SIN PAQUETE SELECCIONADO POR DEFECTO)
+        updateGuisadosTracker();
+        updateLiveSummary();
     })();
 </script>
 </body>
