@@ -478,7 +478,7 @@
   margin-bottom: 2rem;
 }
 
-.cat-filter-btn {
+.cat-filter-btn, .filter-btn {
   background: transparent;
   border: 1px solid var(--border-soft);
   color: var(--text-muted);
@@ -491,13 +491,13 @@
   transition: all 0.22s ease;
 }
 
-.cat-filter-btn:hover {
+.cat-filter-btn:hover, .filter-btn:hover {
   background: rgba(255, 255, 255, 0.9);
   color: var(--text-main);
   border-color: var(--pastel-rosa-deep);
 }
 
-.cat-filter-btn.active {
+.cat-filter-btn.active, .filter-btn.active {
   background: var(--pastel-rosa-deep);
   color: #FFFFFF;
   border-color: var(--pastel-rosa-deep);

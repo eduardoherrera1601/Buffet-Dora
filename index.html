@@ -14,9 +14,6 @@
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/layout.css">
-
-  <!-- Script Principal -->
-  <script src="js/main.js" defer></script>
 </head>
 <body>
 
@@ -32,10 +29,10 @@
           La Lola<span class="brand-logo-dot">.</span>
         </a>
 
-        <!-- Enlaces principales -->
+        <!-- Enlaces principales con ancla #experiencia -->
         <nav aria-label="Navegación principal">
           <ul class="nav-menu">
-            <li><a href="#historia" class="nav-link">Historia & Fuego</a></li>
+            <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
             <li><a href="#especialidades" class="nav-link">Especialidades</a></li>
             <li><a href="#degustacion" class="nav-link">Menú de Degustación</a></li>
             <li><a href="#contacto" class="nav-link">Contacto</a></li>
@@ -53,9 +50,12 @@
 
   <main>
     <!-- ==========================================================================
-         2. SCROLLYTELLING EN PANTALLA COMPLETA (#historia)
+         2. SCROLLYTELLING EN PANTALLA COMPLETA (#experiencia / #historia)
          ========================================================================== -->
-    <section class="scrolly-container" id="historia" aria-label="Historia y Sazón La Lola">
+    <section class="scrolly-container" id="experiencia" aria-label="Historia y Sazón La Lola">
+      <!-- Ancla dual para compatibilidad con #historia -->
+      <span id="historia" style="position: absolute; top: 0; left: 0;" aria-hidden="true"></span>
+      
       <div class="scrolly-stage" id="scrollyStage">
 
         <!-- LADO IZQUIERDO: TEXTOS SINCRONIZADOS -->
@@ -157,7 +157,7 @@
           </p>
         </div>
 
-        <!-- 3 Botones Tipo Pastilla -->
+        <!-- 3 Botones de Pestaña Pintados Directamente en HTML -->
         <div class="specialty-tabs-bar" role="tablist" aria-label="Especialidades de la Casa">
           <button type="button" class="spec-tab-btn active" data-target="chilaquiles" onclick="switchSpecialtyTab('chilaquiles', this)">
             🍳 Chilaquiles Tradicionales
@@ -262,13 +262,13 @@
               </div>
             </div>
 
-            <!-- Filtros por Categoría: Todos (32), Carnes (12), Antojitos (9), Verduras (7), Bases (5) -->
+            <!-- Filtros por Categoría Pintados Directamente en HTML: Todos (32), Carnes (12), Antojitos (9), Verduras (7), Bases (5) -->
             <div class="tasting-categories-bar" role="tablist" aria-label="Filtro de Guisados">
-              <button type="button" class="cat-filter-btn active" onclick="applyDishCategoryFilter('all', this)">Todos (32)</button>
-              <button type="button" class="cat-filter-btn" onclick="applyDishCategoryFilter('carnes', this)">Carnes (12)</button>
-              <button type="button" class="cat-filter-btn" onclick="applyDishCategoryFilter('antojitos', this)">Antojitos (9)</button>
-              <button type="button" class="cat-filter-btn" onclick="applyDishCategoryFilter('verduras', this)">Verduras (7)</button>
-              <button type="button" class="cat-filter-btn" onclick="applyDishCategoryFilter('bases', this)">Bases (5)</button>
+              <button type="button" class="filter-btn active" onclick="applyDishCategoryFilter('all', this)">Todos (32)</button>
+              <button type="button" class="filter-btn" onclick="applyDishCategoryFilter('carnes', this)">Carnes (12)</button>
+              <button type="button" class="filter-btn" onclick="applyDishCategoryFilter('antojitos', this)">Antojitos (9)</button>
+              <button type="button" class="filter-btn" onclick="applyDishCategoryFilter('verduras', this)">Verduras (7)</button>
+              <button type="button" class="filter-btn" onclick="applyDishCategoryFilter('bases', this)">Bases (5)</button>
             </div>
 
             <!-- Lista Tipográfica a 2 Columnas de Filas Interactivas (.dish-entry) -->
@@ -684,6 +684,345 @@
       </div>
     </div>
   </footer>
+
+  <!-- ==========================================================================
+       7. SCRIPT DE INTERACCIÓN EMBEBIDO DIRECTAMENTE EN EL HTML
+       (Garantiza ejecución inmediata sin depender de carga externa en Vercel)
+       ========================================================================== -->
+  <script>
+  (function() {
+    'use strict';
+
+    // Configuración de Paquetes
+    var packages = {
+      '30-50': { 
+        name: 'Paquete Tradicional', 
+        max: 7, 
+        range: '30 a 50 personas',
+        perks: '7 guisados calientes, botana tradicional de rancho, 1 vitrolero de agua fresca natural (20L) y tortillas calientes al momento.' 
+      },
+      '50-80': { 
+        name: 'Paquete Fiesta Mexicana', 
+        max: 7, 
+        range: '50 a 80 personas',
+        perks: '7 guisados calientes, botana tradicional con ensalada de cueritos, 2 vitroleros de agua fresca natural (40L) y tortillas a mano en comal vivo.' 
+      },
+      '80+': { 
+        name: 'Paquete Gran Banquete', 
+        max: 8, 
+        range: '80+ personas',
+        perks: '8 guisados calientes (¡1 cazuela más!), botana monumental completa, 2 vitroleros de agua natural (40L) y servicio continuo en comal.' 
+      }
+    };
+
+    var currentPkgKey = '50-80';
+    var guestCount = 65;
+    var selectedDishes = new Set();
+    var selectedSpecialties = new Set();
+
+    /* 1. SCROLLYTELLING */
+    function initScrolly() {
+      var container = document.getElementById('experiencia');
+      var stage = document.getElementById('scrollyStage');
+      if (!container || !stage) return;
+
+      var layers = [document.getElementById('layer-0'), document.getElementById('layer-1'), document.getElementById('layer-2')];
+      var medias = [document.getElementById('media-0'), document.getElementById('media-1'), document.getElementById('media-2')];
+      var dots = [document.getElementById('dot-0'), document.getElementById('dot-1'), document.getElementById('dot-2')];
+      var currentStep = -1;
+      var ticking = false;
+
+      function onScroll() {
+        if (!ticking) {
+          window.requestAnimationFrame(function() {
+            var rect = container.getBoundingClientRect();
+            var totalScrollable = container.offsetHeight - window.innerHeight;
+            if (totalScrollable > 0) {
+              var raw = -rect.top / totalScrollable;
+              var progress = Math.min(Math.max(raw, 0), 1);
+              var step = 0;
+              if (progress > 0.66) step = 2;
+              else if (progress > 0.33) step = 1;
+
+              if (step !== currentStep) {
+                currentStep = step;
+                medias.forEach(function(m, idx) {
+                  if (m) {
+                    if (idx === step) m.classList.add('active');
+                    else m.classList.remove('active');
+                  }
+                });
+                layers.forEach(function(l, idx) {
+                  if (l) {
+                    if (idx === step) l.classList.add('active');
+                    else l.classList.remove('active');
+                  }
+                });
+                dots.forEach(function(d, idx) {
+                  if (d) {
+                    if (idx === step) d.classList.add('active');
+                    else d.classList.remove('active');
+                  }
+                });
+              }
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+
+    /* 2. PESTAÑAS DE ESPECIALIDADES */
+    window.switchSpecialtyTab = function(key, btn) {
+      document.querySelectorAll('.spec-tab-btn').forEach(function(b) { b.classList.remove('active'); });
+      if (btn) btn.classList.add('active');
+
+      document.querySelectorAll('.specialty-panel-view').forEach(function(v) {
+        v.classList.remove('active');
+        v.style.display = 'none';
+      });
+
+      var activeView = document.getElementById('spec-view-' + key);
+      if (activeView) {
+        activeView.style.display = 'grid';
+        void activeView.offsetWidth;
+        activeView.classList.add('active');
+      }
+    };
+
+    window.addSpecialtyToOrder = function(name, btn) {
+      selectedSpecialties.add(name);
+      if (btn) {
+        var orig = btn.innerHTML;
+        btn.innerHTML = '✓ ¡Agregado a tu Cotización!';
+        btn.style.background = 'var(--pastel-menta-deep)';
+        btn.style.borderColor = 'var(--pastel-menta-deep)';
+        btn.style.color = '#FFFFFF';
+        setTimeout(function() {
+          btn.innerHTML = orig;
+          btn.style.background = '';
+          btn.style.borderColor = '';
+          btn.style.color = '';
+        }, 2200);
+      }
+      updateComandaUI();
+    };
+
+    /* 3. FILTROS Y SELECCIÓN DE GUISADOS */
+    window.applyDishCategoryFilter = function(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      if (btn) btn.classList.add('active');
+
+      document.querySelectorAll('#tastingDishesContainer .dish-entry').forEach(function(dish) {
+        var dishCat = dish.getAttribute('data-category');
+        if (cat === 'all' || dishCat === cat) {
+          dish.style.display = 'flex';
+        } else {
+          dish.style.display = 'none';
+        }
+      });
+    };
+
+    window.toggleDishSelection = function(name, rowEl) {
+      var max = packages[currentPkgKey].max;
+      var warningEl = document.getElementById('limitNoticeMsg');
+
+      if (selectedDishes.has(name)) {
+        selectedDishes.delete(name);
+        if (rowEl) {
+          rowEl.classList.remove('selected');
+          var sign = rowEl.querySelector('.dish-entry-sign');
+          if (sign) sign.textContent = '+';
+        }
+        if (warningEl) warningEl.style.display = 'none';
+      } else {
+        if (selectedDishes.size >= max) {
+          if (warningEl) {
+            warningEl.style.display = 'block';
+            warningEl.textContent = 'Has alcanzado el límite de ' + max + ' cazuelas de tu paquete. Quita una para elegir otra.';
+            setTimeout(function() {
+              if (warningEl) warningEl.style.display = 'none';
+            }, 3500);
+          }
+          return;
+        }
+
+        selectedDishes.add(name);
+        if (rowEl) {
+          rowEl.classList.add('selected');
+          var sign = rowEl.querySelector('.dish-entry-sign');
+          if (sign) sign.textContent = '✕';
+        }
+        if (warningEl) warningEl.style.display = 'none';
+      }
+
+      updateComandaUI();
+    };
+
+    /* 4. COMANDA LATERAL */
+    window.choosePackagePlan = function(pkgKey) {
+      currentPkgKey = pkgKey;
+      document.querySelectorAll('.pkg-nav-btn').forEach(function(b) { b.classList.remove('active'); });
+      
+      var targetBtn = document.getElementById('btn-pkg-' + pkgKey);
+      if (targetBtn) targetBtn.classList.add('active');
+
+      var pkg = packages[pkgKey];
+      var max = pkg.max;
+      
+      var maxDisplay = document.getElementById('pkgLimitMaxDisplay');
+      if (maxDisplay) maxDisplay.textContent = max + ' Cazuelas';
+
+      var perksBox = document.getElementById('comandaPerksBox');
+      if (perksBox) {
+        perksBox.innerHTML = '<strong>Incluye:</strong> ' + pkg.perks;
+      }
+
+      if (selectedDishes.size > max) {
+        var arr = Array.from(selectedDishes);
+        while (selectedDishes.size > max) {
+          var removed = arr.pop();
+          selectedDishes.delete(removed);
+          var row = document.querySelector('.dish-entry[data-name="' + removed + '"]');
+          if (row) {
+            row.classList.remove('selected');
+            var sign = row.querySelector('.dish-entry-sign');
+            if (sign) sign.textContent = '+';
+          }
+        }
+      }
+
+      updateComandaUI();
+    };
+
+    window.handleGuestSlider = function(val) {
+      guestCount = parseInt(val, 10);
+      var label = document.getElementById('guestCountLabel');
+      if (label) label.textContent = val + ' Personas';
+
+      if (guestCount <= 50 && currentPkgKey !== '30-50') {
+        window.choosePackagePlan('30-50');
+      } else if (guestCount > 50 && guestCount <= 80 && currentPkgKey !== '50-80') {
+        window.choosePackagePlan('50-80');
+      } else if (guestCount > 80 && currentPkgKey !== '80+') {
+        window.choosePackagePlan('80+');
+      }
+
+      updateComandaUI();
+    };
+
+    window.removeDishFromOrder = function(name) {
+      if (selectedDishes.has(name)) {
+        selectedDishes.delete(name);
+        var row = document.querySelector('.dish-entry[data-name="' + name + '"]');
+        if (row) {
+          row.classList.remove('selected');
+          var sign = row.querySelector('.dish-entry-sign');
+          if (sign) sign.textContent = '+';
+        }
+        updateComandaUI();
+      }
+    };
+
+    window.removeSpecialtyFromOrder = function(sp) {
+      selectedSpecialties.delete(sp);
+      updateComandaUI();
+    };
+
+    function updateComandaUI() {
+      var pkg = packages[currentPkgKey];
+      var counter = document.getElementById('comandaDishesCounter');
+      var bar = document.getElementById('comandaProgressBar');
+      var listUl = document.getElementById('comandaSelectedUl');
+
+      var count = selectedDishes.size;
+      var max = pkg.max;
+
+      if (counter) counter.textContent = count + ' de ' + max;
+
+      if (bar) {
+        var percent = Math.min(100, Math.round((count / max) * 100));
+        bar.style.width = percent + '%';
+      }
+
+      if (listUl) {
+        if (selectedDishes.size === 0 && selectedSpecialties.size === 0) {
+          listUl.innerHTML = '<li class="comanda-empty-notice">Selecciona tus platillos en el menú de degustación a la izquierda.</li>';
+        } else {
+          listUl.innerHTML = '';
+          var idx = 1;
+          selectedDishes.forEach(function(name) {
+            var li = document.createElement('li');
+            li.innerHTML = '<span>' + (idx < 10 ? '0' + idx : idx) + '. <em>' + name + '</em></span>' +
+              '<button type="button" class="comanda-remove-item-btn" title="Quitar cazuela" onclick="removeDishFromOrder(\'' + name + '\')">✕</button>';
+            listUl.appendChild(li);
+            idx++;
+          });
+
+          selectedSpecialties.forEach(function(sp) {
+            var li = document.createElement('li');
+            li.style.color = 'var(--pastel-menta-deep)';
+            li.innerHTML = '<span>✨ <em>' + sp + '</em></span>' +
+              '<button type="button" class="comanda-remove-item-btn" title="Quitar especialidad" onclick="removeSpecialtyFromOrder(\'' + sp + '\')">✕</button>';
+            listUl.appendChild(li);
+          });
+        }
+      }
+    }
+
+    /* 5. WHATSAPP A CLAUDIA AL 477 802 0791 */
+    window.submitComandaWhatsApp = function(e) {
+      if (e && e.preventDefault) e.preventDefault();
+
+      var nameInput = document.getElementById('guestNameInput');
+      var dateInput = document.getElementById('eventDateInput');
+      var cityInput = document.getElementById('eventCityInput');
+
+      var name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : 'Cliente interesado';
+      var date = dateInput && dateInput.value ? dateInput.value : 'Por definir';
+      var city = cityInput && cityInput.value.trim() ? cityInput.value.trim() : 'León, Gto.';
+      var pkg = packages[currentPkgKey];
+
+      var dishesText = selectedDishes.size > 0
+        ? '\n\n🍲 *Cazuelas Elegidas (' + selectedDishes.size + ' de ' + pkg.max + '):*\n' + 
+          Array.from(selectedDishes).map(function(d, i) { return '  ' + (i + 1 < 10 ? '0' + (i + 1) : i + 1) + '. ' + d; }).join('\n')
+        : '\n\n🍲 *Cazuelas:* ' + pkg.max + ' cazuelas tradicionales a convenir';
+
+      var specialtiesText = selectedSpecialties.size > 0
+        ? '\n\n✨ *Especialidades Agregadas:*\n' + 
+          Array.from(selectedSpecialties).map(function(s) { return '  • ' + s; }).join('\n')
+        : '';
+
+      var text = '¡Hola Claudia! Me gustaría cotizar un banquete tradicional con *La Lola* 🌮🎉\n\n' +
+        '👤 *Nombre:* ' + name + '\n' +
+        '👥 *Invitados:* ' + guestCount + ' personas\n' +
+        '📦 *Paquete:* ' + pkg.name + ' (' + pkg.range + ')\n' +
+        '📅 *Fecha:* ' + date + '\n' +
+        '📍 *Ciudad / Lugar:* ' + city +
+        dishesText + specialtiesText +
+        '\n\n¿Podrías confirmarme disponibilidad de fecha y el presupuesto formal? ¡Muchas gracias!';
+
+      var waUrl = 'https://wa.me/524778020791?text=' + encodeURIComponent(text);
+      window.open(waUrl, '_blank');
+    };
+
+    window.addEventListener('scroll', function() {
+      var header = document.getElementById('siteHeader');
+      if (header) {
+        if (window.scrollY > 30) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
+      }
+    }, { passive: true });
+
+    // Inicialización al cargar el HTML
+    initScrolly();
+    updateComandaUI();
+  })();
+  </script>
 
 </body>
 </html>
