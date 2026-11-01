@@ -15,10 +15,10 @@
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="img/mexican_folk_hero_banner.jpg">
     
-    <!-- Fuentes Google: Festivas y de Rótulo Tradicional Mexicano -->
+    <!-- Fuentes Google: Editorial Serif + Plus Jakarta Sans + Great Vibes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&family=Great+Vibes&family=Montserrat:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=block" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=block" rel="stylesheet">
     
     <!-- ANTI-FOUT: Evita 100% el brinco visual al recargar la página -->
     <style>
@@ -31,8 +31,7 @@
             Promise.all([
                 document.fonts.load("900 2rem 'Playfair Display'"),
                 document.fonts.load("400 3rem 'Great Vibes'"),
-                document.fonts.load("700 1rem 'Fredoka'"),
-                document.fonts.load("600 1rem 'Montserrat'")
+                document.fonts.load("700 1rem 'Plus Jakarta Sans'")
             ]).then(function() {
                 document.documentElement.classList.remove('wf-loading');
                 document.documentElement.classList.add('wf-active');
@@ -51,62 +50,71 @@
     </script>
 <style>
         :root {
-            /* ===== PALETA VIVA DE FOLCLOR & GASTRONOMÍA MEXICANA ===== */
-            --rosa-mexicano: #E61C73;
-            --rosa-mexicano-dark: #B01153;
-            --talavera-azul: #0B3C91;
-            --talavera-azul-claro: #1976D2;
-            --talavera-amarillo: #FFB300;
-            --cempasuchil: #FF6D00;
-            --cempasuchil-fuego: #E65100;
-            --verde-mexicano: #2E7D32;
-            --verde-agave: #1B5E20;
-            
-            /* Color Secundario Tarjeta / WhatsApp (#00C2C2) */
-            --azul-turquesa: #00C2C2;
-            --azul-turquesa-hover: #009E9E;
-            --azul-turquesa-bevel: #007A7A;
-            --azul-turquesa-glow: rgba(0, 194, 194, 0.55);
-            
-            /* Fondos y Textos */
-            --bg-manta-crema: #FFFDF9;
-            --chocolate-texto: #241108;
-            --chocolate-suave: #4A2818;
-            
-            --font-title: 'Playfair Display', Georgia, serif;
-            --font-folk: 'Fredoka', 'Montserrat', sans-serif;
-            --font-cursive: 'Great Vibes', cursive;
-            --font-body: 'Montserrat', sans-serif;
-        }
+        /* Paleta Pastel Extraída de la Tarjeta */
+        --bg-crema: #FAF7F2;          /* Fondo base suave */
+        --bg-card: #FFFFFF;
+        --pastel-rosa: #F7D2DE;       /* Rosa suave identitario */
+        --pastel-rosa-deep: #D94878;  /* Contraste para textos/botones de acción */
+        --pastel-menta: #D2F2EF;      /* Turquesa pastel */
+        --pastel-menta-deep: #0D827E; /* Acento legible */
+        --pastel-dorado: #FCEFD5;     /* Acento festivo tenue */
+        --texto-principal: #2B211D;   /* Tinta oscura cálida, no negro puro */
+        --texto-secundario: #6E5E58;
+        --border-sutil: rgba(43, 33, 29, 0.08);
+        --shadow-editorial: 0 12px 32px -4px rgba(43, 33, 29, 0.05);
 
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        /* Tipografías: 1 Serif editorial + 1 Sans geométrica limpia */
+        --font-serif: 'Playfair Display', Georgia, serif;
+        --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
 
-        html { scroll-behavior: smooth; }
+        /* Variables mapeadas para máxima consistencia y compatibilidad */
+        --font-title: var(--font-serif);
+        --font-body: var(--font-sans);
+        --font-folk: var(--font-sans);
+        --font-cursive: 'Great Vibes', cursive;
 
-        /* ===== FONDO GENERAL: TEXTURA DE BORDADO OTOMÍ & TALAVERA MEXICANA VIBRANTE ===== */
-        body {
-            font-family: var(--font-body);
-            color: var(--chocolate-texto);
-            overflow-x: hidden;
-            background-color: #F4ECE0;
-            background-image: 
-                linear-gradient(rgba(255, 253, 248, 0.38), rgba(255, 253, 248, 0.38)),
-                url('img/mexican_folk_pattern_bg.jpg');
-            background-size: auto, 580px auto;
-            background-attachment: fixed;
-            -webkit-font-smoothing: antialiased;
-        }
+        --rosa-mexicano: var(--pastel-rosa-deep);
+        --rosa-mexicano-dark: #B83561;
+        --talavera-azul: #1E4E79;
+        --talavera-azul-claro: #2F75B5;
+        --talavera-amarillo: #D69300;
+        --cempasuchil: #D96B27;
+        --cempasuchil-fuego: #C45514;
+        
+        --azul-turquesa: var(--pastel-menta-deep);
+        --azul-turquesa-hover: #0A6B68;
+        --azul-turquesa-bevel: #075250;
+        --azul-turquesa-glow: rgba(13, 130, 126, 0.25);
+        
+        --bg-manta-crema: var(--bg-crema);
+        --chocolate-texto: var(--texto-principal);
+        --chocolate-suave: var(--texto-secundario);
+    }
 
-        /* ===== ENCABEZADO / NAVBAR ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    /* ===== FONDO GENERAL LIMPIO Y EDITORIAL ===== */
+    body {
+        background-color: var(--bg-crema);
+        color: var(--texto-principal);
+        font-family: var(--font-sans);
+        overflow-x: hidden;
+        background-image: none; /* Eliminar patrones repetidos ruidosos */
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== ENCABEZADO / NAVBAR ===== */
         header {
-            background: rgba(255, 253, 249, 0.98);
-            backdrop-filter: blur(15px);
-            padding: 0.6rem 2.5rem;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(16px);
+            padding: 0.75rem 2.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 3.5px solid var(--rosa-mexicano);
-            box-shadow: 0 6px 25px rgba(0,0,0,0.18);
+            border-bottom: 1.5px solid var(--border-sutil);
+            box-shadow: 0 4px 20px rgba(43, 33, 29, 0.04);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -160,33 +168,32 @@
             align-items: center;
             justify-content: center;
             gap: 0.6rem;
-            padding: 0.9rem 1.8rem;
-            background-color: var(--azul-turquesa);
+            padding: 0.85rem 1.8rem;
+            background-color: var(--pastel-menta-deep);
             color: #FFFFFF !important;
-            font-family: var(--font-folk);
-            font-size: 0.98rem;
-            font-weight: 800;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
+            font-family: var(--font-sans);
+            font-size: 0.92rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
             text-decoration: none;
             border-radius: 50px;
-            border: 2px solid #FFFFFF;
-            box-shadow: 0 5px 0 var(--azul-turquesa-bevel), 0 10px 25px var(--azul-turquesa-glow);
+            border: none;
+            box-shadow: 0 4px 14px rgba(13, 130, 126, 0.28);
             transition: all 0.2s ease;
             cursor: pointer;
         }
 
-        .btn-turquesa-3d svg { width: 20px; height: 20px; fill: currentColor; flex-shrink: 0; }
+        .btn-turquesa-3d svg { width: 19px; height: 19px; fill: currentColor; flex-shrink: 0; }
 
         .btn-turquesa-3d:hover {
-            transform: translateY(2px);
-            box-shadow: 0 3px 0 var(--azul-turquesa-bevel), 0 8px 20px rgba(0, 194, 194, 0.7);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(13, 130, 126, 0.38);
             background-color: var(--azul-turquesa-hover);
         }
 
         .btn-turquesa-3d:active {
-            transform: translateY(5px);
-            box-shadow: 0 0 0 var(--azul-turquesa-bevel);
+            transform: translateY(1px);
+            box-shadow: 0 2px 8px rgba(13, 130, 126, 0.25);
         }
 
         /* ===== HERO: ESCENARIO VISUAL COMPACTO Y ELEGANTE ===== */
@@ -302,22 +309,22 @@
         }
 
         .section-folk-block {
-            background: linear-gradient(180deg, #FAF4EB 0%, #F5ECE0 100%);
-            border: 2px solid #E2CCA8;
-            border-top: 6px solid var(--rosa-mexicano);
+            background: var(--bg-card);
+            border: 1px solid var(--border-sutil);
+            border-top: 4px solid var(--pastel-rosa-deep);
             border-radius: 24px;
-            padding: 2.2rem 2rem;
-            box-shadow: 0 14px 38px rgba(36, 17, 8, 0.08);
+            padding: 2.4rem 2.2rem;
+            box-shadow: var(--shadow-editorial);
             margin-top: 2.5rem;
             position: relative;
         }
 
         .step-block {
-            background: #FFFFFF;
-            border: 2px solid #EAD8C5;
+            background: var(--bg-crema);
+            border: 1px solid var(--border-sutil);
             border-radius: 20px;
             padding: 1.8rem 1.6rem;
-            box-shadow: 0 6px 20px rgba(36, 17, 8, 0.04);
+            box-shadow: var(--shadow-editorial);
             margin-bottom: 2rem;
         }
 
