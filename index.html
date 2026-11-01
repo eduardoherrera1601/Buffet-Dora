@@ -743,6 +743,19 @@
         .pkg-pill-card:hover {
             transform: translateY(-3px);
         }
+
+        /* Efecto de revelado cinematográfico */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(35px) scale(0.98);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-on-scroll.is-revealed {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
     </style>
 </head>
 <body>
@@ -1193,6 +1206,28 @@
         // Init
         renderGuisados();
         updateSummary();
+    </script>
+
+    <script>
+        // Animación suave de revelado al scroll estilo Web de Autor
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.bento-cell, .builder-panel, .sticky-summary, .card-showcase-box').forEach(el => {
+            el.classList.add('reveal-on-scroll');
+            revealObserver.observe(el);
+        });
     </script>
 </body>
 </html>
