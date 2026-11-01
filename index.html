@@ -155,16 +155,16 @@
 
         <!-- 3 Botones de Pestaña Pintados Directamente en HTML -->
         <div class="specialty-tabs-bar" role="tablist" aria-label="Especialidades de la Casa">
-          <button class="spec-tab active" data-target="chilaquiles">🍳 Chilaquiles Tradicionales</button>
-          <button class="spec-tab" data-target="tortas">🥖 Las Famosas Tortas</button>
-          <button class="spec-tab" data-target="menudo">🍲 Menudo Tradicional</button>
+          <button type="button" class="spec-tab active" data-spec="chilaquiles">🍳 Chilaquiles Tradicionales</button>
+          <button type="button" class="spec-tab" data-spec="tortas">🥖 Las Famosas Tortas</button>
+          <button type="button" class="spec-tab" data-spec="menudo">🍲 Menudo Tradicional</button>
         </div>
 
         <!-- Contenedor de Visor Interactivo (2 Columnas con Fade-In) -->
         <div class="specialty-stage-container">
 
           <!-- Panel 1: Chilaquiles Tradicionales -->
-          <article class="specialty-panel-view active" id="spec-view-chilaquiles">
+          <article class="specialty-panel-view active" id="spec-view-chilaquiles" data-spec="chilaquiles">
             <div class="specialty-visual-col">
               <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg"
                 alt="Chilaquiles tradicionales con aguacate La Lola" loading="lazy">
@@ -188,7 +188,7 @@
           </article>
 
           <!-- Panel 2: Las Famosas Tortas -->
-          <article class="specialty-panel-view" id="spec-view-tortas">
+          <article class="specialty-panel-view" id="spec-view-tortas" data-spec="tortas">
             <div class="specialty-visual-col">
               <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg"
                 alt="Las Famosas Tortas de Chilaquiles La Lola" loading="lazy">
@@ -213,7 +213,7 @@
           </article>
 
           <!-- Panel 3: Menudo Tradicional -->
-          <article class="specialty-panel-view" id="spec-view-menudo">
+          <article class="specialty-panel-view" id="spec-view-menudo" data-spec="menudo">
             <div class="specialty-visual-col">
               <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg"
                 alt="Menudo tradicional caliente en cazuela de barro" loading="lazy">
@@ -265,11 +265,11 @@
 
             <!-- Filtros por Categoría Pintados Directamente en HTML -->
             <div class="tasting-categories-bar" role="tablist" aria-label="Filtro de Guisados">
-              <button class="filter-btn active" data-filter="all">Todos (32)</button>
-              <button class="filter-btn" data-filter="carnes">Carnes (12)</button>
-              <button class="filter-btn" data-filter="antojitos">Antojitos (9)</button>
-              <button class="filter-btn" data-filter="verduras">Verduras (7)</button>
-              <button class="filter-btn" data-filter="bases">Bases (5)</button>
+              <button type="button" class="filter-btn active" data-filter="all">Todos (32)</button>
+              <button type="button" class="filter-btn" data-filter="carnes">Carnes (12)</button>
+              <button type="button" class="filter-btn" data-filter="antojitos">Antojitos (9)</button>
+              <button type="button" class="filter-btn" data-filter="verduras">Verduras (7)</button>
+              <button type="button" class="filter-btn" data-filter="bases">Bases (5)</button>
             </div>
 
             <!-- Lista Tipográfica a 2 Columnas de Filas Interactivas (.dish-entry) -->
@@ -819,7 +819,7 @@
         if (btn) {
           btn.classList.add('active');
         } else {
-          var matching = document.querySelector('.spec-tab[data-target="' + key + '"], .spec-tab-btn[data-target="' + key + '"]');
+          var matching = document.querySelector('.spec-tab[data-spec="' + key + '"], .spec-tab[data-target="' + key + '"], .spec-tab-btn[data-spec="' + key + '"], .spec-tab-btn[data-target="' + key + '"]');
           if (matching) matching.classList.add('active');
         }
 
@@ -828,7 +828,7 @@
           v.style.display = 'none';
         });
 
-        var activeView = document.getElementById('spec-view-' + key);
+        var activeView = document.getElementById('spec-view-' + key) || document.querySelector('.specialty-panel-view[data-spec="' + key + '"]');
         if (activeView) {
           activeView.style.display = 'grid';
           void activeView.offsetWidth;
@@ -1070,7 +1070,7 @@
       // Listeners para pestañas de especialidades
       document.querySelectorAll('.spec-tab, .spec-tab-btn').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          var target = this.getAttribute('data-target');
+          var target = this.getAttribute('data-spec') || this.getAttribute('data-target');
           if (target) window.switchSpecialtyTab(target, this);
         });
       });

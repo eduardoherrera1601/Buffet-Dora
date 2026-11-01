@@ -409,7 +409,7 @@
     // Listeners para pestañas de especialidades
     document.querySelectorAll('.spec-tab, .spec-tab-btn').forEach(btn => {
       btn.addEventListener('click', function() {
-        const target = this.getAttribute('data-target');
+        const target = this.getAttribute('data-spec') || this.getAttribute('data-target');
         if (target) window.switchSpecialtyTab(target, this);
       });
     });
