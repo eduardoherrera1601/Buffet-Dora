@@ -530,26 +530,43 @@
             margin-bottom: 2.5rem;
         }
         .g-pill {
-            background: var(--bg-base);
-            border: 1px solid var(--border-soft);
-            padding: 0.55rem 1rem;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1.5px solid rgba(36, 26, 23, 0.08);
+            padding: 0.65rem 1.15rem;
             border-radius: 999px;
-            font-size: 0.86rem;
+            font-size: 0.88rem;
             font-weight: 600;
             color: var(--text-main);
-            cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
             display: inline-flex;
             align-items: center;
             gap: 0.45rem;
             user-select: none;
         }
-        .g-pill:hover { border-color: var(--pastel-rosa-deep); background: #FFF9FB; }
-        .g-pill.selected {
-            background: var(--pastel-rosa);
+
+        .g-pill:hover {
+            transform: translateY(-2px);
+            background: #FFFFFF;
             border-color: var(--pastel-rosa-deep);
-            color: var(--pastel-rosa-deep);
+            box-shadow: 0 6px 18px rgba(217, 72, 120, 0.15);
+        }
+
+        .g-pill:active {
+            transform: scale(0.96);
+        }
+
+        .g-pill.selected {
+            background: linear-gradient(135deg, #FFF0F5 0%, var(--pastel-rosa) 100%) !important;
+            border-color: var(--pastel-rosa-deep) !important;
+            color: var(--pastel-rosa-deep) !important;
             font-weight: 700;
+            transform: scale(1.04);
+            box-shadow: 0 6px 20px rgba(217, 72, 120, 0.28);
         }
 
         /* Extras Chips */
@@ -725,18 +742,7 @@
             .nav-links { display: none; }
         }
 
-        /* Toque interactivo a las Pills de Guisados y Tarjetas */
-        .g-pill {
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
-        }
-        .g-pill:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(217, 72, 120, 0.15);
-        }
-        .g-pill.selected {
-            transform: scale(1.03);
-            box-shadow: 0 4px 14px rgba(217, 72, 120, 0.25);
-        }
+        /* Microinteracciones de Tarjetas */
         .pkg-pill-card {
             transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
         }
