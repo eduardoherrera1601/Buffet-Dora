@@ -240,7 +240,7 @@
     }
 
     /* ==========================================================================
-       3. HERO CINEMÁTICO (PORTADA ASIMÉTRICA DE AUTOR)
+       3. HERO CINEMÁTICO (PORTADA ASIMÉTRICA DE AUTOR CON MESH GLOW)
        ========================================================================== */
     .hero-section {
       min-height: 90vh;
@@ -249,6 +249,7 @@
       padding: clamp(36px, 6vh, 72px) 0 clamp(64px, 8vh, 100px);
       position: relative;
       overflow: hidden;
+      background: radial-gradient(ellipse 95% 75% at 50% -10%, rgba(252, 232, 239, 0.8) 0%, rgba(216, 243, 241, 0.5) 45%, rgba(247, 243, 238, 0) 75%);
     }
 
     .hero-grid {
@@ -1462,6 +1463,71 @@
     }
 
     /* ==========================================================================
+       11.5 TESTIMONIOS SOCIAL PROOF (ESTILO FRAMER / RODRIGO OLIVARES)
+       ========================================================================== */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 36px;
+    }
+    .testimonial-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-card);
+      padding: 32px 26px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--pastel-rosa-border);
+    }
+    .testimonial-stars {
+      color: #F59E0B;
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+    }
+    .testimonial-text {
+      font-size: 0.94rem;
+      line-height: 1.6;
+      color: var(--text-main);
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--pastel-rosa);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .testimonial-info h4 {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin: 0;
+    }
+    .testimonial-info span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
        12. FOOTER EDITORIAL
        ========================================================================== */
     .editorial-footer {
@@ -2400,6 +2466,59 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         4.5 TESTIMONIOS REALES (SOCIAL PROOF ESTILO RODRIGO OLIVARES #testimonios)
+         ========================================================================== -->
+    <section class="section-wrap" id="testimonios" aria-label="Opiniones de Clientes">
+      <div class="container">
+        <div class="section-header">
+          <span class="pill-section-badge">Clientes Felices</span>
+          <h2 class="section-title">Lo que dicen quienes ya <span>celebraron con La Lola</span></h2>
+          <p class="section-desc">Más de 180 banquetes atendidos en León, Silao, Guanajuato e Irapuato con sazón 100% garantizado.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Contratamos el servicio para el comedor corporativo de ADE1000 con más de 200 personas. La puntualidad, la limpieza del montaje y la rapidez con la que sirvieron las cazuelas y tortillas calientes fue impecable."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: var(--pastel-menta);">🏢</div>
+              <div class="testimonial-info">
+                <h4>Dirección de Operaciones</h4>
+                <span>Evento Corporativo ADE1000 (León, Gto.)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Para nuestra boda queríamos algo muy mexicano y auténtico. Las comaleras haciendo tortillas al momento en el comal de acero y el asado de boda en cazuela de barro dejaron a todos nuestros invitados encantados."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: var(--pastel-rosa);">👰</div>
+              <div class="testimonial-info">
+                <h4>Mariana &amp; Carlos</h4>
+                <span>Boda Jardín Campestre (160 invitados)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Poder armar la comanda directamente con Doña Claudia y que el cotizador nos diera los números claros fue facilísimo. Las aguas de vitrolero y el chicharrón prensado estaban para chuparse los dedos."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: var(--pastel-dorado);">🎂</div>
+              <div class="testimonial-info">
+                <h4>Familia Valenzuela</h4>
+                <span>Cumpleaños Familiar (70 invitados)</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
