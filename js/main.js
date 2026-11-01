@@ -66,16 +66,23 @@
 
   function toggleDish(name, el) {
     const max = packages[currentPkg].max;
+
+    // Microanimación de pulsación (scale pop)
+    if (el) {
+      el.classList.add('pop-anim');
+      setTimeout(() => el.classList.remove('pop-anim'), 360);
+    }
+
     if (selectedDishes.has(name)) {
       selectedDishes.delete(name);
-      el.classList.remove('selected');
+      if (el) el.classList.remove('selected');
     } else {
       if (selectedDishes.size >= max) {
         alert(`Tu paquete incluye hasta ${max} cazuelas. Quita una para cambiarla.`);
         return;
       }
       selectedDishes.add(name);
-      el.classList.add('selected');
+      if (el) el.classList.add('selected');
     }
     updateSummary();
   }
@@ -133,6 +140,94 @@
     updateSummary();
   };
 
+  /* ==========================================================================
+     CANASTA GOURMET & FEEDBACK INSTANTÁNEO (CONFETTI / DESTELLO MENTA)
+     ========================================================================== */
+  function updateBasket(meta) {
+    const basket = document.getElementById('gourmetBasket');
+    const bar = document.getElementById('basketProgressBar');
+    const title = document.getElementById('basketTitle');
+    const subtitle = document.getElementById('basketSubtitle');
+    const icon = document.getElementById('basketIcon');
+
+    if (!basket || !bar) return;
+
+    const count = selectedDishes.size;
+    const max = meta.max;
+    const remaining = Math.max(0, max - count);
+    const percent = Math.min(100, Math.round((count / max) * 100));
+
+    bar.style.width = `${percent}%`;
+
+    if (count === 0) {
+      if (title) title.textContent = 'Canasta Gourmet en Vivo';
+      if (subtitle) subtitle.textContent = `Te faltan ${max} cazuelas para completar tu paquete`;
+      if (icon) icon.textContent = '🧺';
+      basket.classList.remove('complete');
+    } else if (remaining > 0) {
+      if (title) title.textContent = `Canasta Gourmet (${count} de ${max})`;
+      if (subtitle) subtitle.textContent = `Te falta${remaining > 1 ? 'n' : ''} ${remaining} cazuela${remaining > 1 ? 's' : ''} por elegir`;
+      if (icon) icon.textContent = '🥘';
+      basket.classList.remove('complete');
+    } else {
+      if (title) title.textContent = `¡Canasta Completa! (${max} de ${max})`;
+      if (subtitle) subtitle.textContent = `Has seleccionado todas las cazuelas de tu ${meta.name}`;
+      if (icon) icon.textContent = '🎉';
+      basket.classList.add('complete');
+    }
+  }
+
+  function triggerConfetti() {
+    const comanda = document.getElementById('stickyComanda');
+    if (!comanda) return;
+
+    const colors = ['#0D827E', '#D94878', '#22C55E', '#D8F3F1', '#FCE8EF', '#F59E0B'];
+    const container = document.createElement('div');
+    container.style.position = 'absolute';
+    container.style.inset = '0';
+    container.style.pointerEvents = 'none';
+    container.style.overflow = 'hidden';
+    container.style.borderRadius = '28px';
+    container.style.zIndex = '15';
+
+    comanda.style.position = 'sticky';
+    comanda.appendChild(container);
+
+    for (let i = 0; i < 35; i++) {
+      const particle = document.createElement('div');
+      const size = Math.floor(Math.random() * 8) + 5;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const startX = Math.random() * 100;
+      const destX = startX + (Math.random() * 40 - 20);
+      const destY = Math.random() * 180 + 80;
+      const rot = Math.random() * 720 - 360;
+      const duration = Math.random() * 1000 + 1000;
+
+      particle.style.cssText = `
+        position: absolute;
+        top: -10px;
+        left: ${startX}%;
+        width: ${size}px;
+        height: ${size * (Math.random() > 0.5 ? 1 : 1.6)}px;
+        background-color: ${color};
+        border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+        opacity: 1;
+        transition: transform ${duration}ms cubic-bezier(0.25, 1, 0.5, 1), opacity ${duration}ms ease-out;
+      `;
+
+      container.appendChild(particle);
+
+      requestAnimationFrame(() => {
+        particle.style.transform = `translate3d(${destX - startX}px, ${destY}px, 0) rotate(${rot}deg)`;
+        particle.style.opacity = '0';
+      });
+    }
+
+    setTimeout(() => {
+      container.remove();
+    }, 2200);
+  }
+
   function updateSummary() {
     const meta = packages[currentPkg];
     const sumPkg = document.getElementById('sumPkg');
@@ -154,6 +249,26 @@
       } else {
         sumList.innerHTML = '<ol>' + Array.from(selectedDishes).map(d => `<li><strong>${d}</strong></li>`).join('') + '</ol>';
       }
+    }
+
+    // Actualizar Canasta Gourmet
+    updateBasket(meta);
+
+    // Feedback Instantáneo de Menú Completo
+    const comanda = document.getElementById('stickyComanda');
+    const celebrationSlot = document.getElementById('comandaCelebration');
+
+    if (selectedDishes.size === meta.max) {
+      if (comanda && !comanda.classList.contains('completed-glow')) {
+        comanda.classList.add('completed-glow');
+        triggerConfetti();
+      }
+      if (celebrationSlot && celebrationSlot.innerHTML === '') {
+        celebrationSlot.innerHTML = `<div class="comanda-celebration-banner">✨ ¡Menú completo, listo para confirmar por WhatsApp!</div>`;
+      }
+    } else {
+      if (comanda) comanda.classList.remove('completed-glow');
+      if (celebrationSlot) celebrationSlot.innerHTML = '';
     }
   }
 

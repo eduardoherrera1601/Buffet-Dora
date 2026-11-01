@@ -573,7 +573,7 @@
   margin-bottom: 1.4rem;
 }
 
-/* ===== COTIZADOR EN 2 COLUMNAS ===== */
+/* ===== COTIZADOR EN 2 COLUMNAS (EXPERIENCIA MESA DE BANQUETE) ===== */
 .builder-layout {
   display: grid;
   grid-template-columns: 1.35fr 1fr;
@@ -609,6 +609,58 @@
   font-family: var(--font-serif);
   font-size: 1.4rem;
   font-weight: 800;
+}
+
+/* Canasta Gourmet Flotante con Barra de Progreso */
+.gourmet-basket-indicator {
+  background: #FAF7F2;
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  padding: 1.1rem 1.4rem;
+  margin-bottom: 1.4rem;
+  transition: all 0.35s ease;
+}
+.basket-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0.8rem;
+}
+.basket-icon {
+  font-size: 1.6rem;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.basket-text strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--text-main);
+}
+.basket-text span {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.basket-progress-wrap {
+  width: 100%;
+  height: 7px;
+  background: rgba(36, 26, 23, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.basket-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--pastel-rosa-deep), #FF6B97);
+  border-radius: 999px;
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+}
+.gourmet-basket-indicator.complete {
+  background: #EDFBF9;
+  border-color: rgba(13, 130, 126, 0.35);
+  box-shadow: 0 8px 24px -6px rgba(13, 130, 126, 0.2);
+}
+.gourmet-basket-indicator.complete .basket-progress-bar {
+  background: linear-gradient(90deg, var(--pastel-menta-deep), #22C55E);
 }
 
 .packages-row {
@@ -703,26 +755,56 @@
   margin-bottom: 2.2rem;
   padding-right: 0.4rem;
 }
+
+/* Pastillas de Guisados con Microanimación Pop & Pulso */
 .dish-pill {
-  background: rgba(255, 255, 255, 0.85);
+  position: relative;
+  background: rgba(255, 255, 255, 0.88);
   border: 1.5px solid var(--border-soft);
-  padding: 0.6rem 1.1rem;
+  padding: 0.65rem 1.15rem;
   border-radius: 999px;
   font-size: 0.86rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
 }
 .dish-pill:hover {
   border-color: var(--pastel-rosa-deep);
   background: #FFF;
+  transform: translateY(-2px);
+}
+.dish-pill:active {
+  transform: scale(0.94);
+}
+.dish-pill.pop-anim {
+  animation: pillPop 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes pillPop {
+  0% { transform: scale(1); }
+  35% { transform: scale(0.9); }
+  75% { transform: scale(1.08); }
+  100% { transform: scale(1); }
 }
 .dish-pill.selected {
   background: #FFF0F5;
   border-color: var(--pastel-rosa-deep);
   color: var(--pastel-rosa-deep);
   font-weight: 700;
+  box-shadow: 0 0 0 3px rgba(217, 72, 120, 0.18), 0 8px 18px -4px rgba(217, 72, 120, 0.3);
+}
+.dish-pill.selected::after {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 999px;
+  border: 2px solid rgba(217, 72, 120, 0.5);
+  animation: ripplePulse 0.55s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes ripplePulse {
+  0% { transform: scale(0.95); opacity: 1; }
+  100% { transform: scale(1.22); opacity: 0; }
 }
 
 .extras-grid {
@@ -745,16 +827,48 @@
   color: var(--pastel-rosa-deep);
 }
 
-/* ===== COMANDA STICKY ===== */
+/* ===== COMANDA STICKY (CRISTAL LÍQUIDO PREMIUM) ===== */
 .sticky-comanda {
   position: sticky;
   top: 5.5rem;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 28px;
   padding: 2.2rem;
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 30px 60px -15px rgba(36, 26, 23, 0.12),
+              inset 0 1px 0 rgba(255, 255, 255, 0.95),
+              0 0 0 1px rgba(36, 26, 23, 0.04);
+  transition: all 0.35s ease;
 }
+.sticky-comanda.completed-glow {
+  box-shadow: 0 0 35px rgba(13, 130, 126, 0.28), 0 30px 60px -15px rgba(36, 26, 23, 0.14);
+  border-color: rgba(13, 130, 126, 0.4);
+}
+
+.comanda-celebration-slot {
+  margin-bottom: 0.8rem;
+}
+.comanda-celebration-banner {
+  background: linear-gradient(135deg, #E6FBF8 0%, #D8F3F1 100%);
+  color: var(--pastel-menta-deep);
+  border: 1.5px solid rgba(13, 130, 126, 0.3);
+  border-radius: 14px;
+  padding: 0.75rem 1rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: bannerPop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 20px -6px rgba(13, 130, 126, 0.25);
+}
+@keyframes bannerPop {
+  0% { transform: scale(0.92); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
 .comanda-header {
   border-bottom: 1px dashed var(--border-soft);
   padding-bottom: 1rem;
@@ -795,6 +909,20 @@
   margin: 1rem 0;
 }
 .comanda-list-box ol { padding-left: 1.2rem; }
+.comanda-list-box ol li {
+  animation: comandaItemEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  margin-bottom: 5px;
+}
+@keyframes comandaItemEnter {
+  0% {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
 .comanda-perks {
   background: #FFFBF9;

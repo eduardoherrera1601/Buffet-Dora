@@ -304,6 +304,20 @@
             <h3 class="step-title">Selecciona tus Cazuelas (<span id="cCount">0</span> de <span id="cLimit">7</span>)</h3>
           </div>
 
+          <!-- Canasta Gourmet Flotante con Barra de Progreso -->
+          <div class="gourmet-basket-indicator" id="gourmetBasket">
+            <div class="basket-info">
+              <span class="basket-icon" id="basketIcon">🧺</span>
+              <div class="basket-text">
+                <strong id="basketTitle">Canasta Gourmet en Vivo</strong>
+                <span id="basketSubtitle">Te faltan 7 cazuelas para completar tu paquete</span>
+              </div>
+            </div>
+            <div class="basket-progress-wrap">
+              <div class="basket-progress-bar" id="basketProgressBar" style="width: 0%;"></div>
+            </div>
+          </div>
+
           <div class="dishes-filters">
             <button class="filter-btn active" onclick="filterDishes('all', this)">Todos (32)</button>
             <button class="filter-btn" onclick="filterDishes('carnes', this)">Carnes (12)</button>
@@ -336,12 +350,15 @@
           </div>
         </div>
 
-        <!-- COLUMNA DERECHA: RESUMEN COMANDA STICKY -->
-        <div class="sticky-comanda">
+        <!-- COLUMNA DERECHA: RESUMEN COMANDA STICKY (CRISTAL LÍQUIDO PREMIUM) -->
+        <div class="sticky-comanda" id="stickyComanda">
           <div class="comanda-header">
             <span class="comanda-badge">Comanda de Reserva</span>
             <h4 class="comanda-pkg" id="sumPkg">Paquete Fiesta Mexicana</h4>
           </div>
+
+          <!-- Banner y Efecto de Destello / Feedback Instantáneo -->
+          <div id="comandaCelebration" class="comanda-celebration-slot"></div>
 
           <div class="comanda-metric">
             <span>Invitados:</span>
