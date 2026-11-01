@@ -1528,6 +1528,655 @@
             color: var(--pastel-rosa-deep);
         }
 
+
+        /* ===== REDISEÑO EDITORIAL COMPACTO: ARMADOR DE BANQUETE (PASOS 1 AL 4) ===== */
+        .step-block-compact {
+            background: #FFFFFF;
+            border: 1px solid var(--border-sutil);
+            border-radius: 24px;
+            padding: 1.8rem 2.2rem;
+            margin-bottom: 1.8rem;
+            box-shadow: var(--shadow-editorial);
+            transition: border-color 0.25s ease;
+        }
+        @media (max-width: 768px) {
+            .step-block-compact {
+                padding: 1.4rem 1.15rem;
+                border-radius: 20px;
+            }
+        }
+        .step-header-compact {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-sutil);
+        }
+        .step-badge-pill {
+            background: var(--pastel-menta);
+            color: var(--pastel-menta-deep);
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+        }
+        .step-title-compact {
+            font-family: var(--font-serif);
+            font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+            font-weight: 700;
+            color: var(--texto-principal);
+            line-height: 1.25;
+            margin-bottom: 0.25rem;
+        }
+        .step-desc-compact {
+            font-family: var(--font-sans);
+            font-size: 0.92rem;
+            color: var(--texto-secundario);
+            line-height: 1.5;
+        }
+
+        /* Slider Box Compacto */
+        .guest-slider-box-compact {
+            background: var(--bg-crema);
+            border: 1px solid var(--border-sutil);
+            border-radius: 20px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .slider-top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+        .slider-presets-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .slider-label-text {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--texto-principal);
+        }
+        .preset-pills-row {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+        .preset-pill {
+            background: #FFFFFF;
+            border: 1px solid var(--border-sutil);
+            border-radius: 9999px;
+            padding: 0.3rem 0.85rem;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--texto-secundario);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .preset-pill:hover, .preset-pill.active-preset {
+            background: var(--pastel-rosa);
+            border-color: var(--pastel-rosa-deep);
+            color: var(--pastel-rosa-deep);
+            font-weight: 700;
+        }
+        .slider-current-display span {
+            font-family: var(--font-serif);
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--pastel-rosa-deep);
+            letter-spacing: -0.02em;
+        }
+        .custom-range-slider {
+            width: 100%;
+            height: 8px;
+            accent-color: var(--pastel-rosa-deep);
+            cursor: pointer;
+            border-radius: 9999px;
+            display: block;
+        }
+        .slider-ticks-row {
+            position: relative;
+            width: 100%;
+            height: 22px;
+            margin-top: 0.4rem;
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--texto-secundario);
+        }
+        .slider-ticks-row span {
+            position: absolute;
+            transform: translateX(-50%);
+        }
+
+        /* 3 Tarjetas Minimalistas de Paquetes */
+        .packages-minimal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+        @media (max-width: 900px) {
+            .packages-minimal-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .package-minimal-card {
+            background: #FFFFFF;
+            border: 1.5px solid var(--border-sutil);
+            border-radius: 20px;
+            padding: 1.35rem 1.3rem 1.25rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .package-minimal-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(217, 72, 120, 0.4);
+            box-shadow: 0 10px 24px -4px rgba(43, 33, 29, 0.07);
+        }
+        .package-minimal-card.selected-active {
+            border-color: var(--pastel-rosa-deep);
+            background: #FFFDFE;
+            box-shadow: 0 12px 28px -4px rgba(217, 72, 120, 0.2);
+            transform: translateY(-3px);
+        }
+        .package-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+        .pkg-tag-pill {
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.25rem 0.65rem;
+            border-radius: 9999px;
+            display: inline-block;
+        }
+        .pkg-tag-pill.menta { background: var(--pastel-menta); color: var(--pastel-menta-deep); }
+        .pkg-tag-pill.rosa { background: var(--pastel-rosa); color: var(--pastel-rosa-deep); }
+        .pkg-tag-pill.dorado { background: var(--pastel-dorado); color: #8C5D00; }
+
+        .pkg-active-indicator {
+            display: none;
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--pastel-rosa-deep);
+            background: rgba(217, 72, 120, 0.1);
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+        }
+        .package-minimal-card.selected-active .pkg-active-indicator {
+            display: inline-block;
+        }
+        .pkg-name {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--texto-principal);
+            margin-bottom: 0.25rem;
+        }
+        .pkg-capacity {
+            font-family: var(--font-sans);
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: var(--pastel-menta-deep);
+            margin-bottom: 0.9rem;
+        }
+        .pkg-features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+            flex-grow: 1;
+        }
+        .pkg-features-list li {
+            font-family: var(--font-sans);
+            font-size: 0.86rem;
+            color: var(--texto-secundario);
+            line-height: 1.45;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.45rem;
+        }
+        .pkg-check {
+            color: var(--pastel-menta-deep);
+            font-weight: 800;
+            font-size: 0.95rem;
+            line-height: 1.2;
+        }
+        .pkg-select-btn {
+            background: #FFFFFF;
+            border: 1px solid var(--border-sutil);
+            border-radius: 9999px;
+            padding: 0.65rem 1rem;
+            text-align: center;
+            font-family: var(--font-sans);
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--texto-principal);
+            transition: all 0.2s ease;
+        }
+        .package-minimal-card:hover .pkg-select-btn {
+            background: var(--pastel-rosa);
+            border-color: var(--pastel-rosa-deep);
+            color: var(--pastel-rosa-deep);
+        }
+        .package-minimal-card.selected-active .pkg-select-btn {
+            background: var(--pastel-rosa-deep);
+            color: #FFFFFF;
+            border-color: var(--pastel-rosa-deep);
+            box-shadow: 0 4px 14px rgba(217, 72, 120, 0.3);
+        }
+        .package-micro-perks {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            padding-top: 0.8rem;
+        }
+        .micro-perk-pill {
+            background: var(--bg-crema);
+            border: 1px solid var(--border-sutil);
+            border-radius: 9999px;
+            padding: 0.35rem 0.85rem;
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--texto-secundario);
+        }
+
+        /* ===== PASO 2: PILLS DE GUISADOS & CATEGORÍAS DESPLEGABLES ===== */
+        .guisados-tracker-bar {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            background: var(--bg-crema);
+            border: 1px solid var(--border-sutil);
+            border-radius: 16px;
+            padding: 0.85rem 1.25rem;
+            flex-wrap: wrap;
+        }
+        .tracker-count-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+        }
+        .tracker-numbers {
+            font-size: 1.05rem;
+            color: var(--pastel-rosa-deep);
+            font-weight: 800;
+        }
+        .tracker-progress-track {
+            flex-grow: 1;
+            min-width: 120px;
+            height: 8px;
+            background: rgba(43, 33, 29, 0.08);
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+        .tracker-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--pastel-menta-deep), var(--pastel-rosa-deep));
+            border-radius: 9999px;
+            transition: width 0.3s ease;
+        }
+
+        /* Acordeones Desplegables de Guisados */
+        .guisados-accordion-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            margin-top: 1rem;
+        }
+        .guisados-cat-group {
+            background: #FFFFFF;
+            border: 1px solid var(--border-sutil);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: border-color 0.2s ease;
+        }
+        .guisados-cat-group[open] {
+            border-color: rgba(43, 33, 29, 0.16);
+        }
+        .guisados-cat-header {
+            padding: 0.95rem 1.25rem;
+            background: #FAF7F2;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.8rem;
+            font-family: var(--font-sans);
+            user-select: none;
+            transition: background 0.2s ease;
+        }
+        .guisados-cat-header::-webkit-details-marker {
+            display: none;
+        }
+        .guisados-cat-header:hover {
+            background: #F5EFE8;
+        }
+        .cat-header-title {
+            font-weight: 700;
+            font-size: 0.98rem;
+            color: var(--texto-principal);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .cat-header-badge {
+            margin-left: auto;
+            background: #FFFFFF;
+            border: 1px solid var(--border-sutil);
+            padding: 0.2rem 0.65rem;
+            border-radius: 9999px;
+            font-size: 0.76rem;
+            font-weight: 600;
+            color: var(--texto-secundario);
+        }
+        .cat-header-chevron {
+            font-size: 1rem;
+            color: var(--texto-secundario);
+            transition: transform 0.25s ease;
+        }
+        .guisados-cat-group[open] .cat-header-chevron {
+            transform: rotate(180deg);
+        }
+        .guisados-pills-wrap {
+            padding: 1.1rem 1.25rem 1.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+            background: #FFFFFF;
+        }
+
+        /* Pill Compacta de Guisado */
+        .guisado-item-card.guisado-pill {
+            background: #FFFFFF;
+            border: 1px solid var(--border-sutil);
+            border-radius: 9999px;
+            padding: 0.48rem 1rem;
+            font-family: var(--font-sans);
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--texto-principal);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            user-select: none;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .guisado-item-card.guisado-pill:hover {
+            background: #FAF7F2;
+            border-color: rgba(43, 33, 29, 0.2);
+            transform: translateY(-1px);
+        }
+        /* ESTADO ACTIVO PASTEL SOLICITADO */
+        .guisado-item-card.guisado-pill.selected {
+            background: var(--pastel-rosa);
+            border-color: var(--pastel-rosa-deep);
+            color: var(--pastel-rosa-deep);
+            font-weight: 700;
+            box-shadow: 0 4px 14px rgba(217, 72, 120, 0.18);
+            transform: translateY(-1px);
+        }
+        .pill-check {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: var(--pastel-rosa-deep);
+            display: none;
+        }
+        .guisado-item-card.guisado-pill.selected .pill-check {
+            display: inline-block;
+        }
+
+        /* ===== PASO 3: EXTRAS COMPACTOS ===== */
+        .extras-minimal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        .extra-minimal-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-sutil);
+            border-radius: 18px;
+            padding: 1.1rem 1.2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .extra-minimal-card:hover {
+            border-color: rgba(43, 33, 29, 0.25);
+            background: #FAF7F2;
+            transform: translateY(-2px);
+        }
+        .extra-minimal-card.selected {
+            border-color: var(--pastel-menta-deep);
+            background: #F4FAF9;
+            box-shadow: 0 6px 18px rgba(13, 130, 126, 0.12);
+        }
+        .extra-checkbox-pill {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1.5px solid var(--border-sutil);
+            background: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: transparent;
+            flex-shrink: 0;
+            margin-top: 2px;
+            transition: all 0.2s ease;
+        }
+        .extra-minimal-card.selected .extra-checkbox-pill {
+            background: var(--pastel-menta-deep);
+            border-color: var(--pastel-menta-deep);
+            color: #FFFFFF;
+        }
+        .extra-title {
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            color: var(--texto-principal);
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+        .extra-desc {
+            font-family: var(--font-sans);
+            font-size: 0.84rem;
+            color: var(--texto-secundario);
+            line-height: 1.45;
+            margin: 0;
+        }
+
+        /* ===== PASO 4: FORMULARIO Y RESUMEN EDITORIAL ===== */
+        .paso4-unified-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        @media (max-width: 900px) {
+            .paso4-unified-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        .quote-form-compact {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+        }
+        .form-inputs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        @media (max-width: 600px) {
+            .form-inputs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .form-group-compact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+        .form-group-compact label {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--texto-principal);
+        }
+        .form-group-compact input, .form-group-compact select {
+            background: var(--bg-crema);
+            border: 1px solid var(--border-sutil);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            font-family: var(--font-sans);
+            font-size: 0.92rem;
+            color: var(--texto-principal);
+            outline: none;
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+        .form-group-compact input:focus, .form-group-compact select:focus {
+            border-color: var(--pastel-rosa-deep);
+            background: #FFFFFF;
+        }
+        .btn-whatsapp-quote {
+            background: #25D366;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 9999px;
+            padding: 1rem 1.8rem;
+            font-family: var(--font-sans);
+            font-size: 1.05rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            cursor: pointer;
+            box-shadow: 0 10px 24px -4px rgba(37, 211, 102, 0.4);
+            transition: all 0.2s ease;
+        }
+        .btn-whatsapp-quote:hover {
+            transform: translateY(-2px);
+            background: #20BD5A;
+            box-shadow: 0 14px 28px -4px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Resumen en Vivo */
+        .quote-summary-card {
+            background: var(--bg-crema);
+            border: 1px solid var(--border-sutil);
+            border-radius: 20px;
+            padding: 1.5rem 1.6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+        .summary-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-sutil);
+        }
+        .summary-badge-live {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--pastel-menta-deep);
+        }
+        .summary-live-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--pastel-menta-deep);
+            box-shadow: 0 0 0 3px rgba(13, 130, 126, 0.2);
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .summary-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        .summary-item-label {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--texto-secundario);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .summary-item-val {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: var(--texto-principal);
+        }
+        .summary-item-val.highlight {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--pastel-rosa-deep);
+        }
+        .summary-dishes-wrap {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--texto-principal);
+            max-height: 200px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+        .summary-benefits-text, .summary-extras-text {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--texto-secundario);
+            line-height: 1.45;
+            margin: 0;
+        }
+
 </style></head>
 <body>
 
@@ -1702,390 +2351,390 @@
              2. EL ARMADOR DE BANQUETE UNIFICADO
              (PASO 1 -> PASO 2 -> PASO 3 -> PASO 4)
              ========================================== -->
-        <section class="section-folk-block" id="arma-tu-banquete" style="border-color: var(--rosa-mexicano); background: rgba(255, 253, 249, 0.99);">
+        <section class="section-folk-block" id="arma-tu-banquete">
             <div class="section-folk-heading">
-                <span class="eyebrow-folk">Presupuesto en Vivo & Sin Enredos</span>
-                <h2>Arma tu Banquete Mexicano <span>Paso a Paso</span></h2>
-                <p style="font-size: 1.15rem; color: var(--chocolate-suave); margin-top: 0.5rem;">
-                    1. Elige tu paquete por invitados • 2. Selecciona tus cazuelas con límite exacto • 3. Agrega extras • 4. Confirma por WhatsApp.
+                <span class="eyebrow-folk">Cotizador Inteligente & en Vivo</span>
+                <h2>Arma tu Banquete <span>Paso a Paso</span></h2>
+                <p class="section-editorial-subtitle">
+                    Configura tu evento en minutos: elige tu paquete, selecciona tus cazuelas de barro con límite exacto y recibe tu cotización directa por WhatsApp.
                 </p>
             </div>
 
-            <!-- PASO 1: ELIGE TU PAQUETE POR INVITADOS -->
-            <div class="step-block" id="paso-1">
-                <span class="step-badge">Paso 1 de 4</span>
-                <h3 class="step-title">¿Para cuántas personas es tu evento?</h3>
-                <p class="step-desc">Elige directamente tu paquete o mueve la barra de invitados. Al seleccionarlo se desbloquea el número exacto de guisados incluidos.</p>
+            <!-- PASO 1: PERSONAS Y PAQUETES MINIMALISTAS -->
+            <div class="step-block-compact" id="paso-1">
+                <div class="step-header-compact">
+                    <span class="step-badge-pill">Paso 1 de 4</span>
+                    <div>
+                        <h3 class="step-title-compact">¿Para cuántas personas es tu evento?</h3>
+                        <p class="step-desc-compact">Elige tu paquete o ajusta la barra. Al seleccionarlo se desbloquea el número exacto de cazuelas incluidas.</p>
+                    </div>
+                </div>
 
-                <!-- Slider interactivo de personas (CALIBRADO AL 100% CON LA ESCALA VISUAL) -->
-                <div style="background: linear-gradient(135deg, #FFFDF8 0%, #FFF5EB 100%); border: 2px solid #E2CCA8; border-radius: 18px; padding: 1.4rem 1.8rem; margin-bottom: 1.8rem; box-shadow: 0 4px 16px rgba(36, 17, 8, 0.04);">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.9rem; flex-wrap: wrap; gap: 0.6rem;">
-                        <div style="display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;">
-                            <span style="font-family: var(--font-folk); font-size: 1rem; font-weight: 800; color: var(--chocolate-texto);">👥 Ajustar Invitados:</span>
-                            <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
-                                <button type="button" onclick="setGuestsFromPreset(40)" style="background: #FFFFFF; border: 1.5px solid #E6D7C5; border-radius: 20px; padding: 0.25rem 0.75rem; font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; color: #7A5540; cursor: pointer;">40 pers.</button>
-                                <button type="button" onclick="setGuestsFromPreset(65)" style="background: #FFFFFF; border: 1.5px solid var(--rosa-mexicano); border-radius: 20px; padding: 0.25rem 0.75rem; font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; color: var(--rosa-mexicano); cursor: pointer;">⭐ 65 pers.</button>
-                                <button type="button" onclick="setGuestsFromPreset(100)" style="background: #FFFFFF; border: 1.5px solid #E6D7C5; border-radius: 20px; padding: 0.25rem 0.75rem; font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; color: #7A5540; cursor: pointer;">100 pers.</button>
-                                <button type="button" onclick="setGuestsFromPreset(150)" style="background: #FFFFFF; border: 1.5px solid #E6D7C5; border-radius: 20px; padding: 0.25rem 0.75rem; font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; color: #7A5540; cursor: pointer;">150+ pers.</button>
+                <!-- Slider Compacto de Invitados -->
+                <div class="guest-slider-box-compact">
+                    <div class="slider-top-row">
+                        <div class="slider-presets-wrap">
+                            <span class="slider-label-text">👥 Invitados estimados:</span>
+                            <div class="preset-pills-row">
+                                <button type="button" class="preset-pill" onclick="setGuestsFromPreset(40)">40 pers.</button>
+                                <button type="button" class="preset-pill active-preset" onclick="setGuestsFromPreset(65)">⭐ 65 pers.</button>
+                                <button type="button" class="preset-pill" onclick="setGuestsFromPreset(100)">100 pers.</button>
+                                <button type="button" class="preset-pill" onclick="setGuestsFromPreset(150)">150+ pers.</button>
                             </div>
                         </div>
-                        <span id="sliderGuestCountDisplay" style="font-family: var(--font-title); font-size: 2.2rem; font-weight: 900; color: var(--rosa-mexicano);">65 Personas</span>
+                        <div class="slider-current-display">
+                            <span id="sliderGuestCountDisplay">65 Personas</span>
+                        </div>
                     </div>
 
                     <!-- Range input calibrado con escala exacta de 0 a 11 -->
-                    <input type="range" id="mainGuestSlider" min="0" max="11" step="1" value="3" oninput="handleSliderIndexChange(this.value)" style="width: 100%; height: 10px; accent-color: var(--rosa-mexicano); cursor: pointer;">
+                    <input type="range" id="mainGuestSlider" min="0" max="11" step="1" value="3" oninput="handleSliderIndexChange(this.value)" class="custom-range-slider">
                     
-                    <!-- Marcadores alineados matemáticamente con los pasos del slider -->
-                    <div style="position: relative; width: 100%; height: 26px; margin-top: 0.5rem; font-family: var(--font-folk); font-size: 0.82rem; font-weight: 800;">
-                        <span style="position: absolute; left: 0%; transform: translateX(0); color: #7A5540;">30 pers.</span>
-                        <span style="position: absolute; left: 18.2%; transform: translateX(-50%); color: var(--talavera-azul);">50</span>
-                        <span style="position: absolute; left: 36.4%; transform: translateX(-50%); color: var(--rosa-mexicano);">⭐ 80</span>
-                        <span style="position: absolute; left: 63.6%; transform: translateX(-50%); color: var(--talavera-azul);">150</span>
-                        <span style="position: absolute; right: 0%; transform: translateX(0); color: #7A5540;">400+ pers.</span>
+                    <!-- Marcadores alineados matemáticamente con los 12 pasos -->
+                    <div class="slider-ticks-row">
+                        <span style="left: 0%;">30</span>
+                        <span style="left: 18.2%;">50</span>
+                        <span style="left: 36.4%; color: var(--pastel-rosa-deep); font-weight: 800;">⭐ 80</span>
+                        <span style="left: 63.6%;">150</span>
+                        <span style="right: 0%;">400+</span>
                     </div>
                 </div>
 
-                <!-- 3 Tarjetas de Paquetes Seleccionables -->
-                <div class="packages-grid">
+                <!-- 3 Tarjetas de Paquetes Minimalistas -->
+                <div class="packages-minimal-grid">
                     <!-- PAQUETE 1: 30 A 50 -->
-                    <div class="package-card" id="card-pkg-30-50" onclick="choosePackage('30-50')">
-                        <div class="package-selected-marker">✓ PAQUETE SELECCIONADO</div>
-                        <div>
-                            <span class="package-badge azul">Reunión Familiar</span>
-                            <h4 class="package-title">Paquete Tradicional</h4>
-                            <div class="package-capacity">👥 De 30 a 50 Personas</div>
-
-                            <ul class="package-features">
-                                <li class="package-feature-item">
-                                    <span class="package-feature-icon">🥘</span>
-                                    <div><strong>7 Guisados en Cazuela</strong> a elegir en el Paso 2 + Arroz o Frijoles refritos.</div>
-                                </li>
-                                <li class="package-feature-item">
-                                    <span class="package-feature-icon">🌮</span>
-                                    <div><strong>Botana de Entrada:</strong> Chicharrón duro, tacos dorados y salsa tradicional de jitomate.</div>
-                                </li>
-                                <li class="package-feature-item">
-                                    <span class="package-feature-icon">🍹</span>
-                                    <div><strong>1 Vitrolero de 20 Litros:</strong> Agua fresca natural artesanal (horchata, jamaica o frutas).</div>
-                                </li>
-                                <li class="package-feature-item">
-                                    <span class="package-feature-icon">🫓</span>
-                                    <div><strong>Tortillas Calientes:</strong> De máquina incluidas (opción de comalera con costo extra).</div>
-                                </li>
-                            </ul>
+                    <div class="package-minimal-card" id="card-pkg-30-50" onclick="choosePackage('30-50')">
+                        <div class="package-card-header">
+                            <span class="pkg-tag-pill menta">Reunión Familiar</span>
+                            <div class="pkg-active-indicator">✓ Seleccionado</div>
                         </div>
-                        <button type="button" class="btn-turquesa-3d" style="width: 100%; justify-content: center; margin-top: 1rem;">
-                            Elegir este Paquete (7 Guisados)
-                        </button>
+                        <h4 class="pkg-name">Paquete Tradicional</h4>
+                        <div class="pkg-capacity">👥 De 30 a 50 Personas</div>
+                        
+                        <ul class="pkg-features-list">
+                            <li><span class="pkg-check">✓</span> <strong>7 Guisados en Cazuela</strong> a elegir + Arroz o Frijoles</li>
+                            <li><span class="pkg-check">✓</span> <strong>Botana Mexicana:</strong> Chicharrón duro, tacos dorados y salsa</li>
+                            <li><span class="pkg-check">✓</span> <strong>1 Vitrolero de 20L</strong> de agua fresca de temporada</li>
+                            <li><span class="pkg-check">✓</span> <strong>Tortillas de máquina</strong> calientitas y salsas caseras</li>
+                        </ul>
+
+                        <div class="pkg-select-btn">Elegir Paquete (7 Guisados)</div>
                     </div>
 
-                    <!-- PAQUETE 2: 50 A 80 (DESTACADO & ACTIVO POR DEFECTO) -->
-                    <div class="package-card featured selected-active" id="card-pkg-50-80" onclick="choosePackage('50-80')">
-                        <span class="package-ribbon-featured">⭐ MÁS POPULAR</span>
-                        <div class="package-selected-marker">✓ PAQUETE SELECCIONADO</div>
-                        <div>
-                            <span class="package-badge rosa">Fiestas & Celebraciones</span>
-                            <h4 class="package-title">Paquete Fiesta Mexicana</h4>
-                            <div class="package-capacity">👥 De 50 a 80 Personas</div>
-
-                            <ul class="package-features">
-                                <li class="package-feature-item">
-                                    <span class="package-feature-icon">🥘</span>
-                                    <div><strong>7 Guisados en Cazuela</strong> a elegir en el Paso 2 + Arroz o Frijolitos de rancho.</div>
-                                </li>
-                                <li class="package-feature-item">
-                                    <span class="package-feature-icon">🥗</span>
-                                    <div><strong>¡Incluye Ensalada de Cueritos!</strong> Chicharrón duro, tacos dorados, cueritos y salsas.</div>
-                                </li>
-                                <li class="package-feature-item">
-                                    <span class="package-feature-icon">🍹</span>
-                                    <div><strong>2 Vitroleros de 20L (40L total):</strong> ¡1 vitrolero extra incluido de cortesía con 2 sabores!</div>
-                                </li>
-                                <li class="package-feature-item">
-                                    <span class="package-feature-icon">🫓</span>
-                                    <div><strong>¡Tortillas al Comal Hechas a Mano!:</strong> Comaleras en vivo echando tortillas calientitas.</div>
-                                </li>
-                            </ul>
+                    <!-- PAQUETE 2: 50 A 80 (MÁS POPULAR) -->
+                    <div class="package-minimal-card featured selected-active" id="card-pkg-50-80" onclick="choosePackage('50-80')">
+                        <div class="package-card-header">
+                            <span class="pkg-tag-pill rosa">⭐ MÁS POPULAR • FIESTAS</span>
+                            <div class="pkg-active-indicator">✓ Seleccionado</div>
                         </div>
-                        <button type="button" class="btn-turquesa-3d" style="width: 100%; justify-content: center; margin-top: 1rem; background: var(--rosa-mexicano); box-shadow: 0 5px 0 var(--rosa-mexicano-dark);">
-                            Elegir este Paquete (7 Guisados)
-                        </button>
+                        <h4 class="pkg-name">Paquete Fiesta Mexicana</h4>
+                        <div class="pkg-capacity">👥 De 50 a 80 Personas</div>
+                        
+                        <ul class="pkg-features-list">
+                            <li><span class="pkg-check">✓</span> <strong>7 Guisados en Cazuela</strong> a elegir + Arroz o Frijoles</li>
+                            <li><span class="pkg-check">✓</span> <strong>¡Ensalada de Cueritos!</strong> con duro y botana completa</li>
+                            <li><span class="pkg-check">✓</span> <strong>2 Vitroleros (40L total):</strong> 2 sabores de fruta natural</li>
+                            <li><span class="pkg-check">✓</span> <strong>¡Tortillas al Comal en Vivo!:</strong> Comaleras haciendo al momento</li>
+                        </ul>
+
+                        <div class="pkg-select-btn">Elegir Paquete (7 Guisados)</div>
                     </div>
 
                     <!-- PAQUETE 3: 80+ -->
-                    <div class="package-card" id="card-pkg-80" onclick="choosePackage('80+')">
-                        <div class="package-selected-marker">✓ PAQUETE SELECCIONADO</div>
-                        <div>
-                            <span class="package-badge dorado">Bodas, XV Años & Empresas</span>
-                            <h4 class="package-title">Paquete Gran Banquete</h4>
-                            <div class="package-capacity">👥 De 80 Personas en Adelante</div>
-
-                            <ul class="package-features">
-                                <li class="package-feature-item">
-                                    <span class="package-feature-icon">🥘</span>
-                                    <div><strong>8 Guisados en Cazuela (¡1 Cazuela Más!):</strong> Mayor variedad + Arroz o Frijoles.</div>
-                                </li>
-                                <li class="package-feature-item">
-                                    <span class="package-feature-icon">🌮</span>
-                                    <div><strong>Botana Monumental Completa:</strong> Ensalada de cueritos, duro, tacos dorados y totopos.</div>
-                                </li>
-                                <li class="package-feature-item">
-                                    <span class="package-feature-icon">🍹</span>
-                                    <div><strong>2 Vitroleros de 20 Litros:</strong> Aguas naturales frescas de frutas de temporada.</div>
-                                </li>
-                                <li class="package-feature-item">
-                                    <span class="package-feature-icon">🫓</span>
-                                    <div><strong>Tortillas al Comal o Máquina:</strong> A tu elección según el ritmo de tu celebración.</div>
-                                </li>
-                            </ul>
+                    <div class="package-minimal-card" id="card-pkg-80" onclick="choosePackage('80+')">
+                        <div class="package-card-header">
+                            <span class="pkg-tag-pill dorado">Bodas, XV & Empresas</span>
+                            <div class="pkg-active-indicator">✓ Seleccionado</div>
                         </div>
-                        <button type="button" class="btn-turquesa-3d" style="width: 100%; justify-content: center; margin-top: 1rem;">
-                            Elegir este Paquete (8 Guisados)
-                        </button>
+                        <h4 class="pkg-name">Paquete Gran Banquete</h4>
+                        <div class="pkg-capacity">👥 De 80 Personas en Adelante</div>
+                        
+                        <ul class="pkg-features-list">
+                            <li><span class="pkg-check">✓</span> <strong>8 Guisados en Cazuela (¡1 Extra!):</strong> Máxima variedad</li>
+                            <li><span class="pkg-check">✓</span> <strong>Botana Monumental:</strong> Ensalada cueritos, totopos y duros</li>
+                            <li><span class="pkg-check">✓</span> <strong>2 Vitroleros de 20 Litros:</strong> Aguas de fruta natural</li>
+                            <li><span class="pkg-check">✓</span> <strong>Tortillas a Elegir:</strong> Al comal en vivo o máquina</li>
+                        </ul>
+
+                        <div class="pkg-select-btn">Elegir Paquete (8 Guisados)</div>
                     </div>
                 </div>
 
-                <!-- Banner de notas de calidad -->
-                <div class="package-notes-banner">
-                    <div class="package-note-item">
-                        <span style="font-size: 1.6rem;">🧀</span>
-                        <div>
-                            <strong>Auténtico Queso Fresco</strong>
-                            <p>En Chilaquiles y Famosas Tortas usamos únicamente queso fresco de rancho 100% natural.</p>
-                        </div>
-                    </div>
-                    <div class="package-note-item">
-                        <span style="font-size: 1.6rem;">🍲</span>
-                        <div>
-                            <strong>Menudo a partir de 30 Personas</strong>
-                            <p>Menudo tradicional preparado a partir de 30 personas (tortilla a mano o máquina a convenir).</p>
-                        </div>
-                    </div>
-                    <div class="package-note-item">
-                        <span style="font-size: 1.6rem;">📍</span>
-                        <div>
-                            <strong>Cobertura León & Foráneos</strong>
-                            <p>Servicio en León, Gto. Para eventos fuera de la ciudad se cotiza traslado y logística por separado.</p>
-                        </div>
-                    </div>
+                <!-- Micro-pills de calidad -->
+                <div class="package-micro-perks">
+                    <span class="micro-perk-pill">🧀 Queso fresco de rancho 100% natural</span>
+                    <span class="micro-perk-pill">🍲 Menudo tradicional desde 30 personas</span>
+                    <span class="micro-perk-pill">📍 Cobertura León & eventos foráneos</span>
                 </div>
             </div>
 
-            <!-- PASO 2: ELIGE TUS GUISADOS CON LÍMITE EXACTO -->
-            <div class="step-block" id="paso-2">
-                <span class="step-badge">Paso 2 de 4</span>
-                <h3 class="step-title">Selecciona tus Guisados en Cazuela de Barro</h3>
-                <p class="step-desc">Tu paquete seleccionado te permite elegir hasta <strong id="maxGuisadosLabel" style="color: var(--rosa-mexicano); font-size: 1.15rem;">7 guisados</strong> incluidos. Haz clic en las fichas para armar tu cazuelero.</p>
-
-                <!-- Barra de Progreso y Contador Dinámico -->
-                <div class="guisado-progress-box">
-                    <div class="progress-info">
-                        <span>Guisados Elegidos:</span>
-                        <strong><span id="chosenCountDisplay">0</span> / <span id="limitCountDisplay">7</span></strong>
+            <!-- PASO 2: LOS 32 GUISADOS COMO PILLS COMPACTAS CON CATEGORÍAS DESPLEGABLES -->
+            <div class="step-block-compact" id="paso-2">
+                <div class="step-header-compact">
+                    <span class="step-badge-pill">Paso 2 de 4</span>
+                    <div>
+                        <h3 class="step-title-compact">Selecciona tus Guisados en Cazuela</h3>
+                        <p class="step-desc-compact">Tu paquete incluye <strong id="maxGuisadosLabel" style="color: var(--pastel-rosa-deep);">7 guisados</strong>. Toca las etiquetas para seleccionarlas en color pastel.</p>
                     </div>
-                    
-                    <div class="progress-bar-track">
-                        <div class="progress-bar-fill" id="progressBarFill"></div>
-                    </div>
+                </div>
 
+                <!-- Tracker de Progreso Compacto -->
+                <div class="guisados-tracker-bar">
+                    <div class="tracker-count-wrap">
+                        <span class="tracker-label">Cazuelas Elegidas:</span>
+                        <strong class="tracker-numbers"><span id="chosenCountDisplay">0</span> / <span id="limitCountDisplay">7</span></strong>
+                    </div>
+                    <div class="tracker-progress-track">
+                        <div class="tracker-progress-fill" id="progressBarFill"></div>
+                    </div>
                     <div class="progress-status-badge" id="progressStatusBadge">
                         <span>⏳ Faltan <span id="missingCountDisplay">7</span> por elegir</span>
                     </div>
                 </div>
 
-                <!-- Alerta cuando se completa el cupo -->
-                <div class="guisado-limit-alert" id="limitAlertBox">
+                <!-- Alerta de Límite Alcanzado -->
+                <div class="guisado-limit-alert" id="limitAlertBox" style="display: none;">
                     <span>⚠️</span>
-                    <span id="limitAlertText">¡Ya alcanzaste tus 7 guisados incluidos! Si deseas cambiar alguno, haz clic sobre el guisado seleccionado para quitarlo, o agrégalo como cazuela extra en el Paso 3.</span>
+                    <span id="limitAlertText">¡Ya alcanzaste el límite de guisados incluidos en tu paquete! Deselecciona alguno para cambiarlo, o agrégalo como extra en el Paso 3.</span>
                 </div>
 
-                <!-- Filtros de Categoría -->
-                <div class="filter-tabs-row">
-                    <button class="folk-tab-btn active" data-filter="all">Todos los Guisados (32)</button>
-                    <button class="folk-tab-btn" data-filter="carnes">🥩 Carnes y Guisos (12)</button>
-                    <button class="folk-tab-btn" data-filter="antojitos">🌶️ Antojitos de Tradición (9)</button>
-                    <button class="folk-tab-btn" data-filter="verduras">🥬 Verduras & Hongos (7)</button>
-                    <button class="folk-tab-btn" data-filter="bases">🍚 Arroces & Frijoles (5)</button>
+                <!-- Pestañas de Filtro Rápido -->
+                <div class="filter-tabs-row" style="margin: 1.2rem 0 1rem;">
+                    <button type="button" class="folk-tab-btn active" data-filter="all">Todas las Opciones (33)</button>
+                    <button type="button" class="folk-tab-btn" data-filter="carnes">🥩 Carnes & Aves</button>
+                    <button type="button" class="folk-tab-btn" data-filter="antojitos">🌮 Antojitos</button>
+                    <button type="button" class="folk-tab-btn" data-filter="verduras">🍄 Verduras</button>
+                    <button type="button" class="folk-tab-btn" data-filter="bases">🍚 Arroces & Frijoles</button>
                 </div>
 
-                <!-- Grid de los 32 Guisados -->
-                <div class="guisados-grid-32" id="guisadosGrid">
-                    <!-- Carnes (12) -->
-                    <div class="guisado-item-card" data-cat="carnes" data-name="Puerco en chile morita"><span class="guisado-item-name">🥩 Puerco en chile morita</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="carnes" data-name="Puerco en salsa de 3 chiles"><span class="guisado-item-name">🥩 Puerco salsa 3 chiles</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="carnes" data-name="Mole rojo casero con pollo"><span class="guisado-item-name">🍗 Mole rojo con pollo</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="carnes" data-name="Mole verde con pollo"><span class="guisado-item-name">🍗 Mole verde con pollo</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="carnes" data-name="Bistec con nopales de rancho"><span class="guisado-item-name">🥩 Bistec con nopales</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="carnes" data-name="Bistec en chile pasilla"><span class="guisado-item-name">🥩 Bistec en pasilla</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="carnes" data-name="Bistec a la mexicana casero"><span class="guisado-item-name">🥩 Bistec a la mexicana</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="carnes" data-name="Pollo a la mexicana jugoso"><span class="guisado-item-name">🍗 Pollo a la mexicana</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="carnes" data-name="Pollo en crema de poblano"><span class="guisado-item-name">🍗 Pollo crema poblano</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="carnes" data-name="Pollo en crema de chile güero"><span class="guisado-item-name">🍗 Pollo crema chile güero</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="carnes" data-name="Carne deshebrada sazonada"><span class="guisado-item-name">🥩 Carne deshebrada</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="carnes" data-name="Picadillo casero tradicional"><span class="guisado-item-name">🥩 Picadillo casero</span><div class="guisado-check-box">✓</div></div>
+                <!-- Contenedor de Guisados con Categorías Desplegables -->
+                <div id="guisadosGrid" class="guisados-accordion-container">
+                    
+                    <!-- CATEGORÍA 1: CARNES & AVES (12) -->
+                    <details open class="guisados-cat-group" data-group="carnes">
+                        <summary class="guisados-cat-header">
+                            <span class="cat-header-title">🥩 Carnes, Aves & Especialidades</span>
+                            <span class="cat-header-badge">12 opciones</span>
+                            <span class="cat-header-chevron">▾</span>
+                        </summary>
+                        <div class="guisados-pills-wrap">
+                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Puerco en chile morita"><span class="pill-icon">🥩</span><span class="pill-text">Puerco en chile morita</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Puerco en salsa de 3 chiles"><span class="pill-icon">🥩</span><span class="pill-text">Puerco en salsa 3 chiles</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Mole rojo casero con pollo"><span class="pill-icon">🍗</span><span class="pill-text">Mole rojo con pollo</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Mole verde con pollo"><span class="pill-icon">🍗</span><span class="pill-text">Mole verde con pollo</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Bistec con nopales de rancho"><span class="pill-icon">🥩</span><span class="pill-text">Bistec con nopales</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Bistec en chile pasilla"><span class="pill-icon">🥩</span><span class="pill-text">Bistec en chile pasilla</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Bistec a la mexicana casero"><span class="pill-icon">🥩</span><span class="pill-text">Bistec a la mexicana</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Pollo a la mexicana jugoso"><span class="pill-icon">🍗</span><span class="pill-text">Pollo a la mexicana</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Pollo en crema de poblano"><span class="pill-icon">🍗</span><span class="pill-text">Pollo en crema poblano</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Pollo en crema de chile güero"><span class="pill-icon">🍗</span><span class="pill-text">Pollo crema chile güero</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Carne deshebrada sazonada"><span class="pill-icon">🥩</span><span class="pill-text">Carne deshebrada sazonada</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Picadillo casero tradicional"><span class="pill-icon">🥩</span><span class="pill-text">Picadillo tradicional</span><span class="pill-check">✓</span></div>
+                        </div>
+                    </details>
 
-                    <!-- Antojitos (9) -->
-                    <div class="guisado-item-card" data-cat="antojitos" data-name="Rajas poblanas con crema"><span class="guisado-item-name">🌶️ Rajas con crema</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="antojitos" data-name="Chorizo con papas de la casa"><span class="guisado-item-name">🌶️ Chorizo con papas</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="antojitos" data-name="Chorizo a la mexicana"><span class="guisado-item-name">🌶️ Chorizo mexicana</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="antojitos" data-name="Chicharrón prensado guisado"><span class="guisado-item-name">🥓 Chicharrón prensado</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="antojitos" data-name="Chicharrón duro en salsa"><span class="guisado-item-name">🥓 Chicharrón en salsa</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="antojitos" data-name="Rellena tradicional de cazuela"><span class="guisado-item-name">🌶️ Rellena tradicional</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="antojitos" data-name="Salchichas guisadas a la mexicana"><span class="guisado-item-name">🌭 Salchichas guisadas</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="antojitos" data-name="Huevo con chile de molcajete"><span class="guisado-item-name">🍳 Huevo con chile</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="antojitos" data-name="Huevo con salchicha casero"><span class="guisado-item-name">🍳 Huevo con salchicha</span><div class="guisado-check-box">✓</div></div>
+                    <!-- CATEGORÍA 2: ANTOJITOS & CHICHARRÓN (9) -->
+                    <details open class="guisados-cat-group" data-group="antojitos">
+                        <summary class="guisados-cat-header">
+                            <span class="cat-header-title">🌮 Antojitos Tradicionales & Chicharrón</span>
+                            <span class="cat-header-badge">9 opciones</span>
+                            <span class="cat-header-chevron">▾</span>
+                        </summary>
+                        <div class="guisados-pills-wrap">
+                            <div class="guisado-item-card guisado-pill" data-cat="antojitos" data-name="Rajas poblanas con crema"><span class="pill-icon">🌶️</span><span class="pill-text">Rajas poblanas con crema</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="antojitos" data-name="Chorizo con papas de la casa"><span class="pill-icon">🥔</span><span class="pill-text">Chorizo con papas</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="antojitos" data-name="Chorizo a la mexicana"><span class="pill-icon">🍅</span><span class="pill-text">Chorizo a la mexicana</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="antojitos" data-name="Chicharrón prensado guisado"><span class="pill-icon">🥘</span><span class="pill-text">Chicharrón prensado</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="antojitos" data-name="Chicharrón duro en salsa"><span class="pill-icon">🥘</span><span class="pill-text">Chicharrón duro en salsa</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="antojitos" data-name="Rellena tradicional de cazuela"><span class="pill-icon">🏺</span><span class="pill-text">Rellena tradicional</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="antojitos" data-name="Salchichas guisadas a la mexicana"><span class="pill-icon">🌭</span><span class="pill-text">Salchichas a la mexicana</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="antojitos" data-name="Huevo con chile de molcajete"><span class="pill-icon">🍳</span><span class="pill-text">Huevo en salsa molcajete</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="antojitos" data-name="Huevo con salchicha casero"><span class="pill-icon">🍳</span><span class="pill-text">Huevo con salchicha</span><span class="pill-check">✓</span></div>
+                        </div>
+                    </details>
 
-                    <!-- Verduras (7) -->
-                    <div class="guisado-item-card" data-cat="verduras" data-name="Champiñones frescos en crema"><span class="guisado-item-name">🍄 Champiñones crema</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="verduras" data-name="Champiñones guisados al ajillo"><span class="guisado-item-name">🍄 Champiñones ajillo</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="verduras" data-name="Nopales guisados tradicionales"><span class="guisado-item-name">🌵 Nopales guisados</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="verduras" data-name="Nopales en ensalada fresca"><span class="guisado-item-name">🥗 Nopales ensalada</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="verduras" data-name="Papas guisadas con cebollita"><span class="guisado-item-name">🥔 Papas guisadas</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="verduras" data-name="Papas con nopales tiernos"><span class="guisado-item-name">🥔 Papas con nopales</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="verduras" data-name="Garbanzos guisados en caldillo"><span class="guisado-item-name">🫘 Garbanzos guisados</span><div class="guisado-check-box">✓</div></div>
+                    <!-- CATEGORÍA 3: VERDURAS & CHAMPIÑONES (7) -->
+                    <details open class="guisados-cat-group" data-group="verduras">
+                        <summary class="guisados-cat-header">
+                            <span class="cat-header-title">🍄 Champiñones, Nopales & Verduras</span>
+                            <span class="cat-header-badge">7 opciones</span>
+                            <span class="cat-header-chevron">▾</span>
+                        </summary>
+                        <div class="guisados-pills-wrap">
+                            <div class="guisado-item-card guisado-pill" data-cat="verduras" data-name="Champiñones frescos en crema"><span class="pill-icon">🍄</span><span class="pill-text">Champiñones en crema</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="verduras" data-name="Champiñones guisados al ajillo"><span class="pill-icon">🍄</span><span class="pill-text">Champiñones al ajillo</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="verduras" data-name="Nopales guisados tradicionales"><span class="pill-icon">🌵</span><span class="pill-text">Nopales guisados</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="verduras" data-name="Nopales en ensalada fresca"><span class="pill-icon">🥗</span><span class="pill-text">Nopales en ensalada fresca</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="verduras" data-name="Papas guisadas con cebollita"><span class="pill-icon">🥔</span><span class="pill-text">Papas con cebollita</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="verduras" data-name="Papas con nopales tiernos"><span class="pill-icon">🥔</span><span class="pill-text">Papas con nopales tiernos</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="verduras" data-name="Garbanzos guisados en caldillo"><span class="pill-icon">🍲</span><span class="pill-text">Garbanzos en caldillo</span><span class="pill-check">✓</span></div>
+                        </div>
+                    </details>
 
-                    <!-- Bases (5) -->
-                    <div class="guisado-item-card" data-cat="bases" data-name="Arroz blanco esponjadito"><span class="guisado-item-name">🍚 Arroz blanco</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="bases" data-name="Arroz rojo tradicional"><span class="guisado-item-name">🍚 Arroz rojo</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="bases" data-name="Frijoles refritos de la casa"><span class="guisado-item-name">🫘 Frijoles refritos</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="bases" data-name="Frijoles enchilados de rancho"><span class="guisado-item-name">🫘 Frijoles enchilados</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="bases" data-name="Frijoles de la olla calientitos"><span class="guisado-item-name">🫘 Frijoles de la olla</span><div class="guisado-check-box">✓</div></div>
+                    <!-- CATEGORÍA 4: BASES, ARROCES & FRIJOLES (5) -->
+                    <details open class="guisados-cat-group" data-group="bases">
+                        <summary class="guisados-cat-header">
+                            <span class="cat-header-title">🍚 Arroces & Frijoles de Olla</span>
+                            <span class="cat-header-badge">5 opciones</span>
+                            <span class="cat-header-chevron">▾</span>
+                        </summary>
+                        <div class="guisados-pills-wrap">
+                            <div class="guisado-item-card guisado-pill" data-cat="bases" data-name="Arroz blanco esponjadito"><span class="pill-icon">🍚</span><span class="pill-text">Arroz blanco esponjadito</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="bases" data-name="Arroz rojo tradicional"><span class="pill-icon">🍚</span><span class="pill-text">Arroz rojo tradicional</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="bases" data-name="Frijoles refritos de la casa"><span class="pill-icon">🫘</span><span class="pill-text">Frijoles refritos caseros</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="bases" data-name="Frijoles enchilados de rancho"><span class="pill-icon">🫘</span><span class="pill-text">Frijoles enchilados de rancho</span><span class="pill-check">✓</span></div>
+                            <div class="guisado-item-card guisado-pill" data-cat="bases" data-name="Frijoles de la olla calientitos"><span class="pill-icon">🍲</span><span class="pill-text">Frijoles de la olla</span><span class="pill-check">✓</span></div>
+                        </div>
+                    </details>
+
                 </div>
             </div>
 
-            <!-- PASO 3: EXTRAS Y ESPECIALIDADES OPCIONALES -->
-            <div class="step-block" id="paso-3">
-                <span class="step-badge">Paso 3 de 4</span>
-                <h3 class="step-title">¿Deseas Agregar Especialidades o Extras? (Opcional)</h3>
-                <p class="step-desc">Personaliza tu banquete con complementos que harán tu evento aún más memorable.</p>
+            <!-- PASO 3: ESPECIALIDADES & EXTRAS COMPACTOS -->
+            <div class="step-block-compact" id="paso-3">
+                <div class="step-header-compact">
+                    <span class="step-badge-pill">Paso 3 de 4</span>
+                    <div>
+                        <h3 class="step-title-compact">¿Deseas Agregar Especialidades o Extras? (Opcional)</h3>
+                        <p class="step-desc-compact">Personaliza tu banquete con complementos que harán tu fiesta todavía más especial.</p>
+                    </div>
+                </div>
 
-                <div class="extras-grid">
+                <div class="extras-minimal-grid">
                     <!-- Extra 1: Chilaquiles -->
-                    <div class="extra-card" id="extra-chilaquiles" onclick="toggleExtra('chilaquiles')">
-                        <div class="extra-card-checkbox" id="chk-chilaquiles">✓</div>
-                        <div>
-                            <strong style="display: block; font-family: var(--font-folk); font-size: 1.05rem; color: var(--chocolate-texto);">🍳 Desayuno / Tornaboda de Chilaquiles</strong>
-                            <p style="font-size: 0.88rem; color: var(--chocolate-suave); margin-top: 0.3rem;">Salsa verde o roja, 2 proteínas (pollo, huevo, milanesa o carne), crema, queso fresco y bolillo.</p>
+                    <div class="extra-minimal-card" id="extra-chilaquiles" onclick="toggleExtra('chilaquiles')">
+                        <div class="extra-checkbox-pill" id="chk-chilaquiles">✓</div>
+                        <div class="extra-card-body">
+                            <strong class="extra-title">🍳 Desayuno / Tornaboda de Chilaquiles</strong>
+                            <p class="extra-desc">Salsa verde o roja, 2 proteínas (pollo, huevo, milanesa o carne), crema, queso fresco y bolillo.</p>
                         </div>
                     </div>
 
                     <!-- Extra 2: Famosas Tortas -->
-                    <div class="extra-card" id="extra-tortas" onclick="toggleExtra('tortas')">
-                        <div class="extra-card-checkbox" id="chk-tortas">✓</div>
-                        <div>
-                            <strong style="display: block; font-family: var(--font-folk); font-size: 1.05rem; color: var(--chocolate-texto);">🥖 Las Famosas Tortas de Chilaquiles</strong>
-                            <p style="font-size: 0.88rem; color: var(--chocolate-suave); margin-top: 0.3rem;">Bolillo crujiente untado con frijoles, relleno de chilaquiles calientes, crema, queso fresco y huevo/milanesa.</p>
+                    <div class="extra-minimal-card" id="extra-tortas" onclick="toggleExtra('tortas')">
+                        <div class="extra-checkbox-pill" id="chk-tortas">✓</div>
+                        <div class="extra-card-body">
+                            <strong class="extra-title">🥪 Las Famosas Tortas de Chilaquiles</strong>
+                            <p class="extra-desc">Bolillo crujiente, chilaquiles a elegir, milanesa o pollo, frijoles refritos, crema y queso fresco.</p>
                         </div>
                     </div>
 
                     <!-- Extra 3: Menudo -->
-                    <div class="extra-card" id="extra-menudo" onclick="toggleExtra('menudo')">
-                        <div class="extra-card-checkbox" id="chk-menudo">✓</div>
-                        <div>
-                            <strong style="display: block; font-family: var(--font-folk); font-size: 1.05rem; color: var(--chocolate-texto);">🍲 Menudo Tradicional para Desvelados</strong>
-                            <p style="font-size: 0.88rem; color: var(--chocolate-suave); margin-top: 0.3rem;">Panza suave, pata, libro, callo y bofe con orégano, cebolla, limones y salsita picosa (mínimo 30 personas).</p>
+                    <div class="extra-minimal-card" id="extra-menudo" onclick="toggleExtra('menudo')">
+                        <div class="extra-checkbox-pill" id="chk-menudo">✓</div>
+                        <div class="extra-card-body">
+                            <strong class="extra-title">🍲 El Tradicional Menudo en Cazuela</strong>
+                            <p class="extra-desc">A partir de 30 personas. Caldo espeso bien sazonado, orégano, cebolla, limón y tortillas.</p>
                         </div>
                     </div>
 
-                    <!-- Extra 4: Comaleras / Tortillas a mano (útil para 30-50) -->
-                    <div class="extra-card" id="extra-comal" onclick="toggleExtra('comal')">
-                        <div class="extra-card-checkbox" id="chk-comal">✓</div>
-                        <div>
-                            <strong style="display: block; font-family: var(--font-folk); font-size: 1.05rem; color: var(--chocolate-texto);">🫓 Comaleras & Tortillas Hechas a Mano</strong>
-                            <p style="font-size: 0.88rem; color: var(--chocolate-suave); margin-top: 0.3rem;">Tortillas calientitas al momento en comal de gas en vivo (ya incluidas en paquetes de 50+ personas).</p>
+                    <!-- Extra 4: Comaleras -->
+                    <div class="extra-minimal-card" id="extra-comal" onclick="toggleExtra('comal')">
+                        <div class="extra-checkbox-pill" id="chk-comal">✓</div>
+                        <div class="extra-card-body">
+                            <strong class="extra-title">🫓 Comaleras & Tortillas al Comal en Vivo</strong>
+                            <p class="extra-desc">Comal vivo con masa fresca y tortillas calientes hechas a mano durante el servicio.</p>
                         </div>
                     </div>
 
-                    <!-- Extra 5: Cazuela Extra de Guisado -->
-                    <div class="extra-card" id="extra-cazuela" onclick="toggleExtra('cazuela')">
-                        <div class="extra-card-checkbox" id="chk-cazuela">✓</div>
-                        <div>
-                            <strong style="display: block; font-family: var(--font-folk); font-size: 1.05rem; color: var(--chocolate-texto);">🥘 Cazuela Adicional de Guisado</strong>
-                            <p style="font-size: 0.88rem; color: var(--chocolate-suave); margin-top: 0.3rem;">Añade una cazuela extra para ofrecer aún más variedad a tus invitados.</p>
+                    <!-- Extra 5: Cazuela Adicional -->
+                    <div class="extra-minimal-card" id="extra-cazuela" onclick="toggleExtra('cazuela')">
+                        <div class="extra-checkbox-pill" id="chk-cazuela">✓</div>
+                        <div class="extra-card-body">
+                            <strong class="extra-title">🥘 Cazuela Extra de Guisado</strong>
+                            <p class="extra-desc">Suma 1 variedad más a tu banquete para dar aún mayor libertad de elección a tus invitados.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- PASO 4: DATOS DEL EVENTO & RESUMEN EN VIVO -->
-            <div class="step-block" id="paso-4" style="border-color: var(--talavera-amarillo); background: #FFFDF8;">
-                <span class="step-badge" style="background: linear-gradient(135deg, var(--cempasuchil-fuego), var(--talavera-amarillo));">Paso 4 de 4</span>
-                <h3 class="step-title">Datos del Evento & Resumen de Cotización</h3>
-                <p class="step-desc">Completa tus datos y enviaremos el desglose completo y ordenado directo al WhatsApp de Claudia.</p>
-
-                <form id="unifiedQuoteForm" onsubmit="handleSendUnifiedQuote(event)">
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-bottom: 2rem;">
-                        <div style="display: flex; flex-direction: column; gap: 0.4rem;">
-                            <label style="font-family: var(--font-folk); font-size: 0.88rem; font-weight: 800; text-transform: uppercase; color: var(--chocolate-texto);">Tu Nombre Completo *</label>
-                            <input type="text" id="orderClientName" required placeholder="Ej. Mariana González" style="background: #FFFFFF; border: 2px solid #D6C7B2; border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.95rem; font-weight: 600;" oninput="updateLiveSummary()">
-                        </div>
-
-                        <div style="display: flex; flex-direction: column; gap: 0.4rem;">
-                            <label style="font-family: var(--font-folk); font-size: 0.88rem; font-weight: 800; text-transform: uppercase; color: var(--chocolate-texto);">Tipo de Evento</label>
-                            <select id="orderEventType" style="background: #FFFFFF; border: 2px solid #D6C7B2; border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.95rem; font-weight: 600;" onchange="updateLiveSummary()">
-                                <option value="Banquete Familiar / Cumpleaños">🎉 Banquete Familiar / Cumpleaños</option>
-                                <option value="Boda / Aniversario">💍 Boda / Aniversario</option>
-                                <option value="Fiesta de XV Años">👑 Fiesta de XV Años</option>
-                                <option value="Bautizo / Primera Comunión">🕊️ Bautizo / Primera Comunión</option>
-                                <option value="Evento Corporativo / Empresa">🏢 Evento Corporativo / Empresa</option>
-                                <option value="Desayuno o Tornaboda">🍳 Desayuno o Tornaboda</option>
-                            </select>
-                        </div>
-
-                        <div style="display: flex; flex-direction: column; gap: 0.4rem;">
-                            <label style="font-family: var(--font-folk); font-size: 0.88rem; font-weight: 800; text-transform: uppercase; color: var(--chocolate-texto);">Fecha Estimada *</label>
-                            <input type="date" id="orderEventDate" required style="background: #FFFFFF; border: 2px solid #D6C7B2; border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.95rem; font-weight: 600;" onchange="updateLiveSummary()">
-                        </div>
-
-                        <div style="display: flex; flex-direction: column; gap: 0.4rem;">
-                            <label style="font-family: var(--font-folk); font-size: 0.88rem; font-weight: 800; text-transform: uppercase; color: var(--chocolate-texto);">Ciudad / Municipio *</label>
-                            <input type="text" id="orderEventCity" required placeholder="Ej. León, Gto." value="León, Gto." style="background: #FFFFFF; border: 2px solid #D6C7B2; border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.95rem; font-weight: 600;" oninput="updateLiveSummary()">
-                        </div>
+            <!-- PASO 4: FORMULARIO Y RESUMEN EDITORIAL -->
+            <div class="step-block-compact" id="paso-4">
+                <div class="step-header-compact">
+                    <span class="step-badge-pill" style="background: var(--pastel-dorado); color: #8C5D00;">Paso 4 de 4</span>
+                    <div>
+                        <h3 class="step-title-compact">Datos del Evento & Resumen de Cotización</h3>
+                        <p class="step-desc-compact">Completa tus datos y enviaremos el desglose ordenado directo al WhatsApp de Claudia.</p>
                     </div>
+                </div>
 
-                    <!-- Tarjeta de Resumen en Tiempo Real -->
-                    <div class="live-summary-box">
-                        <div class="summary-header-row">
-                            <div>
-                                <span style="font-family: var(--font-folk); font-size: 0.82rem; font-weight: 800; text-transform: uppercase; color: var(--cempasuchil-fuego); letter-spacing: 0.1em;">Resumen de tu Cotización</span>
-                                <h4 style="font-family: var(--font-title); font-size: 1.8rem; font-weight: 900; color: var(--chocolate-texto); margin-top: 0.2rem;" id="summaryPackageTitle">Paquete Fiesta Mexicana</h4>
-                            </div>
-                            <div style="text-align: right;">
-                                <span style="font-family: var(--font-folk); font-size: 0.9rem; font-weight: 700; color: #7A6251;">Capacidad estimada:</span>
-                                <div style="font-family: var(--font-title); font-size: 1.7rem; font-weight: 900; color: var(--rosa-mexicano);" id="summaryGuestCount">65 Personas</div>
-                            </div>
-                        </div>
-
-                        <!-- Desglose de Guisados Seleccionados -->
-                        <div style="margin-bottom: 1.2rem;">
-                            <strong style="display: block; font-family: var(--font-folk); font-size: 0.95rem; color: var(--chocolate-texto); margin-bottom: 0.5rem;">
-                                🥘 Cazuelas Seleccionadas (<span id="summaryGuisadosCount">0</span> de <span id="summaryGuisadosLimit">7</span>):
-                            </strong>
-                            <div id="summaryGuisadosList" style="font-size: 0.92rem; color: var(--chocolate-suave); line-height: 1.6; background: #FFFDF9; border: 1.5px solid #E6D7C5; border-radius: 12px; padding: 0.8rem 1.2rem;">
-                                <em>Aún no has seleccionado ningún guisado en el Paso 2. Haz clic en las tarjetas de arriba para elegirlos.</em>
-                            </div>
-                        </div>
-
-                        <!-- Desglose de Incluidos y Extras -->
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; font-size: 0.9rem;">
-                            <div style="background: #FFFDF9; border: 1.5px solid #E6D7C5; border-radius: 12px; padding: 0.8rem 1rem;">
-                                <strong style="display: block; color: var(--chocolate-texto); margin-bottom: 0.2rem;">📦 Lo que Incluye tu Paquete:</strong>
-                                <span id="summaryPackageBenefits" style="color: var(--chocolate-suave);">7 guisados, botana con ensalada de cueritos, 2 vitroleros de agua (40L) y tortillas hechas a mano al comal.</span>
+                <div class="paso4-unified-layout">
+                    <!-- Formulario de Datos -->
+                    <form id="unifiedQuoteForm" onsubmit="handleSendUnifiedQuote(event)" class="quote-form-compact">
+                        <div class="form-inputs-grid">
+                            <div class="form-group-compact">
+                                <label for="orderClientName">Tu Nombre Completo *</label>
+                                <input type="text" id="orderClientName" required placeholder="Ej. Mariana González" oninput="updateLiveSummary()">
                             </div>
 
-                            <div style="background: #FFFDF9; border: 1.5px solid #E6D7C5; border-radius: 12px; padding: 0.8rem 1rem;">
-                                <strong style="display: block; color: var(--chocolate-texto); margin-bottom: 0.2rem;">✨ Especialidades / Extras:</strong>
-                                <span id="summaryExtrasList" style="color: var(--chocolate-suave);">Ningún extra adicional seleccionado.</span>
+                            <div class="form-group-compact">
+                                <label for="orderEventType">Tipo de Evento *</label>
+                                <select id="orderEventType" onchange="updateLiveSummary()">
+                                    <option value="Banquete Familiar">Banquete / Reunión Familiar</option>
+                                    <option value="Boda / XV Años">Boda / XV Años</option>
+                                    <option value="Bautizo / Primera Comunión">Bautizo / Primera Comunión</option>
+                                    <option value="Cumpleaños / Festejo">Cumpleaños / Aniversario</option>
+                                    <option value="Evento Empresarial">Evento Empresarial / Corporativo</option>
+                                    <option value="Tornaboda / Desayuno">Tornaboda / Desayuno de Chilaquiles</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group-compact">
+                                <label for="orderEventDate">Fecha Estimada *</label>
+                                <input type="date" id="orderEventDate" required onchange="updateLiveSummary()">
+                            </div>
+
+                            <div class="form-group-compact">
+                                <label for="orderEventCity">Ciudad o Municipio *</label>
+                                <input type="text" id="orderEventCity" required placeholder="Ej. León, Gto." value="León, Gto." oninput="updateLiveSummary()">
                             </div>
                         </div>
 
-                        <!-- Botón Enviar Cotización -->
-                        <button type="submit" class="btn-turquesa-3d" style="width: 100%; margin-top: 2rem; font-size: 1.15rem; padding: 1.15rem; justify-content: center;">
-                            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                            🎉 Enviar Presupuesto Completo a WhatsApp con Claudia
+                        <button type="submit" class="btn-whatsapp-quote">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            <span>Enviar Cotización a WhatsApp Directo</span>
                         </button>
+                    </form>
+
+                    <!-- Tarjeta de Resumen en Vivo -->
+                    <div class="quote-summary-card">
+                        <div class="summary-card-header">
+                            <span class="summary-badge-live">Resumen en Tiempo Real</span>
+                            <span class="summary-live-dot"></span>
+                        </div>
+                        
+                        <div class="summary-item">
+                            <span class="summary-item-label">Paquete Seleccionado:</span>
+                            <strong id="summaryPackageTitle" class="summary-item-val highlight">Paquete Fiesta Mexicana</strong>
+                        </div>
+
+                        <div class="summary-item">
+                            <span class="summary-item-label">Invitados Presupuestados:</span>
+                            <strong id="summaryGuestCount" class="summary-item-val">65 Personas</strong>
+                        </div>
+
+                        <div class="summary-item">
+                            <span class="summary-item-label">Cazuelas de Guisados (<span id="summaryGuisadosCount">0</span>/<span id="summaryGuisadosLimit">7</span>):</span>
+                            <div id="summaryGuisadosList" class="summary-dishes-wrap">
+                                <em>Ningún guisado seleccionado aún. Elige en el Paso 2.</em>
+                            </div>
+                        </div>
+
+                        <div class="summary-item">
+                            <span class="summary-item-label">Beneficios Incluidos:</span>
+                            <p id="summaryPackageBenefits" class="summary-benefits-text">
+                                7 guisados en cazuela, ¡Ensalada de Cueritos en botana!, 2 vitroleros de agua (40L total) y comaleras con tortillas hechas a mano en vivo.
+                            </p>
+                        </div>
+
+                        <div class="summary-item">
+                            <span class="summary-item-label">Especialidades & Extras:</span>
+                            <p id="summaryExtrasList" class="summary-extras-text">
+                                Ningún extra adicional seleccionado.
+                            </p>
+                        </div>
                     </div>
-                </form>
+                </div>
             </div>
         </section>
 
@@ -2362,14 +3011,23 @@
             });
         });
 
-        // FILTROS DE CATEGORÍA
+        // FILTROS DE CATEGORÍA Y ACORDEONES DESPLEGABLES
+        const catGroups = document.querySelectorAll('.guisados-cat-group');
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 const filter = btn.dataset.filter;
+                catGroups.forEach(g => {
+                    if (filter === 'all' || g.dataset.group === filter) {
+                        g.style.display = 'block';
+                        g.open = true;
+                    } else {
+                        g.style.display = 'none';
+                    }
+                });
                 cards.forEach(c => {
-                    if (filter === 'all' || c.dataset.cat === filter) c.style.display = 'flex';
+                    if (filter === 'all' || c.dataset.cat === filter) c.style.display = 'inline-flex';
                     else c.style.display = 'none';
                 });
             });
@@ -2510,9 +3168,9 @@
                 if (selectedGuisados.size === 0) {
                     summaryList.innerHTML = '<em>Aún no has seleccionado ningún guisado en el Paso 2. Haz clic en las tarjetas de arriba para elegirlos.</em>';
                 } else {
-                    summaryList.innerHTML = '<ol style="margin-left: 1.2rem; padding-left: 0.2rem;">' +
-                        Array.from(selectedGuisados).map(g => '<li style="margin-bottom: 2px;"><strong>' + g + '</strong></li>').join('') +
-                        '</ol>';
+                    summaryList.innerHTML = '<div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.35rem;">' +
+                        Array.from(selectedGuisados).map(g => '<span style="background: var(--pastel-rosa); color: var(--pastel-rosa-deep); font-weight: 700; font-size: 0.8rem; padding: 0.25rem 0.65rem; border-radius: 9999px; border: 1px solid rgba(217, 72, 120, 0.25);">✓ ' + g + '</span>').join('') +
+                        '</div>';
                 }
             }
 
