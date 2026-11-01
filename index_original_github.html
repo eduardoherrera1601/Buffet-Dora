@@ -545,6 +545,79 @@
 
         .dishes-2col-layout.reversed { grid-template-columns: 1fr 1fr; }
 
+        /* ===== 3 ESPECIALIDADES HORIZONTALES JUNTAS ===== */
+        .dishes-3col-horizontal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            align-items: stretch;
+            margin-bottom: 2.5rem;
+        }
+
+        .dish-folk-card-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: linear-gradient(180deg, #FFFDF8 0%, #FFF8ED 100%);
+            border: 3.5px solid var(--talavera-azul);
+            border-radius: 26px;
+            padding: 2rem 1.6rem 1.8rem;
+            box-shadow: 0 14px 35px rgba(0,0,0,0.08);
+            position: relative;
+            outline: 2px dashed rgba(230, 81, 0, 0.25);
+            outline-offset: -6px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dish-folk-card-col:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 42px rgba(0,0,0,0.13);
+        }
+
+        .dish-folk-card-col .dish-photo-talavera-frame {
+            margin-bottom: 1.2rem;
+        }
+
+        .dish-folk-card-col .dish-photo-talavera-frame img {
+            height: 210px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 14px;
+            display: block;
+        }
+
+        .dish-folk-card-col h3 {
+            font-family: var(--font-title);
+            font-size: 1.65rem;
+            font-weight: 900;
+            color: var(--chocolate-texto);
+            margin: 0.8rem 0;
+            line-height: 1.25;
+        }
+
+        .dish-folk-card-col p {
+            font-size: 0.96rem;
+            line-height: 1.65;
+            color: var(--chocolate-suave);
+            margin-bottom: 1rem;
+        }
+
+        .dish-folk-card-col .btn-turquesa-3d {
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+            margin-top: auto;
+            padding: 0.85rem 1.2rem;
+            font-size: 0.92rem;
+        }
+
+        @media (max-width: 1024px) {
+            .dishes-3col-horizontal-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
         .dish-photo-talavera-frame {
             position: relative;
             border-radius: 20px;
@@ -1490,6 +1563,87 @@
         </div>
 
         <!-- ==========================================
+             ESPECIALIDADES DE LA CASA (CHILAQUILES, TORTAS Y MENUDO)
+             (LOS 3 JUNTOS EN REJILLA HORIZONTAL DE 3 COLUMNAS)
+             ========================================== -->
+        <section class="section-folk-block" id="especialidades-detalle">
+            <div class="section-folk-heading">
+                <span class="eyebrow-folk">Para Iniciar el Día o la Tornafiesta</span>
+                <h2>Especialidades Tradicionales de <span>la Casa</span></h2>
+                <p style="font-size: 1.15rem; color: var(--chocolate-suave); margin-top: 0.5rem;">
+                    Auténticas recetas con queso fresco de rancho y sazón leonés hechas con todo el corazón.
+                </p>
+            </div>
+
+            <div class="dishes-3col-horizontal-grid">
+                <!-- 1. Chilaquiles -->
+                <div class="dish-folk-card-col">
+                    <span class="ribbon-market-tag amarillo">⭐ RECOMENDADO</span>
+                    <div class="dish-photo-talavera-frame" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg')">
+                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg" alt="Chilaquiles bien servidos con aguacate La Lola">
+                    </div>
+                    <div>
+                        <span style="background: #FFF3E0; border: 2px solid var(--cempasuchil-fuego); color: var(--cempasuchil-fuego); padding: 0.35rem 0.9rem; border-radius: 30px; font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; text-transform: uppercase;">🍳 Salsa Verde o Roja al Gusto</span>
+                        <h3>Chilaquiles Tradicionales de la Casa</h3>
+                        <p>
+                            Crujientes totopos de maíz bañados en salsa verde tatemada o roja especial de molcajete. Servidos con frijolitos refritos, crema de rancho espesa, queso cotija fresco y rebanadas de aguacate tierno.
+                        </p>
+                        <p style="font-weight: 800; color: var(--cempasuchil-fuego); font-size: 0.88rem; margin-bottom: 1.2rem;">
+                            🍗 Incluye 2 Proteínas: Pollo deshebrado, Huevo al gusto, Milanesa crujiente o Carne Asada + ¡Bolillo Calientito!
+                        </p>
+                    </div>
+                    <button class="btn-turquesa-3d" onclick="toggleExtraFromButton('chilaquiles')">
+                        + Incluir Chilaquiles en mi Banquete
+                    </button>
+                </div>
+
+                <!-- 2. Tortas -->
+                <div class="dish-folk-card-col">
+                    <span class="ribbon-market-tag rosa">💖 LA CONSENTIDA</span>
+                    <div class="dish-photo-talavera-frame" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg')">
+                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg" alt="Torta de chilaquiles con huevo estrellado y aguacate">
+                    </div>
+                    <div>
+                        <span style="background: #FCE4EC; border: 2px solid var(--rosa-mexicano); color: var(--rosa-mexicano-dark); padding: 0.35rem 0.9rem; border-radius: 30px; font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; text-transform: uppercase;">🥖 Las Consentidas de la Fiesta</span>
+                        <h3>Las Famosas Tortas de Chilaquiles</h3>
+                        <p>
+                            Bolillo crujiente recién horneado untado con frijoles refritos y relleno con chilaquiles verdes o rojos calientes, crema espesa, queso fresco de rancho, aguacate y tu proteína favorita como huevo estrellado tierno o milanesa doradita.
+                        </p>
+                        <p style="font-weight: 800; color: var(--rosa-mexicano-dark); font-size: 0.88rem; margin-bottom: 1.2rem;">
+                            ✨ El clásico consentido para tornabodas y eventos de fiesta.
+                        </p>
+                    </div>
+                    <button class="btn-turquesa-3d" onclick="toggleExtraFromButton('tortas')">
+                        + Incluir Tortas en mi Banquete
+                    </button>
+                </div>
+
+                <!-- 3. Menudo -->
+                <div class="dish-folk-card-col">
+                    <span class="ribbon-market-tag amarillo">🍲 TRADICIONAL</span>
+                    <div class="dish-photo-talavera-frame" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg')">
+                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg" alt="Menudo tradicional calientito">
+                    </div>
+                    <div>
+                        <span style="background: #FFF3E0; border: 2px solid var(--cempasuchil-fuego); color: var(--cempasuchil-fuego); padding: 0.35rem 0.9rem; border-radius: 30px; font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; text-transform: uppercase;">🍲 Rey de la Tornafiesta</span>
+                        <h3>El Tradicional Menudo en Cazuela</h3>
+                        <p>
+                            El cierre gastronómico perfecto para bodas, tornabodas y festejos de amanecida (a partir de 30 personas):
+                        </p>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.86rem; font-weight: 600; margin-bottom: 1.2rem; color: var(--chocolate-texto);">
+                            <li>🍲 Panza suave, Pata bien cocida, Callo y Libro</li>
+                            <li>🌶️ Salsita roja picosa de la casa, orégano y limones</li>
+                            <li>🫓 Tortillas calientes hechas a mano al comal</li>
+                        </ul>
+                    </div>
+                    <button class="btn-turquesa-3d" onclick="toggleExtraFromButton('menudo')">
+                        + Incluir Menudo en mi Banquete
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
              2. EL ARMADOR DE BANQUETE UNIFICADO
              (PASO 1 -> PASO 2 -> PASO 3 -> PASO 4)
              ========================================== -->
@@ -1877,82 +2031,6 @@
                         </button>
                     </div>
                 </form>
-            </div>
-        </section>
-
-        <!-- ==========================================
-             3. SECCIÓN INFORMATIVA: ESPECIALIDADES DE LA CASA
-             (DETALLES DE CHILAQUILES, TORTAS Y MENUDO)
-             ========================================== -->
-        <section class="section-folk-block" id="especialidades-detalle">
-            <div class="section-folk-heading">
-                <span class="eyebrow-folk">Para Iniciar el Día o la Tornafiesta</span>
-                <h2>Especialidades Tradicionales de <span>la Casa</span></h2>
-                <p style="font-size: 1.15rem; color: var(--chocolate-suave); margin-top: 0.5rem;">
-                    Auténticas recetas con queso fresco de rancho y sazón leonés hechas con todo el corazón.
-                </p>
-            </div>
-
-            <!-- Chilaquiles -->
-            <div class="dishes-2col-layout" style="margin-bottom: 3rem;">
-                <span class="ribbon-market-tag amarillo">⭐ RECOMENDADO</span>
-                <div>
-                    <span style="background: #FFF3E0; border: 2px solid var(--cempasuchil-fuego); color: var(--cempasuchil-fuego); padding: 0.45rem 1.2rem; border-radius: 30px; font-family: var(--font-folk); font-size: 0.9rem; font-weight: 800; text-transform: uppercase;">🍳 Salsa Verde o Roja al Gusto</span>
-                    <h3 style="font-family: var(--font-title); font-size: 2.3rem; font-weight: 900; color: var(--chocolate-texto); margin: 1rem 0;">Chilaquiles Tradicionales de la Casa</h3>
-                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--chocolate-suave); margin-bottom: 1.2rem;">
-                        Crujientes totopos de maíz bañados en salsa verde tatemada o roja especial de molcajete. Servidos con frijolitos refritos, crema de rancho espesa, queso cotija fresco y rebanadas de aguacate tierno.
-                    </p>
-                    <p style="font-weight: 800; color: var(--cempasuchil-fuego); margin-bottom: 1.5rem;">
-                        🍗 Incluye 2 Proteínas a elegir: Pollo deshebrado, Huevo al gusto, Milanesa crujiente o Carne Asada + ¡Bolillo Calientito!
-                    </p>
-                    <button class="btn-turquesa-3d" onclick="toggleExtraFromButton('chilaquiles')">
-                        + Incluir Chilaquiles en mi Banquete
-                    </button>
-                </div>
-                <div class="dish-photo-talavera-frame" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg')">
-                    <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg" alt="Chilaquiles bien servidos con aguacate La Lola">
-                </div>
-            </div>
-
-            <!-- Tortas -->
-            <div class="dishes-2col-layout reversed" style="margin-bottom: 3rem;">
-                <span class="ribbon-market-tag rosa">💖 LA CONSENTIDA</span>
-                <div class="dish-photo-talavera-frame" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg')">
-                    <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg" alt="Torta de chilaquiles con huevo estrellado y aguacate">
-                </div>
-                <div>
-                    <span style="background: #FCE4EC; border: 2px solid var(--rosa-mexicano); color: var(--rosa-mexicano-dark); padding: 0.45rem 1.2rem; border-radius: 30px; font-family: var(--font-folk); font-size: 0.9rem; font-weight: 800; text-transform: uppercase;">🥖 Las Consentidas de la Fiesta</span>
-                    <h3 style="font-family: var(--font-title); font-size: 2.3rem; font-weight: 900; color: var(--chocolate-texto); margin: 1rem 0;">Las Famosas Tortas de Chilaquiles</h3>
-                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--chocolate-suave); margin-bottom: 1.2rem;">
-                        Bolillo crujiente recién horneado untado con frijoles refritos y relleno con chilaquiles verdes o rojos calientes, crema espesa, queso fresco de rancho, aguacate y tu proteína favorita como huevo estrellado tierno o milanesa doradita.
-                    </p>
-                    <button class="btn-turquesa-3d" onclick="toggleExtraFromButton('tortas')">
-                        + Incluir Tortas en mi Banquete
-                    </button>
-                </div>
-            </div>
-
-            <!-- Menudo -->
-            <div class="dishes-2col-layout">
-                <div>
-                    <span style="background: #FFF3E0; border: 2px solid var(--cempasuchil-fuego); color: var(--cempasuchil-fuego); padding: 0.45rem 1.2rem; border-radius: 30px; font-family: var(--font-folk); font-size: 0.9rem; font-weight: 800; text-transform: uppercase;">🍲 Rey de la Tornafiesta</span>
-                    <h3 style="font-family: var(--font-title); font-size: 2.3rem; font-weight: 900; color: var(--chocolate-texto); margin: 1rem 0;">El Tradicional Menudo en Cazuela</h3>
-                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--chocolate-suave); margin-bottom: 1.2rem;">
-                        El cierre gastronómico perfecto para bodas, tornabodas y festejos de amanecida (a partir de 30 personas):
-                    </p>
-                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem; font-size: 1rem; font-weight: 600; margin-bottom: 1.8rem;">
-                        <li>🍲 Panza suave y jugosa, Pata bien cocida, Callo, Libro y Panal</li>
-                        <li>🍲 Bofe y Manzana tradicional leonesa</li>
-                        <li>🌶️ Salsita roja picosa de la casa, orégano de campo, cebolla y limones</li>
-                        <li>🫓 Tortillas calientes hechas a mano en comal o de máquina</li>
-                    </ul>
-                    <button class="btn-turquesa-3d" onclick="toggleExtraFromButton('menudo')">
-                        + Incluir Menudo en mi Banquete
-                    </button>
-                </div>
-                <div class="dish-photo-talavera-frame" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg')">
-                    <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg" alt="Menudo tradicional calientito">
-                </div>
             </div>
         </section>
 
