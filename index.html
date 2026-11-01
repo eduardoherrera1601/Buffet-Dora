@@ -3,3264 +3,1145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Lola — Sabores de México & Banquetes Tradicionales en Cazuela</title>
-    <meta name="description" content="Banquetes y Taquisas La Lola en León, Gto. Auténtico arte culinario mexicano, cazuelas de barro curadas, tortillas hechas al comal y banquetes festivos para bodas y celebraciones.">
-    <meta property="og:title" content="La Lola — Sabores de México & Banquetes Tradicionales">
-    <meta property="og:description" content="¡Bienvenidos a la Fiesta! Cazuelas de barro curadas, tortillas al comal y sazón casero para tus eventos en León y Guanajuato.">
-    
-    <meta name="theme-color" content="#E61C73">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="La Lola">
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="img/mexican_folk_hero_banner.jpg">
-    
-    <!-- Fuentes Google: 1 Serif Editorial + 1 Sans Geométrica Limpia -->
+    <title>La Lola — Sabores de México & Banquetes Tradicionales</title>
+    <meta name="description" content="Banquetes y Taquizas La Lola en León, Gto. Auténtico arte culinario mexicano, cazuelas curadas y comal en vivo para bodas y celebraciones.">
+    <meta name="theme-color" content="#FAF8F5">
+
+    <!-- Tipografías de los videos: Playfair Display + Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=block" rel="stylesheet">
-    
-    <!-- ANTI-FOUT: Evita 100% el brinco visual al recargar la página -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;0,900;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
-        html.wf-loading body { opacity: 0 !important; visibility: hidden !important; }
-        html.wf-active body { opacity: 1 !important; visibility: visible !important; transition: opacity 0.25s ease-in; }
-    </style>
-    <script>
-        document.documentElement.classList.add('wf-loading');
-        if ('fonts' in document) {
-            Promise.all([
-                document.fonts.load("700 2rem 'Playfair Display'"),
-                document.fonts.load("600 1rem 'Plus Jakarta Sans'")
-            ]).then(function() {
-                document.documentElement.classList.remove('wf-loading');
-                document.documentElement.classList.add('wf-active');
-            }).catch(function() {
-                document.documentElement.classList.remove('wf-loading');
-                document.documentElement.classList.add('wf-active');
-            });
-            setTimeout(function() {
-                document.documentElement.classList.remove('wf-loading');
-                document.documentElement.classList.add('wf-active');
-            }, 300);
-        } else {
-            document.documentElement.classList.remove('wf-loading');
-            document.documentElement.classList.add('wf-active');
-        }
-    </script>
-<style>
         :root {
             /* Paleta Pastel Extraída de la Tarjeta */
-            --bg-crema: #FAF7F2;          /* Fondo base suave */
-            --bg-card: #FFFFFF;
-            --pastel-rosa: #F7D2DE;       /* Rosa suave identitario */
-            --pastel-rosa-deep: #D94878;  /* Contraste para textos/botones de acción */
-            --pastel-menta: #D2F2EF;      /* Turquesa pastel */
-            --pastel-menta-deep: #0D827E; /* Acento legible */
-            --pastel-dorado: #FCEFD5;     /* Acento festivo tenue */
-            --texto-principal: #2B211D;   /* Tinta oscura cálida, no negro puro */
-            --texto-secundario: #6E5E58;
-            --border-sutil: rgba(43, 33, 29, 0.08);
-            --shadow-editorial: 0 12px 32px -4px rgba(43, 33, 29, 0.05);
+            --bg-base: #FBF8F5;
+            --bg-surface: #FFFFFF;
+            --bg-elevated: #FFFBF9;
+            
+            --pastel-rosa: #FCE8EF;
+            --pastel-rosa-deep: #D94878;
+            --pastel-menta: #D8F3F1;
+            --pastel-menta-deep: #0D827E;
+            --pastel-dorado: #FDF2DC;
+            --pastel-dorado-deep: #A76708;
 
-            /* Tipografías: 1 Serif editorial + 1 Sans geométrica limpia */
+            --text-main: #241A17;
+            --text-muted: #756560;
+            --border-soft: rgba(36, 26, 23, 0.08);
+            --border-active: rgba(217, 72, 120, 0.45);
+            
+            --shadow-subtle: 0 4px 20px rgba(36, 26, 23, 0.03);
+            --shadow-card: 0 12px 35px -8px rgba(36, 26, 23, 0.07);
+            --shadow-hover: 0 20px 48px -10px rgba(36, 26, 23, 0.12);
+
             --font-serif: 'Playfair Display', Georgia, serif;
             --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
-
-            /* Variables del Sistema Mapeadas a la Nueva Paleta */
-            --font-title: var(--font-serif);
-            --font-body: var(--font-sans);
-            --font-folk: var(--font-sans);
-            --font-cursive: var(--font-serif);
-
-            --rosa-mexicano: var(--pastel-rosa-deep);
-            --rosa-mexicano-dark: #B83561;
-            --talavera-azul: #1E4E79;
-            --talavera-azul-claro: #2F75B5;
-            --talavera-amarillo: #D69300;
-            --cempasuchil: #D96B27;
-            --cempasuchil-fuego: #C45514;
-            
-            --azul-turquesa: var(--pastel-menta-deep);
-            --azul-turquesa-hover: #0A6B68;
-            --azul-turquesa-bevel: #075250;
-            --azul-turquesa-glow: rgba(13, 130, 126, 0.25);
-            
-            --bg-manta-crema: var(--bg-crema);
-            --chocolate-texto: var(--texto-principal);
-            --chocolate-suave: var(--texto-secundario);
         }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
 
-        /* ===== FONDO GENERAL: EDITORIAL MARFIL CREMA (SIN TEXTURAS RUIDOSAS) ===== */
         body {
-            background-color: var(--bg-crema);
-            color: var(--texto-principal);
+            background-color: var(--bg-base);
+            color: var(--text-main);
             font-family: var(--font-sans);
-            overflow-x: hidden;
-            background-image: none;
+            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        /* ===== ENCABEZADO / NAVBAR EDITORIAL ===== */
+        /* ===== NAVBAR MINIMALISTA ===== */
         header {
-            background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(18px);
-            padding: 0.85rem 2.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(251, 248, 245, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-soft);
+            padding: 1rem 2.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid var(--border-sutil);
-            box-shadow: 0 4px 24px rgba(43, 33, 29, 0.03);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
         }
 
-        .brand-logo {
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-        }
-
-        .brand-name {
+        .brand-link { text-decoration: none; display: flex; flex-direction: column; }
+        .brand-title {
             font-family: var(--font-serif);
-            font-size: 2.1rem;
+            font-size: 2rem;
             font-weight: 900;
             color: var(--pastel-rosa-deep);
-            line-height: 1;
             letter-spacing: -0.02em;
+            line-height: 1;
         }
-
-        .brand-tag {
-            font-family: var(--font-sans);
+        .brand-sub {
             font-size: 0.72rem;
             font-weight: 700;
             letter-spacing: 0.16em;
             text-transform: uppercase;
-            color: var(--texto-secundario);
+            color: var(--text-muted);
             margin-top: 3px;
         }
 
-        .nav-menu {
+        .nav-links {
             display: flex;
-            gap: 1.8rem;
+            gap: 2rem;
             list-style: none;
             align-items: center;
         }
-
-        .nav-link {
+        .nav-links a {
             text-decoration: none;
-            font-family: var(--font-sans);
             font-size: 0.92rem;
             font-weight: 600;
-            color: var(--texto-principal);
-            transition: color 0.2s ease;
+            color: var(--text-main);
+            transition: color 0.2s;
         }
+        .nav-links a:hover { color: var(--pastel-rosa-deep); }
 
-        .nav-link:hover { color: var(--pastel-rosa-deep); }
-
-        /* ===== BOTÓN PRINCIPAL ELEGANTE (SIN BISELADOS 3D NI EXTRUSIONES) ===== */
-        .btn-turquesa-3d {
+        .btn-primary {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
             gap: 0.6rem;
-            padding: 0.85rem 1.8rem;
-            background-color: var(--pastel-menta-deep);
+            background: var(--pastel-rosa-deep);
             color: #FFFFFF !important;
-            font-family: var(--font-sans);
+            padding: 0.8rem 1.8rem;
+            border-radius: 999px;
             font-size: 0.92rem;
             font-weight: 700;
-            letter-spacing: 0.02em;
             text-decoration: none;
-            border-radius: 50px;
             border: none;
-            box-shadow: 0 4px 16px rgba(13, 130, 126, 0.25);
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
+            box-shadow: 0 8px 24px -4px rgba(217, 72, 120, 0.35);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
-        .btn-turquesa-3d svg { width: 19px; height: 19px; fill: currentColor; flex-shrink: 0; }
-
-        .btn-turquesa-3d:hover {
+        .btn-primary:hover {
+            background: #C43B68;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(13, 130, 126, 0.35);
-            background-color: #0A6B68;
+            box-shadow: 0 12px 28px -4px rgba(217, 72, 120, 0.45);
         }
 
-        .btn-turquesa-3d:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 8px rgba(13, 130, 126, 0.2);
+        .btn-glass {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            color: var(--text-main);
+            padding: 0.8rem 1.8rem;
+            border-radius: 999px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: 1px solid var(--border-soft);
+            box-shadow: var(--shadow-subtle);
+            transition: all 0.2s;
+        }
+        .btn-glass:hover {
+            background: #FFFFFF;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-card);
         }
 
-        /* ===== HERO: ESCENARIO VISUAL DE ALTO IMPACTO ===== */
-        .hero-scenic-banner-container {
-            position: relative;
-            width: 100%;
-            max-width: 100%;
-            margin: 0 0 2rem 0;
-            padding: 0;
+        /* ===== HERO CINEMATOGRÁFICO ASIMÉTRICO ===== */
+        .hero {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 4rem 2rem 5rem;
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
-        .hero-scenic-card {
-            position: relative;
-            border-radius: 0;
-            overflow: hidden;
-            border: none;
-            border-bottom: 3px solid var(--pastel-rosa);
-            box-shadow: 0 16px 40px rgba(43, 33, 29, 0.12);
-            background: #1A0A04;
-            min-height: clamp(660px, 80vh, 880px);
-            display: flex;
-            align-items: flex-end;
-            width: 100%;
-            padding-bottom: 4rem;
-        }
-
-        .hero-scenic-bg-img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 88%;
-            opacity: 1;
-            filter: brightness(1.06) contrast(1.05);
-            transform: scale(1.02);
-            transition: transform 6s ease;
-        }
-
-        .hero-scenic-card:hover .hero-scenic-bg-img {
-            transform: scale(1.04);
-        }
-
-        .hero-scenic-overlay-gradient {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, 
-                rgba(24, 12, 8, 0.75) 0%, 
-                rgba(24, 12, 8, 0.45) 50%, 
-                rgba(24, 12, 8, 0.08) 100%
-            );
-        }
-
-        .hero-scenic-content {
-            position: relative;
-            z-index: 10;
-            max-width: 820px;
-            padding: 2.5rem 2.5rem;
-            margin-left: max(2rem, calc((100vw - 1440px) / 2));
-            color: #FFFFFF;
-        }
-
-        .hero-pill-badge {
+        .pill-badge {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            color: #FFFFFF;
-            padding: 0.4rem 1.2rem;
-            border-radius: 50px;
-            font-family: var(--font-sans);
-            font-size: 0.82rem;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            margin-bottom: 1rem;
-        }
-
-        .hero-scenic-title {
-            font-family: var(--font-serif);
-            font-size: clamp(2rem, 3.8vw, 3.2rem);
-            font-weight: 900;
-            line-height: 1.1;
-            color: #FFFFFF;
-            text-shadow: 0 4px 16px rgba(0,0,0,0.6);
-            margin-bottom: 1rem;
-            letter-spacing: -0.01em;
-        }
-
-        .hero-scenic-title .cursive-highlight {
-            color: #FFE699;
-            font-family: var(--font-serif);
-            font-style: italic;
-            font-size: 1.05em;
-            display: block;
-            line-height: 1.05;
-            text-shadow: 0 4px 16px rgba(0,0,0,0.6);
-        }
-
-        .hero-scenic-desc {
-            font-size: 1.05rem;
-            line-height: 1.65;
-            color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 1.8rem;
-            font-weight: 500;
-            max-width: 650px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-        }
-
-        /* ===== CONTENEDOR PRINCIPAL ===== */
-        .main-folk-canvas {
-            width: 95%;
-            max-width: 1440px;
-            margin: 2.5rem auto 5rem;
-            padding: 0 1rem;
-        }
-
-        /* ===== BLOQUES DE SECCIÓN: EDITORIAL Y LIMPIO (SIN BORDES DASHED) ===== */
-        .section-folk-block {
-            background: var(--bg-card);
-            border: 1px solid var(--border-sutil);
-            border-top: 4px solid var(--pastel-rosa-deep);
-            border-radius: 24px;
-            padding: 2.8rem 2.4rem;
-            box-shadow: var(--shadow-editorial);
-            margin-top: 2.5rem;
-            position: relative;
-        }
-
-        .section-folk-heading {
-            text-align: center;
-            max-width: 820px;
-            margin: 0 auto 2rem;
-        }
-
-        .section-folk-heading .eyebrow-folk {
-            font-family: var(--font-sans);
+            background: var(--pastel-menta);
+            color: var(--pastel-menta-deep);
+            padding: 0.4rem 1.1rem;
+            border-radius: 999px;
             font-size: 0.78rem;
             font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        .pill-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--pastel-menta-deep); }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.6rem, 4.6vw, 4.2rem);
+            line-height: 1.08;
+            font-weight: 900;
+            color: var(--text-main);
+            letter-spacing: -0.025em;
+            margin-bottom: 1.4rem;
+        }
+        .hero-title span {
+            display: block;
+            font-style: italic;
+            font-weight: 600;
+            color: var(--pastel-rosa-deep);
+        }
+
+        .hero-lead {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 540px;
+            margin-bottom: 2.2rem;
+        }
+
+        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+
+        .hero-perks {
+            display: flex;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+            padding-top: 1.4rem;
+            border-top: 1px solid var(--border-soft);
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+        .hero-perks span { color: var(--pastel-menta-deep); font-weight: 800; margin-right: 0.3rem; }
+
+        .hero-showcase {
+            position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            background: #FFFFFF;
+            border: 1px solid var(--border-soft);
+            box-shadow: var(--shadow-card);
+            aspect-ratio: 4 / 3.6;
+        }
+        .hero-showcase img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 85%;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        .hero-showcase:hover img { transform: scale(1.03); }
+
+        .hero-glass-floating {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 1.1rem 1.4rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 30px rgba(36, 26, 23, 0.08);
+        }
+        .glass-avatar { font-size: 2rem; }
+        .glass-meta strong { display: block; font-family: var(--font-serif); font-size: 1.05rem; }
+        .glass-meta span { font-size: 0.82rem; color: var(--text-muted); }
+
+        /* ===== BENTO GRID FULL-BLEED (EDITORIAL) ===== */
+        .bento-section {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 3rem 2rem 6rem;
+        }
+        .section-header { text-align: center; max-width: 760px; margin: 0 auto 3.5rem; }
+        .section-tag {
+            font-size: 0.78rem;
+            font-weight: 800;
             letter-spacing: 0.16em;
             text-transform: uppercase;
             color: var(--pastel-rosa-deep);
             background: var(--pastel-rosa);
-            display: inline-block;
-            margin-bottom: 0.6rem;
             padding: 0.35rem 1.1rem;
-            border-radius: 50px;
-            border: none;
-        }
-
-        .section-folk-heading h2 {
-            font-family: var(--font-serif);
-            font-size: clamp(1.8rem, 3.2vw, 2.6rem);
-            font-weight: 800;
-            color: var(--texto-principal);
-            line-height: 1.2;
-            letter-spacing: -0.01em;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-folk-heading h2 span {
-            color: var(--pastel-rosa-deep);
-            font-family: var(--font-serif);
-            font-style: italic;
-            font-weight: 700;
+            border-radius: 999px;
             display: inline-block;
-        }
-
-        /* ===== ETIQUETAS ELEGANTES (SIN ESTILO MERCADO NI ROTACIONES) ===== */
-        .ribbon-market-tag {
-            position: absolute;
-            top: 14px;
-            left: 14px;
-            padding: 0.3rem 0.85rem;
-            font-family: var(--font-sans);
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            color: #FFFFFF;
-            border-radius: 20px;
-            transform: none;
-            box-shadow: 0 4px 12px rgba(43, 33, 29, 0.08);
-            z-index: 10;
-        }
-
-        .ribbon-market-tag.amarillo { background: #D9822B; }
-        .ribbon-market-tag.rosa { background: var(--pastel-rosa-deep); }
-        .ribbon-market-tag.verde { background: var(--pastel-menta-deep); }
-        .ribbon-market-tag.azul { background: #2B6CB0; }
-
-        /* ===== PASOS DEL ARMADOR ===== */
-        .step-block {
-            background: var(--bg-crema);
-            border: 1px solid var(--border-sutil);
-            border-radius: 20px;
-            padding: 2rem 1.8rem;
-            box-shadow: var(--shadow-editorial);
-            margin-bottom: 2rem;
-        }
-
-        .step-badge {
-            background: var(--pastel-rosa);
-            color: var(--pastel-rosa-deep);
-            font-family: var(--font-sans);
-            font-size: 0.8rem;
-            font-weight: 800;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            padding: 0.35rem 0.95rem;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 0.6rem;
-        }
-
-        .step-title {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--texto-principal);
-            margin-bottom: 0.4rem;
-            letter-spacing: -0.01em;
-        }
-
-        .step-desc {
-            font-size: 0.98rem;
-            color: var(--texto-secundario);
-            line-height: 1.6;
-            margin-bottom: 1.4rem;
-        }
-
-        /* ===== TARJETAS DE PAQUETES ===== */
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .package-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-sutil);
-            border-radius: 22px;
-            padding: 1.8rem 1.5rem;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-shadow: var(--shadow-editorial);
-            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-            cursor: pointer;
-            overflow: hidden;
-        }
-
-        .package-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 36px -4px rgba(43, 33, 29, 0.1);
-        }
-
-        .package-card.selected-active {
-            border: 2px solid var(--pastel-rosa-deep) !important;
-            box-shadow: 0 16px 36px -4px rgba(217, 72, 120, 0.18) !important;
-            transform: scale(1.02);
-            z-index: 2;
-        }
-
-        .package-card-top-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             margin-bottom: 0.8rem;
-            gap: 0.5rem;
         }
-
-        .package-selected-marker {
-            display: none;
-            background: var(--pastel-rosa-deep);
-            color: #FFFFFF;
-            font-family: var(--font-sans);
-            font-size: 0.75rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-        }
-
-        .package-card.selected-active .package-selected-marker {
-            display: inline-block;
-        }
-
-        .package-ribbon-featured {
-            position: absolute;
-            top: 14px;
-            right: 14px;
-            background: var(--pastel-rosa);
-            color: var(--pastel-rosa-deep);
-            font-family: var(--font-sans);
-            font-size: 0.72rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            padding: 0.3rem 0.85rem;
-            border-radius: 20px;
-        }
-
-        .pkg-header-banner {
-            display: flex;
-            align-items: center;
-            gap: 0.9rem;
-            padding: 0.9rem 1.1rem;
-            border-radius: 16px;
-            margin-bottom: 1rem;
-        }
-
-        .pkg-header-banner.amber {
-            background: var(--pastel-dorado);
-            border: 1px solid rgba(217, 130, 43, 0.15);
-        }
-
-        .pkg-header-banner.pink {
-            background: var(--pastel-rosa);
-            border: 1px solid rgba(217, 72, 120, 0.15);
-        }
-
-        .pkg-header-banner.blue {
-            background: var(--pastel-menta);
-            border: 1px solid rgba(13, 130, 126, 0.15);
-        }
-
-        .pkg-icon-circle {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: #FFFFFF;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            box-shadow: 0 2px 8px rgba(43, 33, 29, 0.06);
-            flex-shrink: 0;
-        }
-
-        .package-badge {
-            display: inline-block;
-            font-family: var(--font-sans);
-            font-size: 0.74rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-        }
-
-        .package-badge.azul { background: #E8F0FE; color: #1E4E79; }
-        .package-badge.rosa { background: var(--pastel-rosa); color: var(--pastel-rosa-deep); }
-        .package-badge.dorado { background: var(--pastel-dorado); color: #8C5300; }
-
-        .package-title {
+        .section-title {
             font-family: var(--font-serif);
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--texto-principal);
+            font-size: clamp(2rem, 3.5vw, 2.9rem);
+            font-weight: 900;
             line-height: 1.15;
-            margin-bottom: 0.15rem;
-            letter-spacing: -0.01em;
-        }
-
-        .package-capacity {
-            font-family: var(--font-sans);
-            font-size: 0.92rem;
-            font-weight: 700;
-            color: var(--texto-secundario);
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .pkg-pill-summary {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            margin-bottom: 1.1rem;
-        }
-
-        .pkg-pill {
-            font-family: var(--font-sans);
-            font-size: 0.74rem;
-            font-weight: 700;
-            padding: 0.25rem 0.65rem;
-            border-radius: 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            background: var(--bg-crema);
-            border: 1px solid var(--border-sutil);
-            color: var(--texto-principal);
-        }
-
-        .pkg-pill.bold {
-            background: var(--pastel-rosa);
-            color: var(--pastel-rosa-deep);
-            border-color: transparent;
-        }
-
-        .package-features {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.55rem;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .package-feature-item {
-            background: var(--bg-crema);
-            border: 1px solid var(--border-sutil);
-            border-radius: 12px;
-            padding: 0.75rem 0.9rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            transition: all 0.2s ease;
-        }
-
-        .package-feature-item.featured-star {
-            background: #FFF5F8;
-            border-color: rgba(217, 72, 120, 0.25);
-        }
-
-        .package-feature-item strong {
-            display: block;
-            font-family: var(--font-sans);
-            font-size: 0.88rem;
-            font-weight: 700;
-            color: var(--texto-principal);
-            margin-bottom: 0.15rem;
-        }
-
-        .package-feature-item span {
-            display: block;
-            font-size: 0.82rem;
-            color: var(--texto-secundario);
-            line-height: 1.4;
-        }
-
-        .package-feature-icon {
-            font-size: 1.15rem;
-            flex-shrink: 0;
-            margin-top: 1px;
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .package-notes-banner {
-            margin-top: 2rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border-sutil);
-            border-radius: 18px;
-            padding: 1.4rem 1.8rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.3rem;
-            box-shadow: var(--shadow-editorial);
-        }
-
-        .package-note-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.8rem;
-        }
-
-        .package-note-item strong {
-            display: block;
-            font-family: var(--font-sans);
-            font-weight: 700;
-            font-size: 0.92rem;
-            color: var(--texto-principal);
-            margin-bottom: 0.2rem;
-        }
-
-        .package-note-item p {
-            font-size: 0.84rem;
-            color: var(--texto-secundario);
-            line-height: 1.5;
-        }
-
-        /* ===== PASO 2: CONTADOR Y GRID DE GUISADOS ===== */
-        .guisado-progress-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border-sutil);
-            border-radius: 16px;
-            padding: 1.2rem 1.6rem;
-            margin-bottom: 1.5rem;
-            box-shadow: var(--shadow-editorial);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .progress-info {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--texto-principal);
-        }
-
-        .progress-info strong {
-            font-size: 1.4rem;
-            color: var(--pastel-rosa-deep);
-        }
-
-        .progress-bar-track {
-            flex: 1;
-            min-width: 200px;
-            height: 10px;
-            background: var(--bg-crema);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--border-sutil);
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, var(--pastel-rosa), var(--pastel-rosa-deep));
-            border-radius: 20px;
-            transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .progress-status-badge {
-            background: var(--bg-crema);
-            color: var(--texto-secundario);
-            font-family: var(--font-sans);
-            font-size: 0.82rem;
-            font-weight: 700;
-            padding: 0.35rem 0.85rem;
-            border-radius: 20px;
-            border: 1px solid var(--border-sutil);
-        }
-
-        .progress-status-badge.complete {
-            background: var(--pastel-menta);
-            color: var(--pastel-menta-deep);
-            border-color: transparent;
-        }
-
-        .guisado-limit-alert {
-            display: none;
-            background: #FFF3E0;
-            border: 1px solid #FFE082;
-            border-radius: 12px;
-            padding: 0.85rem 1.2rem;
-            margin-bottom: 1.5rem;
-            align-items: center;
-            gap: 0.6rem;
-            font-size: 0.9rem;
-            color: #E65100;
-            font-weight: 600;
-        }
-
-        /* Filtros */
-        .filter-tabs-row {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.2rem;
-            border-bottom: 1px solid var(--border-sutil);
-        }
-
-        .folk-tab-btn {
-            background: var(--bg-card);
-            border: 1px solid var(--border-sutil);
-            padding: 0.55rem 1.2rem;
-            border-radius: 30px;
-            font-family: var(--font-sans);
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--texto-secundario);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .folk-tab-btn.active, .folk-tab-btn:hover {
-            background: var(--pastel-rosa-deep);
-            color: #FFFFFF;
-            border-color: var(--pastel-rosa-deep);
-        }
-
-        .guisados-grid-32 {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 0.75rem;
-        }
-
-        .guisado-item-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-sutil);
-            border-radius: 12px;
-            padding: 0.75rem 0.95rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-            user-select: none;
-            box-shadow: 0 2px 6px rgba(43, 33, 29, 0.02);
-            transition: all 0.2s ease;
-        }
-
-        .guisado-item-card:hover {
-            border-color: var(--pastel-rosa-deep);
-            background: #FFF9FB;
-            transform: translateY(-2px);
-        }
-
-        .guisado-item-card.selected {
-            background: #FFF0F5;
-            border-color: var(--pastel-rosa-deep);
-            border-width: 1.5px;
-        }
-
-        .guisado-item-name {
-            font-family: var(--font-sans);
-            font-size: 0.86rem;
-            font-weight: 600;
-            color: var(--texto-principal);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .guisado-check-box {
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            border: 1.5px solid #D6C7B2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: transparent;
-            transition: all 0.2s ease;
-            flex-shrink: 0;
-            background: #FFFFFF;
-        }
-
-        .guisado-item-card.selected .guisado-check-box {
-            background: var(--pastel-rosa-deep);
-            border-color: var(--pastel-rosa-deep);
-            color: #FFFFFF;
-        }
-
-        /* ===== PASO 3: EXTRAS ===== */
-        .extras-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .extra-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-sutil);
-            border-radius: 16px;
-            padding: 1.2rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .extra-card:hover {
-            border-color: var(--pastel-rosa-deep);
-            transform: translateY(-2px);
-        }
-
-        .extra-card.selected {
-            border-color: var(--pastel-rosa-deep);
-            background: #FFF0F5;
-        }
-
-        .extra-card-checkbox {
-            width: 24px;
-            height: 24px;
-            border-radius: 6px;
-            border: 1.5px solid #D6C7B2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            font-weight: 900;
-            color: transparent;
-            transition: all 0.2s ease;
-            flex-shrink: 0;
-            background: #FFFFFF;
-            margin-top: 2px;
-        }
-
-        .extra-card.selected .extra-card-checkbox {
-            background: var(--pastel-rosa-deep);
-            border-color: var(--pastel-rosa-deep);
-            color: #FFFFFF;
-        }
-
-        /* ===== PASO 4: FORMULARIO Y RESUMEN EN VIVO ===== */
-        .live-summary-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border-sutil);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: var(--shadow-editorial);
-            margin-top: 2rem;
-        }
-
-        .summary-header-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-sutil);
-            padding-bottom: 1rem;
-            margin-bottom: 1.4rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        /* ===== GALERÍA DE EVENTOS ===== */
-        .ade-grid-gallery {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .ade-photo-card {
-            border-radius: 16px;
-            overflow: hidden;
-            background: var(--bg-card);
-            border: 1px solid var(--border-sutil);
-            box-shadow: var(--shadow-editorial);
-            cursor: pointer;
-            position: relative;
-            transition: all 0.35s ease;
-        }
-
-        .ade-photo-card.span-6 { grid-column: span 6; height: 320px; }
-        .ade-photo-card.span-4 { grid-column: span 4; height: 290px; }
-        .ade-photo-card.span-8 { grid-column: span 8; height: 290px; }
-        .ade-photo-card.span-12 { grid-column: span 12; height: 350px; }
-
-        .ade-photo-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 36px rgba(43, 33, 29, 0.12);
-        }
-
-        .ade-photo-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .ade-photo-card:hover img {
-            transform: scale(1.04);
-        }
-
-        /* ===== CHILAQUILES Y TORTAS EDITORIAL (SIN MARCOS DASHED) ===== */
-        .dishes-2col-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-            align-items: center;
-            background: var(--bg-card);
-            border: 1px solid var(--border-sutil);
-            border-radius: 24px;
-            padding: 2.5rem;
-            box-shadow: var(--shadow-editorial);
-            position: relative;
-            margin-bottom: 2.2rem;
-        }
-
-        .dishes-2col-layout.reversed { grid-template-columns: 1fr 1fr; }
-
-        .dish-photo-talavera-frame {
-            position: relative;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: var(--shadow-editorial);
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .dish-photo-talavera-frame:hover {
-            transform: scale(1.02);
-        }
-
-        .dish-photo-talavera-frame img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* ===== CARRETE FOTOGRÁFICO MARQUEE ===== */
-        .marquee-carousel-wrapper {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            padding: 0.8rem 0 1.4rem;
-            mask-image: linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%);
-            -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%);
-        }
-
-        .marquee-track {
-            display: flex;
-            gap: 1.2rem;
-            width: max-content;
-            animation: marqueeFolk 45s linear infinite;
-        }
-
-        .marquee-carousel-wrapper:hover .marquee-track {
-            animation-play-state: paused;
-        }
-
-        @keyframes marqueeFolk {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .marquee-photo-card {
-            width: 250px;
-            flex-shrink: 0;
-            background: var(--bg-card);
-            border: 1px solid var(--border-sutil);
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: var(--shadow-editorial);
-            position: relative;
-            cursor: pointer;
-            transition: all 0.35s ease;
-        }
-
-        .marquee-photo-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 14px 32px rgba(43, 33, 29, 0.12);
-        }
-
-        .marquee-photo-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .marquee-photo-card:hover .marquee-photo-img {
-            transform: scale(1.05);
-        }
-
-        .marquee-photo-caption {
-            padding: 0.75rem 1rem;
-            font-family: var(--font-sans);
-            font-size: 0.86rem;
-            font-weight: 700;
-            color: var(--texto-principal);
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            background: var(--bg-card);
-            border-top: 1px solid var(--border-sutil);
-        }
-
-        .marquee-controls-row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .marquee-ctrl-btn {
-            background: var(--bg-card);
-            border: 1px solid var(--border-sutil);
-            color: var(--pastel-rosa-deep);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: var(--shadow-editorial);
-        }
-
-        .marquee-ctrl-btn:hover {
-            background: var(--pastel-rosa);
-        }
-
-        /* ===== FOOTER EDITORIAL ===== */
-        footer {
-            background: #231B17;
-            border-top: 1px solid var(--border-sutil);
-            padding: 4.5rem 2rem 2.5rem;
-            text-align: center;
-            color: #FFFFFF;
-            position: relative;
-        }
-
-        .footer-logo {
-            font-family: var(--font-serif);
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: var(--pastel-rosa);
-            line-height: 1;
-            margin-bottom: 0.5rem;
             letter-spacing: -0.02em;
         }
-
-        .footer-phone {
-            font-family: var(--font-sans);
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--pastel-dorado);
-            text-decoration: none;
-            display: inline-block;
-            margin: 1rem 0;
-            transition: transform 0.2s ease, color 0.2s ease;
+        .section-title span { font-style: italic; color: var(--pastel-rosa-deep); }
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-top: 0.8rem;
+            line-height: 1.6;
         }
 
-        .footer-phone:hover { 
-            color: #FFFFFF;
-            transform: scale(1.03);
-        }
-
-        /* Lightbox */
-        .lightbox-modal {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: rgba(20,12,8,0.94);
-            backdrop-filter: blur(16px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            padding: 2rem;
-        }
-
-        .lightbox-modal.active { opacity: 1; visibility: visible; }
-        .lightbox-modal img { max-width: 90vw; max-height: 85vh; border-radius: 16px; border: 2px solid rgba(255,255,255,0.2); }
-
-        @media (max-width: 900px) {
-            .packages-grid { grid-template-columns: 1fr; }
-            .ade-grid-gallery { grid-template-columns: 1fr; }
-            .ade-photo-card.span-6, 
-            .ade-photo-card.span-4, 
-            .ade-photo-card.span-8, 
-            .ade-photo-card.span-12 { grid-column: span 1; height: 260px; }
-        }
-
-        @media (max-width: 1024px) {
-            .hero-scenic-card { min-height: auto; padding: 3rem 1.5rem; }
-            .hero-scenic-content { padding: 1.5rem; margin-left: 0; }
-            .dishes-2col-layout, .dishes-2col-layout.reversed { grid-template-columns: 1fr; }
-            header { padding: 0.75rem 1.2rem; }
-            .nav-menu { display: none; }
-        }
-    
-        /* ===== NUEVO HERO EDITORIAL ASIMÉTRICO ===== */
-        .hero-editorial-section {
-            background-color: var(--bg-crema);
-            padding: 3.5rem 2rem 4rem;
-            position: relative;
-        }
-        .hero-editorial-container {
-            max-width: 1240px;
-            margin: 0 auto;
+        .bento-grid {
             display: grid;
-            grid-template-columns: 1.15fr 1fr;
-            gap: 3.8rem;
-            align-items: center;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
         }
-        @media (max-width: 980px) {
-            .hero-editorial-section {
-                padding: 2.2rem 1.25rem 3rem;
-            }
-            .hero-editorial-container {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-        }
-        .hero-editorial-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.55rem;
-            background: #FFFFFF;
-            border: 1px solid var(--border-sutil);
-            padding: 0.45rem 1.15rem;
-            border-radius: 9999px;
-            font-family: var(--font-sans);
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--pastel-menta-deep);
-            box-shadow: 0 4px 14px rgba(43, 33, 29, 0.03);
-            margin-bottom: 1.3rem;
-        }
-        .badge-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--pastel-rosa-deep);
-            display: inline-block;
-        }
-        .hero-editorial-title {
-            font-family: var(--font-serif);
-            font-size: clamp(2.35rem, 4.3vw, 3.8rem);
-            line-height: 1.12;
-            font-weight: 800;
-            letter-spacing: -0.025em;
-            color: var(--texto-principal);
-            margin-bottom: 1.25rem;
-        }
-        .hero-editorial-title-accent {
-            display: block;
-            font-family: var(--font-serif);
-            font-style: italic;
-            font-weight: 700;
-            color: var(--pastel-rosa-deep);
-            font-size: 0.9em;
-            margin-top: 0.35rem;
-        }
-        .hero-editorial-lead {
-            font-family: var(--font-sans);
-            font-size: 1.08rem;
-            line-height: 1.68;
-            color: var(--texto-secundario);
-            margin-bottom: 2.2rem;
-            max-width: 580px;
-        }
-        .hero-editorial-actions {
-            display: flex;
-            align-items: center;
-            gap: 1.1rem;
-            flex-wrap: wrap;
-            margin-bottom: 2.2rem;
-        }
-        .btn-editorial-solid {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.65rem;
-            background: var(--pastel-rosa-deep);
-            color: #FFFFFF;
-            text-decoration: none;
-            font-family: var(--font-sans);
-            font-weight: 700;
-            font-size: 1rem;
-            padding: 0.95rem 2.2rem;
-            border-radius: 9999px;
-            box-shadow: 0 10px 24px -4px rgba(217, 72, 120, 0.35);
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-        }
-        .btn-editorial-solid:hover {
-            transform: translateY(-2px);
-            background: #C43B68;
-            box-shadow: 0 14px 28px -4px rgba(217, 72, 120, 0.45);
-        }
-        .btn-editorial-glass {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.65rem;
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            color: var(--texto-principal);
-            text-decoration: none;
-            font-family: var(--font-sans);
-            font-weight: 700;
-            font-size: 1rem;
-            padding: 0.95rem 2.2rem;
-            border-radius: 9999px;
-            border: 1px solid rgba(43, 33, 29, 0.12);
-            box-shadow: 0 6px 18px rgba(43, 33, 29, 0.04);
-            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-        }
-        .btn-editorial-glass:hover {
-            transform: translateY(-2px);
-            background: #FFFFFF;
-            border-color: rgba(43, 33, 29, 0.22);
-            box-shadow: 0 10px 22px rgba(43, 33, 29, 0.08);
-        }
-        .hero-editorial-perks {
-            display: flex;
-            align-items: center;
-            gap: 1.4rem;
-            flex-wrap: wrap;
-            padding-top: 1.1rem;
-            border-top: 1px solid var(--border-sutil);
-        }
-        .hero-perk-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            font-family: var(--font-sans);
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--texto-secundario);
-        }
-        .hero-perk-check {
-            color: var(--pastel-menta-deep);
-            font-weight: 800;
-        }
-
-        /* Tarjeta contenedor de alta resolución derecha */
-        .hero-editorial-right {
-            position: relative;
-        }
-        .hero-showcase-frame {
+        .bento-cell {
             position: relative;
             border-radius: 28px;
             overflow: hidden;
-            background: #FFFFFF;
-            border: 1px solid var(--border-sutil);
-            box-shadow: 0 20px 48px -12px rgba(43, 33, 29, 0.1);
-            aspect-ratio: 4 / 3.4;
-            max-height: 520px;
+            background: #181210;
+            min-height: 340px;
+            box-shadow: var(--shadow-card);
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        .hero-showcase-image {
+        .bento-cell:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        .bento-cell.col-8 { grid-column: span 8; }
+        .bento-cell.col-4 { grid-column: span 4; }
+        .bento-cell.col-6 { grid-column: span 6; }
+
+        .bento-media {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 88%;
-            display: block;
+            opacity: 0.88;
             transition: transform 0.6s ease;
         }
-        .hero-showcase-frame:hover .hero-showcase-image {
-            transform: scale(1.025);
-        }
-        .hero-floating-glass-card {
-            position: absolute;
-            bottom: 1.4rem;
-            left: 1.4rem;
-            right: 1.4rem;
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
-            padding: 1rem 1.4rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            box-shadow: 0 12px 32px rgba(43, 33, 29, 0.08);
-        }
-        .floating-glass-icon {
-            font-size: 2rem;
-            line-height: 1;
-        }
-        .floating-glass-info {
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-        }
-        .floating-glass-title {
-            font-family: var(--font-serif);
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--texto-principal);
-        }
-        .floating-glass-subtitle {
-            font-family: var(--font-sans);
-            font-size: 0.82rem;
-            color: var(--texto-secundario);
-            font-weight: 500;
-        }
+        .bento-cell:hover .bento-media { transform: scale(1.04); }
 
-        /* ===== BENTO GRID GALERÍA DE 4 BLOQUES ===== */
-        .section-editorial-subtitle {
-            font-family: var(--font-sans);
-            font-size: 1.05rem;
-            color: var(--texto-secundario);
-            max-width: 650px;
-            margin: 0.6rem auto 0;
-            line-height: 1.6;
-            text-align: center;
-        }
-        .bento-grid-gallery {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 1.6rem;
-            margin-top: 2rem;
-        }
-        .bento-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-sutil);
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: var(--shadow-editorial);
-            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        .bento-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(24, 18, 16, 0.1) 0%, rgba(24, 18, 16, 0.85) 100%);
             display: flex;
             flex-direction: column;
-            position: relative;
+            justify-content: flex-end;
+            padding: 2.2rem;
+            color: #FFFFFF;
+            z-index: 2;
         }
-        .bento-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 40px -8px rgba(43, 33, 29, 0.09);
-            border-color: rgba(43, 33, 29, 0.16);
-        }
-        .bento-card-large {
-            grid-column: span 7;
-            cursor: pointer;
-        }
-        .bento-card-medium {
-            grid-column: span 5;
-            cursor: pointer;
-        }
-        .bento-card-video {
-            grid-column: span 6;
-        }
-        .bento-card:nth-child(4) {
-            grid-column: span 6;
-            cursor: pointer;
-        }
-        @media (max-width: 920px) {
-            .bento-card-large, .bento-card-medium, .bento-card-video, .bento-card:nth-child(4) {
-                grid-column: span 12;
-            }
-        }
-        .bento-image-wrap {
-            position: relative;
-            width: 100%;
-            height: 280px;
-            overflow: hidden;
-            background: #ECE5DE;
-        }
-        .bento-card-large .bento-image-wrap {
-            height: 320px;
-        }
-        .bento-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-        .bento-card:hover .bento-img {
-            transform: scale(1.03);
-        }
-        .bento-video-wrap {
-            width: 100%;
-            height: 280px;
-            background: #1A1412;
-            overflow: hidden;
-        }
-        .bento-video-player {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .bento-content {
-            padding: 1.5rem 1.6rem 1.7rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-        .bento-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-family: var(--font-sans);
-            font-size: 0.75rem;
+        .bento-chip {
+            padding: 0.3rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.72rem;
             font-weight: 700;
-            letter-spacing: 0.06em;
             text-transform: uppercase;
-            padding: 0.35rem 0.85rem;
-            border-radius: 9999px;
+            letter-spacing: 0.06em;
             width: fit-content;
             margin-bottom: 0.8rem;
+            backdrop-filter: blur(8px);
         }
-        .bento-badge.menta {
-            background: var(--pastel-menta);
-            color: var(--pastel-menta-deep);
-        }
-        .bento-badge.rosa {
-            background: var(--pastel-rosa);
-            color: var(--pastel-rosa-deep);
-        }
-        .bento-badge.dorado {
-            background: var(--pastel-dorado);
-            color: #8C5D00;
-        }
-        .bento-title {
-            font-family: var(--font-serif);
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--texto-principal);
-            line-height: 1.25;
-            margin-bottom: 0.45rem;
-        }
-        .bento-desc {
-            font-family: var(--font-sans);
-            font-size: 0.92rem;
-            line-height: 1.55;
-            color: var(--texto-secundario);
-            margin-bottom: 1rem;
-        }
-        .bento-action-hint {
-            margin-top: auto;
-            font-family: var(--font-sans);
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: var(--pastel-rosa-deep);
-        }
+        .bento-chip.rosa { background: rgba(217, 72, 120, 0.85); color: #FFF; }
+        .bento-chip.menta { background: rgba(13, 130, 126, 0.85); color: #FFF; }
+        .bento-chip.dorado { background: rgba(253, 242, 220, 0.9); color: var(--pastel-dorado-deep); }
 
-
-        /* ===== REDISEÑO EDITORIAL COMPACTO: ARMADOR DE BANQUETE (PASOS 1 AL 4) ===== */
-        .step-block-compact {
-            background: #FFFFFF;
-            border: 1px solid var(--border-sutil);
-            border-radius: 24px;
-            padding: 1.8rem 2.2rem;
-            margin-bottom: 1.8rem;
-            box-shadow: var(--shadow-editorial);
-            transition: border-color 0.25s ease;
-        }
-        @media (max-width: 768px) {
-            .step-block-compact {
-                padding: 1.4rem 1.15rem;
-                border-radius: 20px;
-            }
-        }
-        .step-header-compact {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-sutil);
-        }
-        .step-badge-pill {
-            background: var(--pastel-menta);
-            color: var(--pastel-menta-deep);
-            font-family: var(--font-sans);
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 0.35rem 0.85rem;
-            border-radius: 9999px;
-            white-space: nowrap;
-            display: inline-flex;
-            align-items: center;
-        }
-        .step-title-compact {
+        .bento-headline {
             font-family: var(--font-serif);
-            font-size: clamp(1.25rem, 2.5vw, 1.55rem);
-            font-weight: 700;
-            color: var(--texto-principal);
-            line-height: 1.25;
-            margin-bottom: 0.25rem;
-        }
-        .step-desc-compact {
-            font-family: var(--font-sans);
-            font-size: 0.92rem;
-            color: var(--texto-secundario);
-            line-height: 1.5;
-        }
-
-        /* Slider Box Compacto */
-        .guest-slider-box-compact {
-            background: var(--bg-crema);
-            border: 1px solid var(--border-sutil);
-            border-radius: 20px;
-            padding: 1.2rem 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .slider-top-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-bottom: 0.8rem;
-        }
-        .slider-presets-wrap {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-        }
-        .slider-label-text {
-            font-family: var(--font-sans);
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--texto-principal);
-        }
-        .preset-pills-row {
-            display: flex;
-            gap: 0.4rem;
-            flex-wrap: wrap;
-        }
-        .preset-pill {
-            background: #FFFFFF;
-            border: 1px solid var(--border-sutil);
-            border-radius: 9999px;
-            padding: 0.3rem 0.85rem;
-            font-family: var(--font-sans);
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--texto-secundario);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .preset-pill:hover, .preset-pill.active-preset {
-            background: var(--pastel-rosa);
-            border-color: var(--pastel-rosa-deep);
-            color: var(--pastel-rosa-deep);
-            font-weight: 700;
-        }
-        .slider-current-display span {
-            font-family: var(--font-serif);
-            font-size: 1.85rem;
+            font-size: 1.5rem;
             font-weight: 800;
-            color: var(--pastel-rosa-deep);
-            letter-spacing: -0.02em;
-        }
-        .custom-range-slider {
-            width: 100%;
-            height: 8px;
-            accent-color: var(--pastel-rosa-deep);
-            cursor: pointer;
-            border-radius: 9999px;
-            display: block;
-        }
-        .slider-ticks-row {
-            position: relative;
-            width: 100%;
-            height: 22px;
-            margin-top: 0.4rem;
-            font-family: var(--font-sans);
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--texto-secundario);
-        }
-        .slider-ticks-row span {
-            position: absolute;
-            transform: translateX(-50%);
-        }
-
-        /* 3 Tarjetas Minimalistas de Paquetes */
-        .packages-minimal-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.2rem;
-            margin-bottom: 1.2rem;
-        }
-        @media (max-width: 900px) {
-            .packages-minimal-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        .package-minimal-card {
-            background: #FFFFFF;
-            border: 1.5px solid var(--border-sutil);
-            border-radius: 20px;
-            padding: 1.35rem 1.3rem 1.25rem;
-            cursor: pointer;
-            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-        .package-minimal-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(217, 72, 120, 0.4);
-            box-shadow: 0 10px 24px -4px rgba(43, 33, 29, 0.07);
-        }
-        .package-minimal-card.selected-active {
-            border-color: var(--pastel-rosa-deep);
-            background: #FFFDFE;
-            box-shadow: 0 12px 28px -4px rgba(217, 72, 120, 0.2);
-            transform: translateY(-3px);
-        }
-        .package-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.8rem;
-        }
-        .pkg-tag-pill {
-            font-family: var(--font-sans);
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            padding: 0.25rem 0.65rem;
-            border-radius: 9999px;
-            display: inline-block;
-        }
-        .pkg-tag-pill.menta { background: var(--pastel-menta); color: var(--pastel-menta-deep); }
-        .pkg-tag-pill.rosa { background: var(--pastel-rosa); color: var(--pastel-rosa-deep); }
-        .pkg-tag-pill.dorado { background: var(--pastel-dorado); color: #8C5D00; }
-
-        .pkg-active-indicator {
-            display: none;
-            font-family: var(--font-sans);
-            font-size: 0.72rem;
-            font-weight: 800;
-            color: var(--pastel-rosa-deep);
-            background: rgba(217, 72, 120, 0.1);
-            padding: 0.2rem 0.6rem;
-            border-radius: 9999px;
-        }
-        .package-minimal-card.selected-active .pkg-active-indicator {
-            display: inline-block;
-        }
-        .pkg-name {
-            font-family: var(--font-serif);
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--texto-principal);
-            margin-bottom: 0.25rem;
-        }
-        .pkg-capacity {
-            font-family: var(--font-sans);
-            font-size: 0.84rem;
-            font-weight: 700;
-            color: var(--pastel-menta-deep);
-            margin-bottom: 0.9rem;
-        }
-        .pkg-features-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 1.2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.55rem;
-            flex-grow: 1;
-        }
-        .pkg-features-list li {
-            font-family: var(--font-sans);
-            font-size: 0.86rem;
-            color: var(--texto-secundario);
-            line-height: 1.45;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.45rem;
-        }
-        .pkg-check {
-            color: var(--pastel-menta-deep);
-            font-weight: 800;
-            font-size: 0.95rem;
             line-height: 1.2;
+            margin-bottom: 0.4rem;
         }
-        .pkg-select-btn {
-            background: #FFFFFF;
-            border: 1px solid var(--border-sutil);
-            border-radius: 9999px;
-            padding: 0.65rem 1rem;
-            text-align: center;
-            font-family: var(--font-sans);
-            font-size: 0.88rem;
-            font-weight: 700;
-            color: var(--texto-principal);
-            transition: all 0.2s ease;
-        }
-        .package-minimal-card:hover .pkg-select-btn {
-            background: var(--pastel-rosa);
-            border-color: var(--pastel-rosa-deep);
-            color: var(--pastel-rosa-deep);
-        }
-        .package-minimal-card.selected-active .pkg-select-btn {
-            background: var(--pastel-rosa-deep);
-            color: #FFFFFF;
-            border-color: var(--pastel-rosa-deep);
-            box-shadow: 0 4px 14px rgba(217, 72, 120, 0.3);
-        }
-        .package-micro-perks {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-            padding-top: 0.8rem;
-        }
-        .micro-perk-pill {
-            background: var(--bg-crema);
-            border: 1px solid var(--border-sutil);
-            border-radius: 9999px;
-            padding: 0.35rem 0.85rem;
-            font-family: var(--font-sans);
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--texto-secundario);
+        .bento-lead {
+            font-size: 0.92rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.5;
+            max-width: 480px;
         }
 
-        /* ===== PASO 2: PILLS DE GUISADOS & CATEGORÍAS DESPLEGABLES ===== */
-        .guisados-tracker-bar {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            background: var(--bg-crema);
-            border: 1px solid var(--border-sutil);
-            border-radius: 16px;
-            padding: 0.85rem 1.25rem;
-            flex-wrap: wrap;
-        }
-        .tracker-count-wrap {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-family: var(--font-sans);
-            font-size: 0.9rem;
-        }
-        .tracker-numbers {
-            font-size: 1.05rem;
-            color: var(--pastel-rosa-deep);
-            font-weight: 800;
-        }
-        .tracker-progress-track {
-            flex-grow: 1;
-            min-width: 120px;
-            height: 8px;
-            background: rgba(43, 33, 29, 0.08);
-            border-radius: 9999px;
-            overflow: hidden;
-        }
-        .tracker-progress-fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, var(--pastel-menta-deep), var(--pastel-rosa-deep));
-            border-radius: 9999px;
-            transition: width 0.3s ease;
+        /* ===== COTIZADOR COMPACTO (SUITE 2 COLUMNAS) ===== */
+        .quote-section {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 4rem 2rem 6rem;
         }
 
-        /* Acordeones Desplegables de Guisados */
-        .guisados-accordion-container {
-            display: flex;
-            flex-direction: column;
-            gap: 0.9rem;
-            margin-top: 1rem;
-        }
-        .guisados-cat-group {
-            background: #FFFFFF;
-            border: 1px solid var(--border-sutil);
-            border-radius: 18px;
-            overflow: hidden;
-            transition: border-color 0.2s ease;
-        }
-        .guisados-cat-group[open] {
-            border-color: rgba(43, 33, 29, 0.16);
-        }
-        .guisados-cat-header {
-            padding: 0.95rem 1.25rem;
-            background: #FAF7F2;
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.8rem;
-            font-family: var(--font-sans);
-            user-select: none;
-            transition: background 0.2s ease;
-        }
-        .guisados-cat-header::-webkit-details-marker {
-            display: none;
-        }
-        .guisados-cat-header:hover {
-            background: #F5EFE8;
-        }
-        .cat-header-title {
-            font-weight: 700;
-            font-size: 0.98rem;
-            color: var(--texto-principal);
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-        .cat-header-badge {
-            margin-left: auto;
-            background: #FFFFFF;
-            border: 1px solid var(--border-sutil);
-            padding: 0.2rem 0.65rem;
-            border-radius: 9999px;
-            font-size: 0.76rem;
-            font-weight: 600;
-            color: var(--texto-secundario);
-        }
-        .cat-header-chevron {
-            font-size: 1rem;
-            color: var(--texto-secundario);
-            transition: transform 0.25s ease;
-        }
-        .guisados-cat-group[open] .cat-header-chevron {
-            transform: rotate(180deg);
-        }
-        .guisados-pills-wrap {
-            padding: 1.1rem 1.25rem 1.2rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.55rem;
-            background: #FFFFFF;
-        }
-
-        /* Pill Compacta de Guisado */
-        .guisado-item-card.guisado-pill {
-            background: #FFFFFF;
-            border: 1px solid var(--border-sutil);
-            border-radius: 9999px;
-            padding: 0.48rem 1rem;
-            font-family: var(--font-sans);
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--texto-principal);
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            user-select: none;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .guisado-item-card.guisado-pill:hover {
-            background: #FAF7F2;
-            border-color: rgba(43, 33, 29, 0.2);
-            transform: translateY(-1px);
-        }
-        /* ESTADO ACTIVO PASTEL SOLICITADO */
-        .guisado-item-card.guisado-pill.selected {
-            background: var(--pastel-rosa);
-            border-color: var(--pastel-rosa-deep);
-            color: var(--pastel-rosa-deep);
-            font-weight: 700;
-            box-shadow: 0 4px 14px rgba(217, 72, 120, 0.18);
-            transform: translateY(-1px);
-        }
-        .pill-check {
-            font-size: 0.82rem;
-            font-weight: 800;
-            color: var(--pastel-rosa-deep);
-            display: none;
-        }
-        .guisado-item-card.guisado-pill.selected .pill-check {
-            display: inline-block;
-        }
-
-        /* ===== PASO 3: EXTRAS COMPACTOS ===== */
-        .extras-minimal-grid {
+        .builder-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-        .extra-minimal-card {
-            background: #FFFFFF;
-            border: 1px solid var(--border-sutil);
-            border-radius: 18px;
-            padding: 1.1rem 1.2rem;
-            display: flex;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 2.5rem;
             align-items: flex-start;
-            gap: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
         }
-        .extra-minimal-card:hover {
-            border-color: rgba(43, 33, 29, 0.25);
-            background: #FAF7F2;
-            transform: translateY(-2px);
+
+        .builder-panel {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-soft);
+            border-radius: 28px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-card);
         }
-        .extra-minimal-card.selected {
-            border-color: var(--pastel-menta-deep);
-            background: #F4FAF9;
-            box-shadow: 0 6px 18px rgba(13, 130, 126, 0.12);
+
+        .builder-step-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
         }
-        .extra-checkbox-pill {
-            width: 24px;
-            height: 24px;
+        .step-num {
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            border: 1.5px solid var(--border-sutil);
-            background: #FFFFFF;
+            background: var(--pastel-rosa);
+            color: var(--pastel-rosa-deep);
+            font-size: 0.88rem;
+            font-weight: 800;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.75rem;
+        }
+        .step-heading { font-family: var(--font-serif); font-size: 1.45rem; font-weight: 800; }
+
+        /* Selector de Paquete */
+        .pkg-selector-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2.2rem;
+        }
+        .pkg-pill-card {
+            background: var(--bg-base);
+            border: 1.5px solid var(--border-soft);
+            border-radius: 18px;
+            padding: 1.2rem 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        .pkg-pill-card:hover { border-color: var(--pastel-rosa-deep); }
+        .pkg-pill-card.active {
+            background: #FFF5F8;
+            border-color: var(--pastel-rosa-deep);
+            box-shadow: 0 6px 20px rgba(217, 72, 120, 0.15);
+        }
+        .pkg-pill-card .pkg-tag {
+            font-size: 0.72rem;
             font-weight: 800;
-            color: transparent;
-            flex-shrink: 0;
-            margin-top: 2px;
-            transition: all 0.2s ease;
-        }
-        .extra-minimal-card.selected .extra-checkbox-pill {
-            background: var(--pastel-menta-deep);
-            border-color: var(--pastel-menta-deep);
-            color: #FFFFFF;
-        }
-        .extra-title {
-            font-family: var(--font-sans);
-            font-size: 0.95rem;
-            color: var(--texto-principal);
+            text-transform: uppercase;
+            color: var(--pastel-rosa-deep);
             display: block;
             margin-bottom: 0.2rem;
         }
-        .extra-desc {
-            font-family: var(--font-sans);
-            font-size: 0.84rem;
-            color: var(--texto-secundario);
-            line-height: 1.45;
-            margin: 0;
+        .pkg-pill-card .pkg-name {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-main);
+            display: block;
+        }
+        .pkg-pill-card .pkg-cap { font-size: 0.82rem; color: var(--text-muted); }
+
+        /* Barra de Invitados */
+        .guest-row {
+            background: var(--bg-base);
+            border: 1px solid var(--border-soft);
+            border-radius: 18px;
+            padding: 1.2rem 1.6rem;
+            margin-bottom: 2.5rem;
+        }
+        .guest-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+        .guest-count-badge {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--pastel-rosa-deep);
+        }
+        .guest-range {
+            width: 100%;
+            accent-color: var(--pastel-rosa-deep);
+            cursor: pointer;
         }
 
-        /* ===== PASO 4: FORMULARIO Y RESUMEN EDITORIAL ===== */
-        .paso4-unified-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: start;
-        }
-        @media (max-width: 900px) {
-            .paso4-unified-layout {
-                grid-template-columns: 1fr;
-            }
-        }
-        .quote-form-compact {
+        /* Pills de Guisados */
+        .guisados-filter-bar {
             display: flex;
-            flex-direction: column;
-            gap: 1.4rem;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.2rem;
         }
-        .form-inputs-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-        @media (max-width: 600px) {
-            .form-inputs-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        .form-group-compact {
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-        }
-        .form-group-compact label {
-            font-family: var(--font-sans);
+        .g-filter-btn {
+            background: var(--bg-base);
+            border: 1px solid var(--border-soft);
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
             font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--texto-principal);
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
         }
-        .form-group-compact input, .form-group-compact select {
-            background: var(--bg-crema);
-            border: 1px solid var(--border-sutil);
-            border-radius: 12px;
-            padding: 0.75rem 1rem;
-            font-family: var(--font-sans);
-            font-size: 0.92rem;
-            color: var(--texto-principal);
-            outline: none;
-            transition: border-color 0.2s ease, background 0.2s ease;
+        .g-filter-btn.active, .g-filter-btn:hover {
+            background: var(--pastel-menta-deep);
+            color: #FFF;
+            border-color: var(--pastel-menta-deep);
         }
-        .form-group-compact input:focus, .form-group-compact select:focus {
-            border-color: var(--pastel-rosa-deep);
-            background: #FFFFFF;
+
+        .guisados-pills-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            max-height: 280px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+            margin-bottom: 2.5rem;
         }
-        .btn-whatsapp-quote {
-            background: #25D366;
-            color: #FFFFFF;
-            border: none;
-            border-radius: 9999px;
-            padding: 1rem 1.8rem;
-            font-family: var(--font-sans);
-            font-size: 1.05rem;
-            font-weight: 700;
+        .g-pill {
+            background: var(--bg-base);
+            border: 1px solid var(--border-soft);
+            padding: 0.55rem 1rem;
+            border-radius: 999px;
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.2s;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 0.7rem;
-            cursor: pointer;
-            box-shadow: 0 10px 24px -4px rgba(37, 211, 102, 0.4);
-            transition: all 0.2s ease;
+            gap: 0.45rem;
+            user-select: none;
         }
-        .btn-whatsapp-quote:hover {
-            transform: translateY(-2px);
-            background: #20BD5A;
-            box-shadow: 0 14px 28px -4px rgba(37, 211, 102, 0.5);
+        .g-pill:hover { border-color: var(--pastel-rosa-deep); background: #FFF9FB; }
+        .g-pill.selected {
+            background: var(--pastel-rosa);
+            border-color: var(--pastel-rosa-deep);
+            color: var(--pastel-rosa-deep);
+            font-weight: 700;
         }
 
-        /* Resumen en Vivo */
-        .quote-summary-card {
-            background: var(--bg-crema);
-            border: 1px solid var(--border-sutil);
-            border-radius: 20px;
-            padding: 1.5rem 1.6rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.1rem;
+        /* Extras Chips */
+        .extras-chip-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
         }
-        .summary-card-header {
+        .extra-chip {
+            background: var(--bg-base);
+            border: 1px solid var(--border-soft);
+            padding: 0.9rem 1.1rem;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding-bottom: 0.8rem;
-            border-bottom: 1px solid var(--border-sutil);
+            gap: 0.7rem;
+            font-size: 0.88rem;
+            font-weight: 600;
         }
-        .summary-badge-live {
-            font-family: var(--font-sans);
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
+        .extra-chip:hover { border-color: var(--pastel-rosa-deep); }
+        .extra-chip.selected {
+            background: #FFF5F8;
+            border-color: var(--pastel-rosa-deep);
+            color: var(--pastel-rosa-deep);
+        }
+
+        /* ===== PANEL FLOTANTE DE COTIZACIÓN (STICKY) ===== */
+        .sticky-summary {
+            position: sticky;
+            top: 6rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-soft);
+            border-radius: 28px;
+            padding: 2.2rem;
+            box-shadow: var(--shadow-card);
+        }
+        .summary-header {
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid var(--border-soft);
+            margin-bottom: 1.4rem;
+        }
+        .summary-tag {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--pastel-menta-deep);
         }
-        .summary-live-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--pastel-menta-deep);
-            box-shadow: 0 0 0 3px rgba(13, 130, 126, 0.2);
-            animation: pulse-dot 2s infinite;
-        }
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-        .summary-item {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-        }
-        .summary-item-label {
-            font-family: var(--font-sans);
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--texto-secundario);
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-        .summary-item-val {
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            color: var(--texto-principal);
-        }
-        .summary-item-val.highlight {
+        .summary-title {
             font-family: var(--font-serif);
-            font-size: 1.2rem;
-            color: var(--pastel-rosa-deep);
-        }
-        .summary-dishes-wrap {
-            font-family: var(--font-sans);
-            font-size: 0.9rem;
-            color: var(--texto-principal);
-            max-height: 200px;
-            overflow-y: auto;
-            padding-right: 0.5rem;
-        }
-        .summary-benefits-text, .summary-extras-text {
-            font-family: var(--font-sans);
-            font-size: 0.85rem;
-            color: var(--texto-secundario);
-            line-height: 1.45;
-            margin: 0;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-top: 0.2rem;
         }
 
-</style></head>
+        .summary-metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+        .summary-metric strong { color: var(--text-main); font-size: 1rem; }
+
+        .summary-list-box {
+            background: var(--bg-base);
+            border: 1px solid var(--border-soft);
+            border-radius: 16px;
+            padding: 1rem;
+            margin: 1.2rem 0;
+            max-height: 180px;
+            overflow-y: auto;
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .summary-list-box ol { padding-left: 1.2rem; }
+
+        .input-group { margin-bottom: 1rem; }
+        .input-group label {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.35rem;
+        }
+        .input-field {
+            width: 100%;
+            background: var(--bg-base);
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .input-field:focus { border-color: var(--pastel-rosa-deep); }
+
+        .btn-submit-whatsapp {
+            width: 100%;
+            background: #25D366;
+            color: #FFFFFF;
+            border: none;
+            padding: 1.1rem;
+            border-radius: 999px;
+            font-size: 1rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            cursor: pointer;
+            box-shadow: 0 10px 24px -4px rgba(37, 211, 102, 0.4);
+            transition: all 0.2s;
+            margin-top: 1rem;
+        }
+        .btn-submit-whatsapp:hover {
+            background: #20BA5A;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px -4px rgba(37, 211, 102, 0.5);
+        }
+
+        /* ===== TARJETA DE PRESENTACIÓN & FOOTER ===== */
+        .contact-section {
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border-soft);
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+        }
+        .card-showcase-box {
+            max-width: 520px;
+            margin: 2rem auto;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-soft);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .card-showcase-box:hover { transform: scale(1.02); }
+        .card-showcase-box img { width: 100%; display: block; }
+
+        footer {
+            background: #181210;
+            color: rgba(255, 255, 255, 0.75);
+            padding: 4rem 2rem 2.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .footer-brand {
+            font-family: var(--font-serif);
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--pastel-rosa);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 980px) {
+            .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 2.5rem 1.5rem 3.5rem; }
+            .builder-layout { grid-template-columns: 1fr; }
+            .sticky-summary { position: static; }
+            .bento-cell.col-8, .bento-cell.col-4, .bento-cell.col-6 { grid-column: span 12; }
+            .pkg-selector-row { grid-template-columns: 1fr; }
+            .extras-chip-row { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
 <body>
 
-    <!-- ENCABEZADO / NAVBAR -->
-    <header id="mainHeader">
-        <a href="#" class="brand-logo">
-            <span class="brand-name">La Lola</span>
-            <span class="brand-tag">Sabores de México & Banquetes en Cazuela</span>
+    <!-- NAVBAR -->
+    <header>
+        <a href="#" class="brand-link">
+            <span class="brand-title">La Lola</span>
+            <span class="brand-sub">Sabores de México & Cazuelas</span>
         </a>
-        <ul class="nav-menu">
-            <li><a href="#galeria-real" class="nav-link">Fotos Reales</a></li>
-            <li><a href="#arma-tu-banquete" class="nav-link">Arma tu Banquete</a></li>
-            <li><a href="#especialidades-detalle" class="nav-link">Especialidades</a></li>
-            <li><a href="#galeria-eventos" class="nav-link">Nuestros Eventos</a></li>
-            <li><a href="#tarjeta-contacto" class="nav-link">Contacto</a></li>
+        <ul class="nav-links">
+            <li><a href="#experiencia">Experiencia</a></li>
+            <li><a href="#cotizador">Armar Menú</a></li>
+            <li><a href="#contacto">Contacto</a></li>
         </ul>
-        <a href="#arma-tu-banquete" class="btn-editorial-solid" style="padding: 0.65rem 1.45rem; font-size: 0.92rem;">
-            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <a href="#cotizador" class="btn-primary">
             🌮 Armar mi Banquete
         </a>
     </header>
 
-    <!-- HERO: COMPOSICIÓN EDITORIAL ASIMÉTRICA -->
-    <section class="hero-editorial-section" id="inicio">
-        <div class="hero-editorial-container">
-            <!-- Columna Izquierda: Tipografía Refinada y Botones Modernos -->
-            <div class="hero-editorial-left">
-                <div class="hero-editorial-badge">
-                    <span class="badge-dot"></span>
-                    <span>Auténtico Sabor Casero • León, Guanajuato</span>
-                </div>
-                
-                <h1 class="hero-editorial-title">
-                    Sabores de México
-                    <span class="hero-editorial-title-accent">Sazón y Tradición en Cazuela</span>
-                </h1>
+    <!-- HERO EDITORIAL -->
+    <section class="hero">
+        <div>
+            <div class="pill-badge">
+                <span class="pill-dot"></span>
+                <span>Banquetes Tradicionales • León, Gto.</span>
+            </div>
+            
+            <h1 class="hero-title">
+                Sabores de México
+                <span>Sazón y tradición en cazuela</span>
+            </h1>
 
-                <p class="hero-editorial-lead">
-                    Llevamos la calidez y el colorido de la auténtica fiesta mexicana a tus celebraciones más importantes. Cazuelas de barro curadas a fuego lento, tortillas hechas a mano en comal vivo y una atención de familia con todo el corazón.
-                </p>
+            <p class="hero-lead">
+                Llevamos la calidez y abundancia del auténtico banquete mexicano a tu boda, tornaboda o evento familiar. Cazuelas curadas al carbón, tortillas al comal vivo y atención de corazón.
+            </p>
 
-                <div class="hero-editorial-actions">
-                    <!-- Botón 1: Sólido -->
-                    <a href="#arma-tu-banquete" class="btn-editorial-solid">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                        <span>Armar mi Banquete</span>
-                    </a>
-
-                    <!-- Botón 2: Traslúcido Glassmorphism -->
-                    <a href="#galeria-real" class="btn-editorial-glass">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                        <span>Ver Fotos & Video</span>
-                    </a>
-                </div>
-
-                <!-- Detalles de Confianza y Calidad -->
-                <div class="hero-editorial-perks">
-                    <div class="hero-perk-item">
-                        <span class="hero-perk-check">✓</span>
-                        <span>Cazuelas de barro curadas</span>
-                    </div>
-                    <div class="hero-perk-item">
-                        <span class="hero-perk-check">✓</span>
-                        <span>Comal & tortillas en vivo</span>
-                    </div>
-                    <div class="hero-perk-item">
-                        <span class="hero-perk-check">✓</span>
-                        <span>Atención 100% personalizada</span>
-                    </div>
-                </div>
+            <div class="hero-actions">
+                <a href="#cotizador" class="btn-primary">Armar mi Presupuesto</a>
+                <a href="#experiencia" class="btn-glass">Ver Galería & Video</a>
             </div>
 
-            <!-- Columna Derecha: Tarjeta Contenedor de Alta Resolución -->
-            <div class="hero-editorial-right">
-                <div class="hero-showcase-frame">
-                    <img src="img/mexican_folk_hero_banner.jpg" alt="Mesa tradicional con cazuelas y sazón en barro curado" class="hero-showcase-image">
-                    
-                    <!-- Tarjeta flotante con efecto glassmorphism -->
-                    <div class="hero-floating-glass-card">
-                        <div class="floating-glass-icon">🏺</div>
-                        <div class="floating-glass-info">
-                            <span class="floating-glass-title">Banquete Tradicional en Vivo</span>
-                            <span class="floating-glass-subtitle">Cazuelas de barro curadas a fuego vivo • León, Gto.</span>
-                        </div>
-                    </div>
+            <div class="hero-perks">
+                <div><span>✓</span> Cazuelas de barro curadas</div>
+                <div><span>✓</span> Comal vivo con tortillas a mano</div>
+                <div><span>✓</span> Menús desde 30 hasta 400+ personas</div>
+            </div>
+        </div>
+
+        <div class="hero-showcase">
+            <img src="img/mexican_folk_hero_banner.jpg" alt="Montaje de banquete con cazuelas de barro humeantes">
+            <div class="hero-glass-floating">
+                <div class="glass-avatar">🏺</div>
+                <div class="glass-meta">
+                    <strong>Banquete al Fuego Vivo</strong>
+                    <span>Servicio impecable para eventos en León y el Bajío</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="main-folk-canvas">
-
-        <!-- SECCIÓN FUSIONADA: DEL COMAL A TU MESA (CARRETE DE BANQUETE EN VIVO) -->
-        <section class="section-folk-block" id="galeria-real">
-            <div class="section-folk-heading">
-                <span class="eyebrow-folk">Del Comal a tu Mesa</span>
-                <h2>Cazuelas Humeantes, Comal Vivo & <span>Momentos de Fiesta</span></h2>
-                <p class="section-editorial-subtitle">
-                    Fotografías reales y video de nuestros eventos. Sabores artesanales, montaje impecable y alegría compartida en familia.
-                </p>
-            </div>
-
-            <!-- Bento Grid Moderno de 4 Bloques -->
-            <div class="bento-grid-gallery">
-                
-                <!-- BLOQUE 1: CAZUELAS Y BUFFET TRADICIONAL -->
-                <div class="bento-card bento-card-large" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (4).jpeg')">
-                    <div class="bento-image-wrap">
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (4).jpeg" alt="Cazuelas de barro calientitas con guisados caseros" class="bento-img" loading="lazy">
-                    </div>
-                    <div class="bento-content">
-                        <div class="bento-badge menta">
-                            <span>🥘 Sazón Tradicional</span>
-                        </div>
-                        <h3 class="bento-title">Cazuelas de Barro Humeantes</h3>
-                        <p class="bento-desc">Guisados caseros cocinados a fuego lento y servidos en cazuelas de barro curadas a la temperatura perfecta para tus invitados.</p>
-                        <span class="bento-action-hint">Ver foto completa ↗</span>
-                    </div>
-                </div>
-
-                <!-- BLOQUE 2: TORTILLAS AL COMAL EN VIVO -->
-                <div class="bento-card bento-card-medium" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.09.jpeg')">
-                    <div class="bento-image-wrap">
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.09.jpeg" alt="Comal vivo con tortillas hechas a mano por comaleras expertas" class="bento-img" loading="lazy">
-                    </div>
-                    <div class="bento-content">
-                        <div class="bento-badge dorado">
-                            <span>🫓 Al Comal en Vivo</span>
-                        </div>
-                        <h3 class="bento-title">Tortillas Hechas a Mano</h3>
-                        <p class="bento-desc">Masa de maíz fresco inflada al momento en comal frente a tus invitados por comaleras tradicionales.</p>
-                        <span class="bento-action-hint">Ver foto completa ↗</span>
-                    </div>
-                </div>
-
-                <!-- BLOQUE 3: VIDEO REAL DEL EVENTO EN VIVO -->
-                <div class="bento-card bento-card-video">
-                    <div class="bento-video-wrap">
-                        <video controls playsinline preload="metadata" poster="FOTOS/scene_3_celebration.jpg" class="bento-video-player">
-                            <source src="FOTOS/WhatsApp Video 2026-08-19 at 11.25.45.mp4" type="video/mp4">
-                            Tu navegador no soporta reproducción de video.
-                        </video>
-                    </div>
-                    <div class="bento-content bento-content-video">
-                        <div class="bento-badge rosa">
-                            <span>🎬 Video en Directo</span>
-                        </div>
-                        <h3 class="bento-title">La Experiencia en Movimiento</h3>
-                        <p class="bento-desc">Mira el ambiente festivo, la calidez de nuestro servicio y la presentación de nuestros banquetes en eventos reales.</p>
-                    </div>
-                </div>
-
-                <!-- BLOQUE 4: FAMILIAS Y CELEBRACIONES -->
-                <div class="bento-card bento-card-medium" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.jpeg')">
-                    <div class="bento-image-wrap">
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.jpeg" alt="Familias y comensales disfrutando de la comida en su evento" class="bento-img" loading="lazy">
-                    </div>
-                    <div class="bento-content">
-                        <div class="bento-badge menta">
-                            <span>🥂 Celebraciones Inolvidables</span>
-                        </div>
-                        <h3 class="bento-title">Momentos de Fiesta & Familia</h3>
-                        <p class="bento-desc">Bautizos, cumpleaños, bodas y eventos donde consentimos a cada invitado con atención cálida y personal.</p>
-                        <span class="bento-action-hint">Ver foto completa ↗</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ==========================================
-             2. EL ARMADOR DE BANQUETE UNIFICADO
-             (PASO 1 -> PASO 2 -> PASO 3 -> PASO 4)
-             ========================================== -->
-        <section class="section-folk-block" id="arma-tu-banquete">
-            <div class="section-folk-heading">
-                <span class="eyebrow-folk">Cotizador Inteligente & en Vivo</span>
-                <h2>Arma tu Banquete <span>Paso a Paso</span></h2>
-                <p class="section-editorial-subtitle">
-                    Configura tu evento en minutos: elige tu paquete, selecciona tus cazuelas de barro con límite exacto y recibe tu cotización directa por WhatsApp.
-                </p>
-            </div>
-
-            <!-- PASO 1: PERSONAS Y PAQUETES MINIMALISTAS -->
-            <div class="step-block-compact" id="paso-1">
-                <div class="step-header-compact">
-                    <span class="step-badge-pill">Paso 1 de 4</span>
-                    <div>
-                        <h3 class="step-title-compact">¿Para cuántas personas es tu evento?</h3>
-                        <p class="step-desc-compact">Elige tu paquete o ajusta la barra. Al seleccionarlo se desbloquea el número exacto de cazuelas incluidas.</p>
-                    </div>
-                </div>
-
-                <!-- Slider Compacto de Invitados -->
-                <div class="guest-slider-box-compact">
-                    <div class="slider-top-row">
-                        <div class="slider-presets-wrap">
-                            <span class="slider-label-text">👥 Invitados estimados:</span>
-                            <div class="preset-pills-row">
-                                <button type="button" class="preset-pill" onclick="setGuestsFromPreset(40)">40 pers.</button>
-                                <button type="button" class="preset-pill active-preset" onclick="setGuestsFromPreset(65)">⭐ 65 pers.</button>
-                                <button type="button" class="preset-pill" onclick="setGuestsFromPreset(100)">100 pers.</button>
-                                <button type="button" class="preset-pill" onclick="setGuestsFromPreset(150)">150+ pers.</button>
-                            </div>
-                        </div>
-                        <div class="slider-current-display">
-                            <span id="sliderGuestCountDisplay">65 Personas</span>
-                        </div>
-                    </div>
-
-                    <!-- Range input calibrado con escala exacta de 0 a 11 -->
-                    <input type="range" id="mainGuestSlider" min="0" max="11" step="1" value="3" oninput="handleSliderIndexChange(this.value)" class="custom-range-slider">
-                    
-                    <!-- Marcadores alineados matemáticamente con los 12 pasos -->
-                    <div class="slider-ticks-row">
-                        <span style="left: 0%;">30</span>
-                        <span style="left: 18.2%;">50</span>
-                        <span style="left: 36.4%; color: var(--pastel-rosa-deep); font-weight: 800;">⭐ 80</span>
-                        <span style="left: 63.6%;">150</span>
-                        <span style="right: 0%;">400+</span>
-                    </div>
-                </div>
-
-                <!-- 3 Tarjetas de Paquetes Minimalistas -->
-                <div class="packages-minimal-grid">
-                    <!-- PAQUETE 1: 30 A 50 -->
-                    <div class="package-minimal-card" id="card-pkg-30-50" onclick="choosePackage('30-50')">
-                        <div class="package-card-header">
-                            <span class="pkg-tag-pill menta">Reunión Familiar</span>
-                            <div class="pkg-active-indicator">✓ Seleccionado</div>
-                        </div>
-                        <h4 class="pkg-name">Paquete Tradicional</h4>
-                        <div class="pkg-capacity">👥 De 30 a 50 Personas</div>
-                        
-                        <ul class="pkg-features-list">
-                            <li><span class="pkg-check">✓</span> <strong>7 Guisados en Cazuela</strong> a elegir + Arroz o Frijoles</li>
-                            <li><span class="pkg-check">✓</span> <strong>Botana Mexicana:</strong> Chicharrón duro, tacos dorados y salsa</li>
-                            <li><span class="pkg-check">✓</span> <strong>1 Vitrolero de 20L</strong> de agua fresca de temporada</li>
-                            <li><span class="pkg-check">✓</span> <strong>Tortillas de máquina</strong> calientitas y salsas caseras</li>
-                        </ul>
-
-                        <div class="pkg-select-btn">Elegir Paquete (7 Guisados)</div>
-                    </div>
-
-                    <!-- PAQUETE 2: 50 A 80 (MÁS POPULAR) -->
-                    <div class="package-minimal-card featured selected-active" id="card-pkg-50-80" onclick="choosePackage('50-80')">
-                        <div class="package-card-header">
-                            <span class="pkg-tag-pill rosa">⭐ MÁS POPULAR • FIESTAS</span>
-                            <div class="pkg-active-indicator">✓ Seleccionado</div>
-                        </div>
-                        <h4 class="pkg-name">Paquete Fiesta Mexicana</h4>
-                        <div class="pkg-capacity">👥 De 50 a 80 Personas</div>
-                        
-                        <ul class="pkg-features-list">
-                            <li><span class="pkg-check">✓</span> <strong>7 Guisados en Cazuela</strong> a elegir + Arroz o Frijoles</li>
-                            <li><span class="pkg-check">✓</span> <strong>¡Ensalada de Cueritos!</strong> con duro y botana completa</li>
-                            <li><span class="pkg-check">✓</span> <strong>2 Vitroleros (40L total):</strong> 2 sabores de fruta natural</li>
-                            <li><span class="pkg-check">✓</span> <strong>¡Tortillas al Comal en Vivo!:</strong> Comaleras haciendo al momento</li>
-                        </ul>
-
-                        <div class="pkg-select-btn">Elegir Paquete (7 Guisados)</div>
-                    </div>
-
-                    <!-- PAQUETE 3: 80+ -->
-                    <div class="package-minimal-card" id="card-pkg-80" onclick="choosePackage('80+')">
-                        <div class="package-card-header">
-                            <span class="pkg-tag-pill dorado">Bodas, XV & Empresas</span>
-                            <div class="pkg-active-indicator">✓ Seleccionado</div>
-                        </div>
-                        <h4 class="pkg-name">Paquete Gran Banquete</h4>
-                        <div class="pkg-capacity">👥 De 80 Personas en Adelante</div>
-                        
-                        <ul class="pkg-features-list">
-                            <li><span class="pkg-check">✓</span> <strong>8 Guisados en Cazuela (¡1 Extra!):</strong> Máxima variedad</li>
-                            <li><span class="pkg-check">✓</span> <strong>Botana Monumental:</strong> Ensalada cueritos, totopos y duros</li>
-                            <li><span class="pkg-check">✓</span> <strong>2 Vitroleros de 20 Litros:</strong> Aguas de fruta natural</li>
-                            <li><span class="pkg-check">✓</span> <strong>Tortillas a Elegir:</strong> Al comal en vivo o máquina</li>
-                        </ul>
-
-                        <div class="pkg-select-btn">Elegir Paquete (8 Guisados)</div>
-                    </div>
-                </div>
-
-                <!-- Micro-pills de calidad -->
-                <div class="package-micro-perks">
-                    <span class="micro-perk-pill">🧀 Queso fresco de rancho 100% natural</span>
-                    <span class="micro-perk-pill">🍲 Menudo tradicional desde 30 personas</span>
-                    <span class="micro-perk-pill">📍 Cobertura León & eventos foráneos</span>
-                </div>
-            </div>
-
-            <!-- PASO 2: LOS 32 GUISADOS COMO PILLS COMPACTAS CON CATEGORÍAS DESPLEGABLES -->
-            <div class="step-block-compact" id="paso-2">
-                <div class="step-header-compact">
-                    <span class="step-badge-pill">Paso 2 de 4</span>
-                    <div>
-                        <h3 class="step-title-compact">Selecciona tus Guisados en Cazuela</h3>
-                        <p class="step-desc-compact">Tu paquete incluye <strong id="maxGuisadosLabel" style="color: var(--pastel-rosa-deep);">7 guisados</strong>. Toca las etiquetas para seleccionarlas en color pastel.</p>
-                    </div>
-                </div>
-
-                <!-- Tracker de Progreso Compacto -->
-                <div class="guisados-tracker-bar">
-                    <div class="tracker-count-wrap">
-                        <span class="tracker-label">Cazuelas Elegidas:</span>
-                        <strong class="tracker-numbers"><span id="chosenCountDisplay">0</span> / <span id="limitCountDisplay">7</span></strong>
-                    </div>
-                    <div class="tracker-progress-track">
-                        <div class="tracker-progress-fill" id="progressBarFill"></div>
-                    </div>
-                    <div class="progress-status-badge" id="progressStatusBadge">
-                        <span>⏳ Faltan <span id="missingCountDisplay">7</span> por elegir</span>
-                    </div>
-                </div>
-
-                <!-- Alerta de Límite Alcanzado -->
-                <div class="guisado-limit-alert" id="limitAlertBox" style="display: none;">
-                    <span>⚠️</span>
-                    <span id="limitAlertText">¡Ya alcanzaste el límite de guisados incluidos en tu paquete! Deselecciona alguno para cambiarlo, o agrégalo como extra en el Paso 3.</span>
-                </div>
-
-                <!-- Pestañas de Filtro Rápido -->
-                <div class="filter-tabs-row" style="margin: 1.2rem 0 1rem;">
-                    <button type="button" class="folk-tab-btn active" data-filter="all">Todas las Opciones (33)</button>
-                    <button type="button" class="folk-tab-btn" data-filter="carnes">🥩 Carnes & Aves</button>
-                    <button type="button" class="folk-tab-btn" data-filter="antojitos">🌮 Antojitos</button>
-                    <button type="button" class="folk-tab-btn" data-filter="verduras">🍄 Verduras</button>
-                    <button type="button" class="folk-tab-btn" data-filter="bases">🍚 Arroces & Frijoles</button>
-                </div>
-
-                <!-- Contenedor de Guisados con Categorías Desplegables -->
-                <div id="guisadosGrid" class="guisados-accordion-container">
-                    
-                    <!-- CATEGORÍA 1: CARNES & AVES (12) -->
-                    <details open class="guisados-cat-group" data-group="carnes">
-                        <summary class="guisados-cat-header">
-                            <span class="cat-header-title">🥩 Carnes, Aves & Especialidades</span>
-                            <span class="cat-header-badge">12 opciones</span>
-                            <span class="cat-header-chevron">▾</span>
-                        </summary>
-                        <div class="guisados-pills-wrap">
-                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Puerco en chile morita"><span class="pill-icon">🥩</span><span class="pill-text">Puerco en chile morita</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Puerco en salsa de 3 chiles"><span class="pill-icon">🥩</span><span class="pill-text">Puerco en salsa 3 chiles</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Mole rojo casero con pollo"><span class="pill-icon">🍗</span><span class="pill-text">Mole rojo con pollo</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Mole verde con pollo"><span class="pill-icon">🍗</span><span class="pill-text">Mole verde con pollo</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Bistec con nopales de rancho"><span class="pill-icon">🥩</span><span class="pill-text">Bistec con nopales</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Bistec en chile pasilla"><span class="pill-icon">🥩</span><span class="pill-text">Bistec en chile pasilla</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Bistec a la mexicana casero"><span class="pill-icon">🥩</span><span class="pill-text">Bistec a la mexicana</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Pollo a la mexicana jugoso"><span class="pill-icon">🍗</span><span class="pill-text">Pollo a la mexicana</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Pollo en crema de poblano"><span class="pill-icon">🍗</span><span class="pill-text">Pollo en crema poblano</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Pollo en crema de chile güero"><span class="pill-icon">🍗</span><span class="pill-text">Pollo crema chile güero</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Carne deshebrada sazonada"><span class="pill-icon">🥩</span><span class="pill-text">Carne deshebrada sazonada</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="carnes" data-name="Picadillo casero tradicional"><span class="pill-icon">🥩</span><span class="pill-text">Picadillo tradicional</span><span class="pill-check">✓</span></div>
-                        </div>
-                    </details>
-
-                    <!-- CATEGORÍA 2: ANTOJITOS & CHICHARRÓN (9) -->
-                    <details open class="guisados-cat-group" data-group="antojitos">
-                        <summary class="guisados-cat-header">
-                            <span class="cat-header-title">🌮 Antojitos Tradicionales & Chicharrón</span>
-                            <span class="cat-header-badge">9 opciones</span>
-                            <span class="cat-header-chevron">▾</span>
-                        </summary>
-                        <div class="guisados-pills-wrap">
-                            <div class="guisado-item-card guisado-pill" data-cat="antojitos" data-name="Rajas poblanas con crema"><span class="pill-icon">🌶️</span><span class="pill-text">Rajas poblanas con crema</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="antojitos" data-name="Chorizo con papas de la casa"><span class="pill-icon">🥔</span><span class="pill-text">Chorizo con papas</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="antojitos" data-name="Chorizo a la mexicana"><span class="pill-icon">🍅</span><span class="pill-text">Chorizo a la mexicana</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="antojitos" data-name="Chicharrón prensado guisado"><span class="pill-icon">🥘</span><span class="pill-text">Chicharrón prensado</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="antojitos" data-name="Chicharrón duro en salsa"><span class="pill-icon">🥘</span><span class="pill-text">Chicharrón duro en salsa</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="antojitos" data-name="Rellena tradicional de cazuela"><span class="pill-icon">🏺</span><span class="pill-text">Rellena tradicional</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="antojitos" data-name="Salchichas guisadas a la mexicana"><span class="pill-icon">🌭</span><span class="pill-text">Salchichas a la mexicana</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="antojitos" data-name="Huevo con chile de molcajete"><span class="pill-icon">🍳</span><span class="pill-text">Huevo en salsa molcajete</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="antojitos" data-name="Huevo con salchicha casero"><span class="pill-icon">🍳</span><span class="pill-text">Huevo con salchicha</span><span class="pill-check">✓</span></div>
-                        </div>
-                    </details>
-
-                    <!-- CATEGORÍA 3: VERDURAS & CHAMPIÑONES (7) -->
-                    <details open class="guisados-cat-group" data-group="verduras">
-                        <summary class="guisados-cat-header">
-                            <span class="cat-header-title">🍄 Champiñones, Nopales & Verduras</span>
-                            <span class="cat-header-badge">7 opciones</span>
-                            <span class="cat-header-chevron">▾</span>
-                        </summary>
-                        <div class="guisados-pills-wrap">
-                            <div class="guisado-item-card guisado-pill" data-cat="verduras" data-name="Champiñones frescos en crema"><span class="pill-icon">🍄</span><span class="pill-text">Champiñones en crema</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="verduras" data-name="Champiñones guisados al ajillo"><span class="pill-icon">🍄</span><span class="pill-text">Champiñones al ajillo</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="verduras" data-name="Nopales guisados tradicionales"><span class="pill-icon">🌵</span><span class="pill-text">Nopales guisados</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="verduras" data-name="Nopales en ensalada fresca"><span class="pill-icon">🥗</span><span class="pill-text">Nopales en ensalada fresca</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="verduras" data-name="Papas guisadas con cebollita"><span class="pill-icon">🥔</span><span class="pill-text">Papas con cebollita</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="verduras" data-name="Papas con nopales tiernos"><span class="pill-icon">🥔</span><span class="pill-text">Papas con nopales tiernos</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="verduras" data-name="Garbanzos guisados en caldillo"><span class="pill-icon">🍲</span><span class="pill-text">Garbanzos en caldillo</span><span class="pill-check">✓</span></div>
-                        </div>
-                    </details>
-
-                    <!-- CATEGORÍA 4: BASES, ARROCES & FRIJOLES (5) -->
-                    <details open class="guisados-cat-group" data-group="bases">
-                        <summary class="guisados-cat-header">
-                            <span class="cat-header-title">🍚 Arroces & Frijoles de Olla</span>
-                            <span class="cat-header-badge">5 opciones</span>
-                            <span class="cat-header-chevron">▾</span>
-                        </summary>
-                        <div class="guisados-pills-wrap">
-                            <div class="guisado-item-card guisado-pill" data-cat="bases" data-name="Arroz blanco esponjadito"><span class="pill-icon">🍚</span><span class="pill-text">Arroz blanco esponjadito</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="bases" data-name="Arroz rojo tradicional"><span class="pill-icon">🍚</span><span class="pill-text">Arroz rojo tradicional</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="bases" data-name="Frijoles refritos de la casa"><span class="pill-icon">🫘</span><span class="pill-text">Frijoles refritos caseros</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="bases" data-name="Frijoles enchilados de rancho"><span class="pill-icon">🫘</span><span class="pill-text">Frijoles enchilados de rancho</span><span class="pill-check">✓</span></div>
-                            <div class="guisado-item-card guisado-pill" data-cat="bases" data-name="Frijoles de la olla calientitos"><span class="pill-icon">🍲</span><span class="pill-text">Frijoles de la olla</span><span class="pill-check">✓</span></div>
-                        </div>
-                    </details>
-
-                </div>
-            </div>
-
-            <!-- PASO 3: ESPECIALIDADES & EXTRAS COMPACTOS -->
-            <div class="step-block-compact" id="paso-3">
-                <div class="step-header-compact">
-                    <span class="step-badge-pill">Paso 3 de 4</span>
-                    <div>
-                        <h3 class="step-title-compact">¿Deseas Agregar Especialidades o Extras? (Opcional)</h3>
-                        <p class="step-desc-compact">Personaliza tu banquete con complementos que harán tu fiesta todavía más especial.</p>
-                    </div>
-                </div>
-
-                <div class="extras-minimal-grid">
-                    <!-- Extra 1: Chilaquiles -->
-                    <div class="extra-minimal-card" id="extra-chilaquiles" onclick="toggleExtra('chilaquiles')">
-                        <div class="extra-checkbox-pill" id="chk-chilaquiles">✓</div>
-                        <div class="extra-card-body">
-                            <strong class="extra-title">🍳 Desayuno / Tornaboda de Chilaquiles</strong>
-                            <p class="extra-desc">Salsa verde o roja, 2 proteínas (pollo, huevo, milanesa o carne), crema, queso fresco y bolillo.</p>
-                        </div>
-                    </div>
-
-                    <!-- Extra 2: Famosas Tortas -->
-                    <div class="extra-minimal-card" id="extra-tortas" onclick="toggleExtra('tortas')">
-                        <div class="extra-checkbox-pill" id="chk-tortas">✓</div>
-                        <div class="extra-card-body">
-                            <strong class="extra-title">🥪 Las Famosas Tortas de Chilaquiles</strong>
-                            <p class="extra-desc">Bolillo crujiente, chilaquiles a elegir, milanesa o pollo, frijoles refritos, crema y queso fresco.</p>
-                        </div>
-                    </div>
-
-                    <!-- Extra 3: Menudo -->
-                    <div class="extra-minimal-card" id="extra-menudo" onclick="toggleExtra('menudo')">
-                        <div class="extra-checkbox-pill" id="chk-menudo">✓</div>
-                        <div class="extra-card-body">
-                            <strong class="extra-title">🍲 El Tradicional Menudo en Cazuela</strong>
-                            <p class="extra-desc">A partir de 30 personas. Caldo espeso bien sazonado, orégano, cebolla, limón y tortillas.</p>
-                        </div>
-                    </div>
-
-                    <!-- Extra 4: Comaleras -->
-                    <div class="extra-minimal-card" id="extra-comal" onclick="toggleExtra('comal')">
-                        <div class="extra-checkbox-pill" id="chk-comal">✓</div>
-                        <div class="extra-card-body">
-                            <strong class="extra-title">🫓 Comaleras & Tortillas al Comal en Vivo</strong>
-                            <p class="extra-desc">Comal vivo con masa fresca y tortillas calientes hechas a mano durante el servicio.</p>
-                        </div>
-                    </div>
-
-                    <!-- Extra 5: Cazuela Adicional -->
-                    <div class="extra-minimal-card" id="extra-cazuela" onclick="toggleExtra('cazuela')">
-                        <div class="extra-checkbox-pill" id="chk-cazuela">✓</div>
-                        <div class="extra-card-body">
-                            <strong class="extra-title">🥘 Cazuela Extra de Guisado</strong>
-                            <p class="extra-desc">Suma 1 variedad más a tu banquete para dar aún mayor libertad de elección a tus invitados.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PASO 4: FORMULARIO Y RESUMEN EDITORIAL -->
-            <div class="step-block-compact" id="paso-4">
-                <div class="step-header-compact">
-                    <span class="step-badge-pill" style="background: var(--pastel-dorado); color: #8C5D00;">Paso 4 de 4</span>
-                    <div>
-                        <h3 class="step-title-compact">Datos del Evento & Resumen de Cotización</h3>
-                        <p class="step-desc-compact">Completa tus datos y enviaremos el desglose ordenado directo al WhatsApp de Claudia.</p>
-                    </div>
-                </div>
-
-                <div class="paso4-unified-layout">
-                    <!-- Formulario de Datos -->
-                    <form id="unifiedQuoteForm" onsubmit="handleSendUnifiedQuote(event)" class="quote-form-compact">
-                        <div class="form-inputs-grid">
-                            <div class="form-group-compact">
-                                <label for="orderClientName">Tu Nombre Completo *</label>
-                                <input type="text" id="orderClientName" required placeholder="Ej. Mariana González" oninput="updateLiveSummary()">
-                            </div>
-
-                            <div class="form-group-compact">
-                                <label for="orderEventType">Tipo de Evento *</label>
-                                <select id="orderEventType" onchange="updateLiveSummary()">
-                                    <option value="Banquete Familiar">Banquete / Reunión Familiar</option>
-                                    <option value="Boda / XV Años">Boda / XV Años</option>
-                                    <option value="Bautizo / Primera Comunión">Bautizo / Primera Comunión</option>
-                                    <option value="Cumpleaños / Festejo">Cumpleaños / Aniversario</option>
-                                    <option value="Evento Empresarial">Evento Empresarial / Corporativo</option>
-                                    <option value="Tornaboda / Desayuno">Tornaboda / Desayuno de Chilaquiles</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group-compact">
-                                <label for="orderEventDate">Fecha Estimada *</label>
-                                <input type="date" id="orderEventDate" required onchange="updateLiveSummary()">
-                            </div>
-
-                            <div class="form-group-compact">
-                                <label for="orderEventCity">Ciudad o Municipio *</label>
-                                <input type="text" id="orderEventCity" required placeholder="Ej. León, Gto." value="León, Gto." oninput="updateLiveSummary()">
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn-whatsapp-quote">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                            <span>Enviar Cotización a WhatsApp Directo</span>
-                        </button>
-                    </form>
-
-                    <!-- Tarjeta de Resumen en Vivo -->
-                    <div class="quote-summary-card">
-                        <div class="summary-card-header">
-                            <span class="summary-badge-live">Resumen en Tiempo Real</span>
-                            <span class="summary-live-dot"></span>
-                        </div>
-                        
-                        <div class="summary-item">
-                            <span class="summary-item-label">Paquete Seleccionado:</span>
-                            <strong id="summaryPackageTitle" class="summary-item-val highlight">Paquete Fiesta Mexicana</strong>
-                        </div>
-
-                        <div class="summary-item">
-                            <span class="summary-item-label">Invitados Presupuestados:</span>
-                            <strong id="summaryGuestCount" class="summary-item-val">65 Personas</strong>
-                        </div>
-
-                        <div class="summary-item">
-                            <span class="summary-item-label">Cazuelas de Guisados (<span id="summaryGuisadosCount">0</span>/<span id="summaryGuisadosLimit">7</span>):</span>
-                            <div id="summaryGuisadosList" class="summary-dishes-wrap">
-                                <em>Ningún guisado seleccionado aún. Elige en el Paso 2.</em>
-                            </div>
-                        </div>
-
-                        <div class="summary-item">
-                            <span class="summary-item-label">Beneficios Incluidos:</span>
-                            <p id="summaryPackageBenefits" class="summary-benefits-text">
-                                7 guisados en cazuela, ¡Ensalada de Cueritos en botana!, 2 vitroleros de agua (40L total) y comaleras con tortillas hechas a mano en vivo.
-                            </p>
-                        </div>
-
-                        <div class="summary-item">
-                            <span class="summary-item-label">Especialidades & Extras:</span>
-                            <p id="summaryExtrasList" class="summary-extras-text">
-                                Ningún extra adicional seleccionado.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==========================================
-             3. SECCIÓN INFORMATIVA: ESPECIALIDADES DE LA CASA
-             (DETALLES DE CHILAQUILES, TORTAS Y MENUDO)
-             ========================================== -->
-        <section class="section-folk-block" id="especialidades-detalle">
-            <div class="section-folk-heading">
-                <span class="eyebrow-folk">Para Iniciar el Día o la Tornafiesta</span>
-                <h2>Especialidades Tradicionales de <span>la Casa</span></h2>
-                <p style="font-size: 1.15rem; color: var(--chocolate-suave); margin-top: 0.5rem;">
-                    Auténticas recetas con queso fresco de rancho y sazón leonés hechas con todo el corazón.
-                </p>
-            </div>
-
-            <!-- Chilaquiles -->
-            <div class="dishes-2col-layout" style="margin-bottom: 3rem;">
-                <span class="ribbon-market-tag amarillo">⭐ RECOMENDADO</span>
-                <div>
-                    <span style="background: #FFF3E0; border: 2px solid var(--cempasuchil-fuego); color: var(--cempasuchil-fuego); padding: 0.45rem 1.2rem; border-radius: 30px; font-family: var(--font-folk); font-size: 0.9rem; font-weight: 800; text-transform: uppercase;">🍳 Salsa Verde o Roja al Gusto</span>
-                    <h3 style="font-family: var(--font-title); font-size: 2.3rem; font-weight: 900; color: var(--chocolate-texto); margin: 1rem 0;">Chilaquiles Tradicionales de la Casa</h3>
-                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--chocolate-suave); margin-bottom: 1.2rem;">
-                        Crujientes totopos de maíz bañados en salsa verde tatemada o roja especial de molcajete. Servidos con frijolitos refritos, crema de rancho espesa, queso cotija fresco y rebanadas de aguacate tierno.
-                    </p>
-                    <p style="font-weight: 800; color: var(--cempasuchil-fuego); margin-bottom: 1.5rem;">
-                        🍗 Incluye 2 Proteínas a elegir: Pollo deshebrado, Huevo al gusto, Milanesa crujiente o Carne Asada + ¡Bolillo Calientito!
-                    </p>
-                    <button class="btn-turquesa-3d" onclick="toggleExtraFromButton('chilaquiles')">
-                        + Incluir Chilaquiles en mi Banquete
-                    </button>
-                </div>
-                <div class="dish-photo-talavera-frame" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg')">
-                    <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg" alt="Chilaquiles bien servidos con aguacate La Lola">
-                </div>
-            </div>
-
-            <!-- Tortas -->
-            <div class="dishes-2col-layout reversed" style="margin-bottom: 3rem;">
-                <span class="ribbon-market-tag rosa">💖 LA CONSENTIDA</span>
-                <div class="dish-photo-talavera-frame" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg')">
-                    <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg" alt="Torta de chilaquiles con huevo estrellado y aguacate">
-                </div>
-                <div>
-                    <span style="background: #FCE4EC; border: 2px solid var(--rosa-mexicano); color: var(--rosa-mexicano-dark); padding: 0.45rem 1.2rem; border-radius: 30px; font-family: var(--font-folk); font-size: 0.9rem; font-weight: 800; text-transform: uppercase;">🥖 Las Consentidas de la Fiesta</span>
-                    <h3 style="font-family: var(--font-title); font-size: 2.3rem; font-weight: 900; color: var(--chocolate-texto); margin: 1rem 0;">Las Famosas Tortas de Chilaquiles</h3>
-                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--chocolate-suave); margin-bottom: 1.2rem;">
-                        Bolillo crujiente recién horneado untado con frijoles refritos y relleno con chilaquiles verdes o rojos calientes, crema espesa, queso fresco de rancho, aguacate y tu proteína favorita como huevo estrellado tierno o milanesa doradita.
-                    </p>
-                    <button class="btn-turquesa-3d" onclick="toggleExtraFromButton('tortas')">
-                        + Incluir Tortas en mi Banquete
-                    </button>
-                </div>
-            </div>
-
-            <!-- Menudo -->
-            <div class="dishes-2col-layout">
-                <div>
-                    <span style="background: #FFF3E0; border: 2px solid var(--cempasuchil-fuego); color: var(--cempasuchil-fuego); padding: 0.45rem 1.2rem; border-radius: 30px; font-family: var(--font-folk); font-size: 0.9rem; font-weight: 800; text-transform: uppercase;">🍲 Rey de la Tornafiesta</span>
-                    <h3 style="font-family: var(--font-title); font-size: 2.3rem; font-weight: 900; color: var(--chocolate-texto); margin: 1rem 0;">El Tradicional Menudo en Cazuela</h3>
-                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--chocolate-suave); margin-bottom: 1.2rem;">
-                        El cierre gastronómico perfecto para bodas, tornabodas y festejos de amanecida (a partir de 30 personas):
-                    </p>
-                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem; font-size: 1rem; font-weight: 600; margin-bottom: 1.8rem;">
-                        <li>🍲 Panza suave y jugosa, Pata bien cocida, Callo, Libro y Panal</li>
-                        <li>🍲 Bofe y Manzana tradicional leonesa</li>
-                        <li>🌶️ Salsita roja picosa de la casa, orégano de campo, cebolla y limones</li>
-                        <li>🫓 Tortillas calientes hechas a mano en comal o de máquina</li>
-                    </ul>
-                    <button class="btn-turquesa-3d" onclick="toggleExtraFromButton('menudo')">
-                        + Incluir Menudo en mi Banquete
-                    </button>
-                </div>
-                <div class="dish-photo-talavera-frame" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg')">
-                    <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg" alt="Menudo tradicional calientito">
-                </div>
-            </div>
-        </section>
-
-        <!-- ==========================================
-             GALERÍA DE NUESTROS EVENTOS & CELEBRACIONES
-             (FOTOS LIMPIAS Y VIDEO AL FINAL DE LA PÁGINA)
-             ========================================== -->
-        <section class="section-folk-block" id="galeria-eventos">
-            <div class="section-folk-heading">
-                <span class="eyebrow-folk">Galería de Celebraciones</span>
-                <h2>Nuestros <span>Eventos & Banquetes</span></h2>
-                <p style="font-size: 1.15rem; color: var(--chocolate-suave); margin-top: 0.5rem;">
-                    Momentos reales de calidez, abundancia, servicio puntual y auténtico sazón mexicano en vivo para bodas, XV años, reuniones familiares y eventos empresariales.
-                </p>
-            </div>
-
-            <!-- Galería Visual Limpia (Sin textos publicitarios, ampliable con un clic) -->
-            <div class="ade-grid-gallery" style="margin-bottom: 2.5rem;">
-                <!-- Foto 1: Montaje principal y equipo -->
-                <div class="ade-photo-card span-8" onclick="openLightbox('FOTOS/ADE1000/ade1000_equipo_botarga.jpg')">
-                    <img src="FOTOS/ADE1000/ade1000_equipo_botarga.jpg" alt="Equipo de servicio y cocina de La Lola en banquete">
-                </div>
-
-                <!-- Foto 2: Vitroleros de 20L y Aguas Frescas -->
-                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_vitroleros_aguas.jpg')">
-                    <img src="FOTOS/ADE1000/ade1000_vitroleros_aguas.jpg" alt="Estación de vitroleros de aguas frescas con mantel tradicional">
-                </div>
-
-                <!-- Foto 3: Estación de Botana y Ensalada de Cueritos -->
-                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_botana_cueritos_duros.jpg')">
-                    <img src="FOTOS/ADE1000/ade1000_botana_cueritos_duros.jpg" alt="Botana tradicional: ensalada de cueritos y chicharrón duro">
-                </div>
-
-                <!-- Foto 4: Servicio de Comida Caliente -->
-                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_servicio_pozole.jpg')">
-                    <img src="FOTOS/ADE1000/ade1000_servicio_pozole.jpg" alt="Servicio de banquete caliente con guarniciones frescas">
-                </div>
-
-                <!-- Foto 5: Invitados Disfrutando del Banquete -->
-                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_comedor_colaboradores.jpg')">
-                    <img src="FOTOS/ADE1000/ade1000_comedor_colaboradores.jpg" alt="Invitados disfrutando del banquete mexicano">
-                </div>
-
-                <!-- Foto 6: Cocineras con Cazuelas de Barro -->
-                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_equipo_cazuelas.jpg')">
-                    <img src="FOTOS/ADE1000/ade1000_equipo_cazuelas.jpg" alt="Cocineras tradicionales con cazuelas de barro y comal">
-                </div>
-
-                <!-- Foto 7: Mesa de Botanas y Decoración Mexicana -->
-                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_mesa_botana_detalle.jpg')">
-                    <img src="FOTOS/ADE1000/ade1000_mesa_botana_detalle.jpg" alt="Montaje de botanas con chicharrón, tacos dorados y salsas">
-                </div>
-
-                <!-- Foto 8: Ambiente Festivo y Sonrisas -->
-                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_marco_fotografico.jpg')">
-                    <img src="FOTOS/ADE1000/ade1000_marco_fotografico.jpg" alt="Ambiente festivo y sonrisas en celebración">
-                </div>
-            </div>
-
-            <!-- Video Resumen de Eventos en Vivo -->
-            <div style="background: #FFFDF9; border: 2.5px solid var(--rosa-mexicano); border-radius: 20px; padding: 2rem 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.06);">
-                <div style="display: flex; align-items: center; justify-content: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.6rem;">
-                    <span style="background: var(--rosa-mexicano); color: white; padding: 0.35rem 1rem; border-radius: 20px; font-family: var(--font-folk); font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;">
-                        🎥 Video en Vivo
-                    </span>
-                    <h3 style="font-family: var(--font-title); font-size: 1.8rem; font-weight: 900; color: var(--chocolate-texto); margin: 0;">
-                        Así se vive la fiesta con La Lola
-                    </h3>
-                </div>
-                <p style="font-size: 1rem; color: var(--chocolate-suave); max-width: 680px; margin-bottom: 1.4rem; line-height: 1.6;">
-                    Comprueba la organización, la atmósfera de fiesta, el flujo ágil de servicio y la comida humeando en cazuelas de barro reales.
-                </p>
-                <div style="width: 100%; max-width: 760px; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); border: 3px solid var(--talavera-amarillo); background: #000;">
-                    <video controls playsinline preload="metadata" style="width: 100%; height: auto; display: block; max-height: 480px;" poster="FOTOS/ADE1000/ade1000_comedor_colaboradores.jpg">
-                        <source src="FOTOS/ADE1000/ade1000_video_resumen.mp4" type="video/mp4">
-                        Tu navegador no soporta la reproducción de video.
-                    </video>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==========================================
-             4. TARJETA OFICIAL DE CLAUDIA & CONTACTO
-             ========================================== -->
-        <section class="section-folk-block" id="tarjeta-contacto" style="text-align: center;">
-            <div class="section-folk-heading">
-                <span class="eyebrow-folk">Contacto Directo</span>
-                <h2>Tarjeta Oficial de <span>Presentación</span></h2>
-                <p style="font-size: 1rem; color: var(--chocolate-suave);">Guarda nuestra tarjeta o llámanos directamente por teléfono.</p>
-            </div>
-
-            <div style="max-width: 580px; margin: 1.5rem auto; border-radius: 20px; padding: 10px; background: linear-gradient(135deg, var(--rosa-mexicano), #FFFFFF 50%, var(--azul-turquesa)); box-shadow: 0 18px 45px rgba(0,0,0,0.2); cursor: pointer;" onclick="openLightbox('FOTOS/WhatsApp Image 2026-07-25 at 20.02.30 (1).jpeg')">
-                <img src="FOTOS/WhatsApp Image 2026-07-25 at 20.02.30 (1).jpeg" alt="Tarjeta Oficial Banquetes y Taquisas La Lola" style="width: 100%; border-radius: 12px; display: block;">
-            </div>
-
-            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
-                <a href="https://wa.me/524778020791?text=Hola%20Claudia%2C%20guard%C3%A9%20su%20tarjeta%20de%20contacto%20y%20me%20gustar%C3%ADa%20cotizar%20un%20evento%20🍽️" class="btn-turquesa-3d" target="_blank">
-                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    Enviar WhatsApp a Claudia
-                </a>
-                <a href="tel:+524778020791" class="btn-turquesa-3d" style="background: var(--cempasuchil-fuego); box-shadow: 0 5px 0 #9E3414;">
-                    📞 Llamar al 477 802 0791
-                </a>
-            </div>
-        </section>
-
-    </div>
-
-    <!-- FOOTER FESTIVO -->
-    <footer>
-        <div class="footer-logo">La Lola</div>
-        <p style="font-family: var(--font-folk); font-size: 1.15rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--talavera-amarillo); margin-bottom: 0.5rem;">Banquetes & Taquisas Tradicionales en Cazuela de Barro</p>
-        <a href="tel:+524778020791" class="footer-phone">477 802 0791</a>
-        <p style="color: rgba(255,255,255,0.85); font-size: 1.05rem;">León, Guanajuato • Servicio a Domicilio, Jardines, Salones y Haciendas</p>
-        
-        <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15); font-size: 0.88rem; color: rgba(255,255,255,0.7);">
-            <p>© 2026 Banquetes y Taquisas La Lola — Auténtico Sabor Casero Mexicano. Todos los derechos reservados.</p>
+    <!-- BENTO GRID EXPERIENCIAL (FULL-BLEED) -->
+    <section class="bento-section" id="experiencia">
+        <div class="section-header">
+            <span class="section-tag">Galería de Eventos</span>
+            <h2 class="section-title">El festín servido en su <span>punto exacto</span></h2>
+            <p class="section-desc">Fotografías reales y momentos capturados en vivo. Sin poses artificiales: solo sabor, tradición y mesas felices.</p>
         </div>
+
+        <div class="bento-grid">
+            <!-- Bento 1: Cazuelas humeantes (8 col) -->
+            <div class="bento-cell col-8" onclick="openImage('FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (4).jpeg')">
+                <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (4).jpeg" alt="Cazuelas con guisados caseros" class="bento-media">
+                <div class="bento-overlay">
+                    <span class="bento-chip menta">🥘 Sabor Casero</span>
+                    <h3 class="bento-headline">Cazuelas al Fuego Vivo</h3>
+                    <p class="bento-lead">32 opciones de guisados tradicionales montados en barro caliente continuo para que nadie coma frío.</p>
+                </div>
+            </div>
+
+            <!-- Bento 2: Comaleras en vivo (4 col) -->
+            <div class="bento-cell col-4" onclick="openImage('FOTOS/WhatsApp Image 2026-08-19 at 11.18.09.jpeg')">
+                <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.09.jpeg" alt="Comaleras echando tortillas a mano" class="bento-media">
+                <div class="bento-overlay">
+                    <span class="bento-chip dorado">🫓 Al Comal</span>
+                    <h3 class="bento-headline">Tortillas al Instante</h3>
+                    <p class="bento-lead">Masa de maíz fresco inflada frente a tus comensales.</p>
+                </div>
+            </div>
+
+            <!-- Bento 3: Video en vivo (6 col) -->
+            <div class="bento-cell col-6" style="cursor: default;">
+                <video controls playsinline preload="metadata" poster="FOTOS/ADE1000/ade1000_comedor_colaboradores.jpg" class="bento-media" style="opacity: 1;">
+                    <source src="FOTOS/ADE1000/ade1000_video_resumen.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <!-- Bento 4: Familias y Celebración (6 col) -->
+            <div class="bento-cell col-6" onclick="openImage('FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.jpeg')">
+                <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.jpeg" alt="Comensales felices en banquete La Lola" class="bento-media">
+                <div class="bento-overlay">
+                    <span class="bento-chip rosa">🥂 Fiesta Real</span>
+                    <h3 class="bento-headline">Momentos de Fiesta Inolvidables</h3>
+                    <p class="bento-lead">Atención familiar, cálida y sin carreras para bodas, bautizos y reuniones empresariales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COTIZADOR INTERACTIVO COMPACTO (2 COLUMNAS) -->
+    <section class="quote-section" id="cotizador">
+        <div class="section-header">
+            <span class="section-tag">Cotizador Interactivo</span>
+            <h2 class="section-title">Arma tu banquete en <span>3 minutos</span></h2>
+            <p class="section-desc">Selecciona tu paquete, elige tus cazuelas y recibe de inmediato tu desglose ordenado vía WhatsApp con Claudia.</p>
+        </div>
+
+        <div class="builder-layout">
+            <!-- COLUMNA IZQUIERDA: CONTROLES INTERACTIVOS COMPACTOS -->
+            <div class="builder-panel">
+                
+                <!-- Paso 1: Paquete -->
+                <div class="builder-step-header">
+                    <span class="step-num">1</span>
+                    <h3 class="step-heading">Elige tu Paquete de Evento</h3>
+                </div>
+
+                <div class="pkg-selector-row">
+                    <div class="pkg-pill-card" id="pkgBtn-30-50" onclick="setPackage('30-50')">
+                        <span class="pkg-tag">Reunión</span>
+                        <strong class="pkg-name">Tradicional</strong>
+                        <span class="pkg-cap">30 a 50 pers. • 7 Guisos</span>
+                    </div>
+
+                    <div class="pkg-pill-card active" id="pkgBtn-50-80" onclick="setPackage('50-80')">
+                        <span class="pkg-tag">⭐ Más Popular</span>
+                        <strong class="pkg-name">Fiesta Mexicana</strong>
+                        <span class="pkg-cap">50 a 80 pers. • 7 Guisos</span>
+                    </div>
+
+                    <div class="pkg-pill-card" id="pkgBtn-80" onclick="setPackage('80+')">
+                        <span class="pkg-tag">Banquete</span>
+                        <strong class="pkg-name">Gran Banquete</strong>
+                        <span class="pkg-cap">80+ pers. • 8 Guisos</span>
+                    </div>
+                </div>
+
+                <!-- Barra Invitados -->
+                <div class="guest-row">
+                    <div class="guest-header">
+                        <span style="font-size: 0.9rem; font-weight: 700;">Número de Invitados:</span>
+                        <span class="guest-count-badge" id="guestCountBadge">65 personas</span>
+                    </div>
+                    <input type="range" class="guest-range" id="guestRange" min="30" max="300" step="5" value="65" oninput="onGuestChange(this.value)">
+                </div>
+
+                <!-- Paso 2: Guisados (Pills Compactas) -->
+                <div class="builder-step-header">
+                    <span class="step-num">2</span>
+                    <h3 class="step-heading">Selecciona tus Cazuelas (<span id="countSelectedGuisos">0</span> de <span id="limitGuisos">7</span>)</h3>
+                </div>
+
+                <!-- Filtros rápidos -->
+                <div class="guisados-filter-bar">
+                    <button class="g-filter-btn active" onclick="filterGuisos('all', this)">Todos</button>
+                    <button class="g-filter-btn" onclick="filterGuisos('carnes', this)">Carnes</button>
+                    <button class="g-filter-btn" onclick="filterGuisos('antojitos', this)">Antojitos</button>
+                    <button class="g-filter-btn" onclick="filterGuisos('verduras', this)">Verduras</button>
+                    <button class="g-filter-btn" onclick="filterGuisos('bases', this)">Arroz / Frijol</button>
+                </div>
+
+                <!-- Contenedor de Pills de Guisados -->
+                <div class="guisados-pills-wrap" id="guisadosPillsContainer">
+                    <!-- Se inyectan con JS -->
+                </div>
+
+                <!-- Paso 3: Especialidades Opcionales -->
+                <div class="builder-step-header">
+                    <span class="step-num">3</span>
+                    <h3 class="step-heading">Especialidades Adicionales (Opcional)</h3>
+                </div>
+
+                <div class="extras-chip-row">
+                    <div class="extra-chip" onclick="toggleExtra(this, 'Chilaquiles con 2 proteínas y bolillo')">
+                        <span>🍳</span> Chilaquiles de Desayuno/Tornafiesta
+                    </div>
+                    <div class="extra-chip" onclick="toggleExtra(this, 'Famosas Tortas de Chilaquiles')">
+                        <span>🥖</span> Las Famosas Tortas de Chilaquiles
+                    </div>
+                    <div class="extra-chip" onclick="toggleExtra(this, 'Menudo Tradicional (mín. 30 pers.)')">
+                        <span>🍲</span> Menudo Tradicional Calientito
+                    </div>
+                    <div class="extra-chip" onclick="toggleExtra(this, 'Cazuela extra adicional de guisado')">
+                        <span>🥘</span> Cazuela Adicional de Guisado
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- COLUMNA DERECHA: RESUMEN FLOTANTE STICKY -->
+            <div class="sticky-summary">
+                <div class="summary-header">
+                    <span class="summary-tag">Resumen en Tiempo Real</span>
+                    <h4 class="summary-title" id="sumPkgTitle">Paquete Fiesta Mexicana</h4>
+                </div>
+
+                <div class="summary-metric">
+                    <span>Invitados Estimados:</span>
+                    <strong id="sumGuests">65 Personas</strong>
+                </div>
+
+                <div class="summary-metric">
+                    <span>Cazuelas Seleccionadas:</span>
+                    <strong id="sumGuisosCount">0 / 7</strong>
+                </div>
+
+                <div class="summary-list-box" id="sumGuisosListBox">
+                    <em>Aún no has seleccionado cazuelas. Haz clic en las etiquetas para armar tu menú.</em>
+                </div>
+
+                <div class="summary-metric" style="font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border-soft); padding-top: 0.8rem;">
+                    <span>Incluye:</span>
+                    <strong style="font-size: 0.85rem;" id="sumBenefits">7 guisados, botana, 2 vitroleros y tortillas a mano</strong>
+                </div>
+
+                <!-- Formulario de Contacto Directo -->
+                <form onsubmit="sendWhatsApp(event)" style="margin-top: 1.5rem;">
+                    <div class="input-group">
+                        <label>Tu Nombre Completo *</label>
+                        <input type="text" id="clientName" required placeholder="Ej. Mariana González" class="input-field">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Fecha Estimada del Evento *</label>
+                        <input type="date" id="eventDate" required class="input-field">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Lugar / Ciudad *</label>
+                        <input type="text" id="eventCity" required value="León, Gto." class="input-field">
+                    </div>
+
+                    <button type="submit" class="btn-submit-whatsapp">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Enviar Cotización a WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- TARJETA OFICIAL DE CLAUDIA & CONTACTO -->
+    <section class="contact-section" id="contacto">
+        <div class="section-header">
+            <span class="section-tag">Contacto Oficial</span>
+            <h2 class="section-title">¿Tienes una fecha en mente? <span>Hablemos</span></h2>
+            <p class="section-desc">Guarda nuestra tarjeta oficial o comunícate directamente por teléfono.</p>
+        </div>
+
+        <div class="card-showcase-box" onclick="openImage('FOTOS/WhatsApp Image 2026-07-25 at 20.02.30 (1).jpeg')">
+            <img src="FOTOS/WhatsApp Image 2026-07-25 at 20.02.30 (1).jpeg" alt="Tarjeta Oficial Banquetes y Taquizas La Lola">
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <a href="https://wa.me/524778020791?text=Hola%20Claudia%2C%20me%20gustar%C3%ADa%20cotizar%20un%20evento%20con%20La%20Lola%20🍽️" class="btn-primary" target="_blank">
+                Chatear con Claudia por WhatsApp
+            </a>
+            <a href="tel:+524778020791" class="btn-glass">
+                📞 Llamar al 477 802 0791
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-brand">La Lola</div>
+        <p style="font-weight: 600; margin-bottom: 0.5rem; color: #FFF;">Banquetes & Taquizas Tradicionales en Cazuela</p>
+        <p>León, Guanajuato • Servicio a Domicilio, Jardines, Salones y Haciendas</p>
+        <p style="margin-top: 2rem; font-size: 0.8rem; color: rgba(255,255,255,0.4);">© 2026 La Lola — Todos los derechos reservados.</p>
     </footer>
 
-    <!-- LIGHTBOX -->
-    <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
-        <img src="" alt="Ampliación" id="lightboxImg">
-    </div>
-
-    <!-- SCRIPTS -->
+    <!-- SCRIPT DEL COTIZADOR -->
     <script>
-    (function() {
-        'use strict';
+        const guisadosData = [
+            { name: "Puerco en chile morita", cat: "carnes", icon: "🥩" },
+            { name: "Puerco en salsa 3 chiles", cat: "carnes", icon: "🥩" },
+            { name: "Mole rojo con pollo", cat: "carnes", icon: "🍗" },
+            { name: "Mole verde con pollo", cat: "carnes", icon: "🍗" },
+            { name: "Bistec con nopales", cat: "carnes", icon: "🥩" },
+            { name: "Bistec en chile pasilla", cat: "carnes", icon: "🥩" },
+            { name: "Bistec a la mexicana", cat: "carnes", icon: "🥩" },
+            { name: "Pollo a la mexicana", cat: "carnes", icon: "🍗" },
+            { name: "Pollo en crema poblano", cat: "carnes", icon: "🍗" },
+            { name: "Pollo crema chile güero", cat: "carnes", icon: "🍗" },
+            { name: "Carne deshebrada", cat: "carnes", icon: "🥩" },
+            { name: "Picadillo tradicional", cat: "carnes", icon: "🥩" },
+            { name: "Rajas con crema", cat: "antojitos", icon: "🌶️" },
+            { name: "Chorizo con papas", cat: "antojitos", icon: "🌶️" },
+            { name: "Chorizo a la mexicana", cat: "antojitos", icon: "🌶️" },
+            { name: "Chicharrón prensado", cat: "antojitos", icon: "🥓" },
+            { name: "Chicharrón en salsa", cat: "antojitos", icon: "🥓" },
+            { name: "Rellena tradicional", cat: "antojitos", icon: "🌶️" },
+            { name: "Salchichas guisadas", cat: "antojitos", icon: "🌭" },
+            { name: "Huevo con chile molcajete", cat: "antojitos", icon: "🍳" },
+            { name: "Huevo con salchicha", cat: "antojitos", icon: "🍳" },
+            { name: "Champiñones a la crema", cat: "verduras", icon: "🍄" },
+            { name: "Champiñones al ajillo", cat: "verduras", icon: "🍄" },
+            { name: "Nopales guisados", cat: "verduras", icon: "🌵" },
+            { name: "Nopales en ensalada", cat: "verduras", icon: "🥗" },
+            { name: "Papas guisadas", cat: "verduras", icon: "🥔" },
+            { name: "Papas con nopales", cat: "verduras", icon: "🥔" },
+            { name: "Garbanzos guisados", cat: "verduras", icon: "🫘" },
+            { name: "Arroz blanco", cat: "bases", icon: "🍚" },
+            { name: "Arroz rojo tradicional", cat: "bases", icon: "🍚" },
+            { name: "Frijoles refritos", cat: "bases", icon: "🫘" },
+            { name: "Frijoles de la olla", cat: "bases", icon: "🫘" }
+        ];
 
-        // ESTADO GLOBAL DEL ARMADOR
-        let currentPackage = '50-80'; // '30-50', '50-80', '80+'
-        let maxGuisados = 7;
-        let guestCount = 65;
-        const selectedGuisados = new Set();
+        const pkgs = {
+            '30-50': { name: 'Paquete Tradicional', max: 7, benefits: '7 guisados, botana, 1 vitrolero 20L y tortillas calientes' },
+            '50-80': { name: 'Paquete Fiesta Mexicana', max: 7, benefits: '7 guisados, botana con cueritos, 2 vitroleros (40L) y tortillas a mano en comal' },
+            '80+': { name: 'Paquete Gran Banquete', max: 8, benefits: '8 guisados, botana monumental, 2 vitroleros y tortillas a mano o máquina' }
+        };
+
+        let currentPkgKey = '50-80';
+        let guests = 65;
+        const selectedGuisos = new Set();
         const selectedExtras = new Set();
 
-        const packageMeta = {
-            '30-50': {
-                title: 'Paquete Tradicional (30 a 50 personas)',
-                max: 7,
-                benefits: '7 guisados en cazuela, botana mexicana (chicharrón duro, tacos dorados, salsa de jitomate), 1 vitrolero de 20L de agua fresca, tortillas de máquina calientes.',
-                defaultGuests: 40
-            },
-            '50-80': {
-                title: 'Paquete Fiesta Mexicana (50 a 80 personas)',
-                max: 7,
-                benefits: '7 guisados en cazuela, ¡Ensalada de Cueritos en botana!, 2 vitroleros de agua (40L total) y comaleras con tortillas hechas a mano en vivo.',
-                defaultGuests: 65
-            },
-            '80+': {
-                title: 'Paquete Gran Banquete (80+ personas)',
-                max: 8,
-                benefits: '8 guisados en cazuela (¡1 cazuela extra de variedad!), botana monumental completa, 2 vitroleros de 20L y tortillas a elegir (comal o máquina).',
-                defaultGuests: 100
-            }
-        };
-
-        // ELEMENTOS DOM
-        const slider = document.getElementById('mainGuestSlider');
-        const sliderGuestDisplay = document.getElementById('sliderGuestCountDisplay');
-        const maxLabel = document.getElementById('maxGuisadosLabel');
-        const chosenDisplay = document.getElementById('chosenCountDisplay');
-        const limitDisplay = document.getElementById('limitCountDisplay');
-        const missingDisplay = document.getElementById('missingCountDisplay');
-        const progressFill = document.getElementById('progressBarFill');
-        const progressBadge = document.getElementById('progressStatusBadge');
-        const limitAlert = document.getElementById('limitAlertBox');
-        const limitAlertText = document.getElementById('limitAlertText');
-
-        // Fichas de guisados
-        const cards = document.querySelectorAll('.guisado-item-card');
-        const filterBtns = document.querySelectorAll('.folk-tab-btn');
-
-        // SELECCIÓN DE GUISADOS CON LÍMITE ESTRICTO Y CLARO
-        cards.forEach(card => {
-            card.addEventListener('click', () => {
-                const name = card.dataset.name;
-                if (selectedGuisados.has(name)) {
-                    selectedGuisados.delete(name);
-                    card.classList.remove('selected');
-                    if (limitAlert) limitAlert.style.display = 'none';
-                } else {
-                    if (selectedGuisados.size >= maxGuisados) {
-                        if (limitAlertText) limitAlertText.textContent = '¡Ya alcanzaste el límite de ' + maxGuisados + ' guisados incluidos en tu paquete! Deselecciona alguno para cambiarlo, o agrégalo como cazuela extra en el Paso 3.';
-                        if (limitAlert) {
-                            limitAlert.style.display = 'flex';
-                            limitAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }
-                        return;
-                    }
-                    selectedGuisados.add(name);
-                    card.classList.add('selected');
-                    if (limitAlert) limitAlert.style.display = 'none';
+        // Render Guisados Pills
+        const pillsWrap = document.getElementById('guisadosPillsContainer');
+        function renderGuisados(filter = 'all') {
+            pillsWrap.innerHTML = '';
+            guisadosData.forEach(g => {
+                if (filter === 'all' || g.cat === filter) {
+                    const pill = document.createElement('div');
+                    pill.className = 'g-pill' + (selectedGuisos.has(g.name) ? ' selected' : '');
+                    pill.innerHTML = `<span>${g.icon}</span> ${g.name}`;
+                    pill.onclick = () => toggleGuiso(g.name, pill);
+                    pillsWrap.appendChild(pill);
                 }
-                updateGuisadosTracker();
-                updateLiveSummary();
             });
-        });
+        }
 
-        // FILTROS DE CATEGORÍA Y ACORDEONES DESPLEGABLES
-        const catGroups = document.querySelectorAll('.guisados-cat-group');
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filter = btn.dataset.filter;
-                catGroups.forEach(g => {
-                    if (filter === 'all' || g.dataset.group === filter) {
-                        g.style.display = 'block';
-                        g.open = true;
-                    } else {
-                        g.style.display = 'none';
-                    }
-                });
-                cards.forEach(c => {
-                    if (filter === 'all' || c.dataset.cat === filter) c.style.display = 'inline-flex';
-                    else c.style.display = 'none';
-                });
-            });
-        });
-
-        // ESCALA EXACTA DE INVITADOS (CALIBRADA 100% CON LOS MARCADORES DEL SLIDER)
-        const guestScale = [30, 40, 50, 65, 80, 100, 120, 150, 200, 250, 300, 400];
-
-        // FUNCIÓN: ELEGIR PAQUETE DIRECTAMENTE
-        window.choosePackage = function(pkgKey, adjustSlider = true) {
-            currentPackage = pkgKey;
-            const meta = packageMeta[pkgKey];
-            maxGuisados = meta.max;
-
-            // Actualizar tarjetas de paquete
-            document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected-active'));
-            const activeCard = document.getElementById(pkgKey === '30-50' ? 'card-pkg-30-50' : (pkgKey === '50-80' ? 'card-pkg-50-80' : 'card-pkg-80'));
-            if (activeCard) activeCard.classList.add('selected-active');
-
-            if (adjustSlider) {
-                if (pkgKey === '30-50' && (guestCount < 30 || guestCount > 50)) {
-                    window.setGuestsFromPreset(40);
-                } else if (pkgKey === '50-80' && (guestCount < 50 || guestCount > 80)) {
-                    window.setGuestsFromPreset(65);
-                } else if (pkgKey === '80+' && guestCount < 80) {
-                    window.setGuestsFromPreset(100);
-                }
-            }
-
-            // Si tiene más seleccionados que el nuevo máximo, recortar
-            if (selectedGuisados.size > maxGuisados) {
-                const arr = Array.from(selectedGuisados);
-                while (selectedGuisados.size > maxGuisados) {
-                    const toRemove = arr.pop();
-                    selectedGuisados.delete(toRemove);
-                    cards.forEach(c => {
-                        if (c.dataset.name === toRemove) c.classList.remove('selected');
-                    });
-                }
-            }
-
-            if (maxLabel) maxLabel.textContent = maxGuisados + ' guisados';
-            if (limitDisplay) limitDisplay.textContent = maxGuisados;
-            if (limitAlert) limitAlert.style.display = 'none';
-
-            updateGuisadosTracker();
-            updateLiveSummary();
-        };
-
-        // FUNCIÓN: SLIDER CON ÍNDICE CALIBRADO
-        window.handleSliderIndexChange = function(indexVal) {
-            const idx = parseInt(indexVal, 10);
-            const val = guestScale[idx] || 65;
-            guestCount = val;
-
-            if (sliderGuestDisplay) {
-                sliderGuestDisplay.textContent = (val >= 400 ? '400+ ' : val + ' ') + 'Personas';
-            }
-            if (slider) slider.value = idx;
-
-            if (val <= 50) {
-                if (currentPackage !== '30-50') window.choosePackage('30-50', false);
-            } else if (val <= 80) {
-                if (currentPackage !== '50-80') window.choosePackage('50-80', false);
+        function toggleGuiso(name, el) {
+            const max = pkgs[currentPkgKey].max;
+            if (selectedGuisos.has(name)) {
+                selectedGuisos.delete(name);
+                el.classList.remove('selected');
             } else {
-                if (currentPackage !== '80+') window.choosePackage('80+', false);
-            }
-            updateLiveSummary();
-        };
-
-        window.setGuestsFromPreset = function(num) {
-            const idx = guestScale.indexOf(num);
-            if (idx !== -1) {
-                window.handleSliderIndexChange(idx);
-            }
-        };
-
-        // FUNCIÓN: ACTUALIZAR TRACKER Y BARRA DE PROGRESO
-        function updateGuisadosTracker() {
-            const count = selectedGuisados.size;
-            if (chosenDisplay) chosenDisplay.textContent = count;
-            const missing = maxGuisados - count;
-            if (missingDisplay) missingDisplay.textContent = missing > 0 ? missing : 0;
-
-            const percentage = Math.min(100, Math.round((count / maxGuisados) * 100));
-            if (progressFill) progressFill.style.width = percentage + '%';
-
-            if (progressBadge) {
-                if (count >= maxGuisados) {
-                    progressBadge.className = 'progress-status-badge complete';
-                    progressBadge.innerHTML = '<span>✅ ¡Menú de ' + maxGuisados + ' guisados completo!</span>';
-                } else {
-                    progressBadge.className = 'progress-status-badge';
-                    progressBadge.innerHTML = '<span>⏳ Faltan ' + missing + ' por elegir</span>';
+                if (selectedGuisos.size >= max) {
+                    alert(`Tu paquete incluye hasta ${max} cazuelas. Quita una para cambiarla.`);
+                    return;
                 }
+                selectedGuisos.add(name);
+                el.classList.add('selected');
+            }
+            updateSummary();
+        }
+
+        function filterGuisos(cat, btn) {
+            document.querySelectorAll('.g-filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderGuisados(cat);
+        }
+
+        function setPackage(key) {
+            currentPkgKey = key;
+            document.querySelectorAll('.pkg-pill-card').forEach(c => c.classList.remove('active'));
+            document.getElementById(`pkgBtn-${key}`).classList.add('active');
+            
+            const max = pkgs[key].max;
+            document.getElementById('limitGuisos').textContent = max;
+
+            // Recortar si excede
+            if (selectedGuisos.size > max) {
+                const arr = Array.from(selectedGuisos);
+                while (selectedGuisos.size > max) selectedGuisos.delete(arr.pop());
+                renderGuisados();
+            }
+            updateSummary();
+        }
+
+        function onGuestChange(val) {
+            guests = val;
+            document.getElementById('guestCountBadge').textContent = `${val} personas`;
+            if (val <= 50 && currentPkgKey !== '30-50') setPackage('30-50');
+            else if (val > 50 && val <= 80 && currentPkgKey !== '50-80') setPackage('50-80');
+            else if (val > 80 && currentPkgKey !== '80+') setPackage('80+');
+            updateSummary();
+        }
+
+        function toggleExtra(el, text) {
+            if (selectedExtras.has(text)) {
+                selectedExtras.delete(text);
+                el.classList.remove('selected');
+            } else {
+                selectedExtras.add(text);
+                el.classList.add('selected');
+            }
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const meta = pkgs[currentPkgKey];
+            document.getElementById('sumPkgTitle').textContent = meta.name;
+            document.getElementById('sumGuests').textContent = `${guests} Personas`;
+            document.getElementById('sumGuisosCount').textContent = `${selectedGuisos.size} / ${meta.max}`;
+            document.getElementById('countSelectedGuisos').textContent = selectedGuisos.size;
+            document.getElementById('sumBenefits').textContent = meta.benefits;
+
+            const box = document.getElementById('sumGuisosListBox');
+            if (selectedGuisos.size === 0) {
+                box.innerHTML = '<em>Aún no has seleccionado cazuelas. Haz clic en las etiquetas para armar tu menú.</em>';
+            } else {
+                box.innerHTML = '<ol>' + Array.from(selectedGuisos).map(g => `<li><strong>${g}</strong></li>`).join('') + '</ol>';
             }
         }
 
-        // FUNCIÓN: TOGGLE EXTRAS
-        window.toggleExtra = function(extraKey) {
-            const card = document.getElementById('extra-' + extraKey);
-            if (selectedExtras.has(extraKey)) {
-                selectedExtras.delete(extraKey);
-                if (card) card.classList.remove('selected');
-            } else {
-                selectedExtras.add(extraKey);
-                if (card) card.classList.add('selected');
-            }
-            updateLiveSummary();
-        };
-
-        window.toggleExtraFromButton = function(extraKey) {
-            if (!selectedExtras.has(extraKey)) {
-                window.toggleExtra(extraKey);
-            }
-            const target = document.getElementById('paso-3');
-            if (target) target.scrollIntoView({ behavior: 'smooth' });
-        };
-
-        // FUNCIÓN: ACTUALIZAR RESUMEN EN TIEMPO REAL
-        window.updateLiveSummary = function() {
-            const meta = packageMeta[currentPackage];
-            const summaryTitle = document.getElementById('summaryPackageTitle');
-            const summaryGuests = document.getElementById('summaryGuestCount');
-            const summaryGuisadosCount = document.getElementById('summaryGuisadosCount');
-            const summaryGuisadosLimit = document.getElementById('summaryGuisadosLimit');
-            const summaryList = document.getElementById('summaryGuisadosList');
-            const summaryBenefits = document.getElementById('summaryPackageBenefits');
-            const summaryExtras = document.getElementById('summaryExtrasList');
-
-            if (summaryTitle) summaryTitle.textContent = meta.title;
-            if (summaryGuests) summaryGuests.textContent = guestCount + ' Personas';
-            if (summaryGuisadosCount) summaryGuisadosCount.textContent = selectedGuisados.size;
-            if (summaryGuisadosLimit) summaryGuisadosLimit.textContent = maxGuisados;
-            if (summaryBenefits) summaryBenefits.textContent = meta.benefits;
-
-            if (summaryList) {
-                if (selectedGuisados.size === 0) {
-                    summaryList.innerHTML = '<em>Aún no has seleccionado ningún guisado en el Paso 2. Haz clic en las tarjetas de arriba para elegirlos.</em>';
-                } else {
-                    summaryList.innerHTML = '<div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.35rem;">' +
-                        Array.from(selectedGuisados).map(g => '<span style="background: var(--pastel-rosa); color: var(--pastel-rosa-deep); font-weight: 700; font-size: 0.8rem; padding: 0.25rem 0.65rem; border-radius: 9999px; border: 1px solid rgba(217, 72, 120, 0.25);">✓ ' + g + '</span>').join('') +
-                        '</div>';
-                }
-            }
-
-            if (summaryExtras) {
-                const extraNames = [];
-                if (selectedExtras.has('chilaquiles')) extraNames.push('Desayuno/Tornaboda de Chilaquiles (2 proteínas + bolillo)');
-                if (selectedExtras.has('tortas')) extraNames.push('Las Famosas Tortas de Chilaquiles');
-                if (selectedExtras.has('menudo')) extraNames.push('El Tradicional Menudo de Cazuela');
-                if (selectedExtras.has('comal')) extraNames.push('Comaleras & Tortillas Hechas a Mano');
-                if (selectedExtras.has('cazuela')) extraNames.push('Cazuela Adicional de Guisado');
-
-                summaryExtras.textContent = extraNames.length > 0 ? extraNames.join(' • ') : 'Ningún extra adicional seleccionado.';
-            }
-        };
-
-        // FUNCIÓN: ENVIAR COTIZACIÓN A WHATSAPP
-        window.handleSendUnifiedQuote = function(e) {
+        function sendWhatsApp(e) {
             e.preventDefault();
-            const nameEl = document.getElementById('orderClientName');
-            const typeEl = document.getElementById('orderEventType');
-            const dateEl = document.getElementById('orderEventDate');
-            const cityEl = document.getElementById('orderEventCity');
+            const name = document.getElementById('clientName').value.trim();
+            const date = document.getElementById('eventDate').value;
+            const city = document.getElementById('eventCity').value.trim();
+            const meta = pkgs[currentPkgKey];
 
-            const name = nameEl ? nameEl.value.trim() : '';
-            const type = typeEl ? typeEl.value : 'Banquete';
-            const date = dateEl ? dateEl.value : '';
-            const city = cityEl ? cityEl.value.trim() : 'León, Gto.';
-            const meta = packageMeta[currentPackage];
+            let guisosMsg = selectedGuisos.size > 0
+                ? '\n\n🍲 *Cazuelas Elegidas:*\n' + Array.from(selectedGuisos).map((g, i) => `  ${i + 1}. ${g}`).join('\n')
+                : '\n\n🍲 *Cazuelas:* ' + meta.max + ' guisados (a convenir)';
 
-            let guisadosText = selectedGuisados.size > 0
-                ? '\n\n🍲 *Cazuelas Elegidas (' + selectedGuisados.size + ' de ' + maxGuisados + '):*\n' + Array.from(selectedGuisados).map((g, i) => '  ' + (i + 1) + '. ' + g).join('\n')
-                : '\n\n🍲 *Cazuelas:* ' + maxGuisados + ' guisados (a definir con Claudia)';
+            let extrasMsg = selectedExtras.size > 0
+                ? '\n\n✨ *Especialidades / Extras:*\n' + Array.from(selectedExtras).map(ex => `  • ${ex}`).join('\n')
+                : '';
 
-            let extrasText = '';
-            if (selectedExtras.size > 0) {
-                const extrasArr = [];
-                if (selectedExtras.has('chilaquiles')) extrasArr.push('• Desayuno/Tornaboda de Chilaquiles (+2 proteínas y bolillo)');
-                if (selectedExtras.has('tortas')) extrasArr.push('• Las Famosas Tortas de Chilaquiles');
-                if (selectedExtras.has('menudo')) extrasArr.push('• El Tradicional Menudo en Cazuela');
-                if (selectedExtras.has('comal')) extrasArr.push('• Comaleras & Tortillas al Comal Hechas a Mano');
-                if (selectedExtras.has('cazuela')) extrasArr.push('• Cazuela Extra de Guisado');
-                extrasText = '\n\n✨ *Especialidades / Extras Agregados:*\n' + extrasArr.join('\n');
-            }
+            const msg = `¡Hola Claudia! Me gustaría cotizar un banquete con *La Lola* 🌮🎉\n\n` +
+                `👤 *Nombre:* ${name}\n` +
+                `👥 *Invitados:* ${guests} personas\n` +
+                `📦 *Paquete:* ${meta.name}\n` +
+                `📅 *Fecha:* ${date}\n` +
+                `📍 *Ciudad:* ${city}` +
+                guisosMsg + extrasMsg +
+                `\n\n¿Tienen disponibilidad de fecha y me podrían compartir presupuesto formal? ¡Gracias!`;
 
-            const raw = '¡Hola Claudia! Me gustaría cotizar un banquete con *La Lola — Sabores de México* 🌮🎉\n\n' +
-                '👤 *Nombre:* ' + name + '\n' +
-                '🎉 *Tipo de Evento:* ' + type + '\n' +
-                '👥 *Invitados:* ' + guestCount + ' personas\n' +
-                '📦 *Paquete:* ' + meta.title + '\n' +
-                '📅 *Fecha:* ' + date + '\n' +
-                '📍 *Ubicación:* ' + city + '\n' +
-                guisadosText +
-                extrasText + '\n\n' +
-                '¿Podrían confirmarme disponibilidad y detalles? ¡Muchas gracias!';
+            window.open('https://wa.me/524778020791?text=' + encodeURIComponent(msg), '_blank');
+        }
 
-            window.open('https://wa.me/524778020791?text=' + encodeURIComponent(raw), '_blank');
-        };
+        function openImage(src) {
+            window.open(src, '_blank');
+        }
 
-        // MARQUEE Y LIGHTBOX
-        window.scrollMarquee = function(offset) {
-            const track = document.getElementById('marqueeTrack');
-            if (track) {
-                const currentAnim = window.getComputedStyle(track).animationPlayState;
-                track.style.animation = 'none';
-                track.scrollLeft += offset;
-                const wrapper = document.getElementById('marqueeWrapper');
-                if (wrapper) wrapper.scrollBy({ left: offset, behavior: 'smooth' });
-                setTimeout(() => {
-                    track.style.animation = '';
-                }, 3000);
-            }
-        };
-
-        window.openLightbox = function(src) {
-            const modal = document.getElementById('lightboxModal');
-            const img = document.getElementById('lightboxImg');
-            if (modal && img) {
-                img.src = src;
-                modal.classList.add('active');
-            }
-        };
-
-        window.closeLightbox = function() {
-            const modal = document.getElementById('lightboxModal');
-            if (modal) modal.classList.remove('active');
-        };
-
-        // INICIALIZACIÓN
-        window.choosePackage('50-80');
-    })();
-</script>
+        // Init
+        renderGuisados();
+        updateSummary();
+    </script>
 </body>
 </html>
