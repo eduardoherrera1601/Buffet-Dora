@@ -5,7 +5,7 @@
 /* --------------------------------------------------------------------------
    1. CONTENEDOR & SECCIONES GENERALES
    -------------------------------------------------------------------------- */
-.container {
+.container, .section-container {
   max-width: var(--container-max-width);
   margin-left: auto;
   margin-right: auto;
@@ -14,25 +14,23 @@
   width: 100%;
 }
 
-.section-padding {
+.section-container {
   padding-top: clamp(64px, 8vh, 100px);
   padding-bottom: clamp(64px, 8vh, 100px);
 }
 
+.text-center {
+  text-align: center;
+}
+
 .section-header {
   text-align: center;
-  max-width: 680px;
+  max-width: 720px;
   margin: 0 auto clamp(40px, 5vh, 64px) auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 14px;
-}
-
-.section-header.text-left {
-  text-align: left;
-  align-items: flex-start;
-  margin-left: 0;
 }
 
 .section-title {
@@ -44,15 +42,15 @@
   color: var(--color-text-main);
 }
 
-.section-title .italic-sub {
-  display: block;
+.section-title span {
+  display: inline-block;
+  font-family: var(--font-serif);
   font-style: italic;
   font-weight: 700;
   color: var(--color-pink-primary);
-  margin-top: 4px;
 }
 
-.section-subtitle {
+.section-desc {
   font-size: 1.05rem;
   color: var(--color-text-muted);
   line-height: 1.6;
@@ -149,7 +147,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   3. SECCIÓN HERO ASIMÉTRICO (2 COLUMNAS, min-height: 85vh)
+   3. HERO ASIMÉTRICO (2 COLUMNAS, min-height: 85vh)
    -------------------------------------------------------------------------- */
 .hero-section {
   min-height: 85vh;
@@ -252,7 +250,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   4. SECCIÓN: EXPERIENCIA & BENTO GRID ASIMÉTRICO (4 TARJETAS)
+   4. BENTO GRID
    -------------------------------------------------------------------------- */
 .bento-grid {
   display: grid;
@@ -260,55 +258,34 @@
   gap: 24px;
 }
 
-.bento-card-large {
+.span-7 {
   grid-column: span 7;
-  min-height: 400px;
 }
 
-.bento-card-medium {
+.span-5 {
   grid-column: span 5;
-  min-height: 400px;
 }
 
-.bento-card-video {
-  grid-column: span 5;
-  min-height: 380px;
-}
-
-.bento-card-community {
-  grid-column: span 7;
-  min-height: 380px;
+.span-6 {
+  grid-column: span 6;
 }
 
 /* --------------------------------------------------------------------------
-   5. SECCIÓN: ESPECIALIDADES DE LA CASA
+   5. ARMADOR DE BANQUETE INTERACTIVO (LAYOUT 2 COLUMNAS)
    -------------------------------------------------------------------------- */
-.specialties-list {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-/* --------------------------------------------------------------------------
-   6. SECCIÓN: ARMADOR DE BANQUETE (2 COLUMNAS)
-   -------------------------------------------------------------------------- */
-.armador-layout {
+.builder-layout {
   display: grid;
-  grid-template-columns: 1.4fr 0.95fr;
+  grid-template-columns: 1.35fr 0.95fr;
   gap: clamp(32px, 4vw, 56px);
   align-items: flex-start;
 }
 
-.armador-controls {
+.builder-panel {
   display: flex;
   flex-direction: column;
 }
 
-.step-block {
-  margin-bottom: 44px;
-}
-
-.step-header {
+.step-head {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -331,57 +308,22 @@
 
 .step-title {
   font-family: var(--font-serif);
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 800;
   color: var(--color-text-main);
 }
 
 /* --------------------------------------------------------------------------
-   7. FOOTER
-   -------------------------------------------------------------------------- */
-.site-footer {
-  background: #F4EFEA;
-  border-top: 1px solid var(--border-subtle);
-  padding: 60px 0 36px 0;
-  margin-top: 60px;
-}
-
-.footer-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 24px;
-  padding-bottom: 36px;
-  border-bottom: 1px solid rgba(36, 26, 23, 0.08);
-}
-
-.footer-bottom {
-  padding-top: 28px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  font-size: 0.88rem;
-  color: var(--color-text-muted);
-}
-
-/* --------------------------------------------------------------------------
-   8. MEDIA QUERIES (Tablets & Móviles)
+   6. RESPONSIVE DESIGN (Tablets & Móviles)
    -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
-  .armador-layout {
+  .builder-layout {
     grid-template-columns: 1fr;
   }
 
-  .comanda-card {
+  .sticky-comanda {
     position: static;
     margin-top: 24px;
-  }
-
-  .packages-grid {
-    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -395,29 +337,20 @@
     aspect-ratio: 16 / 11;
   }
 
-  .bento-card-large,
-  .bento-card-medium,
-  .bento-card-video,
-  .bento-card-community {
+  .span-7, .span-5, .span-6 {
     grid-column: span 12;
     min-height: 320px;
   }
 
-  .specialty-card,
-  .specialty-card.reverse {
+  .dish-item, .dish-item.reversed {
     grid-template-columns: 1fr;
-    direction: ltr !important;
   }
 
-  .specialty-img-wrap {
+  .dish-img-wrap {
     min-height: 280px;
   }
 
-  .contact-official-card {
-    grid-template-columns: 1fr;
-  }
-
-  .packages-grid {
+  .packages-row {
     grid-template-columns: 1fr;
   }
 }

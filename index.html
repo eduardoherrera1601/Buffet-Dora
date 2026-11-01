@@ -36,7 +36,7 @@
         <nav aria-label="Navegación principal">
           <ul class="nav-menu">
             <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
-            <li><a href="#especialidades" class="nav-link">Especialidades</a></li>
+            <li><a href="#menu" class="nav-link">Especialidades</a></li>
             <li><a href="#armar" class="nav-link">Armar Banquete</a></li>
             <li><a href="#contacto" class="nav-link">Contacto</a></li>
           </ul>
@@ -134,582 +134,264 @@
       </div>
     </section>
 
-    <!-- ==========================================================================
-         3. SECCIÓN: EXPERIENCIA & MOMENTOS EN VIVO (#experiencia)
-         ========================================================================== -->
-    <section id="experiencia" class="section-padding" aria-label="Experiencia gastronómica y servicio en vivo">
-      <div class="container">
-        
-        <div class="section-header">
-          <span class="pill-tag pill-tag-mint">Momentos en Vivo</span>
-          <h2 class="section-title">
-            El arte de compartir
-            <span class="italic-sub">Tradición que se vive en cada flama</span>
-          </h2>
-          <p class="section-subtitle">
-            Montajes artesanales diseñados para consentir a tus invitados con el calor de nuestra cocina en vivo.
-          </p>
+    <!-- SECCIÓN: EXPERIENCIA & BENTO GRID -->
+    <section class="section-container" id="experiencia">
+      <div class="section-header">
+        <span class="pill-category">Galería en Vivo</span>
+        <h2 class="section-title">El festín servido en su <span>punto exacto</span></h2>
+        <p class="section-desc">Cazuelas humeantes, comales al fuego y servicio cálido para bodas, celebraciones familiares y eventos corporativos.</p>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-card span-7">
+          <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (4).jpeg" alt="Cazuelas con guisados caseros" class="bento-media">
+          <div class="bento-floating-box">
+            <span class="bento-chip menta">🥘 Sabor Casero</span>
+            <h3 class="bento-headline">Cazuelas al Fuego Vivo</h3>
+            <p class="bento-lead">32 opciones de guisados tradicionales montados en barro caliente continuo para que nadie coma frío.</p>
+          </div>
         </div>
 
-        <!-- Bento Grid Asimétrico (4 Tarjetas) -->
-        <div class="bento-grid">
-          
-          <!-- Tarjeta 1: Cazuelas al Fuego -->
-          <div class="bento-card bento-card-large">
-            <img 
-              src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (4).jpeg" 
-              alt="Cazuelas de barro curadas a fuego lento" 
-              class="bento-media"
-              loading="lazy"
-            >
-            <div class="bento-overlay">
-              <span class="pill-tag">🥘 Sazón Casero</span>
-              <h3 class="bento-title">Cazuelas al Fuego Lento</h3>
-              <p class="bento-desc">
-                Cazuelas de barro curadas con recetas de familia, guisados calientes y humeantes durante todo tu evento.
-              </p>
-            </div>
+        <div class="bento-card span-5">
+          <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.09.jpeg" alt="Comaleras echando tortillas a mano" class="bento-media">
+          <div class="bento-floating-box">
+            <span class="bento-chip dorado">🫓 Al Comal</span>
+            <h3 class="bento-headline">Tortillas Hechas a Mano</h3>
+            <p class="bento-lead">Masa de maíz fresco inflada al momento por comaleras tradicionales.</p>
           </div>
-
-          <!-- Tarjeta 2: Comaleras en Vivo -->
-          <div class="bento-card bento-card-medium">
-            <img 
-              src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.09.jpeg" 
-              alt="Comaleras preparando tortillas a mano en vivo" 
-              class="bento-media"
-              loading="lazy"
-            >
-            <div class="bento-overlay">
-              <span class="pill-tag pill-tag-mint">🫓 Al Comal</span>
-              <h3 class="bento-title">Comaleras en Vivo</h3>
-              <p class="bento-desc">
-                Tortillas de maíz infladas al instante frente a tus invitados, calientitas directo del comal a su plato.
-              </p>
-            </div>
-          </div>
-
-          <!-- Tarjeta 3: Video Ambiental en Bucle Silencioso -->
-          <div class="bento-card bento-card-video">
-            <video 
-              class="bento-media" 
-              src="FOTOS/ADE1000/ade1000_video_resumen.mp4" 
-              poster="FOTOS/ADE1000/ade1000_comedor_colaboradores.jpg" 
-              autoplay 
-              muted 
-              loop 
-              playsinline
-            ></video>
-            <div class="bento-overlay">
-              <span class="pill-tag pill-tag-glass">🎥 En Directo</span>
-              <h3 class="bento-title">Ambiente & Calidez</h3>
-              <p class="bento-desc">
-                Catering fluido y organizado para banquetes empresariales, bodas y fiestas familiares sin filas.
-              </p>
-            </div>
-          </div>
-
-          <!-- Tarjeta 4: Fiesta & Clientes -->
-          <div class="bento-card bento-card-community">
-            <img 
-              src="FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.jpeg" 
-              alt="Atención en jardines y haciendas" 
-              class="bento-media"
-              loading="lazy"
-            >
-            <div class="bento-overlay">
-              <span class="pill-tag">🌿 Celebraciones</span>
-              <h3 class="bento-title">Jardines, Salones y Haciendas</h3>
-              <p class="bento-desc">
-                Nos adaptamos con elegancia al espacio de tu evento en León y cualquier punto del Bajío.
-              </p>
-            </div>
-          </div>
-
         </div>
 
+        <div class="bento-card span-6" onclick="const v = this.querySelector('video'); v.paused ? v.play() : v.pause();">
+          <video autoplay muted loop playsinline preload="metadata" poster="FOTOS/ADE1000/ade1000_comedor_colaboradores.jpg" class="bento-media">
+            <source src="FOTOS/ADE1000/ade1000_video_resumen.mp4" type="video/mp4">
+          </video>
+          <div class="bento-floating-box">
+            <span class="bento-chip menta">🎥 Video en Directo</span>
+            <h3 class="bento-headline">La Fiesta en Movimiento</h3>
+            <p class="bento-lead">Organización, rapidez y cazuelas curadas atendiendo eventos en tiempo real.</p>
+          </div>
+        </div>
+
+        <div class="bento-card span-6">
+          <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.jpeg" alt="Comensales felices en banquete La Lola" class="bento-media">
+          <div class="bento-floating-box">
+            <span class="bento-chip rosa">🥂 Fiesta Real</span>
+            <h3 class="bento-headline">Celebraciones Inolvidables</h3>
+            <p class="bento-lead">Atención familiar para bodas, bautizos, XV años y reuniones de empresa.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-         4. SECCIÓN: ESPECIALIDADES DE LA CASA (#especialidades)
-         ========================================================================== -->
-    <section id="especialidades" class="section-padding" style="background-color: #F4EFEA;" aria-label="Especialidades culinarias de la casa">
-      <div class="container">
+    <!-- SECCIÓN: ESPECIALIDADES DE LA CASA -->
+    <section class="section-container" id="menu">
+      <div class="section-header">
+        <span class="pill-category">Especialidades</span>
+        <h2 class="section-title">Para iniciar el día o la <span>tornafiesta</span></h2>
+        <p class="section-desc">Recetas preparadas con auténtico queso fresco de rancho y sazón leonés hechas con el corazón.</p>
+      </div>
 
-        <div class="section-header">
-          <span class="pill-tag">Fonda Tradicional</span>
-          <h2 class="section-title">
-            Especialidades de la Casa
-            <span class="italic-sub">Recetas con alma para compartir</span>
-          </h2>
-          <p class="section-subtitle">
-            Platillos icónicos que elevan tornabodas, almuerzos campestres y celebraciones inolvidables.
-          </p>
+      <div class="dishes-stack">
+        <!-- Chilaquiles -->
+        <div class="dish-item">
+          <div class="dish-content">
+            <span class="dish-badge">🍳 Salsa Verde o Roja al Gusto</span>
+            <h3 class="dish-title">Chilaquiles Tradicionales</h3>
+            <p class="dish-desc">Crujientes totopos de maíz bañados en salsa tatemada verde o roja especial. Servidos con frijolitos refritos, crema de rancho espesa, queso fresco y rebanadas de aguacate.</p>
+            <p class="dish-perk">🍗 Incluye 2 Proteínas a elegir: Pollo, Huevo, Milanesa o Carne Asada + Bolillo crujiente.</p>
+            <button type="button" class="btn-primary" onclick="addSpecialty('Chilaquiles Tradicionales')">+ Agregar a mi Cotización</button>
+          </div>
+          <div class="dish-img-wrap">
+            <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg" alt="Chilaquiles con aguacate La Lola">
+          </div>
         </div>
 
-        <div class="specialties-list">
-          
-          <!-- Especialidad 1: Chilaquiles Tradicionales -->
-          <article class="specialty-card">
-            <div class="specialty-img-wrap">
-              <img 
-                src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg" 
-                alt="Chilaquiles tradicionales La Lola" 
-                class="specialty-img"
-                loading="lazy"
-              >
-            </div>
-            <div class="specialty-info">
-              <span class="pill-tag">Desayunos & Tornabodas</span>
-              <h3 class="specialty-title">Chilaquiles Tradicionales</h3>
-              <p class="specialty-desc">
-                Crujientes totopos bañados en salsa verde esmeralda o roja de chile de árbol, frijolitos refritos con sazón de rancho, crema espesa, queso fresco, abanico de aguacate y dos proteínas a elegir (pollo deshebrado, huevo al gusto, milanesa dorada o asada tierna) acompañados de bolillo caliente.
-              </p>
-              <a href="#armar" class="btn btn-glass">Agregar a mi Banquete</a>
-            </div>
-          </article>
-
-          <!-- Especialidad 2: Las Famosas Tortas de Chilaquiles -->
-          <article class="specialty-card reverse">
-            <div class="specialty-img-wrap">
-              <img 
-                src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg" 
-                alt="Las famosas tortas de chilaquiles" 
-                class="specialty-img"
-                loading="lazy"
-              >
-            </div>
-            <div class="specialty-info">
-              <span class="pill-tag pill-tag-mint">El Favorito Callejero Gourmet</span>
-              <h3 class="specialty-title">Las Famosas Tortas de Chilaquiles</h3>
-              <p class="specialty-desc">
-                Crujiente bolillo artesanal untado con frijoles refritos de la casa, colmado de chilaquiles recién salseados al fuego, crema de rancho, queso fresco espolvoreado y tu proteína preferida. El antojo perfecto para eventos relajados y tornabodas de amigos.
-              </p>
-              <a href="#armar" class="btn btn-glass">Cotizar para Evento</a>
-            </div>
-          </article>
-
-          <!-- Especialidad 3: Menudo Tradicional de Cazuela -->
-          <article class="specialty-card">
-            <div class="specialty-img-wrap">
-              <img 
-                src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg" 
-                alt="Menudo tradicional de cazuela para tornabodas" 
-                class="specialty-img"
-                loading="lazy"
-              >
-            </div>
-            <div class="specialty-info">
-              <span class="pill-tag">A partir de 30 personas</span>
-              <h3 class="specialty-title">Menudo Tradicional de Cazuela</h3>
-              <p class="specialty-desc">
-                La gloria para desvelados y tornabodas. Caldo rojo profundo y limpio con panza tierna, pata suave, callo, libro, panal, bofe y manzana leonesa. Servido con orégano silvestre, cebolla picada fresca, limones recién cortados y tortillas calientitas de comal.
-              </p>
-              <a href="#armar" class="btn btn-glass">Incluir en mi Cotización</a>
-            </div>
-          </article>
-
+        <!-- Tortas -->
+        <div class="dish-item reversed">
+          <div class="dish-img-wrap">
+            <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg" alt="Famosas Tortas de Chilaquiles">
+          </div>
+          <div class="dish-content">
+            <span class="dish-badge">🥖 La Consentida de la Fiesta</span>
+            <h3 class="dish-title">Las Famosas Tortas de Chilaquiles</h3>
+            <p class="dish-desc">Bolillo crujiente recién horneado untado con frijoles refritos, relleno de chilaquiles calientes, crema, queso de rancho y proteína dorada al gusto.</p>
+            <button type="button" class="btn-primary" onclick="addSpecialty('Tortas de Chilaquiles')">+ Agregar a mi Cotización</button>
+          </div>
         </div>
 
+        <!-- Menudo -->
+        <div class="dish-item">
+          <div class="dish-content">
+            <span class="dish-badge">🍲 Rey de la Tornafiesta</span>
+            <h3 class="dish-title">Menudo Tradicional en Cazuela</h3>
+            <p class="dish-desc">Preparado para eventos y bodas a partir de 30 personas: panza suave, pata, callo, libro, panal, bofe y manzana tradicional con orégano, cebolla, limones y salsa de molcajete.</p>
+            <button type="button" class="btn-primary" onclick="addSpecialty('Menudo Tradicional')">+ Agregar a mi Cotización</button>
+          </div>
+          <div class="dish-img-wrap">
+            <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg" alt="Menudo tradicional caliente">
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-         5. SECCIÓN: EL ARMADOR DE BANQUETE (#armar)
-         ========================================================================== -->
-    <section id="armar" class="section-padding" aria-label="Cotizador y armador interactivo de banquetes">
-      <div class="container">
+    <!-- SECCIÓN: ARMADOR DE BANQUETE INTERACTIVO -->
+    <section class="section-container" id="armar">
+      <div class="section-header">
+        <span class="pill-category">Cotizador en Vivo</span>
+        <h2 class="section-title">Diseña tu banquete en <span>3 minutos</span></h2>
+        <p class="section-desc">Selecciona tu paquete de invitados, elige tus cazuelas y envía la propuesta completa a Claudia por WhatsApp.</p>
+      </div>
 
-        <div class="section-header">
-          <span class="pill-tag">Cotizador Interactivo</span>
-          <h2 class="section-title">
-            Arma tu Banquete a la Medida
-            <span class="italic-sub">Configura invitados, cazuelas y comanda en vivo</span>
-          </h2>
-          <p class="section-subtitle">
-            Selecciona la cantidad de invitados, tu paquete y las cazuelas que más se te antojen. Tu comanda se actualizará en tiempo real.
-          </p>
-        </div>
-
-        <div class="armador-layout">
-          
-          <!-- COLUMNA IZQUIERDA: CONTROLES DEL BANQUETE -->
-          <div class="armador-controls">
-
-            <!-- PASO 1: Invitados & Paquetes -->
-            <div class="step-block">
-              <div class="step-header">
-                <span class="step-num">1</span>
-                <h3 class="step-title">Número de Invitados & Paquete</h3>
-              </div>
-
-              <!-- Slider Interactivo de Invitados -->
-              <div class="guest-slider-container">
-                <div class="guest-header">
-                  <span class="guest-label">¿Cuántas personas van a celebrar?</span>
-                  <div class="guest-counter">
-                    <span id="guestDisplay">65</span> <span>invitados</span>
-                  </div>
-                </div>
-                
-                <input 
-                  type="range" 
-                  id="guestSlider" 
-                  class="custom-range" 
-                  min="30" 
-                  max="400" 
-                  step="5" 
-                  value="65"
-                  aria-label="Seleccionar número de personas"
-                >
-                
-                <div class="range-ticks">
-                  <span>30 pers.</span>
-                  <span>50</span>
-                  <span>80</span>
-                  <span>150</span>
-                  <span>250</span>
-                  <span>400+ pers.</span>
-                </div>
-              </div>
-
-              <!-- Selector de Paquetes -->
-              <div class="packages-grid">
-                
-                <!-- Paquete Tradicional -->
-                <div class="package-card" data-package="tradicional">
-                  <div>
-                    <h4 class="pkg-title">Tradicional</h4>
-                    <div class="pkg-capacity">30 a 50 personas</div>
-                    <ul class="pkg-features">
-                      <li>
-                        <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span><strong>7 guisados</strong> en cazuela</span>
-                      </li>
-                      <li>
-                        <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>Arroz o frijoles refritos</span>
-                      </li>
-                      <li>
-                        <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>Botana con chicharrón y salsa</span>
-                      </li>
-                      <li>
-                        <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>1 vitrolero 20L de agua fresca</span>
-                      </li>
-                      <li>
-                        <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>Tortillas calientes</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <!-- Paquete Fiesta Mexicana (Destacado) -->
-                <div class="package-card selected" data-package="fiesta">
-                  <span class="package-badge-feat">⭐ Más Elegido</span>
-                  <div>
-                    <h4 class="pkg-title">Fiesta Mexicana</h4>
-                    <div class="pkg-capacity">50 a 80 personas</div>
-                    <ul class="pkg-features">
-                      <li>
-                        <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span><strong>7 guisados</strong> en cazuela</span>
-                      </li>
-                      <li>
-                        <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>Botana con ensalada de cueritos</span>
-                      </li>
-                      <li>
-                        <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>2 vitroleros de agua (40L total)</span>
-                      </li>
-                      <li>
-                        <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span><strong>Comaleras en vivo</strong> (a mano)</span>
-                      </li>
-                      <li>
-                        <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>Arroz y frijoles incluidos</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <!-- Paquete Gran Banquete -->
-                <div class="package-card" data-package="banquete">
-                  <div>
-                    <h4 class="pkg-title">Gran Banquete</h4>
-                    <div class="pkg-capacity">80+ personas</div>
-                    <ul class="pkg-features">
-                      <li>
-                        <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span><strong>8 guisados</strong> (¡+1 cazuela!)</span>
-                      </li>
-                      <li>
-                        <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>Botana monumental completa</span>
-                      </li>
-                      <li>
-                        <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>2 vitroleros de agua fresca</span>
-                      </li>
-                      <li>
-                        <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>Tortillas a mano o máquina</span>
-                      </li>
-                      <li>
-                        <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>Arroz, frijoles y salsas</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            <!-- PASO 2: Los 32 Guisados en Pastillas Táctiles -->
-            <div class="step-block">
-              <div class="step-header">
-                <span class="step-num">2</span>
-                <h3 class="step-title">Elige tus Cazuelas de Barro</h3>
-              </div>
-
-              <!-- Indicador de Cupo en Vivo -->
-              <div class="quota-indicator">
-                <span id="quotaText">0 de 7 cazuelas seleccionadas</span>
-              </div>
-
-              <!-- Pestañas de Filtros -->
-              <div class="filter-tabs" role="tablist">
-                <button type="button" class="filter-btn active" data-cat="todas">Todas (32)</button>
-                <button type="button" class="filter-btn" data-cat="carnes">Carnes (12)</button>
-                <button type="button" class="filter-btn" data-cat="antojitos">Antojitos (9)</button>
-                <button type="button" class="filter-btn" data-cat="verduras">Verduras (7)</button>
-                <button type="button" class="filter-btn" data-cat="bases">Bases (5)</button>
-              </div>
-
-              <!-- Contenedor dinámico de los 32 guisados -->
-              <div id="guisadosGrid" class="guisados-grid">
-                <!-- Se llena automáticamente con js/main.js -->
-              </div>
-            </div>
-
-            <!-- PASO 3: Extras Opcionales -->
-            <div class="step-block">
-              <div class="step-header">
-                <span class="step-num">3</span>
-                <h3 class="step-title">Extras Opcionales</h3>
-              </div>
-
-              <div class="extras-grid">
-                <div class="extra-card" data-extra="Chilaquiles">
-                  <div class="extra-checkbox">
-                    <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  </div>
-                  <span class="extra-label">Chilaquiles Tradicionales</span>
-                </div>
-
-                <div class="extra-card" data-extra="Famosas Tortas">
-                  <div class="extra-checkbox">
-                    <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  </div>
-                  <span class="extra-label">Famosas Tortas de Chilaquiles</span>
-                </div>
-
-                <div class="extra-card" data-extra="Menudo Tradicional">
-                  <div class="extra-checkbox">
-                    <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  </div>
-                  <span class="extra-label">Menudo de Cazuela (Tornaboda)</span>
-                </div>
-
-                <div class="extra-card" data-extra="Comaleras en Vivo">
-                  <div class="extra-checkbox">
-                    <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  </div>
-                  <span class="extra-label">Comaleras con Tortillas a Mano</span>
-                </div>
-
-                <div class="extra-card" data-extra="Cazuela Adicional">
-                  <div class="extra-checkbox">
-                    <svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  </div>
-                  <span class="extra-label">Cazuela Adicional (+1 Guisado)</span>
-                </div>
-              </div>
-            </div>
-
+      <div class="builder-layout">
+        <!-- COLUMNA IZQUIERDA: CONTROLES -->
+        <div class="builder-panel">
+          <!-- Paso 1 -->
+          <div class="step-head">
+            <span class="step-num">1</span>
+            <h3 class="step-title">Elige tu Paquete de Evento</h3>
           </div>
 
-          <!-- COLUMNA DERECHA: COMANDA GOURMET STICKY -->
-          <aside class="armador-sidebar">
-            <div class="comanda-card">
-              
-              <div class="comanda-header">
-                <div>
-                  <h4 class="comanda-title">Comanda</h4>
-                  <span class="comanda-badge">Presupuesto en Vivo</span>
-                </div>
-                <span style="font-size: 1.5rem;">🏺</span>
-              </div>
-
-              <div class="comanda-details">
-                <div class="comanda-row">
-                  <span>Invitados:</span>
-                  <strong id="comandaGuests">65 personas</strong>
-                </div>
-
-                <div class="comanda-row">
-                  <span>Paquete:</span>
-                  <strong id="comandaPackage">Fiesta Mexicana</strong>
-                </div>
-
-                <!-- Cazuelas seleccionadas -->
-                <div class="comanda-cazuelas-box">
-                  <div class="comanda-cazuelas-title">
-                    <span>Cazuelas elegidas:</span>
-                    <span id="comandaCazuelasLimit" style="color: var(--color-pink-primary);">(0/7)</span>
-                  </div>
-                  <ol id="comandaList" class="comanda-list">
-                    <li style="list-style: none; color: #A0938E; font-style: italic;">Aún no has seleccionado cazuelas</li>
-                  </ol>
-                </div>
-
-                <div class="comanda-row">
-                  <span>Extras:</span>
-                  <strong id="comandaExtras" style="max-width: 60%; text-align: right;">Ninguno</strong>
-                </div>
-              </div>
-
-              <!-- Formulario de Contacto para el evento -->
-              <div class="comanda-form">
-                <label for="clientName" style="font-size: 0.8rem; font-weight: 700; color: var(--color-text-muted);">TUS DATOS PARA DISPONIBILIDAD</label>
-                <input type="text" id="clientName" class="input-field" placeholder="Tu nombre completo">
-                <input type="date" id="eventDate" class="input-field" title="Fecha del evento">
-                <input type="text" id="eventCity" class="input-field" placeholder="Ciudad o municipio (ej. León, Gto.)">
-              </div>
-
-              <!-- Botón WhatsApp Directo a Claudia -->
-              <a 
-                id="btnWhatsApp" 
-                href="#" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                class="btn btn-whatsapp"
-              >
-                <span>💬 Cotizar por WhatsApp</span>
-              </a>
-
-              <p style="font-size: 0.78rem; color: var(--color-text-muted); text-align: center; margin-top: -6px;">
-                Atención directa con Claudia • Respuesta inmediata
-              </p>
-
+          <div class="packages-row">
+            <div class="pkg-card" id="pkg-30-50" onclick="choosePackage('30-50')">
+              <span class="pkg-tag">Reunión</span>
+              <strong class="pkg-name">Tradicional</strong>
+              <span class="pkg-desc">30 a 50 pers. • 7 Guisos</span>
             </div>
-          </aside>
+            <div class="pkg-card active" id="pkg-50-80" onclick="choosePackage('50-80')">
+              <span class="pkg-tag">⭐ Más Popular</span>
+              <strong class="pkg-name">Fiesta Mexicana</strong>
+              <span class="pkg-desc">50 a 80 pers. • 7 Guisos</span>
+            </div>
+            <div class="pkg-card" id="pkg-80" onclick="choosePackage('80+')">
+              <span class="pkg-tag">Banquete</span>
+              <strong class="pkg-name">Gran Banquete</strong>
+              <span class="pkg-desc">80+ pers. • 8 Guisos</span>
+            </div>
+          </div>
 
+          <div class="guest-slider-box">
+            <div class="slider-header">
+              <span>Invitados Estimados:</span>
+              <strong id="guestDisplay">65 Personas</strong>
+            </div>
+            <input type="range" id="guestSlider" min="30" max="350" step="5" value="65" oninput="onGuestSlider(this.value)" class="custom-range">
+          </div>
+
+          <!-- Paso 2 -->
+          <div class="step-head">
+            <span class="step-num">2</span>
+            <h3 class="step-title">Selecciona tus Cazuelas (<span id="cCount">0</span> de <span id="cLimit">7</span>)</h3>
+          </div>
+
+          <div class="dishes-filters">
+            <button class="filter-btn active" onclick="filterDishes('all', this)">Todos (32)</button>
+            <button class="filter-btn" onclick="filterDishes('carnes', this)">Carnes (12)</button>
+            <button class="filter-btn" onclick="filterDishes('antojitos', this)">Antojitos (9)</button>
+            <button class="filter-btn" onclick="filterDishes('verduras', this)">Verduras (7)</button>
+            <button class="filter-btn" onclick="filterDishes('bases', this)">Arroz / Frijol (5)</button>
+          </div>
+
+          <div class="pills-container" id="pillsGrid"></div>
+
+          <!-- Paso 3 -->
+          <div class="step-head">
+            <span class="step-num">3</span>
+            <h3 class="step-title">Especialidades Opcionales</h3>
+          </div>
+
+          <div class="extras-grid">
+            <div class="extra-item" onclick="toggleExtra(this, 'Chilaquiles con 2 proteínas y bolillo')">
+              <span>🍳</span> Desayuno/Torna de Chilaquiles
+            </div>
+            <div class="extra-item" onclick="toggleExtra(this, 'Famosas Tortas de Chilaquiles')">
+              <span>🥖</span> Las Famosas Tortas
+            </div>
+            <div class="extra-item" onclick="toggleExtra(this, 'Menudo Tradicional (mín. 30 pers.)')">
+              <span>🍲</span> Menudo Tradicional
+            </div>
+            <div class="extra-item" onclick="toggleExtra(this, 'Cazuela extra adicional de guisado')">
+              <span>🥘</span> Cazuela Adicional
+            </div>
+          </div>
         </div>
 
+        <!-- COLUMNA DERECHA: RESUMEN COMANDA STICKY -->
+        <div class="sticky-comanda">
+          <div class="comanda-header">
+            <span class="comanda-badge">Comanda de Reserva</span>
+            <h4 class="comanda-pkg" id="sumPkg">Paquete Fiesta Mexicana</h4>
+          </div>
+
+          <div class="comanda-metric">
+            <span>Invitados:</span>
+            <strong id="sumGuests">65 Personas</strong>
+          </div>
+
+          <div class="comanda-metric">
+            <span>Guisados:</span>
+            <strong id="sumGuisos">0 / 7</strong>
+          </div>
+
+          <div class="comanda-list-box" id="sumList">
+            <em>Selecciona tus cazuelas en las pastillas de la izquierda para armar tu menú.</em>
+          </div>
+
+          <div class="comanda-perks" id="sumBenefits">
+            Incluye: 7 guisados, botana con ensalada de cueritos, 2 vitroleros de agua (40L) y tortillas a mano en comal vivo.
+          </div>
+
+          <form onsubmit="sendToWhatsApp(event)">
+            <div class="form-group">
+              <label>Tu Nombre Completo *</label>
+              <input type="text" id="custName" required placeholder="Ej. Mariana González" class="form-input">
+            </div>
+            <div class="form-group">
+              <label>Fecha Estimada del Evento *</label>
+              <input type="date" id="custDate" required class="form-input">
+            </div>
+            <div class="form-group">
+              <label>Ciudad / Salón *</label>
+              <input type="text" id="custCity" required value="León, Gto." class="form-input">
+            </div>
+
+            <button type="submit" class="btn-whatsapp">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Enviar Cotización a WhatsApp
+            </button>
+          </form>
+        </div>
       </div>
     </section>
 
-    <!-- ==========================================================================
-         6. SECCIÓN: CONTACTO OFICIAL & TARJETA (#contacto)
-         ========================================================================== -->
-    <section id="contacto" class="section-padding" style="background-color: #FAF8F5;" aria-label="Información de contacto oficial">
-      <div class="container">
-        
-        <div class="section-header">
-          <span class="pill-tag pill-tag-mint">Atención Personal</span>
-          <h2 class="section-title">
-            Contacto Oficial La Lola
-            <span class="italic-sub">Estamos listos para servir en tu fiesta</span>
-          </h2>
-          <p class="section-subtitle">
-            Comunícate directamente con Claudia para agendar tu degustación, apartar tu fecha o solicitar una visita técnica a tu jardín o salón.
-          </p>
-        </div>
+    <!-- SECCIÓN: CONTACTO & TARJETA OFICIAL -->
+    <section class="section-container text-center" id="contacto">
+      <div class="section-header">
+        <span class="pill-category">Contacto Directo</span>
+        <h2 class="section-title">¿Tienes una fecha en mente? <span>Hablemos</span></h2>
+        <p class="section-desc">Guarda nuestra tarjeta de presentación o llama directamente por teléfono.</p>
+      </div>
 
-        <div class="contact-official-card">
-          
-          <!-- Imagen de la tarjeta física -->
-          <div class="contact-card-img-wrap">
-            <img 
-              src="FOTOS/WhatsApp Image 2026-07-25 at 20.02.30 (1).jpeg" 
-              alt="Tarjeta de presentación oficial de Banquetes La Lola" 
-              class="contact-card-img"
-              loading="lazy"
-            >
-          </div>
+      <div class="card-official-wrap" onclick="window.open('https://wa.me/524778020791', '_blank')">
+        <img src="FOTOS/WhatsApp Image 2026-07-25 at 20.02.30 (1).jpeg" alt="Tarjeta Oficial Banquetes y Taquizas La Lola">
+      </div>
 
-          <!-- Información y botón directo -->
-          <div class="contact-card-info">
-            <span class="pill-tag">Servicio en Todo el Bajío</span>
-            <h3 style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 800; color: var(--color-text-main);">
-              Claudia • Banquetes Tradicionales
-            </h3>
-            
-            <p style="color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.6;">
-              Cazuelas curadas, guisados calientes, comal en vivo y botana monumental. Más de 10 años endulzando y sazonando los mejores eventos de León, Guanajuato y sus alrededores.
-            </p>
-
-            <div class="contact-phone-badge">
-              <span>📞</span>
-              <a href="tel:4778020791" style="color: var(--color-pink-primary); text-decoration: underline;">
-                477 802 0791
-              </a>
-            </div>
-
-            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px;">
-              <a href="https://wa.me/524778020791" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="width: auto; padding: 13px 26px;">
-                Enviar WhatsApp Directo
-              </a>
-              <a href="tel:4778020791" class="btn btn-glass" style="padding: 13px 26px;">
-                Llamar Ahora
-              </a>
-            </div>
-          </div>
-
-        </div>
-
+      <div class="contact-actions">
+        <a href="https://wa.me/524778020791?text=Hola%20Claudia%2C%20me%20gustar%C3%ADa%20cotizar%20un%20evento%20con%20La%20Lola%20🍽️" class="btn-primary" target="_blank" rel="noopener noreferrer">
+          Chatear con Claudia por WhatsApp
+        </a>
+        <a href="tel:+524778020791" class="btn-glass">
+          📞 Llamar al 477 802 0791
+        </a>
       </div>
     </section>
   </main>
 
-  <!-- ==========================================================================
-       7. FOOTER EDITORIAL
-       ========================================================================== -->
-  <footer class="site-footer">
-    <div class="container">
-      
-      <div class="footer-top">
-        <div>
-          <a href="#" class="brand-logo" style="font-size: 2.2rem;">
-            La Lola<span class="brand-logo-dot">.</span>
-          </a>
-          <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-top: 6px;">
-            Banquetes, catering tradicional y cazuelas al fuego vivo • León, Gto.
-          </p>
-        </div>
-
-        <nav aria-label="Navegación del pie de página">
-          <ul style="display: flex; gap: 24px; list-style: none; font-size: 0.9rem; font-weight: 600;">
-            <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
-            <li><a href="#especialidades" class="nav-link">Especialidades</a></li>
-            <li><a href="#armar" class="nav-link">Armar Banquete</a></li>
-            <li><a href="#contacto" class="nav-link">Contacto</a></li>
-          </ul>
-        </nav>
-      </div>
-
-      <div class="footer-bottom">
-        <p>© 2026 La Lola Banquetes & Cazuelas. Todos los derechos reservados.</p>
-        <p style="color: var(--color-text-muted);">Hecho con sazón y fuego vivo en el Bajío.</p>
-      </div>
-
-    </div>
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="footer-brand">La Lola</div>
+    <p class="footer-lead">Banquetes & Taquizas Tradicionales en Cazuela de Barro</p>
+    <p class="footer-sub">León, Guanajuato • Servicio a Domicilio, Jardines, Salones y Haciendas</p>
+    <div class="footer-copy">© 2026 Banquetes y Taquizas La Lola. Todos los derechos reservados.</div>
   </footer>
 
 </body>
