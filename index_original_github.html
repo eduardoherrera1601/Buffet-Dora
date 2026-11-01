@@ -2008,7 +2008,7 @@
 
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;">
                         <!-- 2 Opciones de Arroz -->
-                        <div class="base-option-card selected" data-base="Arroz rojo tradicional" onclick="selectBaseOption('Arroz rojo tradicional', this)">
+                        <div class="base-option-card" data-base="Arroz rojo tradicional" onclick="selectBaseOption('Arroz rojo tradicional', this)">
                             <span style="font-size: 1.35rem;">🍚</span>
                             <div style="flex: 1;">
                                 <strong class="base-name">Arroz rojo tradicional</strong>
@@ -2216,9 +2216,9 @@
                         <div id="summaryBaseRow" style="margin-bottom: 1.1rem; background: #FFF8E7; border: 1.5px solid #E2CCA8; border-radius: 12px; padding: 0.75rem 1.1rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
                             <div>
                                 <span style="font-family: var(--font-folk); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--cempasuchil-fuego); letter-spacing: 0.08em; display: block;">Guarnición Base Incluida</span>
-                                <strong style="font-family: var(--font-folk); font-size: 1rem; color: var(--chocolate-texto);">🍚 <span id="summaryBaseName">Arroz rojo tradicional</span></strong>
+                                <strong style="font-family: var(--font-folk); font-size: 1rem; color: var(--chocolate-texto);"><span id="summaryBaseIcon">⚪</span> <span id="summaryBaseName">Sin seleccionar (a definir con Claudia)</span></strong>
                             </div>
-                            <span style="font-size: 0.8rem; font-weight: 800; color: #2E7D32; background: #E8F5E9; padding: 0.25rem 0.7rem; border-radius: 20px;">✓ 1 Incluida</span>
+                            <span id="summaryBaseBadge" style="font-size: 0.8rem; font-weight: 800; color: #B78103; background: #FFF8E1; border: 1px solid #FFE082; padding: 0.25rem 0.7rem; border-radius: 20px;">Opcional / Pendiente</span>
                         </div>
 
                         <!-- Desglose de Guisados Seleccionados -->
@@ -2385,14 +2385,20 @@
         let currentPackage = '50-80'; // '30-50', '50-80', '80+'
         let maxGuisados = 7;
         let guestCount = 70;
-        let selectedBase = 'Arroz rojo tradicional';
+        let selectedBase = null; // Inicia desmarcado: el cliente decide si elige arroz, frijoles o ninguno
         const selectedGuisados = new Set();
         const selectedExtras = new Set();
 
         window.selectBaseOption = function(baseName, el) {
-            selectedBase = baseName;
-            document.querySelectorAll('.base-option-card').forEach(c => c.classList.remove('selected'));
-            if (el) el.classList.add('selected');
+            if (selectedBase === baseName) {
+                // Si hace clic en la misma opción elegida, se deselecciona
+                selectedBase = null;
+                if (el) el.classList.remove('selected');
+            } else {
+                selectedBase = baseName;
+                document.querySelectorAll('.base-option-card').forEach(c => c.classList.remove('selected'));
+                if (el) el.classList.add('selected');
+            }
             updateLiveSummary();
         };
 
@@ -2749,7 +2755,27 @@
             } else {
                 if (notice) notice.style.display = 'none';
                 if (baseRow) baseRow.style.display = 'flex';
-                if (baseNameEl) baseNameEl.textContent = selectedBase;
+                const baseIconEl = document.getElementById('summaryBaseIcon');
+                const baseBadgeEl = document.getElementById('summaryBaseBadge');
+                if (selectedBase) {
+                    if (baseNameEl) baseNameEl.textContent = selectedBase;
+                    if (baseIconEl) baseIconEl.textContent = selectedBase.toLowerCase().includes('arroz') ? '🍚' : '🫘';
+                    if (baseBadgeEl) {
+                        baseBadgeEl.textContent = '✓ 1 Incluida';
+                        baseBadgeEl.style.color = '#2E7D32';
+                        baseBadgeEl.style.background = '#E8F5E9';
+                        baseBadgeEl.style.borderColor = '#A5D6A7';
+                    }
+                } else {
+                    if (baseNameEl) baseNameEl.textContent = 'Sin seleccionar (a definir con Claudia)';
+                    if (baseIconEl) baseIconEl.textContent = '⚪';
+                    if (baseBadgeEl) {
+                        baseBadgeEl.textContent = 'Opcional / Pendiente';
+                        baseBadgeEl.style.color = '#B78103';
+                        baseBadgeEl.style.background = '#FFF8E1';
+                        baseBadgeEl.style.borderColor = '#FFE082';
+                    }
+                }
                 if (guisadosLabel) guisadosLabel.innerHTML = '🥘 Guisados Seleccionados (<span id="summaryGuisadosCount">' + selectedGuisados.size + '</span> de <span id="summaryGuisadosLimit">' + maxGuisados + '</span>):';
                 const meta = packageMeta[currentPackage];
                 if (summaryTitle) summaryTitle.textContent = meta.title;
@@ -2807,7 +2833,9 @@
             }
 
             const meta = packageMeta[currentPackage];
-            let baseText = '\n\n🍚 *Guarnición Base Incluida:* ' + selectedBase;
+            let baseText = selectedBase
+                ? '\n\n🍚 *Guarnición Base Incluida:* ' + selectedBase
+                : '\n\n🍚 *Guarnición Base:* Sin seleccionar (a definir con Claudia si se requiere)';
             let guisadosText = selectedGuisados.size > 0
                 ? '\n\n🥘 *Guisados Elegidos (' + selectedGuisados.size + ' de ' + maxGuisados + '):*\n' + Array.from(selectedGuisados).map((g, i) => '  ' + (i + 1) + '. ' + g).join('\n')
                 : '\n\n🥘 *Guisados:* ' + maxGuisados + ' guisados (a definir con Claudia)';
