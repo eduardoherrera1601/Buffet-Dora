@@ -133,7 +133,39 @@
     updateSummary();
   };
 
+  window.switchSpecialty = function(key, btn) {
+    document.querySelectorAll('.spec-tab').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    const panels = document.querySelectorAll('.specialty-panel');
+    panels.forEach(p => {
+      p.classList.remove('active');
+      p.style.display = 'none';
+    });
+
+    const activePanel = document.getElementById(`spec-panel-${key}`);
+    if (activePanel) {
+      activePanel.style.display = 'grid';
+      void activePanel.offsetWidth; // Reflow para disparar la animación fade & scale
+      activePanel.classList.add('active');
+    }
+  };
+
   window.addSpecialty = function(name) {
+    // Sincronizar visualmente con las tarjetas de extras en el cotizador
+    document.querySelectorAll('.extra-item').forEach(item => {
+      const text = item.textContent.toLowerCase();
+      if (
+        (name.includes('Chilaquiles') && text.includes('chilaquiles')) ||
+        (name.includes('Tortas') && text.includes('tortas')) ||
+        (name.includes('Menudo') && text.includes('menudo'))
+      ) {
+        if (!item.classList.contains('selected')) {
+          item.classList.add('selected');
+        }
+      }
+    });
+
     selectedExtras.add(name);
     const target = document.getElementById('armar');
     if (target) target.scrollIntoView({ behavior: 'smooth' });

@@ -581,59 +581,163 @@
   font-size: 0.95rem;
 }
 
-/* ===== ESPECIALIDADES EDITORIAL ===== */
-.dishes-stack {
+/* ===== ESPECIALIDADES EDITORIAL (ESCAPARATE INTERACTIVO TABS) ===== */
+.specialties-nav-wrap {
   display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
 }
-.dish-item {
+.specialties-tabs {
+  display: inline-flex;
+  background: rgba(250, 248, 245, 0.95);
+  padding: 6px;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 8px 24px -6px rgba(36, 26, 23, 0.08);
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.spec-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  background: transparent;
+  border: 1px solid transparent;
+}
+.spec-tab:hover {
+  color: var(--pastel-rosa-deep);
+  background: rgba(255, 255, 255, 0.7);
+}
+.spec-tab.active {
+  background: var(--bg-surface);
+  color: var(--pastel-rosa-deep);
+  border-color: rgba(217, 72, 120, 0.25);
+  box-shadow: 0 4px 18px -2px rgba(217, 72, 120, 0.22);
+}
+.spec-tab-num {
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  font-weight: 800;
+  opacity: 0.6;
+}
+.spec-tab.active .spec-tab-num {
+  opacity: 1;
+}
+
+.specialty-showcase-stage {
+  position: relative;
+  min-height: 460px;
+}
+
+.specialty-panel {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 3rem;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
   align-items: center;
   background: var(--bg-surface);
   border: 1px solid var(--border-soft);
-  border-radius: 28px;
-  padding: 2.6rem;
-  box-shadow: var(--shadow-card);
+  border-radius: 32px;
+  padding: clamp(2rem, 3.5vw, 3.2rem);
+  box-shadow: 0 30px 60px -15px rgba(36, 26, 23, 0.12);
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.dish-item.reversed { grid-template-columns: 1fr 1.1fr; }
-.dish-img-wrap {
-  border-radius: 20px;
+.specialty-panel.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.spec-panel-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.spec-panel-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 2.5vw, 2.3rem);
+  font-weight: 900;
+  color: var(--text-main);
+  line-height: 1.15;
+}
+
+.spec-panel-desc {
+  font-size: 0.98rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.spec-ingredients-box {
+  background: #FAF7F2;
+  border-radius: 16px;
+  border: 1px solid var(--border-soft);
+  padding: 1.1rem 1.4rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  width: 100%;
+}
+.spec-ingredients-title {
+  display: block;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+.spec-ingredients-box p {
+  color: var(--text-muted);
+}
+
+.spec-action-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.spec-serving-note {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.spec-panel-visual {
+  position: relative;
+  border-radius: 24px;
   overflow: hidden;
-  height: 290px;
+  height: 380px;
+  box-shadow: 0 20px 45px -10px rgba(36, 26, 23, 0.15);
+  background: #E8E2D9;
 }
-.dish-img-wrap img {
+.spec-showcase-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.dish-badge {
-  display: inline-block;
-  font-size: 0.78rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: var(--pastel-rosa-deep);
-  margin-bottom: 0.5rem;
+.specialty-panel:hover .spec-showcase-img {
+  transform: scale(1.04);
 }
-.dish-title {
-  font-family: var(--font-serif);
-  font-size: 1.85rem;
-  font-weight: 800;
-  margin-bottom: 0.8rem;
-}
-.dish-desc {
-  font-size: 0.96rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-.dish-perk {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--pastel-rosa-deep);
-  margin-bottom: 1.4rem;
+
+@media (max-width: 900px) {
+  .specialty-panel {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .spec-panel-visual {
+    height: 280px;
+    order: -1;
+  }
 }
 
 /* ===== COTIZADOR EN 2 COLUMNAS (EXPERIENCIA MESA DE BANQUETE) ===== */

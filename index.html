@@ -208,54 +208,95 @@
       </div>
     </section>
 
-    <!-- SECCIÓN: ESPECIALIDADES DE LA CASA -->
+    <!-- SECCIÓN: ESPECIALIDADES DE LA CASA (ESCAPARATE INTERACTIVO / TABS EDITORIALES) -->
     <section class="section-container" id="menu">
       <div class="section-header">
-        <span class="pill-category">Especialidades</span>
+        <span class="pill-category">Especialidades de Fonda</span>
         <h2 class="section-title">Para iniciar el día o la <span>tornafiesta</span></h2>
         <p class="section-desc">Recetas preparadas con auténtico queso fresco de rancho y sazón leonés hechas con el corazón.</p>
       </div>
 
-      <div class="dishes-stack">
-        <!-- Chilaquiles -->
-        <div class="dish-item">
-          <div class="dish-content">
+      <!-- Selector Minimalista en Tonos Pastel -->
+      <div class="specialties-nav-wrap">
+        <div class="specialties-tabs" role="tablist" aria-label="Selector de Especialidades">
+          <button type="button" class="spec-tab active" data-spec="chilaquiles" onclick="switchSpecialty('chilaquiles', this)">
+            <span class="spec-tab-num">01</span>
+            <span class="spec-tab-title">Chilaquiles Tradicionales</span>
+          </button>
+          <button type="button" class="spec-tab" data-spec="tortas" onclick="switchSpecialty('tortas', this)">
+            <span class="spec-tab-num">02</span>
+            <span class="spec-tab-title">Las Famosas Tortas</span>
+          </button>
+          <button type="button" class="spec-tab" data-spec="menudo" onclick="switchSpecialty('menudo', this)">
+            <span class="spec-tab-num">03</span>
+            <span class="spec-tab-title">Menudo de Tornafiesta</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Escaparate Interactivo con Transición Fade & Scale -->
+      <div class="specialty-showcase-stage" id="specialtyShowcase">
+        
+        <!-- Panel 1: Chilaquiles Tradicionales -->
+        <article class="specialty-panel active" id="spec-panel-chilaquiles">
+          <div class="spec-panel-content">
             <span class="dish-badge">🍳 Salsa Verde o Roja al Gusto</span>
-            <h3 class="dish-title">Chilaquiles Tradicionales</h3>
-            <p class="dish-desc">Crujientes totopos de maíz bañados en salsa tatemada verde o roja especial. Servidos con frijolitos refritos, crema de rancho espesa, queso fresco y rebanadas de aguacate.</p>
-            <p class="dish-perk">🍗 Incluye 2 Proteínas a elegir: Pollo, Huevo, Milanesa o Carne Asada + Bolillo crujiente.</p>
-            <button type="button" class="btn-primary" onclick="addSpecialty('Chilaquiles Tradicionales')">+ Agregar a mi Cotización</button>
+            <h3 class="spec-panel-title">Chilaquiles Tradicionales</h3>
+            <p class="spec-panel-desc">Crujientes totopos de maíz bañados en salsa tatemada verde o roja especial. Servidos con frijolitos refritos, crema de rancho espesa, queso fresco y rebanadas de aguacate.</p>
+            <div class="spec-ingredients-box">
+              <span class="spec-ingredients-title">🍗 Desglose de Proteínas Incluidas:</span>
+              <p>2 Proteínas a elegir: Pollo deshebrado, Huevo al gusto, Milanesa dorada o Carne Asada + Bolillo crujiente caliente.</p>
+            </div>
+            <div class="spec-action-row">
+              <button type="button" class="btn-primary btn-glow btn-magnetic" onclick="addSpecialty('Chilaquiles Tradicionales')">+ Agregar a mi Cotización</button>
+              <span class="spec-serving-note">Ideal para desayunos de boda y reuniones</span>
+            </div>
           </div>
-          <div class="dish-img-wrap">
-            <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg" alt="Chilaquiles con aguacate La Lola">
+          <div class="spec-panel-visual">
+            <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg" alt="Chilaquiles tradicionales con aguacate La Lola" class="spec-showcase-img" loading="lazy">
           </div>
-        </div>
+        </article>
 
-        <!-- Tortas -->
-        <div class="dish-item reversed">
-          <div class="dish-img-wrap">
-            <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg" alt="Famosas Tortas de Chilaquiles">
-          </div>
-          <div class="dish-content">
+        <!-- Panel 2: Las Famosas Tortas de Chilaquiles -->
+        <article class="specialty-panel" id="spec-panel-tortas" style="display: none;">
+          <div class="spec-panel-content">
             <span class="dish-badge">🥖 La Consentida de la Fiesta</span>
-            <h3 class="dish-title">Las Famosas Tortas de Chilaquiles</h3>
-            <p class="dish-desc">Bolillo crujiente recién horneado untado con frijoles refritos, relleno de chilaquiles calientes, crema, queso de rancho y proteína dorada al gusto.</p>
-            <button type="button" class="btn-primary" onclick="addSpecialty('Tortas de Chilaquiles')">+ Agregar a mi Cotización</button>
+            <h3 class="spec-panel-title">Las Famosas Tortas de Chilaquiles</h3>
+            <p class="spec-panel-desc">Bolillo crujiente recién horneado untado con frijoles refritos de la casa, colmado de chilaquiles calientes recién salseados al fuego, crema de rancho, queso fresco espolvoreado y tu proteína preferida.</p>
+            <div class="spec-ingredients-box">
+              <span class="spec-ingredients-title">🧀 Ingredientes de Rancho:</span>
+              <p>Bolillo artesanal crujiente, frijolitos bayos refritos, crema ácida de rancho, queso fresco rallado y proteína dorada al gusto.</p>
+            </div>
+            <div class="spec-action-row">
+              <button type="button" class="btn-primary btn-glow btn-magnetic" onclick="addSpecialty('Tortas de Chilaquiles')">+ Agregar a mi Cotización</button>
+              <span class="spec-serving-note">El favorito de amigos y celebraciones relajadas</span>
+            </div>
           </div>
-        </div>
+          <div class="spec-panel-visual">
+            <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg" alt="Famosas Tortas de Chilaquiles La Lola" class="spec-showcase-img" loading="lazy">
+          </div>
+        </article>
 
-        <!-- Menudo -->
-        <div class="dish-item">
-          <div class="dish-content">
+        <!-- Panel 3: Menudo de Tornafiesta -->
+        <article class="specialty-panel" id="spec-panel-menudo" style="display: none;">
+          <div class="spec-panel-content">
             <span class="dish-badge">🍲 Rey de la Tornafiesta</span>
-            <h3 class="dish-title">Menudo Tradicional en Cazuela</h3>
-            <p class="dish-desc">Preparado para eventos y bodas a partir de 30 personas: panza suave, pata, callo, libro, panal, bofe y manzana tradicional con orégano, cebolla, limones y salsa de molcajete.</p>
-            <button type="button" class="btn-primary" onclick="addSpecialty('Menudo Tradicional')">+ Agregar a mi Cotización</button>
+            <h3 class="spec-panel-title">Menudo Tradicional en Cazuela</h3>
+            <p class="spec-panel-desc">La receta tradicional leonesa curada a fuego lento para desvelados y tornabodas (a partir de 30 personas): caldo rojo limpio, aromático y reconfortante servido humeante.</p>
+            <div class="spec-ingredients-box">
+              <span class="spec-ingredients-title">🥩 Selección Completa de Carnes y Guarnición:</span>
+              <p>Panza suave, pata, callo, libro, panal, bofe y manzana leonesa con orégano silvestre, cebolla picada fresca, limones y tortillas calientes.</p>
+            </div>
+            <div class="spec-action-row">
+              <button type="button" class="btn-primary btn-glow btn-magnetic" onclick="addSpecialty('Menudo Tradicional')">+ Agregar a mi Cotización</button>
+              <span class="spec-serving-note">Servicio especial a partir de 30 personas</span>
+            </div>
           </div>
-          <div class="dish-img-wrap">
-            <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg" alt="Menudo tradicional caliente">
+          <div class="spec-panel-visual">
+            <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg" alt="Menudo tradicional caliente en cazuela" class="spec-showcase-img" loading="lazy">
           </div>
-        </div>
+        </article>
+
       </div>
     </section>
 
