@@ -61,28 +61,28 @@
 
           <!-- Columna Izquierda: Contenido Editorial -->
           <div class="hero-content" id="heroContent">
-            <div class="hero-badge-container">
-              <span class="pill-tag">
+            <div class="hero-badge-container" id="heroBadge">
+              <span class="pill-tag pill-tag-hero">
                 🏺 Banquetes & Cazuelas • León, Gto.
               </span>
             </div>
 
-            <h1 class="hero-title">
-              Sabores de México
+            <h1 class="hero-title" id="heroTitle">
+              Sabores de <span class="hero-word-mexico">México</span>
               <span class="hero-title-italic">Sazón y fuego vivo en cazuela</span>
             </h1>
 
-            <p class="hero-description">
+            <p class="hero-description" id="heroDesc">
               Catering tradicional al calor de cazuelas de barro curadas, guisados con sazón de hogar y tortillas infladas al comal para compartir tus mejores momentos.
             </p>
 
-            <div class="hero-cta-group">
+            <div class="hero-cta-group" id="heroCta">
               <a href="#armar" class="btn btn-primary btn-glow btn-magnetic">Armar Banquete</a>
               <a href="#experiencia" class="btn btn-glass btn-magnetic">Conocer Experiencia</a>
             </div>
 
             <!-- 3 viñetas minimalistas con checkmark -->
-            <div class="hero-benefits">
+            <div class="hero-benefits" id="heroBenefits">
               <div class="benefit-item">
                 <span class="benefit-check" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -112,9 +112,10 @@
             </div>
           </div>
 
-          <!-- Columna Derecha: Tarjeta Visual Flotante con Parallax -->
+          <!-- Columna Derecha: Tarjeta Visual Escénica con Luz Perimetral -->
           <div class="hero-visual" id="heroVisual">
-            <div class="hero-image-frame floating-frame">
+            <div class="hero-ambient-glow" aria-hidden="true"></div>
+            <div class="hero-image-frame floating-frame" id="heroFrame">
               <img 
                 src="img/mexican_folk_hero_banner.jpg" 
                 alt="Banquete de cazuelas tradicionales mexicanas La Lola" 
@@ -141,6 +142,9 @@
           <span class="scroll-text">Explora el festín</span>
         </a>
       </div>
+
+      <!-- Transición Suave en Degradado Lino hacia la Galería -->
+      <div class="hero-transition-gradient" aria-hidden="true"></div>
     </section>
 
     <!-- SECCIÓN: EXPERIENCIA & BENTO GRID -->

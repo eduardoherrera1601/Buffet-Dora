@@ -108,11 +108,11 @@
    3. HERO ASIMÉTRICO (COMPOSICIÓN CINEMATOGRÁFICA DE AUTOR)
    -------------------------------------------------------------------------- */
 .hero-section {
-  min-height: 90vh;
+  min-height: 92vh;
   display: flex;
   align-items: center;
   padding-top: clamp(36px, 6vh, 72px);
-  padding-bottom: clamp(72px, 8vh, 100px);
+  padding-bottom: clamp(90px, 10vh, 130px);
   position: relative;
   overflow: hidden;
 }
@@ -124,7 +124,7 @@
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1.25fr 0.75fr;
   align-items: center;
   gap: clamp(24px, 3.5vw, 48px);
   width: 100%;
@@ -138,24 +138,54 @@
   position: relative;
   z-index: 10;
   will-change: transform;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-badge-container {
   margin-bottom: 24px;
+  will-change: transform;
+}
+
+.pill-tag-hero {
+  box-shadow: 0 4px 16px -2px rgba(217, 72, 120, 0.2);
+  border: 1px solid rgba(217, 72, 120, 0.3);
+  background: rgba(252, 232, 239, 0.85);
+  backdrop-filter: blur(12px);
 }
 
 /* Tipografía de Revista Imponente y Enorme con Superposición */
 .hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(3.2rem, 5.5vw, 5.4rem);
+  font-size: clamp(3.4rem, 6vw, 5.8rem);
   font-weight: 900;
-  line-height: 0.98;
-  letter-spacing: -0.035em;
+  line-height: 0.96;
+  letter-spacing: -0.04em;
   color: var(--color-text-main);
   margin-bottom: 24px;
-  margin-right: -42px;
+  margin-right: -48px;
   text-shadow: 0 4px 30px rgba(250, 248, 245, 0.95), 0 1px 2px rgba(250, 248, 245, 0.8);
+  position: relative;
+  z-index: 12;
+  will-change: transform;
+}
+
+.hero-word-mexico {
+  display: inline-block;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--color-text-main);
+  position: relative;
+}
+
+.hero-word-mexico::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 8px;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--pastel-rosa-deep) 0%, transparent 100%);
+  border-radius: 2px;
+  opacity: 0.75;
 }
 
 .hero-title-italic {
@@ -165,8 +195,10 @@
   font-weight: 700;
   color: var(--pastel-rosa-deep);
   letter-spacing: -0.015em;
-  margin-top: 8px;
-  font-size: 0.82em;
+  margin-top: 10px;
+  font-size: 0.78em;
+  line-height: 1.1;
+  text-shadow: 0 2px 20px rgba(252, 232, 239, 0.8);
 }
 
 .hero-description {
@@ -176,6 +208,7 @@
   line-height: 1.65;
   max-width: 44ch;
   margin-bottom: 36px;
+  will-change: transform;
 }
 
 .hero-cta-group {
@@ -184,6 +217,7 @@
   flex-wrap: wrap;
   gap: 16px;
   margin-bottom: 40px;
+  will-change: transform;
 }
 
 .hero-benefits {
@@ -194,6 +228,7 @@
   padding-top: 20px;
   border-top: 1px solid var(--border-subtle);
   width: 100%;
+  will-change: transform;
 }
 
 .hero-visual {
@@ -202,17 +237,33 @@
   perspective: 1200px;
   z-index: 5;
   will-change: transform;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Luz perimetral ambiental suave */
+.hero-ambient-glow {
+  position: absolute;
+  top: 5%;
+  right: -5%;
+  width: 110%;
+  height: 90%;
+  background: radial-gradient(circle at 60% 40%, rgba(217, 72, 120, 0.24) 0%, rgba(216, 243, 241, 0.32) 42%, transparent 72%);
+  filter: blur(52px);
+  z-index: 1;
+  pointer-events: none;
+  transform: translateZ(-20px);
 }
 
 .hero-image-frame {
   position: relative;
-  border-radius: var(--radius-card);
+  border-radius: 38px 24px 38px 24px;
   overflow: hidden;
-  box-shadow: 0 30px 65px -18px rgba(36, 26, 23, 0.18),
-              0 8px 24px -4px rgba(36, 26, 23, 0.08);
+  box-shadow: 0 35px 75px -20px rgba(36, 26, 23, 0.2),
+              0 0 45px rgba(217, 72, 120, 0.15),
+              0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  border: 1px solid rgba(255, 255, 255, 0.7);
   background-color: #E7E2D9;
   aspect-ratio: 4 / 4.7;
+  z-index: 2;
 }
 
 /* Sutil Efecto Flotante Continuo */
@@ -226,7 +277,7 @@
     transform: translateY(0px) rotate(0deg);
   }
   100% {
-    transform: translateY(-10px) rotate(0.4deg);
+    transform: translateY(-12px) rotate(0.4deg);
   }
 }
 
@@ -296,6 +347,18 @@
   0% { transform: translateY(0); opacity: 1; }
   60% { transform: translateY(11px); opacity: 0; }
   100% { transform: translateY(0); opacity: 0; }
+}
+
+/* Transición Suave en Degradado Lino hacia la Galería */
+.hero-transition-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 130px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(250, 248, 245, 0.45) 35%, rgba(250, 248, 245, 0.95) 85%, #FAF8F5 100%);
+  pointer-events: none;
+  z-index: 10;
 }
 
 @media (max-width: 900px) {

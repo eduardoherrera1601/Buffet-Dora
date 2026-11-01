@@ -313,15 +313,20 @@
   }, { passive: true });
 
   /* ==========================================================================
-     HERO: PARALLAX 3D SPLIT & BOTONES MAGNÉTICOS (60 FPS)
+     HERO: PARALLAX 3D MULTICAPA CON LERP CINEMATOGRÁFICO (60 FPS)
      ========================================================================== */
   function initHeroParallax() {
     const heroSection = document.getElementById('heroSection');
-    const heroContent = document.getElementById('heroContent');
+    const heroBadge = document.getElementById('heroBadge');
+    const heroTitle = document.getElementById('heroTitle');
+    const heroDesc = document.getElementById('heroDesc');
+    const heroCta = document.getElementById('heroCta');
+    const heroBenefits = document.getElementById('heroBenefits');
     const heroVisual = document.getElementById('heroVisual');
+    const heroFrame = document.getElementById('heroFrame');
     const heroFloatCard = document.getElementById('heroFloatCard');
 
-    if (!heroSection || !heroContent || !heroVisual) return;
+    if (!heroSection || !heroVisual) return;
 
     let targetX = 0, targetY = 0;
     let currentX = 0, currentY = 0;
@@ -346,29 +351,49 @@
     });
 
     function render() {
-      // Suavizado Lerp a 60fps
-      currentX += (targetX - currentX) * 0.08;
-      currentY += (targetY - currentY) * 0.08;
+      // Interpolación suave Lerp a 60fps
+      currentX += (targetX - currentX) * 0.075;
+      currentY += (targetY - currentY) * 0.075;
 
-      // Efecto Split: El contenido textual se desplaza en dirección contraria
-      heroContent.style.transform = `translate3d(${currentX * -22}px, ${currentY * -16}px, 0)`;
+      // Capas de texto independientes en dirección contraria (Multilayer Depth)
+      if (heroBadge) {
+        heroBadge.style.transform = `translate3d(${currentX * -14}px, ${currentY * -10}px, 0)`;
+      }
+      if (heroTitle) {
+        heroTitle.style.transform = `translate3d(${currentX * -30}px, ${currentY * -22}px, 0)`;
+      }
+      if (heroDesc) {
+        heroDesc.style.transform = `translate3d(${currentX * -18}px, ${currentY * -14}px, 0)`;
+      }
+      if (heroCta) {
+        heroCta.style.transform = `translate3d(${currentX * -12}px, ${currentY * -9}px, 0)`;
+      }
+      if (heroBenefits) {
+        heroBenefits.style.transform = `translate3d(${currentX * -8}px, ${currentY * -6}px, 0)`;
+      }
 
-      // La imagen se desplaza con el cursor con inclinación tridimensional sutil
-      const rotateY = currentX * 8;
-      const rotateX = -currentY * 8;
-      heroVisual.style.transform = `translate3d(${currentX * 24}px, ${currentY * 18}px, 0) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+      // Composición visual en dirección del cursor con rotación escénica 3D
+      const rotY = currentX * 10;
+      const rotX = -currentY * 10;
+      if (heroFrame) {
+        heroFrame.style.transform = `translate3d(${currentX * 32}px, ${currentY * 24}px, 0) rotateY(${rotY}deg) rotateX(${rotX}deg)`;
+      }
 
-      // Capa flotante inferior con profundidad desacoplada
+      // Tarjeta translúcida inferior con profundidad desacoplada
       if (heroFloatCard) {
-        heroFloatCard.style.transform = `translate3d(${currentX * 14}px, ${currentY * 10}px, 0)`;
+        heroFloatCard.style.transform = `translate3d(${currentX * 46}px, ${currentY * 34}px, 24px)`;
       }
 
       if (isHovering || Math.abs(currentX) > 0.001 || Math.abs(currentY) > 0.001) {
         animId = requestAnimationFrame(render);
       } else {
         animId = null;
-        heroContent.style.transform = '';
-        heroVisual.style.transform = '';
+        if (heroBadge) heroBadge.style.transform = '';
+        if (heroTitle) heroTitle.style.transform = '';
+        if (heroDesc) heroDesc.style.transform = '';
+        if (heroCta) heroCta.style.transform = '';
+        if (heroBenefits) heroBenefits.style.transform = '';
+        if (heroFrame) heroFrame.style.transform = '';
         if (heroFloatCard) heroFloatCard.style.transform = '';
       }
     }
