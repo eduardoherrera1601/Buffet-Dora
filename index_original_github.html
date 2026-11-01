@@ -1646,7 +1646,7 @@
                         <span style="background: #FFF3E0; border: 2px solid var(--cempasuchil-fuego); color: var(--cempasuchil-fuego); padding: 0.35rem 0.8rem; border-radius: 30px; font-family: var(--font-folk); font-size: 0.76rem; font-weight: 800; text-transform: uppercase;">🍳 Salsa Verde o Roja</span>
                         <h3>Chilaquiles Tradicionales de la Casa</h3>
                         <p>
-                            Crujientes totopos de maíz bañados en salsa verde tatemada o roja de molcajete, frijoles refritos, crema de rancho, queso cotija y aguacate tierno.
+                            Crujientes totopos de maíz bañados en salsa verde tatemada o roja de molcajete, frijoles refritos, crema de rancho, queso fresco y aguacate tierno.
                         </p>
                         <p style="font-weight: 800; color: var(--cempasuchil-fuego); font-size: 0.82rem; margin-bottom: 0.8rem;">
                             🍗 Incluye 2 Proteínas a elegir + ¡Bolillo Calientito!
@@ -1785,31 +1785,31 @@
                 <h3 class="step-title">¿Para cuántas personas es tu evento?</h3>
                 <p class="step-desc">Elige directamente tu paquete o mueve la barra de invitados. Al seleccionarlo se desbloquea el número exacto de guisados incluidos.</p>
 
-                <!-- Slider interactivo de personas (CALIBRADO AL 100% CON LA ESCALA VISUAL) -->
+                <!-- Slider interactivo de personas (CALIBRADO AL 100% DE 10 EN 10 HASTA 150) -->
                 <div style="background: linear-gradient(135deg, #FFFDF8 0%, #FFF5EB 100%); border: 2px solid #E2CCA8; border-radius: 18px; padding: 1.4rem 1.8rem; margin-bottom: 1.8rem; box-shadow: 0 4px 16px rgba(36, 17, 8, 0.04);">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.9rem; flex-wrap: wrap; gap: 0.6rem;">
                         <div style="display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;">
                             <span style="font-family: var(--font-folk); font-size: 1rem; font-weight: 800; color: var(--chocolate-texto);">👥 Ajustar Invitados:</span>
                             <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
                                 <button type="button" onclick="setGuestsFromPreset(40)" style="background: #FFFFFF; border: 1.5px solid #E6D7C5; border-radius: 20px; padding: 0.25rem 0.75rem; font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; color: #7A5540; cursor: pointer;">40 pers.</button>
-                                <button type="button" onclick="setGuestsFromPreset(65)" style="background: #FFFFFF; border: 1.5px solid var(--rosa-mexicano); border-radius: 20px; padding: 0.25rem 0.75rem; font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; color: var(--rosa-mexicano); cursor: pointer;">⭐ 65 pers.</button>
+                                <button type="button" onclick="setGuestsFromPreset(70)" style="background: #FFFFFF; border: 1.5px solid var(--rosa-mexicano); border-radius: 20px; padding: 0.25rem 0.75rem; font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; color: var(--rosa-mexicano); cursor: pointer;">⭐ 70 pers.</button>
                                 <button type="button" onclick="setGuestsFromPreset(100)" style="background: #FFFFFF; border: 1.5px solid #E6D7C5; border-radius: 20px; padding: 0.25rem 0.75rem; font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; color: #7A5540; cursor: pointer;">100 pers.</button>
-                                <button type="button" onclick="setGuestsFromPreset(150)" style="background: #FFFFFF; border: 1.5px solid #E6D7C5; border-radius: 20px; padding: 0.25rem 0.75rem; font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; color: #7A5540; cursor: pointer;">150+ pers.</button>
+                                <button type="button" onclick="setGuestsFromPreset(150)" style="background: #FFFFFF; border: 1.5px solid #E6D7C5; border-radius: 20px; padding: 0.25rem 0.75rem; font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; color: #7A5540; cursor: pointer;">150 pers.</button>
                             </div>
                         </div>
-                        <span id="sliderGuestCountDisplay" style="font-family: var(--font-title); font-size: 2.2rem; font-weight: 900; color: var(--rosa-mexicano);">65 Personas</span>
+                        <span id="sliderGuestCountDisplay" style="font-family: var(--font-title); font-size: 2.2rem; font-weight: 900; color: var(--rosa-mexicano);">70 Personas</span>
                     </div>
 
-                    <!-- Range input calibrado con escala exacta de 0 a 11 -->
-                    <input type="range" id="mainGuestSlider" min="0" max="11" step="1" value="3" oninput="handleSliderIndexChange(this.value)" style="width: 100%; height: 10px; accent-color: var(--rosa-mexicano); cursor: pointer;">
+                    <!-- Range input calibrado de 10 en 10: 30 a 150 (indices 0 a 12) -->
+                    <input type="range" id="mainGuestSlider" min="0" max="12" step="1" value="4" oninput="handleSliderIndexChange(this.value)" style="width: 100%; height: 10px; accent-color: var(--rosa-mexicano); cursor: pointer;">
                     
-                    <!-- Marcadores alineados matemáticamente con los pasos del slider -->
+                    <!-- Marcadores alineados con escala exacta de 10 en 10 -->
                     <div style="position: relative; width: 100%; height: 26px; margin-top: 0.5rem; font-family: var(--font-folk); font-size: 0.82rem; font-weight: 800;">
                         <span style="position: absolute; left: 0%; transform: translateX(0); color: #7A5540;">30 pers.</span>
-                        <span style="position: absolute; left: 18.2%; transform: translateX(-50%); color: var(--talavera-azul);">50</span>
-                        <span style="position: absolute; left: 36.4%; transform: translateX(-50%); color: var(--rosa-mexicano);">⭐ 80</span>
-                        <span style="position: absolute; left: 63.6%; transform: translateX(-50%); color: var(--talavera-azul);">150</span>
-                        <span style="position: absolute; right: 0%; transform: translateX(0); color: #7A5540;">400+ pers.</span>
+                        <span style="position: absolute; left: 16.67%; transform: translateX(-50%); color: var(--talavera-azul);">50</span>
+                        <span style="position: absolute; left: 41.67%; transform: translateX(-50%); color: var(--rosa-mexicano);">⭐ 80</span>
+                        <span style="position: absolute; left: 58.33%; transform: translateX(-50%); color: var(--talavera-azul);">100</span>
+                        <span style="position: absolute; right: 0%; transform: translateX(0); color: #7A5540;">150 pers.</span>
                     </div>
                 </div>
 
@@ -1867,11 +1867,11 @@
                                 </li>
                                 <li class="package-feature-item">
                                     <span class="package-feature-icon">🍹</span>
-                                    <div><strong>2 Vitroleros de 20L (40L total):</strong> ¡1 vitrolero extra incluido de cortesía con 2 sabores!</div>
+                                    <div><strong>2 Vitroleros de 20 Litros:</strong> Agua fresca natural artesanal (horchata, jamaica o frutas).</div>
                                 </li>
                                 <li class="package-feature-item">
                                     <span class="package-feature-icon">🫓</span>
-                                    <div><strong>¡Tortillas al Comal Hechas a Mano!:</strong> Comaleras en vivo echando tortillas calientitas.</div>
+                                    <div><strong>Tortillas Calientes:</strong> De máquina incluidas (opción de comalera con costo extra).</div>
                                 </li>
                             </ul>
                         </div>
@@ -1886,7 +1886,7 @@
                         <div>
                             <span class="package-badge dorado">Bodas, XV Años & Empresas</span>
                             <h4 class="package-title">Paquete Gran Banquete</h4>
-                            <div class="package-capacity">👥 De 80 Personas en Adelante</div>
+                            <div class="package-capacity">👥 De 80 a 150 Personas</div>
 
                             <ul class="package-features">
                                 <li class="package-feature-item">
@@ -1903,7 +1903,7 @@
                                 </li>
                                 <li class="package-feature-item">
                                     <span class="package-feature-icon">🫓</span>
-                                    <div><strong>Tortillas al Comal o Máquina:</strong> A tu elección según el ritmo de tu celebración.</div>
+                                    <div><strong>Tortillas Calientes:</strong> De máquina incluidas (opción de comalera con costo extra).</div>
                                 </li>
                             </ul>
                         </div>
@@ -1914,22 +1914,8 @@
                 </div>
 
                 <!-- Banner de notas de calidad -->
-                <div class="package-notes-banner">
-                    <div class="package-note-item">
-                        <span style="font-size: 1.6rem;">🧀</span>
-                        <div>
-                            <strong>Auténtico Queso Fresco</strong>
-                            <p>En Chilaquiles y Famosas Tortas usamos únicamente queso fresco de rancho 100% natural.</p>
-                        </div>
-                    </div>
-                    <div class="package-note-item">
-                        <span style="font-size: 1.6rem;">🍲</span>
-                        <div>
-                            <strong>Menudo a partir de 30 Personas</strong>
-                            <p>Menudo tradicional preparado a partir de 30 personas (tortilla a mano o máquina a convenir).</p>
-                        </div>
-                    </div>
-                    <div class="package-note-item">
+                <div class="package-notes-banner" style="grid-template-columns: 1fr;">
+                    <div class="package-note-item" style="justify-content: center; text-align: center;">
                         <span style="font-size: 1.6rem;">📍</span>
                         <div>
                             <strong>Cobertura León & Foráneos</strong>
@@ -2027,49 +2013,22 @@
                 <h3 class="step-title">¿Deseas Agregar Especialidades o Extras? (Opcional)</h3>
                 <p class="step-desc">Personaliza tu banquete con complementos que harán tu evento aún más memorable.</p>
 
-                <div class="extras-grid">
-                    <!-- Extra 1: Chilaquiles -->
-                    <div class="extra-card" id="extra-chilaquiles" onclick="toggleExtra('chilaquiles')">
-                        <div class="extra-card-checkbox" id="chk-chilaquiles">✓</div>
-                        <div>
-                            <strong style="display: block; font-family: var(--font-folk); font-size: 1.05rem; color: var(--chocolate-texto);">🍳 Desayuno / Tornaboda de Chilaquiles</strong>
-                            <p style="font-size: 0.88rem; color: var(--chocolate-suave); margin-top: 0.3rem;">Salsa verde o roja, 2 proteínas (pollo, huevo, milanesa o carne), crema, queso fresco y bolillo.</p>
-                        </div>
-                    </div>
-
-                    <!-- Extra 2: Famosas Tortas -->
-                    <div class="extra-card" id="extra-tortas" onclick="toggleExtra('tortas')">
-                        <div class="extra-card-checkbox" id="chk-tortas">✓</div>
-                        <div>
-                            <strong style="display: block; font-family: var(--font-folk); font-size: 1.05rem; color: var(--chocolate-texto);">🥖 Las Famosas Tortas de Chilaquiles</strong>
-                            <p style="font-size: 0.88rem; color: var(--chocolate-suave); margin-top: 0.3rem;">Bolillo crujiente untado con frijoles, relleno de chilaquiles calientes, crema, queso fresco y huevo/milanesa.</p>
-                        </div>
-                    </div>
-
-                    <!-- Extra 3: Menudo -->
-                    <div class="extra-card" id="extra-menudo" onclick="toggleExtra('menudo')">
-                        <div class="extra-card-checkbox" id="chk-menudo">✓</div>
-                        <div>
-                            <strong style="display: block; font-family: var(--font-folk); font-size: 1.05rem; color: var(--chocolate-texto);">🍲 Menudo Tradicional para Desvelados</strong>
-                            <p style="font-size: 0.88rem; color: var(--chocolate-suave); margin-top: 0.3rem;">Panza suave, pata, libro, callo y bofe con orégano, cebolla, limones y salsita picosa (mínimo 30 personas).</p>
-                        </div>
-                    </div>
-
-                    <!-- Extra 4: Comaleras / Tortillas a mano (útil para 30-50) -->
+                <div class="extras-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+                    <!-- Extra 1: Comaleras / Tortillas a mano -->
                     <div class="extra-card" id="extra-comal" onclick="toggleExtra('comal')">
                         <div class="extra-card-checkbox" id="chk-comal">✓</div>
                         <div>
                             <strong style="display: block; font-family: var(--font-folk); font-size: 1.05rem; color: var(--chocolate-texto);">🫓 Comaleras & Tortillas Hechas a Mano</strong>
-                            <p style="font-size: 0.88rem; color: var(--chocolate-suave); margin-top: 0.3rem;">Tortillas calientitas al momento en comal de gas en vivo (ya incluidas en paquetes de 50+ personas).</p>
+                            <p style="font-size: 0.88rem; color: var(--chocolate-suave); margin-top: 0.3rem;">Tortillas calientitas al momento en comal de gas en vivo con comaleras tradicionales de la casa.</p>
                         </div>
                     </div>
 
-                    <!-- Extra 5: Cazuela Extra de Guisado -->
+                    <!-- Extra 2: Cazuela Extra de Guisado -->
                     <div class="extra-card" id="extra-cazuela" onclick="toggleExtra('cazuela')">
                         <div class="extra-card-checkbox" id="chk-cazuela">✓</div>
                         <div>
                             <strong style="display: block; font-family: var(--font-folk); font-size: 1.05rem; color: var(--chocolate-texto);">🥘 Cazuela Adicional de Guisado</strong>
-                            <p style="font-size: 0.88rem; color: var(--chocolate-suave); margin-top: 0.3rem;">Añade una cazuela extra para ofrecer aún más variedad a tus invitados.</p>
+                            <p style="font-size: 0.88rem; color: var(--chocolate-suave); margin-top: 0.3rem;">Añade una cazuela extra para ofrecer aún más variedad y abundancia a tus invitados.</p>
                         </div>
                     </div>
                 </div>
@@ -2298,7 +2257,7 @@
         // ESTADO GLOBAL DEL ARMADOR
         let currentPackage = '50-80'; // '30-50', '50-80', '80+'
         let maxGuisados = 7;
-        let guestCount = 65;
+        let guestCount = 70;
         const selectedGuisados = new Set();
         const selectedExtras = new Set();
 
@@ -2306,19 +2265,19 @@
             '30-50': {
                 title: 'Paquete Tradicional (30 a 50 personas)',
                 max: 7,
-                benefits: '7 guisados en cazuela, botana mexicana (chicharrón duro, tacos dorados, salsa de jitomate), 1 vitrolero de 20L de agua fresca, tortillas de máquina calientes.',
+                benefits: '7 guisados en cazuela, botana mexicana (chicharrón duro, tacos dorados, salsa de jitomate), 1 vitrolero de 20L de agua fresca y tortillas de máquina calientes (opción de comalera con costo extra).',
                 defaultGuests: 40
             },
             '50-80': {
                 title: 'Paquete Fiesta Mexicana (50 a 80 personas)',
                 max: 7,
-                benefits: '7 guisados en cazuela, ¡Ensalada de Cueritos en botana!, 2 vitroleros de agua (40L total) y comaleras con tortillas hechas a mano en vivo.',
-                defaultGuests: 65
+                benefits: '7 guisados en cazuela, botana con ensalada de cueritos, 2 vitroleros de 20L de agua fresca y tortillas de máquina calientes (opción de comalera con costo extra).',
+                defaultGuests: 70
             },
             '80+': {
-                title: 'Paquete Gran Banquete (80+ personas)',
+                title: 'Paquete Gran Banquete (80 a 150 personas)',
                 max: 8,
-                benefits: '8 guisados en cazuela (¡1 cazuela extra de variedad!), botana monumental completa, 2 vitroleros de 20L y tortillas a elegir (comal o máquina).',
+                benefits: '8 guisados en cazuela (¡1 cazuela más!), botana monumental completa, 2 vitroleros de 20L y tortillas de máquina calientes (opción de comalera con costo extra).',
                 defaultGuests: 100
             }
         };
@@ -2378,8 +2337,8 @@
             });
         });
 
-        // ESCALA EXACTA DE INVITADOS (CALIBRADA 100% CON LOS MARCADORES DEL SLIDER)
-        const guestScale = [30, 40, 50, 65, 80, 100, 120, 150, 200, 250, 300, 400];
+        // ESCALA EXACTA DE INVITADOS (DE 10 EN 10 DESDE 30 HASTA 150)
+        const guestScale = [30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
 
         // FUNCIÓN: ELEGIR PAQUETE DIRECTAMENTE
         window.choosePackage = function(pkgKey, adjustSlider = true) {
@@ -2399,7 +2358,7 @@
                 if (pkgKey === '30-50' && (guestCount < 30 || guestCount > 50)) {
                     window.setGuestsFromPreset(40);
                 } else if (pkgKey === '50-80' && (guestCount < 50 || guestCount > 80)) {
-                    window.setGuestsFromPreset(65);
+                    window.setGuestsFromPreset(70);
                 } else if (pkgKey === '80+' && guestCount < 80) {
                     window.setGuestsFromPreset(100);
                 }
@@ -2425,14 +2384,14 @@
             updateLiveSummary();
         };
 
-        // FUNCIÓN: SLIDER CON ÍNDICE CALIBRADO
+        // FUNCIÓN: SLIDER CON ÍNDICE CALIBRADO (DE 10 EN 10 HASTA 150)
         window.handleSliderIndexChange = function(indexVal) {
             const idx = parseInt(indexVal, 10);
-            const val = guestScale[idx] || 65;
+            const val = guestScale[idx] || 70;
             guestCount = val;
 
             if (sliderGuestDisplay) {
-                sliderGuestDisplay.textContent = (val >= 400 ? '400+ ' : val + ' ') + 'Personas';
+                sliderGuestDisplay.textContent = val + ' Personas';
             }
             if (slider) slider.value = idx;
 
@@ -2660,10 +2619,7 @@
 
             if (summaryExtras) {
                 const extraNames = [];
-                if (selectedExtras.has('chilaquiles')) extraNames.push('Desayuno/Tornaboda de Chilaquiles (2 proteínas + bolillo)');
-                if (selectedExtras.has('tortas')) extraNames.push('Las Famosas Tortas de Chilaquiles');
-                if (selectedExtras.has('menudo')) extraNames.push('El Tradicional Menudo de Cazuela');
-                if (selectedExtras.has('comal')) extraNames.push('Comaleras & Tortillas Hechas a Mano');
+                if (selectedExtras.has('comal')) extraNames.push('Comaleras & Tortillas al Comal Hechas a Mano');
                 if (selectedExtras.has('cazuela')) extraNames.push('Cazuela Adicional de Guisado');
 
                 summaryExtras.textContent = extraNames.length > 0 ? extraNames.join(' • ') : 'Ningún extra adicional seleccionado.';
@@ -2706,12 +2662,9 @@
             let extrasText = '';
             if (selectedExtras.size > 0) {
                 const extrasArr = [];
-                if (selectedExtras.has('chilaquiles')) extrasArr.push('• Desayuno/Tornaboda de Chilaquiles (+2 proteínas y bolillo)');
-                if (selectedExtras.has('tortas')) extrasArr.push('• Las Famosas Tortas de Chilaquiles');
-                if (selectedExtras.has('menudo')) extrasArr.push('• El Tradicional Menudo en Cazuela');
                 if (selectedExtras.has('comal')) extrasArr.push('• Comaleras & Tortillas al Comal Hechas a Mano');
                 if (selectedExtras.has('cazuela')) extrasArr.push('• Cazuela Extra de Guisado');
-                extrasText = '\n\n✨ *Especialidades / Extras Agregados:*\n' + extrasArr.join('\n');
+                extrasText = '\n\n✨ *Extras Agregados:*\n' + extrasArr.join('\n');
             }
 
             const raw = '¡Hola Claudia! Me gustaría cotizar un banquete con *La Lola — Sabores de México* 🌮🎉\n\n' +
