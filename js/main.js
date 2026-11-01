@@ -280,9 +280,101 @@
     });
   }
 
+  /* ==========================================================================
+     BENTO GRID: TILT 3D A 60 FPS & CONTROLES DE VIDEO
+     ========================================================================== */
+  function initBentoTilt() {
+    const cards = document.querySelectorAll('.bento-card');
+
+    cards.forEach(card => {
+      let animId = null;
+      let targetX = 0, targetY = 0;
+      let curX = 0, curY = 0;
+      let isHover = false;
+
+      card.addEventListener('mouseenter', () => {
+        isHover = true;
+        if (!animId) animId = requestAnimationFrame(tiltLoop);
+      });
+
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        targetX = (e.clientX - rect.left) / rect.width - 0.5;
+        targetY = (e.clientY - rect.top) / rect.height - 0.5;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        isHover = false;
+        targetX = 0;
+        targetY = 0;
+      });
+
+      function tiltLoop() {
+        curX += (targetX - curX) * 0.12;
+        curY += (targetY - curY) * 0.12;
+
+        const rotX = -curY * 13;
+        const rotY = curX * 13;
+
+        if (isHover) {
+          card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.02, 1.02, 1.02)`;
+        } else {
+          card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1, 1, 1)`;
+        }
+
+        if (isHover || Math.abs(curX) > 0.001 || Math.abs(curY) > 0.001) {
+          animId = requestAnimationFrame(tiltLoop);
+        } else {
+          animId = null;
+          card.style.transform = '';
+        }
+      }
+    });
+  }
+
+  // Controles de Video en Hover (Audio & Pantalla Completa)
+  window.toggleVideoAudio = function() {
+    const video = document.getElementById('eventVideo');
+    const btn = document.getElementById('btnVideoAudio');
+    if (!video || !btn) return;
+
+    video.muted = !video.muted;
+    const icon = btn.querySelector('.audio-icon');
+    const label = btn.querySelector('.audio-label');
+
+    if (video.muted) {
+      if (icon) icon.textContent = '🔇';
+      if (label) label.textContent = 'Activar Audio';
+    } else {
+      if (icon) icon.textContent = '🔊';
+      if (label) label.textContent = 'Silenciar';
+      video.play().catch(() => {});
+    }
+  };
+
+  window.toggleVideoFullscreen = function() {
+    const video = document.getElementById('eventVideo');
+    if (!video) return;
+
+    if (!document.fullscreenElement) {
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) {
+        video.msRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  };
+
   // Inicialización
   renderDishes();
   updateSummary();
   initHeroParallax();
   initMagneticButtons();
+  initBentoTilt();
 })();

@@ -170,10 +170,22 @@
           </div>
         </div>
 
-        <div class="bento-card span-6" onclick="const v = this.querySelector('video'); v.paused ? v.play() : v.pause();">
-          <video autoplay muted loop playsinline preload="metadata" poster="FOTOS/ADE1000/ade1000_comedor_colaboradores.jpg" class="bento-media">
+        <div class="bento-card span-6 bento-video-card" id="bentoVideoCard">
+          <video autoplay muted loop playsinline preload="metadata" poster="FOTOS/ADE1000/ade1000_comedor_colaboradores.jpg" class="bento-media" id="eventVideo">
             <source src="FOTOS/ADE1000/ade1000_video_resumen.mp4" type="video/mp4">
           </video>
+          
+          <!-- Botón flotante glassmorphism para audio y pantalla completa -->
+          <div class="video-floating-controls">
+            <button type="button" class="btn-video-audio" id="btnVideoAudio" aria-label="Activar o desactivar sonido del video" onclick="event.stopPropagation(); toggleVideoAudio();">
+              <span class="audio-icon">🔇</span>
+              <span class="audio-label">Activar Audio</span>
+            </button>
+            <button type="button" class="btn-video-fullscreen" id="btnVideoFullscreen" aria-label="Ver video en pantalla completa" title="Pantalla Completa" onclick="event.stopPropagation(); toggleVideoFullscreen();">
+              <span>⛶</span>
+            </button>
+          </div>
+
           <div class="bento-floating-box">
             <span class="bento-chip menta">🎥 Video en Directo</span>
             <h3 class="bento-headline">La Fiesta en Movimiento</h3>
