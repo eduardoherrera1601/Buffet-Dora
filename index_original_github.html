@@ -960,6 +960,55 @@
             font-weight: 900;
         }
 
+        /* ===== TARJETAS SELECTORAS DE GUARNICIÓN BASE (ARROZ O FRIJOLES) ===== */
+        .base-option-card {
+            background: #FFFFFF;
+            border: 2px solid #E6D7C5;
+            border-radius: 14px;
+            padding: 0.85rem 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+        .base-option-card:hover {
+            border-color: var(--cempasuchil-fuego);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(229, 81, 0, 0.12);
+        }
+        .base-option-card.selected {
+            background: #FFF8E7;
+            border-color: var(--cempasuchil-fuego);
+            box-shadow: 0 4px 14px rgba(229, 81, 0, 0.2);
+        }
+        .base-option-card .base-name {
+            font-family: var(--font-folk);
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--chocolate-texto);
+            display: block;
+        }
+        .base-check-indicator {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid #D6C7B2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 900;
+            color: transparent;
+            transition: all 0.2s ease;
+        }
+        .base-option-card.selected .base-check-indicator {
+            background: var(--cempasuchil-fuego);
+            border-color: var(--cempasuchil-fuego);
+            color: #FFFFFF;
+        }
+
         .package-badge {
             display: inline-block;
             font-family: var(--font-folk);
@@ -1942,8 +1991,71 @@
             <!-- PASO 2: ELIGE TUS GUISADOS CON LÍMITE EXACTO -->
             <div class="step-block" id="paso-2">
                 <span class="step-badge">Paso 2 de 4</span>
-                <h3 class="step-title">Selecciona tus Guisados en Cazuela de Barro</h3>
-                <p class="step-desc">Tu paquete seleccionado te permite elegir hasta <strong id="maxGuisadosLabel" style="color: var(--chocolate-texto); font-size: 1.15rem;">7 guisados</strong> incluidos. Haz clic en las fichas para armar tu cazuelero.</p>
+                <h3 class="step-title">Selecciona tu Base & Guisados</h3>
+                <p class="step-desc">Tu paquete incluye <strong>1 Arroz o Frijol</strong> de base + tus <strong id="maxGuisadosLabel" style="color: var(--chocolate-texto); font-size: 1.15rem;">7 guisados</strong> a elegir. Haz clic en las opciones para armar tu banquete.</p>
+
+                <!-- 1. GUARNICIÓN BASE INCLUIDA (ELIGE 1 ARROZ O FRIJOL) -->
+                <div style="background: linear-gradient(135deg, #FFFDF9 0%, #FFF8E7 100%); border: 2.5px solid #E2CCA8; border-radius: 20px; padding: 1.3rem 1.6rem; margin-bottom: 2rem; box-shadow: 0 4px 16px rgba(45, 24, 8, 0.05);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 0.9rem;">
+                        <div>
+                            <span style="font-family: var(--font-folk); font-size: 0.78rem; font-weight: 900; text-transform: uppercase; color: var(--cempasuchil-fuego); letter-spacing: 0.08em; display: block;">1. Guarnición Base Incluida</span>
+                            <strong style="font-family: var(--font-folk); font-size: 1.12rem; color: var(--chocolate-texto);">Elige tu Arroz o Frijoles (1 opción incluida en tu paquete):</strong>
+                        </div>
+                        <div style="font-family: var(--font-folk); font-size: 0.82rem; font-weight: 800; color: #2E7D32; background: #E8F5E9; border: 1.5px solid #A5D6A7; padding: 0.35rem 0.85rem; border-radius: 20px;">
+                            ✓ 1 Opción Incluida
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem;">
+                        <!-- 2 Opciones de Arroz -->
+                        <div class="base-option-card selected" data-base="Arroz rojo tradicional" onclick="selectBaseOption('Arroz rojo tradicional', this)">
+                            <span style="font-size: 1.35rem;">🍚</span>
+                            <div style="flex: 1;">
+                                <strong class="base-name">Arroz rojo tradicional</strong>
+                            </div>
+                            <div class="base-check-indicator">✓</div>
+                        </div>
+
+                        <div class="base-option-card" data-base="Arroz blanco esponjadito" onclick="selectBaseOption('Arroz blanco esponjadito', this)">
+                            <span style="font-size: 1.35rem;">🍚</span>
+                            <div style="flex: 1;">
+                                <strong class="base-name">Arroz blanco esponjadito</strong>
+                            </div>
+                            <div class="base-check-indicator">✓</div>
+                        </div>
+
+                        <!-- 3 Opciones de Frijoles -->
+                        <div class="base-option-card" data-base="Frijoles refritos de la casa" onclick="selectBaseOption('Frijoles refritos de la casa', this)">
+                            <span style="font-size: 1.35rem;">🫘</span>
+                            <div style="flex: 1;">
+                                <strong class="base-name">Frijoles refritos</strong>
+                            </div>
+                            <div class="base-check-indicator">✓</div>
+                        </div>
+
+                        <div class="base-option-card" data-base="Frijoles enchilados de rancho" onclick="selectBaseOption('Frijoles enchilados de rancho', this)">
+                            <span style="font-size: 1.35rem;">🫘</span>
+                            <div style="flex: 1;">
+                                <strong class="base-name">Frijoles enchilados</strong>
+                            </div>
+                            <div class="base-check-indicator">✓</div>
+                        </div>
+
+                        <div class="base-option-card" data-base="Frijoles de la olla calientitos" onclick="selectBaseOption('Frijoles de la olla calientitos', this)">
+                            <span style="font-size: 1.35rem;">🫘</span>
+                            <div style="flex: 1;">
+                                <strong class="base-name">Frijoles de la olla</strong>
+                            </div>
+                            <div class="base-check-indicator">✓</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. SELECCIÓN DE GUISADOS SEGÚN EL PAQUETE -->
+                <div style="margin-bottom: 0.9rem;">
+                    <span style="font-family: var(--font-folk); font-size: 0.78rem; font-weight: 900; text-transform: uppercase; color: var(--cempasuchil-fuego); letter-spacing: 0.08em; display: block;">2. Guisados del Banquete</span>
+                    <strong style="font-family: var(--font-folk); font-size: 1.15rem; color: var(--chocolate-texto);">Ahora selecciona tus guisados (<span id="maxGuisadosSubheading">7</span> incluidos):</strong>
+                </div>
 
                 <!-- Barra de Progreso y Contador Dinámico -->
                 <div class="guisado-progress-box">
@@ -1969,14 +2081,13 @@
 
                 <!-- Filtros de Categoría -->
                 <div class="filter-tabs-row">
-                    <button class="folk-tab-btn active" data-filter="all">Todos los Guisados (32)</button>
+                    <button class="folk-tab-btn active" data-filter="all">Todos los Guisados (28)</button>
                     <button class="folk-tab-btn" data-filter="carnes">🥩 Carnes y Guisos (12)</button>
                     <button class="folk-tab-btn" data-filter="antojitos">🌶️ Antojitos de Tradición (9)</button>
                     <button class="folk-tab-btn" data-filter="verduras">🥬 Verduras & Hongos (7)</button>
-                    <button class="folk-tab-btn" data-filter="bases">🍚 Arroces & Frijoles (5)</button>
                 </div>
 
-                <!-- Grid de los 32 Guisados -->
+                <!-- Grid de los 28 Guisados -->
                 <div class="guisados-grid-32" id="guisadosGrid">
                     <!-- Carnes (12) -->
                     <div class="guisado-item-card" data-cat="carnes" data-name="Puerco en chile morita"><span class="guisado-item-name">🥩 Puerco en chile morita</span><div class="guisado-check-box">✓</div></div>
@@ -2011,13 +2122,6 @@
                     <div class="guisado-item-card" data-cat="verduras" data-name="Papas guisadas con cebollita"><span class="guisado-item-name">🥔 Papas guisadas</span><div class="guisado-check-box">✓</div></div>
                     <div class="guisado-item-card" data-cat="verduras" data-name="Papas con nopales tiernos"><span class="guisado-item-name">🥔 Papas con nopales</span><div class="guisado-check-box">✓</div></div>
                     <div class="guisado-item-card" data-cat="verduras" data-name="Garbanzos guisados en caldillo"><span class="guisado-item-name">🫘 Garbanzos guisados</span><div class="guisado-check-box">✓</div></div>
-
-                    <!-- Bases (5) -->
-                    <div class="guisado-item-card" data-cat="bases" data-name="Arroz blanco esponjadito"><span class="guisado-item-name">🍚 Arroz blanco</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="bases" data-name="Arroz rojo tradicional"><span class="guisado-item-name">🍚 Arroz rojo</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="bases" data-name="Frijoles refritos de la casa"><span class="guisado-item-name">🫘 Frijoles refritos</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="bases" data-name="Frijoles enchilados de rancho"><span class="guisado-item-name">🫘 Frijoles enchilados</span><div class="guisado-check-box">✓</div></div>
-                    <div class="guisado-item-card" data-cat="bases" data-name="Frijoles de la olla calientitos"><span class="guisado-item-name">🫘 Frijoles de la olla</span><div class="guisado-check-box">✓</div></div>
                 </div>
             </div>
 
@@ -2108,10 +2212,19 @@
                             </div>
                         </div>
 
+                        <!-- Guarnición Base Seleccionada -->
+                        <div id="summaryBaseRow" style="margin-bottom: 1.1rem; background: #FFF8E7; border: 1.5px solid #E2CCA8; border-radius: 12px; padding: 0.75rem 1.1rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+                            <div>
+                                <span style="font-family: var(--font-folk); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--cempasuchil-fuego); letter-spacing: 0.08em; display: block;">Guarnición Base Incluida</span>
+                                <strong style="font-family: var(--font-folk); font-size: 1rem; color: var(--chocolate-texto);">🍚 <span id="summaryBaseName">Arroz rojo tradicional</span></strong>
+                            </div>
+                            <span style="font-size: 0.8rem; font-weight: 800; color: #2E7D32; background: #E8F5E9; padding: 0.25rem 0.7rem; border-radius: 20px;">✓ 1 Incluida</span>
+                        </div>
+
                         <!-- Desglose de Guisados Seleccionados -->
                         <div style="margin-bottom: 1.2rem;" id="summaryCazuelasSection">
                             <strong style="display: block; font-family: var(--font-folk); font-size: 0.95rem; color: var(--chocolate-texto); margin-bottom: 0.5rem;" id="summaryGuisadosLabel">
-                                🥘 Cazuelas Seleccionadas (<span id="summaryGuisadosCount">0</span> de <span id="summaryGuisadosLimit">7</span>):
+                                🥘 Guisados Seleccionados (<span id="summaryGuisadosCount">0</span> de <span id="summaryGuisadosLimit">7</span>):
                             </strong>
                             <div id="summaryGuisadosList" style="font-size: 0.92rem; color: var(--chocolate-suave); line-height: 1.6; background: #FFFDF9; border: 1.5px solid #E6D7C5; border-radius: 12px; padding: 0.8rem 1.2rem;">
                                 <em>Aún no has seleccionado ningún guisado en el Paso 2. Haz clic en las tarjetas de arriba para elegirlos.</em>
@@ -2272,8 +2385,16 @@
         let currentPackage = '50-80'; // '30-50', '50-80', '80+'
         let maxGuisados = 7;
         let guestCount = 70;
+        let selectedBase = 'Arroz rojo tradicional';
         const selectedGuisados = new Set();
         const selectedExtras = new Set();
+
+        window.selectBaseOption = function(baseName, el) {
+            selectedBase = baseName;
+            document.querySelectorAll('.base-option-card').forEach(c => c.classList.remove('selected'));
+            if (el) el.classList.add('selected');
+            updateLiveSummary();
+        };
 
         const packageMeta = {
             '30-50': {
@@ -2392,6 +2513,8 @@
 
             if (maxLabel) maxLabel.textContent = maxGuisados + ' guisados';
             if (limitDisplay) limitDisplay.textContent = maxGuisados;
+            const maxGuisadosSubheading = document.getElementById('maxGuisadosSubheading');
+            if (maxGuisadosSubheading) maxGuisadosSubheading.textContent = maxGuisados;
             if (limitAlert) limitAlert.style.display = 'none';
 
             updateGuisadosTracker();
@@ -2607,6 +2730,8 @@
             const notice = document.getElementById('independentNoticeBanner');
             const noticeName = document.getElementById('independentNoticeName');
             const guisadosLabel = document.getElementById('summaryGuisadosLabel');
+            const baseRow = document.getElementById('summaryBaseRow');
+            const baseNameEl = document.getElementById('summaryBaseName');
 
             if (window.selectedIndependentSpecialty && window.selectedIndependentSpecialty.guests >= 30) {
                 const spec = window.selectedIndependentSpecialty;
@@ -2615,6 +2740,7 @@
                 if (summaryTitle) summaryTitle.textContent = spec.name;
                 if (summaryGuests) summaryGuests.textContent = spec.guests + ' Personas';
                 if (guisadosLabel) guisadosLabel.innerHTML = '🍽️ Menú Independiente Seleccionado:';
+                if (baseRow) baseRow.style.display = 'none';
                 if (summaryList) {
                     summaryList.innerHTML = '<div style="color: var(--rosa-mexicano); font-weight: 800; font-size: 1rem;">✨ ' + spec.name + '</div>' +
                         '<p style="margin: 0.35rem 0 0 0; color: var(--chocolate-suave); font-size: 0.88rem;">Servicio completo e independiente para ' + spec.guests + ' personas (Mínimo 30 personas). Incluye complementos, salsas y montaje en cazuela tradicional.</p>';
@@ -2622,7 +2748,9 @@
                 if (summaryBenefits) summaryBenefits.textContent = 'Servicio completo de ' + spec.name + ' con barra de complementos, salsas y atención tradicional.';
             } else {
                 if (notice) notice.style.display = 'none';
-                if (guisadosLabel) guisadosLabel.innerHTML = '🥘 Cazuelas Seleccionadas (<span id="summaryGuisadosCount">' + selectedGuisados.size + '</span> de <span id="summaryGuisadosLimit">' + maxGuisados + '</span>):';
+                if (baseRow) baseRow.style.display = 'flex';
+                if (baseNameEl) baseNameEl.textContent = selectedBase;
+                if (guisadosLabel) guisadosLabel.innerHTML = '🥘 Guisados Seleccionados (<span id="summaryGuisadosCount">' + selectedGuisados.size + '</span> de <span id="summaryGuisadosLimit">' + maxGuisados + '</span>):';
                 const meta = packageMeta[currentPackage];
                 if (summaryTitle) summaryTitle.textContent = meta.title;
                 if (summaryGuests) summaryGuests.textContent = guestCount + ' Personas';
@@ -2679,9 +2807,10 @@
             }
 
             const meta = packageMeta[currentPackage];
+            let baseText = '\n\n🍚 *Guarnición Base Incluida:* ' + selectedBase;
             let guisadosText = selectedGuisados.size > 0
-                ? '\n\n🍲 *Cazuelas Elegidas (' + selectedGuisados.size + ' de ' + maxGuisados + '):*\n' + Array.from(selectedGuisados).map((g, i) => '  ' + (i + 1) + '. ' + g).join('\n')
-                : '\n\n🍲 *Cazuelas:* ' + maxGuisados + ' guisados (a definir con Claudia)';
+                ? '\n\n🥘 *Guisados Elegidos (' + selectedGuisados.size + ' de ' + maxGuisados + '):*\n' + Array.from(selectedGuisados).map((g, i) => '  ' + (i + 1) + '. ' + g).join('\n')
+                : '\n\n🥘 *Guisados:* ' + maxGuisados + ' guisados (a definir con Claudia)';
 
             let extrasText = '';
             if (selectedExtras.size > 0) {
@@ -2698,6 +2827,7 @@
                 '📦 *Paquete:* ' + meta.title + '\n' +
                 '📅 *Fecha:* ' + date + '\n' +
                 '📍 *Ubicación:* ' + city + '\n' +
+                baseText +
                 guisadosText +
                 extrasText + '\n\n' +
                 '¿Podrían confirmarme disponibilidad y detalles? ¡Muchas gracias!';
