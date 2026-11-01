@@ -2125,8 +2125,8 @@
                 </div>
             </div>
 
-            <!-- PASO 3: EXTRAS Y ESPECIALIDADES OPCIONALES -->
-            <div class="step-block" id="paso-3">
+            <!-- PASO 3: EXTRAS Y ESPECIALIDADES OPCIONALES (DISPONIBLE SOLO PARA BANQUETES) -->
+            <div class="step-block" id="paso-3" style="display: none;">
                 <span class="step-badge">Paso 3 de 4</span>
                 <h3 class="step-title">¿Deseas Agregar Especialidades o Extras? (Opcional)</h3>
                 <p class="step-desc">Personaliza tu banquete con complementos que harán tu evento aún más memorable.</p>
@@ -2238,7 +2238,7 @@
                                 <span id="summaryPackageBenefits" style="color: var(--chocolate-suave);">Elige un paquete para ver los beneficios incluidos (botana, vitroleros de agua fresca, tortillas y guisados).</span>
                             </div>
 
-                            <div style="background: #FFFDF9; border: 1.5px solid #E6D7C5; border-radius: 12px; padding: 0.8rem 1rem;">
+                            <div id="summaryExtrasBox" style="background: #FFFDF9; border: 1.5px solid #E6D7C5; border-radius: 12px; padding: 0.8rem 1rem; display: none;">
                                 <strong style="display: block; color: var(--chocolate-texto); margin-bottom: 0.2rem;">✨ Especialidades / Extras:</strong>
                                 <span id="summaryExtrasList" style="color: var(--chocolate-suave);">Ningún extra adicional seleccionado.</span>
                             </div>
@@ -2499,6 +2499,10 @@
             if (currentPackage === pkgKey && adjustSlider) {
                 currentPackage = null;
                 maxGuisados = 0;
+                selectedExtras.clear();
+                document.querySelectorAll('.extra-card').forEach(c => c.classList.remove('selected'));
+                const paso3 = document.getElementById('paso-3');
+                if (paso3) paso3.style.display = 'none';
                 document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected-active'));
                 document.querySelectorAll('.btn-preset-guest').forEach(b => b.classList.remove('active'));
                 if (sliderGuestDisplay) sliderGuestDisplay.textContent = 'Elige tus Invitados';
@@ -2514,6 +2518,8 @@
             currentPackage = pkgKey;
             const meta = packageMeta[pkgKey];
             maxGuisados = meta.max;
+            const paso3 = document.getElementById('paso-3');
+            if (paso3) paso3.style.display = 'block';
 
             // Actualizar tarjetas de paquete
             document.querySelectorAll('.package-card').forEach(c => c.classList.remove('selected-active'));
@@ -2624,8 +2630,9 @@
             }
         }
 
-        // FUNCIÓN: TOGGLE EXTRAS
+        // FUNCIÓN: TOGGLE EXTRAS (SOLO DISPONIBLE PARA BANQUETE DE GUISADOS)
         window.toggleExtra = function(extraKey) {
+            if (!currentPackage) return;
             const card = document.getElementById('extra-' + extraKey);
             if (selectedExtras.has(extraKey)) {
                 selectedExtras.delete(extraKey);
@@ -2638,6 +2645,7 @@
         };
 
         window.toggleExtraFromButton = function(extraKey) {
+            if (!currentPackage) return;
             if (!selectedExtras.has(extraKey)) {
                 window.toggleExtra(extraKey);
             }
@@ -2751,6 +2759,12 @@
                 guests: count
             };
 
+            // Ocultar Paso 3 de extras ya que no aplican para especialidades
+            selectedExtras.clear();
+            document.querySelectorAll('.extra-card').forEach(c => c.classList.remove('selected'));
+            const paso3 = document.getElementById('paso-3');
+            if (paso3) paso3.style.display = 'none';
+
             window.updateLiveSummary();
 
             // Desplazamiento suave directo al Paso 4 (Formulario de Reservación)
@@ -2801,9 +2815,13 @@
             const guisadosLabel = document.getElementById('summaryGuisadosLabel');
             const baseRow = document.getElementById('summaryBaseRow');
             const baseNameEl = document.getElementById('summaryBaseName');
+            const paso3 = document.getElementById('paso-3');
+            const extrasBox = document.getElementById('summaryExtrasBox');
 
             if (window.selectedIndependentSpecialty && window.selectedIndependentSpecialty.guests >= 30) {
                 const spec = window.selectedIndependentSpecialty;
+                if (paso3) paso3.style.display = 'none';
+                if (extrasBox) extrasBox.style.display = 'none';
                 if (notice) notice.style.display = 'flex';
                 if (noticeName) noticeName.textContent = spec.name + ' (' + spec.guests + ' personas)';
                 if (summaryTitle) summaryTitle.textContent = spec.name;
@@ -2816,6 +2834,8 @@
                 }
                 if (summaryBenefits) summaryBenefits.textContent = 'Servicio completo de ' + spec.name + ' con barra de complementos, salsas y atención tradicional.';
             } else if (currentPackage) {
+                if (paso3) paso3.style.display = 'block';
+                if (extrasBox) extrasBox.style.display = 'block';
                 if (notice) notice.style.display = 'none';
                 if (baseRow) baseRow.style.display = 'flex';
                 const baseIconEl = document.getElementById('summaryBaseIcon');
@@ -2857,6 +2877,8 @@
                     }
                 }
             } else {
+                if (paso3) paso3.style.display = 'none';
+                if (extrasBox) extrasBox.style.display = 'none';
                 if (notice) notice.style.display = 'none';
                 if (baseRow) baseRow.style.display = 'none';
                 if (summaryTitle) summaryTitle.textContent = 'Elige tu Paquete en el Paso 1';
