@@ -432,7 +432,7 @@
   cursor: pointer;
   transform-style: preserve-3d;
   will-change: transform;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  transition: box-shadow 0.35s ease;
 }
 .bento-card:hover {
   box-shadow: 0 30px 60px -15px rgba(36, 26, 23, 0.22);
@@ -917,14 +917,18 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
-  max-height: 280px;
+  min-height: 140px;
+  max-height: 360px;
   overflow-y: auto;
   margin-bottom: 2.2rem;
-  padding-right: 0.4rem;
+  padding: 4px 6px 6px 2px;
 }
 
 /* Pastillas de Guisados con Microanimación Pop & Pulso */
 .dish-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   position: relative;
   background: rgba(255, 255, 255, 0.88);
   border: 1.5px solid var(--border-soft);
@@ -935,6 +939,9 @@
   cursor: pointer;
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
+}
+.dish-pill.hidden-dish {
+  display: none !important;
 }
 .dish-pill:hover {
   border-color: var(--pastel-rosa-deep);

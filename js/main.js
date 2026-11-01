@@ -48,26 +48,37 @@
   const selectedDishes = new Set();
   const selectedExtras = new Set();
 
-  const wrap = document.getElementById('pillsGrid');
-
-  function renderDishes(filter = 'all') {
+  /* ==========================================================================
+     1. RENDER Y GESTIÓN DE LOS 32 GUISADOS EN TIEMPO REAL
+     ========================================================================== */
+  function initDishes() {
+    const wrap = document.getElementById('pillsGrid');
     if (!wrap) return;
-    wrap.innerHTML = '';
-    dishes.forEach(d => {
-      if (filter === 'all' || d.cat === filter) {
+
+    // Si no hay pastillas renderizadas en el HTML, las inyectamos dinámicamente
+    if (wrap.children.length === 0) {
+      dishes.forEach(d => {
         const pill = document.createElement('div');
-        pill.className = 'dish-pill' + (selectedDishes.has(d.name) ? ' selected' : '');
+        pill.className = 'dish-pill';
+        pill.setAttribute('data-category', d.cat);
+        pill.setAttribute('data-name', d.name);
         pill.innerHTML = `<span>${d.icon}</span> ${d.name}`;
-        pill.onclick = () => toggleDish(d.name, pill);
         wrap.appendChild(pill);
-      }
+      });
+    }
+
+    // Vincular listeners a cada pastilla existente
+    const pills = wrap.querySelectorAll('.dish-pill');
+    pills.forEach(pill => {
+      const name = pill.getAttribute('data-name') || pill.textContent.trim().replace(/^[\p{Emoji}\s]+/u, '');
+      pill.onclick = () => toggleDish(name, pill);
     });
   }
 
   function toggleDish(name, el) {
     const max = packages[currentPkg].max;
 
-    // Microanimación de pulsación (scale pop)
+    // Microanimación de pulsación táctil (scale pop)
     if (el) {
       el.classList.add('pop-anim');
       setTimeout(() => el.classList.remove('pop-anim'), 360);
@@ -78,7 +89,7 @@
       if (el) el.classList.remove('selected');
     } else {
       if (selectedDishes.size >= max) {
-        alert(`Tu paquete incluye hasta ${max} cazuelas. Quita una para cambiarla.`);
+        alert(`Tu paquete incluye hasta ${max} cazuelas. Quita una para elegir otra.`);
         return;
       }
       selectedDishes.add(name);
@@ -87,10 +98,22 @@
     updateSummary();
   }
 
+  // Filtrado en vivo sin destruir el DOM
   window.filterDishes = function(cat, btn) {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderDishes(cat);
+    if (btn) btn.classList.add('active');
+
+    const pills = document.querySelectorAll('#pillsGrid .dish-pill');
+    pills.forEach(pill => {
+      const pillCat = pill.getAttribute('data-category');
+      if (cat === 'all' || pillCat === cat) {
+        pill.classList.remove('hidden-dish');
+        pill.style.display = 'inline-flex';
+      } else {
+        pill.classList.add('hidden-dish');
+        pill.style.display = 'none';
+      }
+    });
   };
 
   window.choosePackage = function(key) {
@@ -105,8 +128,12 @@
 
     if (selectedDishes.size > max) {
       const arr = Array.from(selectedDishes);
-      while (selectedDishes.size > max) selectedDishes.delete(arr.pop());
-      renderDishes();
+      while (selectedDishes.size > max) {
+        const removed = arr.pop();
+        selectedDishes.delete(removed);
+        const pill = document.querySelector(`#pillsGrid .dish-pill[data-name="${removed}"]`);
+        if (pill) pill.classList.remove('selected');
+      }
     }
     updateSummary();
   };
@@ -133,6 +160,9 @@
     updateSummary();
   };
 
+  /* ==========================================================================
+     2. SHOWCASE INTERACTIVO DE ESPECIALIDADES (#menu) SIN SCROLL
+     ========================================================================== */
   window.switchSpecialty = function(key, btn) {
     document.querySelectorAll('.spec-tab').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
@@ -146,12 +176,14 @@
     const activePanel = document.getElementById(`spec-panel-${key}`);
     if (activePanel) {
       activePanel.style.display = 'grid';
-      void activePanel.offsetWidth; // Reflow para disparar la animación fade & scale
+      void activePanel.offsetWidth; // Dispara animación fade & scale
       activePanel.classList.add('active');
     }
   };
 
-  window.addSpecialty = function(name) {
+  window.addSpecialty = function(name, btn) {
+    selectedExtras.add(name);
+
     // Sincronizar visualmente con las tarjetas de extras en el cotizador
     document.querySelectorAll('.extra-item').forEach(item => {
       const text = item.textContent.toLowerCase();
@@ -160,15 +192,25 @@
         (name.includes('Tortas') && text.includes('tortas')) ||
         (name.includes('Menudo') && text.includes('menudo'))
       ) {
-        if (!item.classList.contains('selected')) {
-          item.classList.add('selected');
-        }
+        item.classList.add('selected');
       }
     });
 
-    selectedExtras.add(name);
-    const target = document.getElementById('armar');
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
+    // Feedback visual en el botón sin desplazar la pantalla (sin hacer scroll)
+    if (btn) {
+      const origText = btn.innerHTML;
+      btn.innerHTML = '✓ ¡Agregado a tu Comanda!';
+      btn.style.background = 'var(--pastel-menta-deep)';
+      btn.style.borderColor = 'var(--pastel-menta-deep)';
+      btn.style.color = '#FFF';
+      setTimeout(() => {
+        btn.innerHTML = origText;
+        btn.style.background = '';
+        btn.style.borderColor = '';
+        btn.style.color = '';
+      }, 2200);
+    }
+
     updateSummary();
   };
 
@@ -304,23 +346,26 @@
     }
   }
 
+  /* ==========================================================================
+     3. COMPILADOR LIMPIO DE WHATSAPP
+     ========================================================================== */
   window.sendToWhatsApp = function(e) {
-    e.preventDefault();
+    if (e && e.preventDefault) e.preventDefault();
     const nameEl = document.getElementById('custName');
     const dateEl = document.getElementById('custDate');
     const cityEl = document.getElementById('custCity');
 
-    const name = nameEl ? nameEl.value.trim() : '';
-    const date = dateEl ? dateEl.value : '';
-    const city = cityEl ? cityEl.value.trim() : 'León, Gto.';
-    const meta = packages[currentPkg];
+    const name = nameEl && nameEl.value.trim() ? nameEl.value.trim() : 'Cliente interesado';
+    const date = dateEl && dateEl.value ? dateEl.value : 'Por definir';
+    const city = cityEl && cityEl.value.trim() ? cityEl.value.trim() : 'León, Gto.';
+    const meta = packages[currentPkg] || { name: 'Paquete Fiesta Mexicana', max: 7 };
 
     let guisosMsg = selectedDishes.size > 0
-      ? '\n\n🍲 *Cazuelas Elegidas:*\n' + Array.from(selectedDishes).map((d, i) => `  ${i + 1}. ${d}`).join('\n')
-      : '\n\n🍲 *Cazuelas:* ' + meta.max + ' cazuelas a convenir';
+      ? '\n\n🍲 *Cazuelas Elegidas (' + selectedDishes.size + ' de ' + meta.max + '):*\n' + Array.from(selectedDishes).map((d, i) => `  ${i + 1}. ${d}`).join('\n')
+      : '\n\n🍲 *Cazuelas:* ' + meta.max + ' cazuelas tradicionales a elegir';
 
     let extrasMsg = selectedExtras.size > 0
-      ? '\n\n✨ *Especialidades Agregadas:*\n' + Array.from(selectedExtras).map(x => `  • ${x}`).join('\n')
+      ? '\n\n✨ *Especialidades / Extras:*\n' + Array.from(selectedExtras).map(x => `  • ${x}`).join('\n')
       : '';
 
     const text = `¡Hola Claudia! Me gustaría cotizar un banquete con *La Lola* 🌮🎉\n\n` +
@@ -330,9 +375,10 @@
       `📅 *Fecha:* ${date}\n` +
       `📍 *Ciudad / Lugar:* ${city}` +
       guisosMsg + extrasMsg +
-      `\n\n¿Podrías confirmarme disponibilidad de fecha y presupuesto formal? ¡Gracias!`;
+      `\n\n¿Podrías confirmarme disponibilidad de fecha y presupuesto formal? ¡Muchas gracias!`;
 
-    window.open('https://wa.me/524778020791?text=' + encodeURIComponent(text), '_blank');
+    const url = 'https://wa.me/524778020791?text=' + encodeURIComponent(text);
+    window.open(url, '_blank');
   };
 
   // Header scroll & Smooth anchors
@@ -383,35 +429,21 @@
     });
 
     function render() {
-      // Interpolación suave Lerp a 60fps
       currentX += (targetX - currentX) * 0.075;
       currentY += (targetY - currentY) * 0.075;
 
-      // Capas de texto independientes en dirección contraria (Multilayer Depth)
-      if (heroBadge) {
-        heroBadge.style.transform = `translate3d(${currentX * -14}px, ${currentY * -10}px, 0)`;
-      }
-      if (heroTitle) {
-        heroTitle.style.transform = `translate3d(${currentX * -30}px, ${currentY * -22}px, 0)`;
-      }
-      if (heroDesc) {
-        heroDesc.style.transform = `translate3d(${currentX * -18}px, ${currentY * -14}px, 0)`;
-      }
-      if (heroCta) {
-        heroCta.style.transform = `translate3d(${currentX * -12}px, ${currentY * -9}px, 0)`;
-      }
-      if (heroBenefits) {
-        heroBenefits.style.transform = `translate3d(${currentX * -8}px, ${currentY * -6}px, 0)`;
-      }
+      if (heroBadge) heroBadge.style.transform = `translate3d(${currentX * -14}px, ${currentY * -10}px, 0)`;
+      if (heroTitle) heroTitle.style.transform = `translate3d(${currentX * -30}px, ${currentY * -22}px, 0)`;
+      if (heroDesc) heroDesc.style.transform = `translate3d(${currentX * -18}px, ${currentY * -14}px, 0)`;
+      if (heroCta) heroCta.style.transform = `translate3d(${currentX * -12}px, ${currentY * -9}px, 0)`;
+      if (heroBenefits) heroBenefits.style.transform = `translate3d(${currentX * -8}px, ${currentY * -6}px, 0)`;
 
-      // Composición visual en dirección del cursor con rotación escénica 3D
       const rotY = currentX * 10;
       const rotX = -currentY * 10;
       if (heroFrame) {
         heroFrame.style.transform = `translate3d(${currentX * 32}px, ${currentY * 24}px, 0) rotateY(${rotY}deg) rotateX(${rotX}deg)`;
       }
 
-      // Tarjeta translúcida inferior con profundidad desacoplada
       if (heroFloatCard) {
         heroFloatCard.style.transform = `translate3d(${currentX * 46}px, ${currentY * 34}px, 24px)`;
       }
@@ -453,54 +485,39 @@
   }
 
   /* ==========================================================================
-     BENTO GRID: TILT 3D A 60 FPS & CONTROLES DE VIDEO
+     4. BENTO GRID: TILT EFFECT 3D (perspective(1000px) rotateX() rotateY())
      ========================================================================== */
   function initBentoTilt() {
     const cards = document.querySelectorAll('.bento-card');
 
     cards.forEach(card => {
-      let animId = null;
-      let targetX = 0, targetY = 0;
-      let curX = 0, curY = 0;
-      let isHover = false;
-
-      card.addEventListener('mouseenter', () => {
-        isHover = true;
-        if (!animId) animId = requestAnimationFrame(tiltLoop);
-      });
+      card.style.transformStyle = 'preserve-3d';
+      card.style.willChange = 'transform';
 
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
-        targetX = (e.clientX - rect.left) / rect.width - 0.5;
-        targetY = (e.clientY - rect.top) / rect.height - 0.5;
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        // Inclinación 3D precisa con perspective(1000px) rotateX() rotateY()
+        const rotateX = -((y - centerY) / centerY) * 10;
+        const rotateY = ((x - centerX) / centerX) * 10;
+
+        card.style.transition = 'transform 0.1s ease-out';
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
       });
 
       card.addEventListener('mouseleave', () => {
-        isHover = false;
-        targetX = 0;
-        targetY = 0;
+        card.style.transition = 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)';
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        setTimeout(() => {
+          if (!card.matches(':hover')) {
+            card.style.transform = '';
+          }
+        }, 460);
       });
-
-      function tiltLoop() {
-        curX += (targetX - curX) * 0.12;
-        curY += (targetY - curY) * 0.12;
-
-        const rotX = -curY * 13;
-        const rotY = curX * 13;
-
-        if (isHover) {
-          card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.02, 1.02, 1.02)`;
-        } else {
-          card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1, 1, 1)`;
-        }
-
-        if (isHover || Math.abs(curX) > 0.001 || Math.abs(curY) > 0.001) {
-          animId = requestAnimationFrame(tiltLoop);
-        } else {
-          animId = null;
-          card.style.transform = '';
-        }
-      }
     });
   }
 
@@ -543,10 +560,20 @@
     }
   };
 
-  // Inicialización
-  renderDishes();
-  updateSummary();
-  initHeroParallax();
-  initMagneticButtons();
-  initBentoTilt();
+  /* ==========================================================================
+     INICIALIZACIÓN ROBUSTA AL CARGAR LA PÁGINA
+     ========================================================================== */
+  function init() {
+    initDishes();
+    updateSummary();
+    initHeroParallax();
+    initMagneticButtons();
+    initBentoTilt();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
