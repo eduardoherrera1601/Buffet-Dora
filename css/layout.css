@@ -1,0 +1,271 @@
+/* ==========================================================================
+   ESTRUCTURA Y LAYOUT • LA LOLA
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CONTENEDOR GENERAL
+   -------------------------------------------------------------------------- */
+.container {
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(20px, 4vw, 48px);
+  padding-right: clamp(20px, 4vw, 48px);
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   2. HEADER (NAVBAR FLOTANTE / STICKY)
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(250, 248, 245, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: var(--transition-smooth);
+}
+
+.site-header.scrolled {
+  background: rgba(250, 248, 245, 0.95);
+  box-shadow: 0 10px 30px -10px rgba(36, 26, 23, 0.08);
+}
+
+.nav-wrapper {
+  height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Logotipo */
+.brand-logo {
+  font-family: var(--font-serif);
+  font-size: 1.95rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text-main);
+  display: inline-flex;
+  align-items: baseline;
+  transition: var(--transition-smooth);
+}
+
+.brand-logo:hover {
+  opacity: 0.85;
+}
+
+.brand-logo-dot {
+  color: var(--color-pink-primary);
+}
+
+/* Menú central sutil */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: clamp(20px, 3.2vw, 40px);
+}
+
+.nav-link {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  position: relative;
+  padding: 6px 0;
+  transition: var(--transition-smooth);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-pink-primary);
+  transition: width 0.25s ease;
+  border-radius: 2px;
+}
+
+.nav-link:hover {
+  color: var(--color-text-main);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Acciones header */
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   3. SECCIÓN HERO ASIMÉTRICO (2 COLUMNAS, min-height: 85vh)
+   -------------------------------------------------------------------------- */
+.hero-section {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  padding-top: clamp(32px, 5vh, 64px);
+  padding-bottom: clamp(48px, 6vh, 80px);
+  position: relative;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: clamp(36px, 5vw, 68px);
+  width: 100%;
+}
+
+/* Columna Izquierda: Contenido Editorial */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-badge-container {
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.75rem, 4.8vw, 4.3rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--color-text-main);
+  margin-bottom: 24px;
+}
+
+.hero-title-italic {
+  display: block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 700;
+  color: var(--color-pink-primary);
+  letter-spacing: -0.015em;
+  margin-top: 6px;
+}
+
+.hero-description {
+  font-size: clamp(1.05rem, 1.35vw, 1.18rem);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  max-width: 44ch;
+  margin-bottom: 36px;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+/* Viñetas minimalistas de beneficios */
+.hero-benefits {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(14px, 2.5vw, 24px);
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+  width: 100%;
+}
+
+/* Columna Derecha: Tarjeta Visual */
+.hero-visual {
+  position: relative;
+  width: 100%;
+}
+
+.hero-image-frame {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  background-color: #E7E2D9;
+  aspect-ratio: 4 / 4.7;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-image-frame:hover .hero-img {
+  transform: scale(1.03);
+}
+
+/* --------------------------------------------------------------------------
+   4. RESPONSIVE DESIGN (Tablets y Móviles)
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .hero-image-frame {
+    aspect-ratio: 16 / 11;
+  }
+
+  .hero-description {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+  }
+
+  .nav-wrapper {
+    height: 72px;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding-top: 24px;
+    padding-bottom: 56px;
+  }
+
+  .hero-cta-group {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+  }
+
+  .hero-benefits {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .floating-card {
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    padding: 12px 16px;
+  }
+}

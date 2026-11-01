@@ -3,466 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La Lola • Banquetes & Catering Tradicional</title>
+  <title>La Lola • Banquetes & Catering Tradicional Mexicano</title>
 
-  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+  <!-- Google Fonts: Playfair Display (700, 800, italic) & Plus Jakarta Sans (500, 600, 700) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    /* ==========================================================================
-       1. VARIABLES & RESET
-       ========================================================================== */
-    :root {
-      --bg-cream: #FAF8F5;
-      --text-main: #241A17;
-      --text-muted: #6E5D57;
-      
-      --pink-soft: #FCE8EF;
-      --pink-primary: #D94878;
-      --pink-hover: #C23866;
-      
-      --mint-soft: #D8F3F1;
-      --mint-accent: #0D827E;
+  <!-- Hojas de Estilo Modulares -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
 
-      --font-serif: 'Playfair Display', Georgia, serif;
-      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-
-      --container-max: 1280px;
-      --radius-pill: 999px;
-      --radius-card: 28px;
-      --transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: var(--bg-cream);
-      color: var(--text-main);
-      font-family: var(--font-sans);
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      max-width: var(--container-max);
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: clamp(20px, 4vw, 48px);
-      padding-right: clamp(20px, 4vw, 48px);
-    }
-
-    /* ==========================================================================
-       2. HEADER & NAVIGATION (Glassmorphism)
-       ========================================================================== */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(250, 248, 245, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(110, 93, 87, 0.08);
-      transition: var(--transition);
-    }
-
-    .nav-wrapper {
-      height: 84px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    /* Logo */
-    .brand-logo {
-      font-family: var(--font-serif);
-      font-size: 1.95rem;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      color: var(--text-main);
-      display: inline-flex;
-      align-items: baseline;
-      transition: var(--transition);
-    }
-
-    .brand-logo:hover {
-      opacity: 0.85;
-    }
-
-    .brand-logo span {
-      color: var(--pink-primary);
-    }
-
-    /* Center Menu */
-    .nav-menu {
-      display: flex;
-      align-items: center;
-      list-style: none;
-      gap: clamp(20px, 3vw, 36px);
-    }
-
-    .nav-link {
-      font-family: var(--font-sans);
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      position: relative;
-      padding: 6px 0;
-      transition: var(--transition);
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: var(--pink-primary);
-      transition: width 0.25s ease;
-      border-radius: 2px;
-    }
-
-    .nav-link:hover {
-      color: var(--text-main);
-    }
-
-    .nav-link:hover::after {
-      width: 100%;
-    }
-
-    /* Actions / Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: 0.95rem;
-      border-radius: var(--radius-pill);
-      padding: 13px 28px;
-      cursor: pointer;
-      border: 1px solid transparent;
-      transition: var(--transition);
-      white-space: nowrap;
-      text-align: center;
-    }
-
-    .btn-primary {
-      background-color: var(--pink-primary);
-      color: #ffffff;
-      box-shadow: 0 8px 20px -6px rgba(217, 72, 120, 0.35);
-    }
-
-    .btn-primary:hover {
-      background-color: var(--pink-hover);
-      box-shadow: 0 12px 24px -6px rgba(217, 72, 120, 0.45);
-      transform: translateY(-1px);
-    }
-
-    .btn-glass {
-      background: rgba(250, 248, 245, 0.65);
-      color: var(--text-main);
-      border-color: rgba(110, 93, 87, 0.2);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .btn-glass:hover {
-      background: rgba(252, 232, 239, 0.6);
-      border-color: rgba(217, 72, 120, 0.4);
-      color: var(--pink-primary);
-      transform: translateY(-1px);
-    }
-
-    /* ==========================================================================
-       3. HERO SECTION (Asymmetric 2 Columns)
-       ========================================================================== */
-    .hero-section {
-      min-height: 85vh;
-      display: flex;
-      align-items: center;
-      padding-top: clamp(32px, 5vh, 64px);
-      padding-bottom: clamp(48px, 6vh, 80px);
-      position: relative;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-      gap: clamp(36px, 5vw, 68px);
-      width: 100%;
-    }
-
-    /* Left Column: Editorial Content */
-    .hero-content {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background-color: var(--pink-soft);
-      color: var(--pink-primary);
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      padding: 7px 18px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(217, 72, 120, 0.2);
-      margin-bottom: 24px;
-    }
-
-    .hero-title {
-      font-family: var(--font-serif);
-      font-size: clamp(2.75rem, 5vw, 4.4rem);
-      font-weight: 900;
-      line-height: 1.08;
-      letter-spacing: -0.025em;
-      color: var(--text-main);
-      margin-bottom: 24px;
-    }
-
-    .hero-title .italic-sub {
-      display: block;
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-weight: 800;
-      color: var(--pink-primary);
-      letter-spacing: -0.015em;
-      margin-top: 4px;
-    }
-
-    .hero-description {
-      font-size: clamp(1.05rem, 1.4vw, 1.18rem);
-      font-weight: 500;
-      color: var(--text-muted);
-      line-height: 1.65;
-      max-width: 42ch; /* Máximo 3 líneas en pantallas desktop */
-      margin-bottom: 36px;
-    }
-
-    .hero-cta-group {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 40px;
-    }
-
-    /* Benefits List */
-    .hero-benefits {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: clamp(14px, 2.5vw, 24px);
-      padding-top: 10px;
-      border-top: 1px solid rgba(110, 93, 87, 0.12);
-      width: 100%;
-    }
-
-    .benefit-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--text-main);
-    }
-
-    .benefit-check {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background-color: var(--mint-soft);
-      color: var(--mint-accent);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .benefit-check svg {
-      width: 13px;
-      height: 13px;
-      stroke-width: 2.6;
-    }
-
-    /* Right Column: Visual Showcase */
-    .hero-visual {
-      position: relative;
-      width: 100%;
-    }
-
-    .hero-card {
-      position: relative;
-      border-radius: var(--radius-card);
-      overflow: hidden;
-      box-shadow: 0 28px 56px -16px rgba(36, 26, 23, 0.14),
-                  0 4px 16px rgba(36, 26, 23, 0.04);
-      background-color: #E8E2D9;
-      aspect-ratio: 4 / 4.6;
-    }
-
-    .hero-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 30%;
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .hero-card:hover .hero-image {
-      transform: scale(1.03);
-    }
-
-    /* Floating Translucent Card */
-    .floating-card {
-      position: absolute;
-      bottom: 24px;
-      left: 24px;
-      right: 24px;
-      background: rgba(250, 248, 245, 0.9);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(255, 255, 255, 0.75);
-      border-radius: 18px;
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      box-shadow: 0 16px 36px -10px rgba(36, 26, 23, 0.12);
-    }
-
-    .floating-dot {
-      width: 9px;
-      height: 9px;
-      background-color: var(--mint-accent);
-      border-radius: 50%;
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .floating-dot::after {
-      content: '';
-      position: absolute;
-      top: -3px;
-      left: -3px;
-      right: -3px;
-      bottom: -3px;
-      border-radius: 50%;
-      background: rgba(13, 130, 126, 0.28);
-      animation: pulse 2.2s infinite ease-out;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(0.9); opacity: 1; }
-      100% { transform: scale(1.8); opacity: 0; }
-    }
-
-    .floating-text {
-      font-size: 0.86rem;
-      font-weight: 600;
-      color: var(--text-main);
-      letter-spacing: -0.01em;
-    }
-
-    /* ==========================================================================
-       4. RESPONSIVE DESIGN
-       ========================================================================== */
-    @media (max-width: 992px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-
-      .hero-card {
-        aspect-ratio: 16 / 11;
-      }
-
-      .hero-description {
-        max-width: 100%;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .nav-menu {
-        display: none; /* Simplificado para vista móvil limpia */
-      }
-
-      .nav-wrapper {
-        height: 72px;
-      }
-
-      .hero-section {
-        min-height: auto;
-        padding-top: 28px;
-      }
-
-      .hero-cta-group {
-        width: 100%;
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .hero-benefits {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
-
-      .floating-card {
-        bottom: 16px;
-        left: 16px;
-        right: 16px;
-        padding: 12px 16px;
-      }
-    }
-  </style>
+  <!-- Script Principal -->
+  <script src="js/main.js" defer></script>
 </head>
 <body>
 
   <!-- ==========================================================================
-       BARRA DE NAVEGACIÓN (Sticky / Glassmorphism)
+       HEADER (Navbar Flotante Glassmorphic)
        ========================================================================== -->
   <header class="site-header">
     <div class="container">
       <div class="nav-wrapper">
+        
         <!-- Logotipo a la izquierda -->
-        <a href="#" class="brand-logo" aria-label="La Lola Inicio">
-          La Lola<span>.</span>
+        <a href="#" class="brand-logo" aria-label="La Lola Banquetes Inicio">
+          La Lola<span class="brand-logo-dot">.</span>
         </a>
 
-        <!-- Menú central sutil -->
+        <!-- Enlaces sutiles al centro -->
         <nav aria-label="Navegación principal">
           <ul class="nav-menu">
             <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
@@ -471,42 +41,47 @@
           </ul>
         </nav>
 
-        <!-- Botón a la derecha -->
-        <div>
-          <a href="#cotizar" class="btn btn-primary">Armar Banquete</a>
+        <!-- Botón de acción a la derecha -->
+        <div class="header-actions">
+          <a href="#armar" class="btn btn-primary btn-sm">Armar Banquete</a>
         </div>
+
       </div>
     </div>
   </header>
 
   <!-- ==========================================================================
-       SECCIÓN HERO (Composición Asimétrica en 2 Columnas)
+       MAIN & HERO ASIMÉTRICO (Composición 2 Columnas)
        ========================================================================== -->
   <main>
-    <section class="hero-section" aria-label="Presentación de banquetes La Lola">
+    <section class="hero-section" aria-label="Presentación y bienvenida La Lola">
       <div class="container">
         <div class="hero-grid">
-          
-          <!-- Columna Izquierda: Texto y Llamados a la Acción -->
+
+          <!-- Columna Izquierda: Contenido Editorial -->
           <div class="hero-content">
-            <div class="hero-badge">
-              <span>🏺 Banquetes & Cazuelas • León, Gto.</span>
+            
+            <div class="hero-badge-container">
+              <span class="pill-tag">
+                🏺 Banquetes & Cazuelas • León, Gto.
+              </span>
             </div>
 
             <h1 class="hero-title">
               Sabores de México
-              <span class="italic-sub">Sazón y fuego vivo en cazuela</span>
+              <span class="hero-title-italic">Sazón y fuego vivo en cazuela</span>
             </h1>
 
             <p class="hero-description">
-              Catering tradicional al calor de cazuelas de barro curadas, guisados con sazón de hogar y tortillas infladas al comal para celebrar tus mejores momentos.
+              Catering tradicional al calor de cazuelas de barro curadas, guisados con sazón de hogar y tortillas infladas al comal para compartir tus mejores momentos.
             </p>
 
             <div class="hero-cta-group">
               <a href="#armar" class="btn btn-primary">Armar Banquete</a>
-              <a href="#menu" class="btn btn-glass">Conocer Menú</a>
+              <a href="#experiencia" class="btn btn-glass">Conocer Menú</a>
             </div>
 
+            <!-- 3 viñetas minimalistas con checkmark -->
             <div class="hero-benefits">
               <div class="benefit-item">
                 <span class="benefit-check" aria-hidden="true">
@@ -535,19 +110,20 @@
                 <span>Desde 30 hasta 400+ personas</span>
               </div>
             </div>
+
           </div>
 
           <!-- Columna Derecha: Tarjeta Visual -->
           <div class="hero-visual">
-            <div class="hero-card">
+            <div class="hero-image-frame">
               <img 
                 src="img/mexican_folk_hero_banner.jpg" 
                 alt="Banquete de cazuelas tradicionales mexicanas La Lola" 
-                class="hero-image"
+                class="hero-img"
                 loading="eager"
               >
-              
-              <!-- Tarjeta flotante translúcida -->
+
+              <!-- Tarjeta flotante translúcida inferior -->
               <div class="floating-card">
                 <span class="floating-dot" aria-hidden="true"></span>
                 <span class="floating-text">Servicio tradicional en vivo • León y el Bajío</span>
@@ -562,4 +138,3 @@
 
 </body>
 </html>
-
