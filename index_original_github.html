@@ -1657,14 +1657,14 @@
                         <span style="font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; color: var(--chocolate-texto);">👥 Comensales:</span>
                         <div class="guest-counter-control">
                             <button type="button" class="btn-guest-step" onclick="stepSpecialtyGuests('chilaquiles', -5)">−</button>
-                            <span class="guest-number-val" id="guests-chilaquiles">40</span>
+                            <span class="guest-number-val" id="guests-chilaquiles">0</span>
                             <button type="button" class="btn-guest-step" onclick="stepSpecialtyGuests('chilaquiles', 5)">+</button>
                             <span style="font-size: 0.8rem; font-weight: 700; color: var(--chocolate-suave);">pers.</span>
                         </div>
                     </div>
 
-                    <button class="btn-turquesa-3d" onclick="quoteSpecialtyWhatsApp('chilaquiles')">
-                        💬 Cotizar Chilaquiles
+                    <button class="btn-turquesa-3d" id="btn-select-chilaquiles" onclick="acceptSpecialtyAndGoToStep4('chilaquiles')">
+                        Elegir Menú (Mín. 30 pers.)
                     </button>
                 </div>
 
@@ -1689,14 +1689,14 @@
                         <span style="font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; color: var(--chocolate-texto);">👥 Comensales:</span>
                         <div class="guest-counter-control">
                             <button type="button" class="btn-guest-step" onclick="stepSpecialtyGuests('tortas', -5)">−</button>
-                            <span class="guest-number-val" id="guests-tortas">40</span>
+                            <span class="guest-number-val" id="guests-tortas">0</span>
                             <button type="button" class="btn-guest-step" onclick="stepSpecialtyGuests('tortas', 5)">+</button>
                             <span style="font-size: 0.8rem; font-weight: 700; color: var(--chocolate-suave);">pers.</span>
                         </div>
                     </div>
 
-                    <button class="btn-turquesa-3d" onclick="quoteSpecialtyWhatsApp('tortas')">
-                        💬 Cotizar Tortas
+                    <button class="btn-turquesa-3d" id="btn-select-tortas" onclick="acceptSpecialtyAndGoToStep4('tortas')">
+                        Elegir Menú (Mín. 30 pers.)
                     </button>
                 </div>
 
@@ -1721,14 +1721,14 @@
                         <span style="font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; color: var(--chocolate-texto);">👥 Comensales:</span>
                         <div class="guest-counter-control">
                             <button type="button" class="btn-guest-step" onclick="stepSpecialtyGuests('menudo', -5)">−</button>
-                            <span class="guest-number-val" id="guests-menudo">50</span>
+                            <span class="guest-number-val" id="guests-menudo">0</span>
                             <button type="button" class="btn-guest-step" onclick="stepSpecialtyGuests('menudo', 5)">+</button>
                             <span style="font-size: 0.8rem; font-weight: 700; color: var(--chocolate-suave);">pers.</span>
                         </div>
                     </div>
 
-                    <button class="btn-turquesa-3d" onclick="quoteSpecialtyWhatsApp('menudo')">
-                        💬 Cotizar Menudo
+                    <button class="btn-turquesa-3d" id="btn-select-menudo" onclick="acceptSpecialtyAndGoToStep4('menudo')">
+                        Elegir Menú (Mín. 30 pers.)
                     </button>
                 </div>
 
@@ -1753,14 +1753,14 @@
                         <span style="font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; color: var(--chocolate-texto);">👥 Comensales:</span>
                         <div class="guest-counter-control">
                             <button type="button" class="btn-guest-step" onclick="stepSpecialtyGuests('pozole', -5)">−</button>
-                            <span class="guest-number-val" id="guests-pozole">50</span>
+                            <span class="guest-number-val" id="guests-pozole">0</span>
                             <button type="button" class="btn-guest-step" onclick="stepSpecialtyGuests('pozole', 5)">+</button>
                             <span style="font-size: 0.8rem; font-weight: 700; color: var(--chocolate-suave);">pers.</span>
                         </div>
                     </div>
 
-                    <button class="btn-turquesa-3d" onclick="quoteSpecialtyWhatsApp('pozole')">
-                        💬 Cotizar Pozole
+                    <button class="btn-turquesa-3d" id="btn-select-pozole" onclick="acceptSpecialtyAndGoToStep4('pozole')">
+                        Elegir Menú (Mín. 30 pers.)
                     </button>
                 </div>
             </div>
@@ -2113,6 +2113,17 @@
 
                     <!-- Tarjeta de Resumen en Tiempo Real -->
                     <div class="live-summary-box">
+                        <!-- Banner cuando se elige una Especialidad Independiente -->
+                        <div id="independentNoticeBanner" style="display: none; background: #FFF3E0; border: 2px solid var(--cempasuchil-fuego); border-radius: 12px; padding: 0.8rem 1.2rem; margin-bottom: 1.2rem; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem;">
+                            <div>
+                                <span style="font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; color: var(--cempasuchil-fuego); letter-spacing: 0.08em; display: block;">⭐ SERVICIO INDEPENDIENTE SELECCIONADO</span>
+                                <strong id="independentNoticeName" style="color: var(--chocolate-texto); font-size: 1.05rem;"></strong>
+                            </div>
+                            <button type="button" onclick="cancelIndependentSpecialty()" style="background: #FFFFFF; border: 1.5px solid var(--cempasuchil-fuego); border-radius: 8px; color: var(--chocolate-texto); font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; padding: 0.4rem 0.8rem; cursor: pointer;">
+                                ✕ Cambiar a Banquete de Cazuelas
+                            </button>
+                        </div>
+
                         <div class="summary-header-row">
                             <div>
                                 <span style="font-family: var(--font-folk); font-size: 0.82rem; font-weight: 800; text-transform: uppercase; color: var(--cempasuchil-fuego); letter-spacing: 0.1em;">Resumen de tu Cotización</span>
@@ -2125,8 +2136,8 @@
                         </div>
 
                         <!-- Desglose de Guisados Seleccionados -->
-                        <div style="margin-bottom: 1.2rem;">
-                            <strong style="display: block; font-family: var(--font-folk); font-size: 0.95rem; color: var(--chocolate-texto); margin-bottom: 0.5rem;">
+                        <div style="margin-bottom: 1.2rem;" id="summaryCazuelasSection">
+                            <strong style="display: block; font-family: var(--font-folk); font-size: 0.95rem; color: var(--chocolate-texto); margin-bottom: 0.5rem;" id="summaryGuisadosLabel">
                                 🥘 Cazuelas Seleccionadas (<span id="summaryGuisadosCount">0</span> de <span id="summaryGuisadosLimit">7</span>):
                             </strong>
                             <div id="summaryGuisadosList" style="font-size: 0.92rem; color: var(--chocolate-suave); line-height: 1.6; background: #FFFDF9; border: 1.5px solid #E6D7C5; border-radius: 12px; padding: 0.8rem 1.2rem;">
@@ -2372,6 +2383,9 @@
 
         // FUNCIÓN: ELEGIR PAQUETE DIRECTAMENTE
         window.choosePackage = function(pkgKey, adjustSlider = true) {
+            window.selectedIndependentSpecialty = null;
+            const notice = document.getElementById('independentNoticeBanner');
+            if (notice) notice.style.display = 'none';
             currentPackage = pkgKey;
             const meta = packageMeta[pkgKey];
             maxGuisados = meta.max;
@@ -2481,9 +2495,125 @@
             if (target) target.scrollIntoView({ behavior: 'smooth' });
         };
 
+        // GESTIÓN DE ESPECIALIDADES INDEPENDIENTES (MÍNIMO 30 PERSONAS, COMIENZA EN 0)
+        window.selectedIndependentSpecialty = null;
+        var specialtyGuests = {
+            chilaquiles: 0,
+            tortas: 0,
+            menudo: 0,
+            pozole: 0
+        };
+        var specialtyNames = {
+            chilaquiles: 'Chilaquiles Tradicionales de la Casa',
+            tortas: 'Las Famosas Tortas de Chilaquiles',
+            menudo: 'El Tradicional Menudo en Cazuela',
+            pozole: 'Pozole Tradicional de Fiesta'
+        };
+
+        window.stepSpecialtyGuests = function(type, step) {
+            var cur = specialtyGuests[type] || 0;
+            var newVal = 0;
+            if (step > 0) {
+                newVal = (cur === 0) ? 30 : (cur + step);
+            } else {
+                newVal = (cur <= 30) ? 0 : (cur + step);
+            }
+            specialtyGuests[type] = newVal;
+            var el = document.getElementById('guests-' + type);
+            if (el) el.textContent = newVal;
+
+            var btn = document.getElementById('btn-select-' + type);
+            if (btn) {
+                if (newVal > 0) {
+                    btn.innerHTML = '✓ Elegir (' + newVal + ' pers.) → Ir a Reservar';
+                    btn.style.background = 'linear-gradient(135deg, var(--rosa-mexicano), #D81B60)';
+                    btn.style.color = '#FFFFFF';
+                    btn.style.boxShadow = '0 6px 18px rgba(233, 30, 99, 0.45)';
+                } else {
+                    btn.innerHTML = 'Elegir Menú (Mín. 30 pers.)';
+                    btn.style.background = '';
+                    btn.style.color = '';
+                    btn.style.boxShadow = '';
+                }
+            }
+        };
+
+        window.acceptSpecialtyAndGoToStep4 = function(type) {
+            var count = specialtyGuests[type] || 0;
+            if (count < 30) {
+                count = 30;
+                specialtyGuests[type] = 30;
+                var el = document.getElementById('guests-' + type);
+                if (el) el.textContent = '30';
+            }
+
+            // Actualizar botones de las 4 especialidades
+            ['chilaquiles', 'tortas', 'menudo', 'pozole'].forEach(function(k) {
+                var b = document.getElementById('btn-select-' + k);
+                var g = document.getElementById('guests-' + k);
+                if (k === type) {
+                    if (b) {
+                        b.innerHTML = '✓ Elegido (' + count + ' pers.) → Ir al Paso 4';
+                        b.style.background = 'linear-gradient(135deg, var(--rosa-mexicano), #D81B60)';
+                        b.style.color = '#FFFFFF';
+                        b.style.boxShadow = '0 6px 18px rgba(233, 30, 99, 0.45)';
+                    }
+                } else {
+                    specialtyGuests[k] = 0;
+                    if (g) g.textContent = '0';
+                    if (b) {
+                        b.innerHTML = 'Elegir Menú (Mín. 30 pers.)';
+                        b.style.background = '';
+                        b.style.color = '';
+                        b.style.boxShadow = '';
+                    }
+                }
+            });
+
+            window.selectedIndependentSpecialty = {
+                type: type,
+                name: specialtyNames[type] || type,
+                guests: count
+            };
+
+            window.updateLiveSummary();
+
+            // Desplazamiento suave directo al Paso 4 (Formulario de Reservación)
+            var paso4 = document.getElementById('paso-4');
+            if (paso4) {
+                paso4.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                paso4.style.transition = 'box-shadow 0.6s ease, border-color 0.6s ease';
+                paso4.style.borderColor = 'var(--rosa-mexicano)';
+                paso4.style.boxShadow = '0 0 25px rgba(233, 30, 99, 0.4)';
+                setTimeout(function() {
+                    paso4.style.boxShadow = '';
+                }, 2200);
+            }
+        };
+
+        window.cancelIndependentSpecialty = function() {
+            window.selectedIndependentSpecialty = null;
+            ['chilaquiles', 'tortas', 'menudo', 'pozole'].forEach(function(k) {
+                specialtyGuests[k] = 0;
+                var el = document.getElementById('guests-' + k);
+                if (el) el.textContent = '0';
+                var b = document.getElementById('btn-select-' + k);
+                if (b) {
+                    b.innerHTML = 'Elegir Menú (Mín. 30 pers.)';
+                    b.style.background = '';
+                    b.style.color = '';
+                    b.style.boxShadow = '';
+                }
+            });
+            window.updateLiveSummary();
+        };
+
+        window.quoteSpecialtyWhatsApp = function(type) {
+            window.acceptSpecialtyAndGoToStep4(type);
+        };
+
         // FUNCIÓN: ACTUALIZAR RESUMEN EN TIEMPO REAL
         window.updateLiveSummary = function() {
-            const meta = packageMeta[currentPackage];
             const summaryTitle = document.getElementById('summaryPackageTitle');
             const summaryGuests = document.getElementById('summaryGuestCount');
             const summaryGuisadosCount = document.getElementById('summaryGuisadosCount');
@@ -2491,20 +2621,40 @@
             const summaryList = document.getElementById('summaryGuisadosList');
             const summaryBenefits = document.getElementById('summaryPackageBenefits');
             const summaryExtras = document.getElementById('summaryExtrasList');
+            const notice = document.getElementById('independentNoticeBanner');
+            const noticeName = document.getElementById('independentNoticeName');
+            const guisadosLabel = document.getElementById('summaryGuisadosLabel');
 
-            if (summaryTitle) summaryTitle.textContent = meta.title;
-            if (summaryGuests) summaryGuests.textContent = guestCount + ' Personas';
-            if (summaryGuisadosCount) summaryGuisadosCount.textContent = selectedGuisados.size;
-            if (summaryGuisadosLimit) summaryGuisadosLimit.textContent = maxGuisados;
-            if (summaryBenefits) summaryBenefits.textContent = meta.benefits;
+            if (window.selectedIndependentSpecialty && window.selectedIndependentSpecialty.guests >= 30) {
+                const spec = window.selectedIndependentSpecialty;
+                if (notice) notice.style.display = 'flex';
+                if (noticeName) noticeName.textContent = spec.name + ' (' + spec.guests + ' personas)';
+                if (summaryTitle) summaryTitle.textContent = spec.name;
+                if (summaryGuests) summaryGuests.textContent = spec.guests + ' Personas';
+                if (guisadosLabel) guisadosLabel.innerHTML = '🍽️ Menú Independiente Seleccionado:';
+                if (summaryList) {
+                    summaryList.innerHTML = '<div style="color: var(--rosa-mexicano); font-weight: 800; font-size: 1rem;">✨ ' + spec.name + '</div>' +
+                        '<p style="margin: 0.35rem 0 0 0; color: var(--chocolate-suave); font-size: 0.88rem;">Servicio completo e independiente para ' + spec.guests + ' personas (Mínimo 30 personas). Incluye complementos, salsas y montaje en cazuela tradicional.</p>';
+                }
+                if (summaryBenefits) summaryBenefits.textContent = 'Servicio completo de ' + spec.name + ' con barra de complementos, salsas y atención tradicional.';
+            } else {
+                if (notice) notice.style.display = 'none';
+                if (guisadosLabel) guisadosLabel.innerHTML = '🥘 Cazuelas Seleccionadas (<span id="summaryGuisadosCount">' + selectedGuisados.size + '</span> de <span id="summaryGuisadosLimit">' + maxGuisados + '</span>):';
+                const meta = packageMeta[currentPackage];
+                if (summaryTitle) summaryTitle.textContent = meta.title;
+                if (summaryGuests) summaryGuests.textContent = guestCount + ' Personas';
+                if (summaryGuisadosCount) summaryGuisadosCount.textContent = selectedGuisados.size;
+                if (summaryGuisadosLimit) summaryGuisadosLimit.textContent = maxGuisados;
+                if (summaryBenefits) summaryBenefits.textContent = meta.benefits;
 
-            if (summaryList) {
-                if (selectedGuisados.size === 0) {
-                    summaryList.innerHTML = '<em>Aún no has seleccionado ningún guisado en el Paso 2. Haz clic en las tarjetas de arriba para elegirlos.</em>';
-                } else {
-                    summaryList.innerHTML = '<ol style="margin-left: 1.2rem; padding-left: 0.2rem;">' +
-                        Array.from(selectedGuisados).map(g => '<li style="margin-bottom: 2px;"><strong>' + g + '</strong></li>').join('') +
-                        '</ol>';
+                if (summaryList) {
+                    if (selectedGuisados.size === 0) {
+                        summaryList.innerHTML = '<em>Aún no has seleccionado ningún guisado en el Paso 2. Haz clic en las tarjetas de arriba para elegirlos.</em>';
+                    } else {
+                        summaryList.innerHTML = '<ol style="margin-left: 1.2rem; padding-left: 0.2rem;">' +
+                            Array.from(selectedGuisados).map(g => '<li style="margin-bottom: 2px;"><strong>' + g + '</strong></li>').join('') +
+                            '</ol>';
+                    }
                 }
             }
 
@@ -2532,8 +2682,23 @@
             const type = typeEl ? typeEl.value : 'Banquete';
             const date = dateEl ? dateEl.value : '';
             const city = cityEl ? cityEl.value.trim() : 'León, Gto.';
-            const meta = packageMeta[currentPackage];
 
+            if (window.selectedIndependentSpecialty && window.selectedIndependentSpecialty.guests >= 30) {
+                const spec = window.selectedIndependentSpecialty;
+                const raw = '¡Hola Claudia! Me gustaría reservar el menú independiente de *' + spec.name + '* con *La Lola — Sabores de México* 🌮🎉\n\n' +
+                    '👤 *Nombre:* ' + name + '\n' +
+                    '🎉 *Tipo de Evento:* ' + type + '\n' +
+                    '👥 *Comensales:* ' + spec.guests + ' personas (Mínimo 30 pers.)\n' +
+                    '🍽️ *Menú Independiente:* ' + spec.name + '\n' +
+                    '📅 *Fecha Estimada:* ' + (date || 'Por definir') + '\n' +
+                    '📍 *Ubicación:* ' + city + '\n\n' +
+                    '¿Podrías confirmarme disponibilidad para esta fecha y la cotización formal? ¡Muchas gracias!';
+
+                window.open('https://wa.me/524778020791?text=' + encodeURIComponent(raw), '_blank');
+                return;
+            }
+
+            const meta = packageMeta[currentPackage];
             let guisadosText = selectedGuisados.size > 0
                 ? '\n\n🍲 *Cazuelas Elegidas (' + selectedGuisados.size + ' de ' + maxGuisados + '):*\n' + Array.from(selectedGuisados).map((g, i) => '  ' + (i + 1) + '. ' + g).join('\n')
                 : '\n\n🍲 *Cazuelas:* ' + maxGuisados + ' guisados (a definir con Claudia)';
@@ -2561,63 +2726,6 @@
                 '¿Podrían confirmarme disponibilidad y detalles? ¡Muchas gracias!';
 
             window.open('https://wa.me/524778020791?text=' + encodeURIComponent(raw), '_blank');
-        };
-
-        // MARQUEE Y LIGHTBOX
-        window.scrollMarquee = function(offset) {
-            const track = document.getElementById('marqueeTrack');
-            if (track) {
-                const currentAnim = window.getComputedStyle(track).animationPlayState;
-                track.style.animation = 'none';
-                track.scrollLeft += offset;
-                const wrapper = document.getElementById('marqueeWrapper');
-                if (wrapper) wrapper.scrollBy({ left: offset, behavior: 'smooth' });
-                setTimeout(() => {
-                    track.style.animation = '';
-                }, 3000);
-            }
-        };
-
-        window.openLightbox = function(src) {
-            const modal = document.getElementById('lightboxModal');
-            const img = document.getElementById('lightboxImg');
-            if (modal && img) {
-                img.src = src;
-                modal.classList.add('active');
-            }
-        };
-
-        window.closeLightbox = function() {
-            const modal = document.getElementById('lightboxModal');
-            if (modal) modal.classList.remove('active');
-        };
-
-        // GESTIÓN DE ESPECIALIDADES INDEPENDIENTES (POR PERSONAS)
-        var specialtyGuests = {
-            chilaquiles: 40,
-            tortas: 40,
-            menudo: 50,
-            pozole: 50
-        };
-
-        window.stepSpecialtyGuests = function(type, step) {
-            var min = (type === 'menudo' || type === 'pozole') ? 30 : 20;
-            specialtyGuests[type] = Math.max(min, (specialtyGuests[type] || 40) + step);
-            var el = document.getElementById('guests-' + type);
-            if (el) el.textContent = specialtyGuests[type];
-        };
-
-        window.quoteSpecialtyWhatsApp = function(type) {
-            var names = {
-                chilaquiles: 'Chilaquiles Tradicionales de la Casa',
-                tortas: 'Las Famosas Tortas de Chilaquiles',
-                menudo: 'El Tradicional Menudo en Cazuela',
-                pozole: 'Pozole Tradicional de Fiesta'
-            };
-            var count = specialtyGuests[type] || 40;
-            var dishName = names[type] || type;
-            var msg = '¡Hola Claudia! Me interesa cotizar el servicio independiente de *' + dishName + '* para *' + count + ' personas*. ¿Me podrías confirmar disponibilidad de fecha y el presupuesto formal? ¡Muchas gracias!';
-            window.open('https://wa.me/524778020791?text=' + encodeURIComponent(msg), '_blank');
         };
 
         // INICIALIZACIÓN
