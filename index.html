@@ -1179,7 +1179,356 @@
             header { padding: 0.75rem 1.2rem; }
             .nav-menu { display: none; }
         }
-    </style></head>
+    
+        /* ===== NUEVO HERO EDITORIAL ASIMÉTRICO ===== */
+        .hero-editorial-section {
+            background-color: var(--bg-crema);
+            padding: 3.5rem 2rem 4rem;
+            position: relative;
+        }
+        .hero-editorial-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 3.8rem;
+            align-items: center;
+        }
+        @media (max-width: 980px) {
+            .hero-editorial-section {
+                padding: 2.2rem 1.25rem 3rem;
+            }
+            .hero-editorial-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+        .hero-editorial-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            background: #FFFFFF;
+            border: 1px solid var(--border-sutil);
+            padding: 0.45rem 1.15rem;
+            border-radius: 9999px;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--pastel-menta-deep);
+            box-shadow: 0 4px 14px rgba(43, 33, 29, 0.03);
+            margin-bottom: 1.3rem;
+        }
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--pastel-rosa-deep);
+            display: inline-block;
+        }
+        .hero-editorial-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.35rem, 4.3vw, 3.8rem);
+            line-height: 1.12;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            color: var(--texto-principal);
+            margin-bottom: 1.25rem;
+        }
+        .hero-editorial-title-accent {
+            display: block;
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 700;
+            color: var(--pastel-rosa-deep);
+            font-size: 0.9em;
+            margin-top: 0.35rem;
+        }
+        .hero-editorial-lead {
+            font-family: var(--font-sans);
+            font-size: 1.08rem;
+            line-height: 1.68;
+            color: var(--texto-secundario);
+            margin-bottom: 2.2rem;
+            max-width: 580px;
+        }
+        .hero-editorial-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.2rem;
+        }
+        .btn-editorial-solid {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            background: var(--pastel-rosa-deep);
+            color: #FFFFFF;
+            text-decoration: none;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 0.95rem 2.2rem;
+            border-radius: 9999px;
+            box-shadow: 0 10px 24px -4px rgba(217, 72, 120, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+        .btn-editorial-solid:hover {
+            transform: translateY(-2px);
+            background: #C43B68;
+            box-shadow: 0 14px 28px -4px rgba(217, 72, 120, 0.45);
+        }
+        .btn-editorial-glass {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            color: var(--texto-principal);
+            text-decoration: none;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 0.95rem 2.2rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(43, 33, 29, 0.12);
+            box-shadow: 0 6px 18px rgba(43, 33, 29, 0.04);
+            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+        }
+        .btn-editorial-glass:hover {
+            transform: translateY(-2px);
+            background: #FFFFFF;
+            border-color: rgba(43, 33, 29, 0.22);
+            box-shadow: 0 10px 22px rgba(43, 33, 29, 0.08);
+        }
+        .hero-editorial-perks {
+            display: flex;
+            align-items: center;
+            gap: 1.4rem;
+            flex-wrap: wrap;
+            padding-top: 1.1rem;
+            border-top: 1px solid var(--border-sutil);
+        }
+        .hero-perk-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-family: var(--font-sans);
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--texto-secundario);
+        }
+        .hero-perk-check {
+            color: var(--pastel-menta-deep);
+            font-weight: 800;
+        }
+
+        /* Tarjeta contenedor de alta resolución derecha */
+        .hero-editorial-right {
+            position: relative;
+        }
+        .hero-showcase-frame {
+            position: relative;
+            border-radius: 28px;
+            overflow: hidden;
+            background: #FFFFFF;
+            border: 1px solid var(--border-sutil);
+            box-shadow: 0 20px 48px -12px rgba(43, 33, 29, 0.1);
+            aspect-ratio: 4 / 3.4;
+            max-height: 520px;
+        }
+        .hero-showcase-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 88%;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        .hero-showcase-frame:hover .hero-showcase-image {
+            transform: scale(1.025);
+        }
+        .hero-floating-glass-card {
+            position: absolute;
+            bottom: 1.4rem;
+            left: 1.4rem;
+            right: 1.4rem;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 1rem 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 12px 32px rgba(43, 33, 29, 0.08);
+        }
+        .floating-glass-icon {
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .floating-glass-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+        .floating-glass-title {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--texto-principal);
+        }
+        .floating-glass-subtitle {
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
+            color: var(--texto-secundario);
+            font-weight: 500;
+        }
+
+        /* ===== BENTO GRID GALERÍA DE 4 BLOQUES ===== */
+        .section-editorial-subtitle {
+            font-family: var(--font-sans);
+            font-size: 1.05rem;
+            color: var(--texto-secundario);
+            max-width: 650px;
+            margin: 0.6rem auto 0;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .bento-grid-gallery {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.6rem;
+            margin-top: 2rem;
+        }
+        .bento-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-sutil);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-editorial);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px -8px rgba(43, 33, 29, 0.09);
+            border-color: rgba(43, 33, 29, 0.16);
+        }
+        .bento-card-large {
+            grid-column: span 7;
+            cursor: pointer;
+        }
+        .bento-card-medium {
+            grid-column: span 5;
+            cursor: pointer;
+        }
+        .bento-card-video {
+            grid-column: span 6;
+        }
+        .bento-card:nth-child(4) {
+            grid-column: span 6;
+            cursor: pointer;
+        }
+        @media (max-width: 920px) {
+            .bento-card-large, .bento-card-medium, .bento-card-video, .bento-card:nth-child(4) {
+                grid-column: span 12;
+            }
+        }
+        .bento-image-wrap {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            background: #ECE5DE;
+        }
+        .bento-card-large .bento-image-wrap {
+            height: 320px;
+        }
+        .bento-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .bento-card:hover .bento-img {
+            transform: scale(1.03);
+        }
+        .bento-video-wrap {
+            width: 100%;
+            height: 280px;
+            background: #1A1412;
+            overflow: hidden;
+        }
+        .bento-video-player {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .bento-content {
+            padding: 1.5rem 1.6rem 1.7rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .bento-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            width: fit-content;
+            margin-bottom: 0.8rem;
+        }
+        .bento-badge.menta {
+            background: var(--pastel-menta);
+            color: var(--pastel-menta-deep);
+        }
+        .bento-badge.rosa {
+            background: var(--pastel-rosa);
+            color: var(--pastel-rosa-deep);
+        }
+        .bento-badge.dorado {
+            background: var(--pastel-dorado);
+            color: #8C5D00;
+        }
+        .bento-title {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--texto-principal);
+            line-height: 1.25;
+            margin-bottom: 0.45rem;
+        }
+        .bento-desc {
+            font-family: var(--font-sans);
+            font-size: 0.92rem;
+            line-height: 1.55;
+            color: var(--texto-secundario);
+            margin-bottom: 1rem;
+        }
+        .bento-action-hint {
+            margin-top: auto;
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--pastel-rosa-deep);
+        }
+
+</style></head>
 <body>
 
     <!-- ENCABEZADO / NAVBAR -->
@@ -1195,226 +1544,159 @@
             <li><a href="#galeria-eventos" class="nav-link">Nuestros Eventos</a></li>
             <li><a href="#tarjeta-contacto" class="nav-link">Contacto</a></li>
         </ul>
-        <a href="#arma-tu-banquete" class="btn-turquesa-3d" style="padding: 0.75rem 1.7rem; font-size: 0.95rem;">
+        <a href="#arma-tu-banquete" class="btn-editorial-solid" style="padding: 0.65rem 1.45rem; font-size: 0.92rem;">
             <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             🌮 Armar mi Banquete
         </a>
     </header>
 
-    <!-- HERO: ESCENARIO VISUAL TRADICIONAL DE HACIENDA Y PAPEL PICADO -->
-    <div class="hero-scenic-banner-container" id="inicio">
-        <div class="hero-scenic-card">
-            <img src="img/mexican_folk_hero_banner.jpg" alt="Escenario tradicional mexicano con papel picado y cazuelas" class="hero-scenic-bg-img">
-            <div class="hero-scenic-overlay-gradient"></div>
-            
-            <div class="hero-scenic-content">
-                <div class="hero-pill-badge">
-                    <span>🏺 Auténtico Sabor Casero • León, Guanajuato</span>
+    <!-- HERO: COMPOSICIÓN EDITORIAL ASIMÉTRICA -->
+    <section class="hero-editorial-section" id="inicio">
+        <div class="hero-editorial-container">
+            <!-- Columna Izquierda: Tipografía Refinada y Botones Modernos -->
+            <div class="hero-editorial-left">
+                <div class="hero-editorial-badge">
+                    <span class="badge-dot"></span>
+                    <span>Auténtico Sabor Casero • León, Guanajuato</span>
                 </div>
-
-                <h1 class="hero-scenic-title">
-                    SABORES DE MÉXICO
-                    <span class="cursive-highlight">Sazón y Tradición en Cazuela</span>
+                
+                <h1 class="hero-editorial-title">
+                    Sabores de México
+                    <span class="hero-editorial-title-accent">Sazón y Tradición en Cazuela</span>
                 </h1>
 
-                <p class="hero-scenic-desc">
-                    Llevamos la alegría, el colorido y la calidez de la auténtica fiesta mexicana a tus mejores celebraciones. Cazuelas de barro curadas, tortillas hechas a mano en comal y atención familiar con todo el corazón.
+                <p class="hero-editorial-lead">
+                    Llevamos la calidez y el colorido de la auténtica fiesta mexicana a tus celebraciones más importantes. Cazuelas de barro curadas a fuego lento, tortillas hechas a mano en comal vivo y una atención de familia con todo el corazón.
                 </p>
 
-                <div style="display: flex; gap: 1.2rem; flex-wrap: wrap;">
-                    <a href="#arma-tu-banquete" class="btn-turquesa-3d">
-                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                        🌮 Armar mi Banquete
+                <div class="hero-editorial-actions">
+                    <!-- Botón 1: Sólido -->
+                    <a href="#arma-tu-banquete" class="btn-editorial-solid">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        <span>Armar mi Banquete</span>
                     </a>
-                    <a href="#galeria-real" class="btn-turquesa-3d" style="background: var(--rosa-mexicano); box-shadow: 0 6px 0 var(--rosa-mexicano-dark);">
-                        📸 Ver Fotos Reales & Clientes
+
+                    <!-- Botón 2: Traslúcido Glassmorphism -->
+                    <a href="#galeria-real" class="btn-editorial-glass">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                        <span>Ver Fotos & Video</span>
                     </a>
+                </div>
+
+                <!-- Detalles de Confianza y Calidad -->
+                <div class="hero-editorial-perks">
+                    <div class="hero-perk-item">
+                        <span class="hero-perk-check">✓</span>
+                        <span>Cazuelas de barro curadas</span>
+                    </div>
+                    <div class="hero-perk-item">
+                        <span class="hero-perk-check">✓</span>
+                        <span>Comal & tortillas en vivo</span>
+                    </div>
+                    <div class="hero-perk-item">
+                        <span class="hero-perk-check">✓</span>
+                        <span>Atención 100% personalizada</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna Derecha: Tarjeta Contenedor de Alta Resolución -->
+            <div class="hero-editorial-right">
+                <div class="hero-showcase-frame">
+                    <img src="img/mexican_folk_hero_banner.jpg" alt="Mesa tradicional con cazuelas y sazón en barro curado" class="hero-showcase-image">
+                    
+                    <!-- Tarjeta flotante con efecto glassmorphism -->
+                    <div class="hero-floating-glass-card">
+                        <div class="floating-glass-icon">🏺</div>
+                        <div class="floating-glass-info">
+                            <span class="floating-glass-title">Banquete Tradicional en Vivo</span>
+                            <span class="floating-glass-subtitle">Cazuelas de barro curadas a fuego vivo • León, Gto.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- CONTENEDOR PRINCIPAL -->
     <div class="main-folk-canvas">
 
         <!-- SECCIÓN FUSIONADA: DEL COMAL A TU MESA (CARRETE DE BANQUETE EN VIVO) -->
         <section class="section-folk-block" id="galeria-real">
-            <div class="section-folk-heading" style="margin-bottom: 2rem;">
+            <div class="section-folk-heading">
                 <span class="eyebrow-folk">Del Comal a tu Mesa</span>
                 <h2>Cazuelas Humeantes, Comal Vivo & <span>Momentos de Fiesta</span></h2>
+                <p class="section-editorial-subtitle">
+                    Fotografías reales y video de nuestros eventos. Sabores artesanales, montaje impecable y alegría compartida en familia.
+                </p>
             </div>
 
-            <!-- Carrusel Animado Continuo -->
-            <div class="marquee-carousel-wrapper" id="marqueeWrapper">
-                <div class="marquee-track" id="marqueeTrack">
-                    <!-- FOTO 1 -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.10 (1).jpeg')">
-                        <span class="ribbon-market-tag amarillo">🏺 CAZUELAS</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.10 (1).jpeg" alt="Montaje de cazuelas de barro curadas" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🏺 Montaje de Cazuelas al Fuego</div>
+            <!-- Bento Grid Moderno de 4 Bloques -->
+            <div class="bento-grid-gallery">
+                
+                <!-- BLOQUE 1: CAZUELAS Y BUFFET TRADICIONAL -->
+                <div class="bento-card bento-card-large" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (4).jpeg')">
+                    <div class="bento-image-wrap">
+                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (4).jpeg" alt="Cazuelas de barro calientitas con guisados caseros" class="bento-img" loading="lazy">
                     </div>
-                    <!-- FOTO 2 -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.05.jpeg')">
-                        <span class="ribbon-market-tag verde">🫓 AL COMAL</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05.jpeg" alt="Tortillas hechas a mano en comal en vivo" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🫓 Tortillas al Comal en Vivo</div>
-                    </div>
-                    <!-- FOTO 3 -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg')">
-                        <span class="ribbon-market-tag rosa">🍹 VITROLEROS</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg" alt="Vitroleros y cazuelas calientes" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🍹 Aguas Frescas & Cazuelas</div>
-                    </div>
-                    <!-- FOTO 4 -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg')">
-                        <span class="ribbon-market-tag amarillo">🥑 CHILAQUILES</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg" alt="Chilaquiles tradicionales con aguacate" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🥑 Chilaquiles con Aguacate</div>
-                    </div>
-                    <!-- FOTO 5 -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg')">
-                        <span class="ribbon-market-tag rosa">🥖 TORTAS</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg" alt="Tortas de chilaquiles con huevo" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🥖 Tortas de Chilaquiles</div>
-                    </div>
-                    <!-- FOTO 6 -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.03.jpeg')">
-                        <span class="ribbon-market-tag verde">🍉 FRUTA FRESCA</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.03.jpeg" alt="Charola de fruta fresca picada" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🍉 Charola de Fruta de Temporada</div>
-                    </div>
-                    <!-- FOTO 7 -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.08 (6).jpeg')">
-                        <span class="ribbon-market-tag amarillo">🎉 FIESTAS</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.08 (6).jpeg" alt="Banquetes y taquizas familiares" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🎉 Taquizas en Jardines & Salones</div>
-                    </div>
-                    <!-- FOTO 8 -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.jpeg')">
-                        <span class="ribbon-market-tag verde">👨‍👩‍👧‍👦 FAMILIAS</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.jpeg" alt="Invitados disfrutando del banquete" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">👨‍👩‍👧‍👦 Familias Felices & Satisfechas</div>
-                    </div>
-                    <!-- FOTO 9 -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (4).jpeg')">
-                        <span class="ribbon-market-tag amarillo">🍲 BUFFET</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (4).jpeg" alt="Buffet con cazuelas y letreros" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🍲 Servicio de Buffet Calientito</div>
-                    </div>
-                    <!-- FOTO 10 -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.08 (1).jpeg')">
-                        <span class="ribbon-market-tag rosa">🇲🇽 TRADICIONAL</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.08 (1).jpeg" alt="Montaje con manteles típicos" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🇲🇽 Decoración & Manteles Típicos</div>
-                    </div>
-                    <!-- FOTO 11 -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.09.jpeg')">
-                        <span class="ribbon-market-tag verde">👩‍🍳 ATENCIÓN</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.09.jpeg" alt="Equipo de servicio y comaleras" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">👩‍🍳 Atención Cálida de Familia</div>
-                    </div>
-                    <!-- FOTO 12: GRAN BANQUETE Y BOTARGA -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/ADE1000/ade1000_equipo_botarga.jpg')">
-                        <span class="ribbon-market-tag azul" style="background: var(--talavera-azul); color: #FFF;">🎉 EVENTOS</span>
-                        <img src="FOTOS/ADE1000/ade1000_equipo_botarga.jpg" alt="Celebración y banquete en vivo" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🎉 Fiesta & Banquete en Vivo</div>
-                    </div>
-                    <!-- FOTO 13: ADE 1000 BOTANA Y CUERITOS -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/ADE1000/ade1000_botana_cueritos_duros.jpg')">
-                        <span class="ribbon-market-tag rosa">🌮 BOTANA</span>
-                        <img src="FOTOS/ADE1000/ade1000_botana_cueritos_duros.jpg" alt="Ensalada de cueritos y botana tradicional" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🥗 Ensalada de Cueritos & Duros</div>
-                    </div>
-
-                    <!-- DUPLICADO PARA BUCLE INFINITO CONTINUO -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.10 (1).jpeg')">
-                        <span class="ribbon-market-tag amarillo">🏺 CAZUELAS</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.10 (1).jpeg" alt="Montaje de cazuelas de barro curadas" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🏺 Montaje de Cazuelas al Fuego</div>
-                    </div>
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.05.jpeg')">
-                        <span class="ribbon-market-tag verde">🫓 AL COMAL</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05.jpeg" alt="Tortillas hechas a mano en comal en vivo" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🫓 Tortillas al Comal en Vivo</div>
-                    </div>
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg')">
-                        <span class="ribbon-market-tag rosa">🍹 VITROLEROS</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg" alt="Vitroleros y cazuelas calientes" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🍹 Aguas Frescas & Cazuelas</div>
-                    </div>
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg')">
-                        <span class="ribbon-market-tag amarillo">🥑 CHILAQUILES</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg" alt="Chilaquiles tradicionales con aguacate" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🥑 Chilaquiles con Aguacate</div>
-                    </div>
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg')">
-                        <span class="ribbon-market-tag rosa">🥖 TORTAS</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg" alt="Tortas de chilaquiles con huevo" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🥖 Tortas de Chilaquiles</div>
-                    </div>
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.03.jpeg')">
-                        <span class="ribbon-market-tag verde">🍉 FRUTA FRESCA</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.03.jpeg" alt="Charola de fruta fresca picada" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🍉 Charola de Fruta de Temporada</div>
-                    </div>
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.08 (6).jpeg')">
-                        <span class="ribbon-market-tag amarillo">🎉 FIESTAS</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.08 (6).jpeg" alt="Banquetes y taquizas familiares" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🎉 Taquizas en Jardines & Salones</div>
-                    </div>
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.jpeg')">
-                        <span class="ribbon-market-tag verde">👨‍👩‍👧‍👦 FAMILIAS</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.jpeg" alt="Invitados disfrutando del banquete" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">👨‍👩‍👧‍👦 Familias Felices & Satisfechas</div>
-                    </div>
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (4).jpeg')">
-                        <span class="ribbon-market-tag amarillo">🍲 BUFFET</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (4).jpeg" alt="Buffet con cazuelas y letreros" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🍲 Servicio de Buffet Calientito</div>
-                    </div>
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.08 (1).jpeg')">
-                        <span class="ribbon-market-tag rosa">🇲🇽 TRADICIONAL</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.08 (1).jpeg" alt="Montaje con manteles típicos" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🇲🇽 Decoración & Manteles Típicos</div>
-                    </div>
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.09.jpeg')">
-                        <span class="ribbon-market-tag verde">👩‍🍳 ATENCIÓN</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.09.jpeg" alt="Equipo de servicio y comaleras" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">👩‍🍳 Atención Cálida de Familia</div>
-                    </div>
-                    <!-- DUPLICADO FOTO 12: GRAN BANQUETE Y BOTARGA -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/ADE1000/ade1000_equipo_botarga.jpg')">
-                        <span class="ribbon-market-tag azul" style="background: var(--talavera-azul); color: #FFF;">🎉 EVENTOS</span>
-                        <img src="FOTOS/ADE1000/ade1000_equipo_botarga.jpg" alt="Celebración y banquete en vivo" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🎉 Fiesta & Banquete en Vivo</div>
-                    </div>
-                    <!-- DUPLICADO FOTO 13: ADE 1000 BOTANA Y CUERITOS -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/ADE1000/ade1000_botana_cueritos_duros.jpg')">
-                        <span class="ribbon-market-tag rosa">🌮 BOTANA</span>
-                        <img src="FOTOS/ADE1000/ade1000_botana_cueritos_duros.jpg" alt="Ensalada de cueritos y botana tradicional" class="marquee-photo-img">
-                        <div class="marquee-photo-caption">🥗 Ensalada de Cueritos & Duros</div>
+                    <div class="bento-content">
+                        <div class="bento-badge menta">
+                            <span>🥘 Sazón Tradicional</span>
+                        </div>
+                        <h3 class="bento-title">Cazuelas de Barro Humeantes</h3>
+                        <p class="bento-desc">Guisados caseros cocinados a fuego lento y servidos en cazuelas de barro curadas a la temperatura perfecta para tus invitados.</p>
+                        <span class="bento-action-hint">Ver foto completa ↗</span>
                     </div>
                 </div>
-            </div>
 
-            <!-- Botones de Control Interactivo -->
-            <div class="marquee-controls-row">
-                <button class="marquee-ctrl-btn" onclick="scrollMarquee(-340)" title="Anterior">❮</button>
-                <span style="font-family: var(--font-folk); font-size: 1.05rem; font-weight: 800; color: var(--chocolate-texto);">
-                    ✨ Explora nuestras fotos de eventos reales ✨
-                </span>
-                <button class="marquee-ctrl-btn" onclick="scrollMarquee(340)" title="Siguiente">❯</button>
+                <!-- BLOQUE 2: TORTILLAS AL COMAL EN VIVO -->
+                <div class="bento-card bento-card-medium" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.09.jpeg')">
+                    <div class="bento-image-wrap">
+                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.09.jpeg" alt="Comal vivo con tortillas hechas a mano por comaleras expertas" class="bento-img" loading="lazy">
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-badge dorado">
+                            <span>🫓 Al Comal en Vivo</span>
+                        </div>
+                        <h3 class="bento-title">Tortillas Hechas a Mano</h3>
+                        <p class="bento-desc">Masa de maíz fresco inflada al momento en comal frente a tus invitados por comaleras tradicionales.</p>
+                        <span class="bento-action-hint">Ver foto completa ↗</span>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 3: VIDEO REAL DEL EVENTO EN VIVO -->
+                <div class="bento-card bento-card-video">
+                    <div class="bento-video-wrap">
+                        <video controls playsinline preload="metadata" poster="FOTOS/scene_3_celebration.jpg" class="bento-video-player">
+                            <source src="FOTOS/WhatsApp Video 2026-08-19 at 11.25.45.mp4" type="video/mp4">
+                            Tu navegador no soporta reproducción de video.
+                        </video>
+                    </div>
+                    <div class="bento-content bento-content-video">
+                        <div class="bento-badge rosa">
+                            <span>🎬 Video en Directo</span>
+                        </div>
+                        <h3 class="bento-title">La Experiencia en Movimiento</h3>
+                        <p class="bento-desc">Mira el ambiente festivo, la calidez de nuestro servicio y la presentación de nuestros banquetes en eventos reales.</p>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 4: FAMILIAS Y CELEBRACIONES -->
+                <div class="bento-card bento-card-medium" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.jpeg')">
+                    <div class="bento-image-wrap">
+                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.jpeg" alt="Familias y comensales disfrutando de la comida en su evento" class="bento-img" loading="lazy">
+                    </div>
+                    <div class="bento-content">
+                        <div class="bento-badge menta">
+                            <span>🥂 Celebraciones Inolvidables</span>
+                        </div>
+                        <h3 class="bento-title">Momentos de Fiesta & Familia</h3>
+                        <p class="bento-desc">Bautizos, cumpleaños, bodas y eventos donde consentimos a cada invitado con atención cálida y personal.</p>
+                        <span class="bento-action-hint">Ver foto completa ↗</span>
+                    </div>
+                </div>
+
             </div>
         </section>
-
-        <!-- BANNER BODEGÓN FESTIVO TRADICIONAL -->
-        <div class="festive-flatlay-banner">
-            <img src="img/mexican_folk_festive_footer.jpg" alt="Mesa de banquete tradicional mexicano con cempasuchil y cazuelas">
-            <div class="festive-flatlay-banner-text">
-                <h3>¡El Gran Banquete de Fiesta Mexicana!</h3>
-                <p style="font-size: 1.15rem; font-weight: 700; margin-top: 0.4rem; color: #FFFFFF;">El auténtico sazón de casa cocinado a fuego lento con amor y tradición.</p>
-            </div>
-        </div>
 
         <!-- ==========================================
              2. EL ARMADOR DE BANQUETE UNIFICADO
