@@ -1,7 +1,12 @@
+/**
+ * LA LOLA • BANQUETES & CATERING TRADICIONAL
+ * Script Principal de Interacciones Dinámicas, Cotizador en Vivo y Bento 3D
+ */
+
 (function() {
   'use strict';
 
-  // Catálogo completo de los 32 Guisados del archivo original
+  // 1. Catálogo Completo y Oficial de los 32 Guisados
   const dishes = [
     { name: "Puerco en chile morita", cat: "carnes", icon: "🥩" },
     { name: "Puerco en salsa 3 chiles", cat: "carnes", icon: "🥩" },
@@ -47,38 +52,36 @@
   let guests = 65;
   const selectedDishes = new Set();
   const selectedExtras = new Set();
+  let currentFilter = 'all';
 
   /* ==========================================================================
-     1. RENDER Y GESTIÓN DE LOS 32 GUISADOS EN TIEMPO REAL
+     1. RENDERIZADO DINÁMICO Y FILTRADO DE LOS 32 GUISADOS (#pillsGrid)
      ========================================================================== */
-  function initDishes() {
+  function renderDishes(filter = 'all') {
+    currentFilter = filter;
     const wrap = document.getElementById('pillsGrid');
     if (!wrap) return;
 
-    // Si no hay pastillas renderizadas en el HTML, las inyectamos dinámicamente
-    if (wrap.children.length === 0) {
-      dishes.forEach(d => {
-        const pill = document.createElement('div');
-        pill.className = 'dish-pill';
-        pill.setAttribute('data-category', d.cat);
-        pill.setAttribute('data-name', d.name);
-        pill.innerHTML = `<span>${d.icon}</span> ${d.name}`;
-        wrap.appendChild(pill);
-      });
-    }
+    wrap.innerHTML = '';
 
-    // Vincular listeners a cada pastilla existente
-    const pills = wrap.querySelectorAll('.dish-pill');
-    pills.forEach(pill => {
-      const name = pill.getAttribute('data-name') || pill.textContent.trim().replace(/^[\p{Emoji}\s]+/u, '');
-      pill.onclick = () => toggleDish(name, pill);
+    const list = dishes.filter(d => filter === 'all' || d.cat === filter);
+
+    list.forEach(d => {
+      const pill = document.createElement('div');
+      pill.className = 'dish-pill' + (selectedDishes.has(d.name) ? ' selected' : '');
+      pill.setAttribute('data-category', d.cat);
+      pill.setAttribute('data-name', d.name);
+      pill.innerHTML = `<span>${d.icon}</span> ${d.name}`;
+      
+      pill.addEventListener('click', () => toggleDish(d.name, pill));
+      wrap.appendChild(pill);
     });
   }
 
   function toggleDish(name, el) {
     const max = packages[currentPkg].max;
 
-    // Microanimación de pulsación táctil (scale pop)
+    // Microanimación táctil de pulsación
     if (el) {
       el.classList.add('pop-anim');
       setTimeout(() => el.classList.remove('pop-anim'), 360);
@@ -95,25 +98,14 @@
       selectedDishes.add(name);
       if (el) el.classList.add('selected');
     }
+
     updateSummary();
   }
 
-  // Filtrado en vivo sin destruir el DOM
   window.filterDishes = function(cat, btn) {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
-
-    const pills = document.querySelectorAll('#pillsGrid .dish-pill');
-    pills.forEach(pill => {
-      const pillCat = pill.getAttribute('data-category');
-      if (cat === 'all' || pillCat === cat) {
-        pill.classList.remove('hidden-dish');
-        pill.style.display = 'inline-flex';
-      } else {
-        pill.classList.add('hidden-dish');
-        pill.style.display = 'none';
-      }
-    });
+    renderDishes(cat);
   };
 
   window.choosePackage = function(key) {
@@ -129,11 +121,9 @@
     if (selectedDishes.size > max) {
       const arr = Array.from(selectedDishes);
       while (selectedDishes.size > max) {
-        const removed = arr.pop();
-        selectedDishes.delete(removed);
-        const pill = document.querySelector(`#pillsGrid .dish-pill[data-name="${removed}"]`);
-        if (pill) pill.classList.remove('selected');
+        selectedDishes.delete(arr.pop());
       }
+      renderDishes(currentFilter);
     }
     updateSummary();
   };
@@ -152,16 +142,16 @@
   window.toggleExtra = function(el, name) {
     if (selectedExtras.has(name)) {
       selectedExtras.delete(name);
-      el.classList.remove('selected');
+      if (el) el.classList.remove('selected');
     } else {
       selectedExtras.add(name);
-      el.classList.add('selected');
+      if (el) el.classList.add('selected');
     }
     updateSummary();
   };
 
   /* ==========================================================================
-     2. SHOWCASE INTERACTIVO DE ESPECIALIDADES (#menu) SIN SCROLL
+     2. VISOR INTERACTIVO DE ESPECIALIDADES (#menu) CON TABS Y FADE-IN
      ========================================================================== */
   window.switchSpecialty = function(key, btn) {
     document.querySelectorAll('.spec-tab').forEach(b => b.classList.remove('active'));
@@ -176,7 +166,7 @@
     const activePanel = document.getElementById(`spec-panel-${key}`);
     if (activePanel) {
       activePanel.style.display = 'grid';
-      void activePanel.offsetWidth; // Dispara animación fade & scale
+      void activePanel.offsetWidth; // Forzar reflow para animación fade-in limpia
       activePanel.classList.add('active');
     }
   };
@@ -199,10 +189,10 @@
     // Feedback visual en el botón sin desplazar la pantalla (sin hacer scroll)
     if (btn) {
       const origText = btn.innerHTML;
-      btn.innerHTML = '✓ ¡Agregado a tu Comanda!';
+      btn.innerHTML = '✓ ¡Especialidad Agregada!';
       btn.style.background = 'var(--pastel-menta-deep)';
       btn.style.borderColor = 'var(--pastel-menta-deep)';
-      btn.style.color = '#FFF';
+      btn.style.color = '#FFFFFF';
       setTimeout(() => {
         btn.innerHTML = origText;
         btn.style.background = '';
@@ -215,7 +205,7 @@
   };
 
   /* ==========================================================================
-     CANASTA GOURMET & FEEDBACK INSTANTÁNEO (CONFETTI / DESTELLO MENTA)
+     BARRA DE PROGRESO DE LA CANASTA GOURMET & RESUMEN DE COMANDA
      ========================================================================== */
   function updateBasket(meta) {
     const basket = document.getElementById('gourmetBasket');
@@ -325,10 +315,10 @@
       }
     }
 
-    // Actualizar Canasta Gourmet
+    // Actualizar Barra de Progreso de la Canasta
     updateBasket(meta);
 
-    // Feedback Instantáneo de Menú Completo
+    // Destello de Menú Completo
     const comanda = document.getElementById('stickyComanda');
     const celebrationSlot = document.getElementById('comandaCelebration');
 
@@ -362,7 +352,7 @@
 
     let guisosMsg = selectedDishes.size > 0
       ? '\n\n🍲 *Cazuelas Elegidas (' + selectedDishes.size + ' de ' + meta.max + '):*\n' + Array.from(selectedDishes).map((d, i) => `  ${i + 1}. ${d}`).join('\n')
-      : '\n\n🍲 *Cazuelas:* ' + meta.max + ' cazuelas tradicionales a elegir';
+      : '\n\n🍲 *Cazuelas:* ' + meta.max + ' cazuelas tradicionales a convenir';
 
     let extrasMsg = selectedExtras.size > 0
       ? '\n\n✨ *Especialidades / Extras:*\n' + Array.from(selectedExtras).map(x => `  • ${x}`).join('\n')
@@ -485,7 +475,7 @@
   }
 
   /* ==========================================================================
-     4. BENTO GRID: TILT EFFECT 3D (perspective(1000px) rotateX() rotateY())
+     4. BENTO GRID: INCLINACIÓN 3D AL CURSOR (TILT EFFECT CON MOUSEMOVE / MOUSELEAVE)
      ========================================================================== */
   function initBentoTilt() {
     const cards = document.querySelectorAll('.bento-card');
@@ -501,7 +491,7 @@
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
 
-        // Inclinación 3D precisa con perspective(1000px) rotateX() rotateY()
+        // Inclinación 3D precisa calculando ángulos con mousemove
         const rotateX = -((y - centerY) / centerY) * 10;
         const rotateY = ((x - centerX) / centerX) * 10;
 
@@ -510,6 +500,7 @@
       });
 
       card.addEventListener('mouseleave', () => {
+        // Restablecimiento suave con mouseleave
         card.style.transition = 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)';
         card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
         setTimeout(() => {
@@ -561,16 +552,25 @@
   };
 
   /* ==========================================================================
-     INICIALIZACIÓN ROBUSTA AL CARGAR LA PÁGINA
+     5. EJECUCIÓN TRAS EL EVENTO DOMContentLoaded
      ========================================================================== */
+  let initialized = false;
+
   function init() {
-    initDishes();
+    if (initialized) return;
+    initialized = true;
+
+    // Renderizado dinámico inmediato de los 32 guisados
+    renderDishes('all');
     updateSummary();
+
+    // Efectos escénicos e interacciones
     initHeroParallax();
     initMagneticButtons();
     initBentoTilt();
   }
 
+  // Asegurar ejecución tras DOMContentLoaded
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {

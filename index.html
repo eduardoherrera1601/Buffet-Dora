@@ -216,7 +216,7 @@
         <p class="section-desc">Recetas preparadas con auténtico queso fresco de rancho y sazón leonés hechas con el corazón.</p>
       </div>
 
-      <!-- Selector Minimalista en Tonos Pastel -->
+      <!-- Selector de Especialidades en Estilo Píldora -->
       <div class="specialties-nav-wrap">
         <div class="specialties-tabs" role="tablist" aria-label="Selector de Especialidades">
           <button type="button" class="spec-tab active" data-spec="chilaquiles" onclick="switchSpecialty('chilaquiles', this)">
@@ -226,12 +226,12 @@
             <span class="spec-tab-title">🥖 Las Famosas Tortas</span>
           </button>
           <button type="button" class="spec-tab" data-spec="menudo" onclick="switchSpecialty('menudo', this)">
-            <span class="spec-tab-title">🍲 Menudo de Tornafiesta</span>
+            <span class="spec-tab-title">🍲 Menudo Tradicional</span>
           </button>
         </div>
       </div>
 
-      <!-- Escaparate Interactivo con Transición Fade & Scale -->
+      <!-- Escaparate Interactivo con Transición Fade-In -->
       <div class="specialty-showcase-stage" id="specialtyShowcase">
         
         <!-- Panel 1: Chilaquiles Tradicionales -->
@@ -245,7 +245,7 @@
               <p>2 Proteínas a elegir: Pollo deshebrado, Huevo al gusto, Milanesa dorada o Carne Asada + Bolillo crujiente caliente.</p>
             </div>
             <div class="spec-action-row">
-              <button type="button" class="btn btn-primary btn-glow btn-magnetic" onclick="addSpecialty('Chilaquiles Tradicionales', this)">+ Agregar a la Comanda</button>
+              <button type="button" class="btn btn-primary btn-glow btn-magnetic" onclick="addSpecialty('Chilaquiles Tradicionales', this)">+ Sumar Especialidad a Cotización</button>
               <span class="spec-serving-note">Ideal para desayunos de boda y reuniones</span>
             </div>
           </div>
@@ -265,7 +265,7 @@
               <p>Bolillo artesanal crujiente, frijolitos bayos refritos, crema ácida de rancho, queso fresco rallado y proteína dorada al gusto.</p>
             </div>
             <div class="spec-action-row">
-              <button type="button" class="btn btn-primary btn-glow btn-magnetic" onclick="addSpecialty('Tortas de Chilaquiles', this)">+ Agregar a la Comanda</button>
+              <button type="button" class="btn btn-primary btn-glow btn-magnetic" onclick="addSpecialty('Tortas de Chilaquiles', this)">+ Sumar Especialidad a Cotización</button>
               <span class="spec-serving-note">El favorito de amigos y celebraciones relajadas</span>
             </div>
           </div>
@@ -274,7 +274,7 @@
           </div>
         </article>
 
-        <!-- Panel 3: Menudo de Tornafiesta -->
+        <!-- Panel 3: Menudo Tradicional -->
         <article class="specialty-panel" id="spec-panel-menudo" style="display: none;">
           <div class="spec-panel-content">
             <span class="dish-badge">🍲 Rey de la Tornafiesta</span>
@@ -285,7 +285,7 @@
               <p>Panza suave, pata, callo, libro, panal, bofe y manzana leonesa con orégano silvestre, cebolla picada fresca, limones y tortillas calientes.</p>
             </div>
             <div class="spec-action-row">
-              <button type="button" class="btn btn-primary btn-glow btn-magnetic" onclick="addSpecialty('Menudo Tradicional', this)">+ Agregar a la Comanda</button>
+              <button type="button" class="btn btn-primary btn-glow btn-magnetic" onclick="addSpecialty('Menudo Tradicional', this)">+ Sumar Especialidad a Cotización</button>
               <span class="spec-serving-note">Servicio especial a partir de 30 personas</span>
             </div>
           </div>
@@ -368,47 +368,7 @@
             <button type="button" class="filter-btn" onclick="filterDishes('bases', this)">Bases (4)</button>
           </div>
 
-          <div class="pills-container" id="pillsGrid">
-            <!-- CARNES (12) -->
-            <div class="dish-pill" data-category="carnes" data-name="Puerco en chile morita"><span>🥩</span> Puerco en chile morita</div>
-            <div class="dish-pill" data-category="carnes" data-name="Puerco en salsa 3 chiles"><span>🥩</span> Puerco en salsa 3 chiles</div>
-            <div class="dish-pill" data-category="carnes" data-name="Mole rojo con pollo"><span>🍗</span> Mole rojo con pollo</div>
-            <div class="dish-pill" data-category="carnes" data-name="Mole verde con pollo"><span>🍗</span> Mole verde con pollo</div>
-            <div class="dish-pill" data-category="carnes" data-name="Bistec con nopales"><span>🥩</span> Bistec con nopales</div>
-            <div class="dish-pill" data-category="carnes" data-name="Bistec en chile pasilla"><span>🥩</span> Bistec en chile pasilla</div>
-            <div class="dish-pill" data-category="carnes" data-name="Bistec a la mexicana"><span>🥩</span> Bistec a la mexicana</div>
-            <div class="dish-pill" data-category="carnes" data-name="Pollo a la mexicana"><span>🍗</span> Pollo a la mexicana</div>
-            <div class="dish-pill" data-category="carnes" data-name="Pollo en crema poblano"><span>🍗</span> Pollo en crema poblano</div>
-            <div class="dish-pill" data-category="carnes" data-name="Pollo crema chile güero"><span>🍗</span> Pollo crema chile güero</div>
-            <div class="dish-pill" data-category="carnes" data-name="Carne deshebrada"><span>🥩</span> Carne deshebrada</div>
-            <div class="dish-pill" data-category="carnes" data-name="Picadillo tradicional"><span>🥩</span> Picadillo tradicional</div>
-
-            <!-- ANTOJITOS (9) -->
-            <div class="dish-pill" data-category="antojitos" data-name="Rajas con crema"><span>🌶️</span> Rajas con crema</div>
-            <div class="dish-pill" data-category="antojitos" data-name="Chorizo con papas"><span>🌶️</span> Chorizo con papas</div>
-            <div class="dish-pill" data-category="antojitos" data-name="Chorizo a la mexicana"><span>🌶️</span> Chorizo a la mexicana</div>
-            <div class="dish-pill" data-category="antojitos" data-name="Chicharrón prensado"><span>🥓</span> Chicharrón prensado</div>
-            <div class="dish-pill" data-category="antojitos" data-name="Chicharrón en salsa"><span>🥓</span> Chicharrón en salsa</div>
-            <div class="dish-pill" data-category="antojitos" data-name="Rellena tradicional"><span>🌶️</span> Rellena tradicional</div>
-            <div class="dish-pill" data-category="antojitos" data-name="Salchichas guisadas"><span>🌭</span> Salchichas guisadas</div>
-            <div class="dish-pill" data-category="antojitos" data-name="Huevo con chile molcajete"><span>🍳</span> Huevo con chile molcajete</div>
-            <div class="dish-pill" data-category="antojitos" data-name="Huevo con salchicha"><span>🍳</span> Huevo con salchicha</div>
-
-            <!-- VERDURAS (7) -->
-            <div class="dish-pill" data-category="verduras" data-name="Champiñones a la crema"><span>🍄</span> Champiñones a la crema</div>
-            <div class="dish-pill" data-category="verduras" data-name="Champiñones al ajillo"><span>🍄</span> Champiñones al ajillo</div>
-            <div class="dish-pill" data-category="verduras" data-name="Nopales guisados"><span>🌵</span> Nopales guisados</div>
-            <div class="dish-pill" data-category="verduras" data-name="Nopales en ensalada"><span>🥗</span> Nopales en ensalada</div>
-            <div class="dish-pill" data-category="verduras" data-name="Papas guisadas"><span>🥔</span> Papas guisadas</div>
-            <div class="dish-pill" data-category="verduras" data-name="Papas con nopales"><span>🥔</span> Papas con nopales</div>
-            <div class="dish-pill" data-category="verduras" data-name="Garbanzos guisados"><span>🫘</span> Garbanzos guisados</div>
-
-            <!-- BASES (4) -->
-            <div class="dish-pill" data-category="bases" data-name="Arroz blanco"><span>🍚</span> Arroz blanco</div>
-            <div class="dish-pill" data-category="bases" data-name="Arroz rojo tradicional"><span>🍚</span> Arroz rojo tradicional</div>
-            <div class="dish-pill" data-category="bases" data-name="Frijoles refritos"><span>🫘</span> Frijoles refritos</div>
-            <div class="dish-pill" data-category="bases" data-name="Frijoles de la olla"><span>🫘</span> Frijoles de la olla</div>
-          </div>
+          <div class="pills-container" id="pillsGrid"></div>
 
           <!-- Paso 3 -->
           <div class="step-head">

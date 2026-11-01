@@ -454,7 +454,7 @@
   font-weight: 700;
 }
 
-/* Pastillas de Guisados (.g-pill) */
+/* Pastillas de Guisados (.g-pill & .dish-pill) */
 .pills-container {
   display: flex;
   flex-wrap: wrap;
@@ -462,7 +462,7 @@
   margin-bottom: 36px;
 }
 
-.g-pill {
+.g-pill, .dish-pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -478,16 +478,27 @@
   user-select: none;
 }
 
-.g-pill:hover {
+.g-pill:hover, .dish-pill:hover {
   border-color: rgba(217, 72, 120, 0.4);
   transform: translateY(-1px);
 }
 
-.g-pill.selected {
+.g-pill.selected, .dish-pill.selected {
   background-color: var(--color-pink-primary);
   color: #FFFFFF;
   border-color: var(--color-pink-primary);
   box-shadow: 0 6px 16px -4px rgba(217, 72, 120, 0.45);
+}
+
+.dish-pill.pop-anim {
+  animation: pillPop 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pillPop {
+  0% { transform: scale(1); }
+  35% { transform: scale(0.92); }
+  75% { transform: scale(1.06); }
+  100% { transform: scale(1); }
 }
 
 /* Extras Opcionales (.extra-item) */
