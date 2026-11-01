@@ -5,24 +5,38 @@
 :root {
   /* Paleta de Colores Editorial */
   --color-bg-base: #FAF8F5;            /* Lino marfil cálido editorial */
+  --bg-base: #FAF8F5;
   --color-surface: #FFFFFF;            /* Superficie clara */
+  --bg-surface: #FFFFFF;
   --color-text-main: #241A17;          /* Tinta carbón cálida */
+  --text-main: #241A17;
   --color-text-muted: #6E5D57;         /* Texto secundario y etiquetas */
+  --text-muted: #6E5D57;
 
   /* Acento Rosa Pastel / Mexicano */
-  --color-pink-soft: #FCE8EF;          /* Fondos suaves y pastillas */
-  --color-pink-primary: #D94878;       /* Botones activos y llamados a la acción */
-  --color-pink-hover: #C43867;         /* Estado hover para rosa principal */
+  --color-pink-soft: #FCE8EF;
+  --pastel-rosa: #FCE8EF;
+  --color-pink-primary: #D94878;
+  --pastel-rosa-deep: #D94878;
+  --color-pink-hover: #C43867;
 
   /* Acento Menta Pastel */
-  --color-mint-soft: #D8F3F1;          /* Fondos suaves para detalles */
-  --color-mint-accent: #0D827E;        /* Acentos, confirmaciones y checks */
+  --color-mint-soft: #D8F3F1;
+  --pastel-menta: #D8F3F1;
+  --color-mint-accent: #0D827E;
+  --pastel-menta-deep: #0D827E;
+
+  /* Acento Dorado */
+  --pastel-dorado: #FDF2DB;
+  --pastel-dorado-deep: #B07412;
 
   /* Bordes & Sombras */
   --border-subtle: rgba(36, 26, 23, 0.08);
+  --border-soft: rgba(36, 26, 23, 0.08);
   --border-pink: rgba(217, 72, 120, 0.22);
   --shadow-soft: 0 20px 40px -12px rgba(36, 26, 23, 0.08);
   --shadow-card: 0 24px 50px -16px rgba(36, 26, 23, 0.12), 0 4px 16px rgba(36, 26, 23, 0.04);
+  --shadow-hover: 0 28px 56px -14px rgba(36, 26, 23, 0.16);
   --shadow-btn: 0 10px 24px -6px rgba(217, 72, 120, 0.38);
 
   /* Tipografías */

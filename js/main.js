@@ -1,362 +1,203 @@
-/**
- * LA LOLA • BANQUETES & CATERING TRADICIONAL
- * JavaScript Principal Modular: Navegación, Bento Media & Armador de Banquete
- */
+(function() {
+  'use strict';
 
-// Catálogo Completo de los 32 Guisados
-const GUISADOS_LIST = [
-  // Carnes (12)
-  { id: 'c1', name: 'Puerco en chile morita', cat: 'carnes', icon: '🥩' },
-  { id: 'c2', name: 'Puerco salsa 3 chiles', cat: 'carnes', icon: '🌶️' },
-  { id: 'c3', name: 'Mole rojo con pollo', cat: 'carnes', icon: '🍗' },
-  { id: 'c4', name: 'Mole verde con pollo', cat: 'carnes', icon: '🫑' },
-  { id: 'c5', name: 'Bistec con nopales', cat: 'carnes', icon: '🌵' },
-  { id: 'c6', name: 'Bistec en pasilla', cat: 'carnes', icon: '🥘' },
-  { id: 'c7', name: 'Bistec a la mexicana', cat: 'carnes', icon: '🇲🇽' },
-  { id: 'c8', name: 'Pollo a la mexicana', cat: 'carnes', icon: '🍅' },
-  { id: 'c9', name: 'Pollo crema poblano', cat: 'carnes', icon: '🫑' },
-  { id: 'c10', name: 'Pollo crema chile güero', cat: 'carnes', icon: '🧀' },
-  { id: 'c11', name: 'Carne deshebrada', cat: 'carnes', icon: '🥩' },
-  { id: 'c12', name: 'Picadillo casero', cat: 'carnes', icon: '🍲' },
+  // Catálogo completo de los 32 Guisados del archivo original
+  const dishes = [
+    { name: "Puerco en chile morita", cat: "carnes", icon: "🥩" },
+    { name: "Puerco en salsa 3 chiles", cat: "carnes", icon: "🥩" },
+    { name: "Mole rojo con pollo", cat: "carnes", icon: "🍗" },
+    { name: "Mole verde con pollo", cat: "carnes", icon: "🍗" },
+    { name: "Bistec con nopales", cat: "carnes", icon: "🥩" },
+    { name: "Bistec en chile pasilla", cat: "carnes", icon: "🥩" },
+    { name: "Bistec a la mexicana", cat: "carnes", icon: "🥩" },
+    { name: "Pollo a la mexicana", cat: "carnes", icon: "🍗" },
+    { name: "Pollo en crema poblano", cat: "carnes", icon: "🍗" },
+    { name: "Pollo crema chile güero", cat: "carnes", icon: "🍗" },
+    { name: "Carne deshebrada", cat: "carnes", icon: "🥩" },
+    { name: "Picadillo tradicional", cat: "carnes", icon: "🥩" },
+    { name: "Rajas con crema", cat: "antojitos", icon: "🌶️" },
+    { name: "Chorizo con papas", cat: "antojitos", icon: "🌶️" },
+    { name: "Chorizo a la mexicana", cat: "antojitos", icon: "🌶️" },
+    { name: "Chicharrón prensado", cat: "antojitos", icon: "🥓" },
+    { name: "Chicharrón en salsa", cat: "antojitos", icon: "🥓" },
+    { name: "Rellena tradicional", cat: "antojitos", icon: "🌶️" },
+    { name: "Salchichas guisadas", cat: "antojitos", icon: "🌭" },
+    { name: "Huevo con chile molcajete", cat: "antojitos", icon: "🍳" },
+    { name: "Huevo con salchicha", cat: "antojitos", icon: "🍳" },
+    { name: "Champiñones a la crema", cat: "verduras", icon: "🍄" },
+    { name: "Champiñones al ajillo", cat: "verduras", icon: "🍄" },
+    { name: "Nopales guisados", cat: "verduras", icon: "🌵" },
+    { name: "Nopales en ensalada", cat: "verduras", icon: "🥗" },
+    { name: "Papas guisadas", cat: "verduras", icon: "🥔" },
+    { name: "Papas con nopales", cat: "verduras", icon: "🥔" },
+    { name: "Garbanzos guisados", cat: "verduras", icon: "🫘" },
+    { name: "Arroz blanco", cat: "bases", icon: "🍚" },
+    { name: "Arroz rojo tradicional", cat: "bases", icon: "🍚" },
+    { name: "Frijoles refritos", cat: "bases", icon: "🫘" },
+    { name: "Frijoles de la olla", cat: "bases", icon: "🫘" }
+  ];
 
-  // Antojitos (9)
-  { id: 'a1', name: 'Rajas con crema', cat: 'antojitos', icon: '🌽' },
-  { id: 'a2', name: 'Chorizo con papas', cat: 'antojitos', icon: '🥔' },
-  { id: 'a3', name: 'Chorizo a la mexicana', cat: 'antojitos', icon: '🍳' },
-  { id: 'a4', name: 'Chicharrón prensado', cat: 'antojitos', icon: '🥓' },
-  { id: 'a5', name: 'Chicharrón en salsa', cat: 'antojitos', icon: '🌶️' },
-  { id: 'a6', name: 'Rellena tradicional', cat: 'antojitos', icon: '🥘' },
-  { id: 'a7', name: 'Salchichas guisadas', cat: 'antojitos', icon: '🌭' },
-  { id: 'a8', name: 'Huevo con chile', cat: 'antojitos', icon: '🍳' },
-  { id: 'a9', name: 'Huevo con salchicha', cat: 'antojitos', icon: '🥚' },
-
-  // Verduras (7)
-  { id: 'v1', name: 'Champiñones crema', cat: 'verduras', icon: '🍄' },
-  { id: 'v2', name: 'Champiñones ajillo', cat: 'verduras', icon: '🧄' },
-  { id: 'v3', name: 'Nopales guisados', cat: 'verduras', icon: '🌵' },
-  { id: 'v4', name: 'Nopales ensalada', cat: 'verduras', icon: '🥗' },
-  { id: 'v5', name: 'Papas guisadas', cat: 'verduras', icon: '🥔' },
-  { id: 'v6', name: 'Papas con nopales', cat: 'verduras', icon: '🌵' },
-  { id: 'v7', name: 'Garbanzos guisados', cat: 'verduras', icon: '🥣' },
-
-  // Bases (5)
-  { id: 'b1', name: 'Arroz blanco', cat: 'bases', icon: '🍚' },
-  { id: 'b2', name: 'Arroz rojo', cat: 'bases', icon: '🍚' },
-  { id: 'b3', name: 'Frijoles refritos', cat: 'bases', icon: '🫘' },
-  { id: 'b4', name: 'Frijoles enchilados', cat: 'bases', icon: '🌶️' },
-  { id: 'b5', name: 'Frijoles de la olla', cat: 'bases', icon: '🍲' }
-];
-
-// Configuración de paquetes
-const PACKAGES = {
-  '30-50': {
-    name: 'Paquete Tradicional',
-    cazuelas: 7,
-    benefits: 'Incluye: 7 guisados en cazuela, arroz o frijoles, botana (chicharrón duro, tacos dorados, salsa de jitomate), 1 vitrolero 20L de agua fresca, tortillas calientes.'
-  },
-  '50-80': {
-    name: 'Paquete Fiesta Mexicana',
-    cazuelas: 7,
-    benefits: 'Incluye: 7 guisados, botana con ensalada de cueritos, 2 vitroleros de agua (40L total) y comaleras con tortillas a mano en vivo.'
-  },
-  '80+': {
-    name: 'Gran Banquete',
-    cazuelas: 8,
-    benefits: 'Incluye: 8 guisados (¡1 cazuela más!), botana monumental completa, 2 vitroleros y tortillas a mano o máquina.'
-  }
-};
-
-// Estado global de la comanda
-let currentPackage = '50-80';
-let currentGuests = 65;
-let selectedDishes = new Set();
-let selectedExtras = new Set();
-let currentFilter = 'all';
-
-document.addEventListener('DOMContentLoaded', () => {
-  initHeaderScroll();
-  initSmoothScroll();
-  renderPills();
-  updateSummary();
-});
-
-/* --------------------------------------------------------------------------
-   1. NAVEGACIÓN Y EFECTOS
-   -------------------------------------------------------------------------- */
-function initHeaderScroll() {
-  const header = document.querySelector('.site-header');
-  if (!header) return;
-
-  const handleScroll = () => {
-    if (window.scrollY > 20) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
+  const packages = {
+    '30-50': { name: 'Paquete Tradicional', max: 7, benefits: '7 guisados, botana, 1 vitrolero 20L y tortillas calientes.' },
+    '50-80': { name: 'Paquete Fiesta Mexicana', max: 7, benefits: '7 guisados, botana con ensalada de cueritos, 2 vitroleros (40L) y tortillas a mano en comal.' },
+    '80+': { name: 'Paquete Gran Banquete', max: 8, benefits: '8 guisados (¡1 cazuela más!), botana monumental completa, 2 vitroleros y tortillas a mano o máquina.' }
   };
 
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll();
-}
+  let currentPkg = '50-80';
+  let guests = 65;
+  const selectedDishes = new Set();
+  const selectedExtras = new Set();
 
-function initSmoothScroll() {
-  const anchorLinks = document.querySelectorAll('a[href^="#"]');
+  const wrap = document.getElementById('pillsGrid');
 
-  anchorLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const targetId = link.getAttribute('href');
-      if (!targetId || targetId === '#') return;
-
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        e.preventDefault();
-        targetElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+  function renderDishes(filter = 'all') {
+    if (!wrap) return;
+    wrap.innerHTML = '';
+    dishes.forEach(d => {
+      if (filter === 'all' || d.cat === filter) {
+        const pill = document.createElement('div');
+        pill.className = 'dish-pill' + (selectedDishes.has(d.name) ? ' selected' : '');
+        pill.innerHTML = `<span>${d.icon}</span> ${d.name}`;
+        pill.onclick = () => toggleDish(d.name, pill);
+        wrap.appendChild(pill);
       }
     });
-  });
-}
-
-/* --------------------------------------------------------------------------
-   2. PAQUETES & SLIDER
-   -------------------------------------------------------------------------- */
-window.choosePackage = function(pkgCode) {
-  currentPackage = pkgCode;
-  
-  // Actualizar tarjetas activas
-  document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('active'));
-  const activeCard = document.getElementById(`pkg-${pkgCode}`);
-  if (activeCard) activeCard.classList.add('active');
-
-  // Ajustar slider según paquete seleccionado
-  const slider = document.getElementById('guestSlider');
-  if (slider) {
-    if (pkgCode === '30-50' && (currentGuests < 30 || currentGuests > 50)) {
-      slider.value = 40;
-      onGuestSlider(40);
-    } else if (pkgCode === '50-80' && (currentGuests <= 50 || currentGuests > 80)) {
-      slider.value = 65;
-      onGuestSlider(65);
-    } else if (pkgCode === '80+' && currentGuests <= 80) {
-      slider.value = 120;
-      onGuestSlider(120);
-    }
   }
 
-  // Verificar si las cazuelas exceden el límite
-  validateDishLimit();
-  updateSummary();
-};
-
-window.onGuestSlider = function(val) {
-  currentGuests = parseInt(val, 10);
-  const display = document.getElementById('guestDisplay');
-  if (display) {
-    display.textContent = `${currentGuests >= 350 ? '350+' : currentGuests} Personas`;
-  }
-
-  // Auto-seleccionar paquete según cantidad de invitados
-  let newPkg = currentPackage;
-  if (currentGuests <= 50) {
-    newPkg = '30-50';
-  } else if (currentGuests <= 80) {
-    newPkg = '50-80';
-  } else {
-    newPkg = '80+';
-  }
-
-  if (newPkg !== currentPackage) {
-    currentPackage = newPkg;
-    document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('active'));
-    const targetCard = document.getElementById(`pkg-${newPkg}`);
-    if (targetCard) targetCard.classList.add('active');
-    validateDishLimit();
-  }
-
-  updateSummary();
-};
-
-function getDishLimit() {
-  let limit = PACKAGES[currentPackage].cazuelas;
-  if (selectedExtras.has('Cazuela extra adicional de guisado')) {
-    limit += 1;
-  }
-  return limit;
-}
-
-function validateDishLimit() {
-  const limit = getDishLimit();
-  if (selectedDishes.size > limit) {
-    const arr = Array.from(selectedDishes);
-    selectedDishes = new Set(arr.slice(0, limit));
-    renderPills();
-  }
-}
-
-/* --------------------------------------------------------------------------
-   3. FILTRADO Y SELECCIÓN DE GUISADOS (.g-pill)
-   -------------------------------------------------------------------------- */
-window.filterDishes = function(cat, btn) {
-  currentFilter = cat;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  renderPills();
-};
-
-function renderPills() {
-  const container = document.getElementById('pillsGrid');
-  if (!container) return;
-
-  container.innerHTML = '';
-  const filtered = currentFilter === 'all'
-    ? GUISADOS_LIST
-    : GUISADOS_LIST.filter(g => g.cat === currentFilter);
-
-  filtered.forEach(dish => {
-    const pill = document.createElement('div');
-    const isSelected = selectedDishes.has(dish.name);
-    pill.className = `g-pill ${isSelected ? 'selected' : ''}`;
-    pill.innerHTML = `<span>${dish.icon}</span> <span>${dish.name}</span>`;
-
-    pill.addEventListener('click', () => {
-      toggleDish(dish.name);
-    });
-
-    container.appendChild(pill);
-  });
-
-  updateCounts();
-}
-
-function toggleDish(name) {
-  const limit = getDishLimit();
-  if (selectedDishes.has(name)) {
-    selectedDishes.delete(name);
-  } else {
-    if (selectedDishes.size >= limit) {
-      alert(`Has alcanzado el límite de ${limit} cazuelas para este paquete. Deselecciona una o agrega el extra de "Cazuela Adicional".`);
-      return;
-    }
-    selectedDishes.add(name);
-  }
-  renderPills();
-  updateSummary();
-}
-
-function updateCounts() {
-  const limit = getDishLimit();
-  const cCount = document.getElementById('cCount');
-  const cLimit = document.getElementById('cLimit');
-  if (cCount) cCount.textContent = selectedDishes.size;
-  if (cLimit) cLimit.textContent = limit;
-}
-
-/* --------------------------------------------------------------------------
-   4. EXTRAS & ESPECIALIDADES
-   -------------------------------------------------------------------------- */
-window.toggleExtra = function(elem, extraName) {
-  if (selectedExtras.has(extraName)) {
-    selectedExtras.delete(extraName);
-    elem.classList.remove('selected');
-  } else {
-    selectedExtras.add(extraName);
-    elem.classList.add('selected');
-  }
-
-  validateDishLimit();
-  updateCounts();
-  updateSummary();
-};
-
-window.addSpecialty = function(specialtyName) {
-  // Desplazarse al cotizador
-  const armarSection = document.getElementById('armar');
-  if (armarSection) {
-    armarSection.scrollIntoView({ behavior: 'smooth' });
-  }
-
-  // Buscar si coincide con algún extra
-  document.querySelectorAll('.extra-item').forEach(item => {
-    if (item.textContent.toLowerCase().includes(specialtyName.toLowerCase().slice(0, 8))) {
-      if (!item.classList.contains('selected')) {
-        item.click();
-      }
-    }
-  });
-};
-
-/* --------------------------------------------------------------------------
-   5. RESUMEN COMANDA STICKY & WHATSAPP
-   -------------------------------------------------------------------------- */
-function updateSummary() {
-  const pkg = PACKAGES[currentPackage];
-  const limit = getDishLimit();
-
-  const sumPkg = document.getElementById('sumPkg');
-  const sumGuests = document.getElementById('sumGuests');
-  const sumGuisos = document.getElementById('sumGuisos');
-  const sumList = document.getElementById('sumList');
-  const sumBenefits = document.getElementById('sumBenefits');
-
-  if (sumPkg) sumPkg.textContent = pkg.name;
-  if (sumGuests) sumGuests.textContent = `${currentGuests >= 350 ? '350+' : currentGuests} Personas`;
-  if (sumGuisos) sumGuisos.textContent = `${selectedDishes.size} / ${limit}`;
-  if (sumBenefits) sumBenefits.textContent = pkg.benefits;
-
-  if (sumList) {
-    if (selectedDishes.size === 0) {
-      sumList.innerHTML = '<em>Selecciona tus cazuelas en las pastillas de la izquierda para armar tu menú.</em>';
+  function toggleDish(name, el) {
+    const max = packages[currentPkg].max;
+    if (selectedDishes.has(name)) {
+      selectedDishes.delete(name);
+      el.classList.remove('selected');
     } else {
-      let html = '<ol>';
-      selectedDishes.forEach(d => {
-        html += `<li>${d}</li>`;
-      });
-      html += '</ol>';
-      if (selectedExtras.size > 0) {
-        html += `<div style="margin-top: 10px; font-weight: 600; color: var(--color-pink-primary);">+ Extras: ${Array.from(selectedExtras).join(', ')}</div>`;
+      if (selectedDishes.size >= max) {
+        alert(`Tu paquete incluye hasta ${max} cazuelas. Quita una para cambiarla.`);
+        return;
       }
-      sumList.innerHTML = html;
+      selectedDishes.add(name);
+      el.classList.add('selected');
+    }
+    updateSummary();
+  }
+
+  window.filterDishes = function(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderDishes(cat);
+  };
+
+  window.choosePackage = function(key) {
+    currentPkg = key;
+    document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('active'));
+    const target = document.getElementById(`pkg-${key}`);
+    if (target) target.classList.add('active');
+
+    const max = packages[key].max;
+    const limitEl = document.getElementById('cLimit');
+    if (limitEl) limitEl.textContent = max;
+
+    if (selectedDishes.size > max) {
+      const arr = Array.from(selectedDishes);
+      while (selectedDishes.size > max) selectedDishes.delete(arr.pop());
+      renderDishes();
+    }
+    updateSummary();
+  };
+
+  window.onGuestSlider = function(val) {
+    guests = val;
+    const display = document.getElementById('guestDisplay');
+    if (display) display.textContent = `${val} Personas`;
+
+    if (val <= 50 && currentPkg !== '30-50') window.choosePackage('30-50');
+    else if (val > 50 && val <= 80 && currentPkg !== '50-80') window.choosePackage('50-80');
+    else if (val > 80 && currentPkg !== '80+') window.choosePackage('80+');
+    updateSummary();
+  };
+
+  window.toggleExtra = function(el, name) {
+    if (selectedExtras.has(name)) {
+      selectedExtras.delete(name);
+      el.classList.remove('selected');
+    } else {
+      selectedExtras.add(name);
+      el.classList.add('selected');
+    }
+    updateSummary();
+  };
+
+  window.addSpecialty = function(name) {
+    selectedExtras.add(name);
+    const target = document.getElementById('armar');
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+    updateSummary();
+  };
+
+  function updateSummary() {
+    const meta = packages[currentPkg];
+    const sumPkg = document.getElementById('sumPkg');
+    const sumGuests = document.getElementById('sumGuests');
+    const sumGuisos = document.getElementById('sumGuisos');
+    const cCount = document.getElementById('cCount');
+    const sumBenefits = document.getElementById('sumBenefits');
+    const sumList = document.getElementById('sumList');
+
+    if (sumPkg) sumPkg.textContent = meta.name;
+    if (sumGuests) sumGuests.textContent = `${guests} Personas`;
+    if (sumGuisos) sumGuisos.textContent = `${selectedDishes.size} / ${meta.max}`;
+    if (cCount) cCount.textContent = selectedDishes.size;
+    if (sumBenefits) sumBenefits.textContent = meta.benefits;
+
+    if (sumList) {
+      if (selectedDishes.size === 0) {
+        sumList.innerHTML = '<em>Selecciona tus cazuelas en las pastillas de la izquierda para armar tu menú.</em>';
+      } else {
+        sumList.innerHTML = '<ol>' + Array.from(selectedDishes).map(d => `<li><strong>${d}</strong></li>`).join('') + '</ol>';
+      }
     }
   }
 
-  updateCounts();
-}
+  window.sendToWhatsApp = function(e) {
+    e.preventDefault();
+    const nameEl = document.getElementById('custName');
+    const dateEl = document.getElementById('custDate');
+    const cityEl = document.getElementById('custCity');
 
-window.sendToWhatsApp = function(event) {
-  event.preventDefault();
+    const name = nameEl ? nameEl.value.trim() : '';
+    const date = dateEl ? dateEl.value : '';
+    const city = cityEl ? cityEl.value.trim() : 'León, Gto.';
+    const meta = packages[currentPkg];
 
-  const custName = document.getElementById('custName') ? document.getElementById('custName').value.trim() : '';
-  const custDate = document.getElementById('custDate') ? document.getElementById('custDate').value.trim() : '';
-  const custCity = document.getElementById('custCity') ? document.getElementById('custCity').value.trim() : '';
+    let guisosMsg = selectedDishes.size > 0
+      ? '\n\n🍲 *Cazuelas Elegidas:*\n' + Array.from(selectedDishes).map((d, i) => `  ${i + 1}. ${d}`).join('\n')
+      : '\n\n🍲 *Cazuelas:* ' + meta.max + ' cazuelas a convenir';
 
-  const pkg = PACKAGES[currentPackage];
+    let extrasMsg = selectedExtras.size > 0
+      ? '\n\n✨ *Especialidades Agregadas:*\n' + Array.from(selectedExtras).map(x => `  • ${x}`).join('\n')
+      : '';
 
-  let dishesText = '';
-  if (selectedDishes.size > 0) {
-    let i = 1;
-    selectedDishes.forEach(d => {
-      dishesText += `  ${i}. ${d}%0A`;
-      i++;
-    });
-  } else {
-    dishesText = '  (Por acordar con Claudia)%0A';
-  }
+    const text = `¡Hola Claudia! Me gustaría cotizar un banquete con *La Lola* 🌮🎉\n\n` +
+      `👤 *Nombre:* ${name}\n` +
+      `👥 *Invitados:* ${guests} personas\n` +
+      `📦 *Paquete:* ${meta.name}\n` +
+      `📅 *Fecha:* ${date}\n` +
+      `📍 *Ciudad / Lugar:* ${city}` +
+      guisosMsg + extrasMsg +
+      `\n\n¿Podrías confirmarme disponibilidad de fecha y presupuesto formal? ¡Gracias!`;
 
-  const extrasText = selectedExtras.size > 0 ? Array.from(selectedExtras).join(', ') : 'Ninguno';
+    window.open('https://wa.me/524778020791?text=' + encodeURIComponent(text), '_blank');
+  };
 
-  const msg =
-`¡Hola Claudia! Me gustaría cotizar un banquete con *La Lola*:%0A%0A` +
-`👤 *Cliente:* ${custName}%0A` +
-`📅 *Fecha estimada:* ${custDate}%0A` +
-`📍 *Lugar / Salón:* ${custCity}%0A` +
-`👥 *Invitados:* ${currentGuests >= 350 ? '350+' : currentGuests} personas%0A` +
-`📦 *Paquete:* ${pkg.name}%0A` +
-`🥘 *Cazuelas seleccionadas:*%0A${dishesText}` +
-`✨ *Extras opcionales:* ${extrasText}%0A%0A` +
-`¿Podrías confirmarme disponibilidad y enviarme la cotización formal? ¡Muchas gracias!`;
+  // Header scroll & Smooth anchors
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.site-header');
+    if (header) {
+      if (window.scrollY > 20) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    }
+  }, { passive: true });
 
-  const waUrl = `https://wa.me/524778020791?text=${msg}`;
-  window.open(waUrl, '_blank');
-};
+  // Inicialización
+  renderDishes();
+  updateSummary();
+})();
