@@ -936,6 +936,30 @@
             box-shadow: 0 6px 18px rgba(230, 81, 0, 0.4);
         }
 
+        .btn-preset-guest {
+            background: #FFFFFF;
+            border: 1.5px solid #E6D7C5;
+            border-radius: 20px;
+            padding: 0.28rem 0.85rem;
+            font-family: var(--font-folk);
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: #7A5540;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-preset-guest:hover {
+            border-color: var(--cempasuchil-fuego);
+            color: var(--chocolate-texto);
+        }
+        .btn-preset-guest.active {
+            background: #FFF3E0;
+            border-color: var(--cempasuchil-fuego);
+            color: var(--cempasuchil-fuego);
+            box-shadow: 0 2px 8px rgba(229, 81, 0, 0.2);
+            font-weight: 900;
+        }
+
         .package-badge {
             display: inline-block;
             font-family: var(--font-folk);
@@ -1782,23 +1806,23 @@
                         <div style="display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;">
                             <span style="font-family: var(--font-folk); font-size: 1rem; font-weight: 800; color: var(--chocolate-texto);">👥 Ajustar Invitados:</span>
                             <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
-                                <button type="button" onclick="setGuestsFromPreset(40)" style="background: #FFFFFF; border: 1.5px solid #E6D7C5; border-radius: 20px; padding: 0.25rem 0.75rem; font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; color: #7A5540; cursor: pointer;">40 pers.</button>
-                                <button type="button" onclick="setGuestsFromPreset(70)" style="background: #FFFFFF; border: 1.5px solid var(--rosa-mexicano); border-radius: 20px; padding: 0.25rem 0.75rem; font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; color: var(--rosa-mexicano); cursor: pointer;">⭐ 70 pers.</button>
-                                <button type="button" onclick="setGuestsFromPreset(100)" style="background: #FFFFFF; border: 1.5px solid #E6D7C5; border-radius: 20px; padding: 0.25rem 0.75rem; font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; color: #7A5540; cursor: pointer;">100 pers.</button>
-                                <button type="button" onclick="setGuestsFromPreset(150)" style="background: #FFFFFF; border: 1.5px solid #E6D7C5; border-radius: 20px; padding: 0.25rem 0.75rem; font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; color: #7A5540; cursor: pointer;">150 pers.</button>
+                                <button type="button" class="btn-preset-guest" data-guests="40" onclick="setGuestsFromPreset(40)">40 pers.</button>
+                                <button type="button" class="btn-preset-guest active" data-guests="70" onclick="setGuestsFromPreset(70)">70 pers.</button>
+                                <button type="button" class="btn-preset-guest" data-guests="100" onclick="setGuestsFromPreset(100)">100 pers.</button>
+                                <button type="button" class="btn-preset-guest" data-guests="150" onclick="setGuestsFromPreset(150)">150 pers.</button>
                             </div>
                         </div>
-                        <span id="sliderGuestCountDisplay" style="font-family: var(--font-title); font-size: 2.2rem; font-weight: 900; color: var(--rosa-mexicano);">70 Personas</span>
+                        <span id="sliderGuestCountDisplay" style="font-family: var(--font-title); font-size: 2.2rem; font-weight: 900; color: var(--chocolate-texto);">70 Personas</span>
                     </div>
 
                     <!-- Range input calibrado de 10 en 10: 30 a 150 (indices 0 a 12) -->
-                    <input type="range" id="mainGuestSlider" min="0" max="12" step="1" value="4" oninput="handleSliderIndexChange(this.value)" style="width: 100%; height: 10px; accent-color: var(--rosa-mexicano); cursor: pointer;">
+                    <input type="range" id="mainGuestSlider" min="0" max="12" step="1" value="4" oninput="handleSliderIndexChange(this.value)" style="width: 100%; height: 10px; accent-color: var(--cempasuchil-fuego); cursor: pointer;">
                     
                     <!-- Marcadores alineados con escala exacta de 10 en 10 -->
                     <div style="position: relative; width: 100%; height: 26px; margin-top: 0.5rem; font-family: var(--font-folk); font-size: 0.82rem; font-weight: 800;">
                         <span style="position: absolute; left: 0%; transform: translateX(0); color: #7A5540;">30 pers.</span>
                         <span style="position: absolute; left: 16.67%; transform: translateX(-50%); color: var(--talavera-azul);">50</span>
-                        <span style="position: absolute; left: 41.67%; transform: translateX(-50%); color: var(--rosa-mexicano);">⭐ 80</span>
+                        <span style="position: absolute; left: 41.67%; transform: translateX(-50%); color: var(--talavera-azul);">80</span>
                         <span style="position: absolute; left: 58.33%; transform: translateX(-50%); color: var(--talavera-azul);">100</span>
                         <span style="position: absolute; right: 0%; transform: translateX(0); color: #7A5540;">150 pers.</span>
                     </div>
@@ -1840,7 +1864,6 @@
 
                     <!-- PAQUETE 2: 50 A 80 (DESTACADO & ACTIVO POR DEFECTO) -->
                     <div class="package-card featured selected-active" id="card-pkg-50-80" onclick="choosePackage('50-80')">
-                        <span class="package-ribbon-featured">⭐ MÁS POPULAR</span>
                         <div class="package-selected-marker">✓ PAQUETE SELECCIONADO</div>
                         <div>
                             <span class="package-badge rosa">Fiestas & Celebraciones</span>
@@ -1920,7 +1943,7 @@
             <div class="step-block" id="paso-2">
                 <span class="step-badge">Paso 2 de 4</span>
                 <h3 class="step-title">Selecciona tus Guisados en Cazuela de Barro</h3>
-                <p class="step-desc">Tu paquete seleccionado te permite elegir hasta <strong id="maxGuisadosLabel" style="color: var(--rosa-mexicano); font-size: 1.15rem;">7 guisados</strong> incluidos. Haz clic en las fichas para armar tu cazuelero.</p>
+                <p class="step-desc">Tu paquete seleccionado te permite elegir hasta <strong id="maxGuisadosLabel" style="color: var(--chocolate-texto); font-size: 1.15rem;">7 guisados</strong> incluidos. Haz clic en las fichas para armar tu cazuelero.</p>
 
                 <!-- Barra de Progreso y Contador Dinámico -->
                 <div class="guisado-progress-box">
@@ -2081,7 +2104,7 @@
                             </div>
                             <div style="text-align: right;">
                                 <span style="font-family: var(--font-folk); font-size: 0.9rem; font-weight: 700; color: #7A6251;">Capacidad estimada:</span>
-                                <div style="font-family: var(--font-title); font-size: 1.7rem; font-weight: 900; color: var(--rosa-mexicano);" id="summaryGuestCount">65 Personas</div>
+                                <div style="font-family: var(--font-title); font-size: 1.7rem; font-weight: 900; color: var(--chocolate-texto);" id="summaryGuestCount">70 Personas</div>
                             </div>
                         </div>
 
@@ -2385,6 +2408,16 @@
                 sliderGuestDisplay.textContent = val + ' Personas';
             }
             if (slider) slider.value = idx;
+
+            // Sincronizar estado visual de los botones de presets de invitados
+            document.querySelectorAll('.btn-preset-guest').forEach(btn => {
+                const bVal = parseInt(btn.dataset.guests, 10);
+                if (bVal === val) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
 
             if (val <= 50) {
                 if (currentPackage !== '30-50') window.choosePackage('30-50', false);
