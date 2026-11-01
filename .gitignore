@@ -2,6 +2,7 @@
 Nueva carpeta/
 *.zip
 *.bak
+*.bat
 
 # Archivos del sistema
 Thumbs.db
