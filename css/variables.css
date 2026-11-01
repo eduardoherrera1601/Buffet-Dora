@@ -3,11 +3,11 @@
    ========================================================================== */
 
 :root {
-  /* Paleta de Colores Editorial */
-  --color-bg-base: #FAF8F5;            /* Lino marfil cálido editorial */
-  --bg-base: #FAF8F5;
-  --color-surface: #FFFFFF;            /* Superficie clara */
-  --bg-surface: #FFFFFF;
+  /* Paleta de Colores Editorial Marfil / Lino Orgánico */
+  --color-bg-base: #F5EFEB;            /* Lino marfil orgánico de autor */
+  --bg-base: #F5EFEB;
+  --color-surface: #FCFAF7;            /* Superficie pergamino claro */
+  --bg-surface: #FCFAF7;
   --color-text-main: #241A17;          /* Tinta carbón cálida */
   --text-main: #241A17;
   --color-text-muted: #6E5D57;         /* Texto secundario y etiquetas */
