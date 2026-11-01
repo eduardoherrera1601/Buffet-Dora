@@ -1,160 +1,195 @@
 /**
  * LA LOLA • BANQUETES & CATERING TRADICIONAL
- * Script Principal de Scrollytelling, Visor de Especialidades y Menú de Degustación
+ * Script Principal de Interacciones Dinámicas, Cotizador en Vivo y Bento 3D
  */
 
 (function() {
   'use strict';
 
-  // Configuración de los 3 Paquetes
+  // 1. Catálogo Completo y Oficial de los 32 Guisados
+  const dishes = [
+    { name: "Puerco en chile morita", cat: "carnes", icon: "🥩" },
+    { name: "Puerco en salsa 3 chiles", cat: "carnes", icon: "🥩" },
+    { name: "Mole rojo con pollo", cat: "carnes", icon: "🍗" },
+    { name: "Mole verde con pollo", cat: "carnes", icon: "🍗" },
+    { name: "Bistec con nopales", cat: "carnes", icon: "🥩" },
+    { name: "Bistec en chile pasilla", cat: "carnes", icon: "🥩" },
+    { name: "Bistec a la mexicana", cat: "carnes", icon: "🥩" },
+    { name: "Pollo a la mexicana", cat: "carnes", icon: "🍗" },
+    { name: "Pollo en crema poblano", cat: "carnes", icon: "🍗" },
+    { name: "Pollo crema chile güero", cat: "carnes", icon: "🍗" },
+    { name: "Carne deshebrada", cat: "carnes", icon: "🥩" },
+    { name: "Picadillo tradicional", cat: "carnes", icon: "🥩" },
+    { name: "Rajas con crema", cat: "antojitos", icon: "🌶️" },
+    { name: "Chorizo con papas", cat: "antojitos", icon: "🌶️" },
+    { name: "Chorizo a la mexicana", cat: "antojitos", icon: "🌶️" },
+    { name: "Chicharrón prensado", cat: "antojitos", icon: "🥓" },
+    { name: "Chicharrón en salsa", cat: "antojitos", icon: "🥓" },
+    { name: "Rellena tradicional", cat: "antojitos", icon: "🌶️" },
+    { name: "Salchichas guisadas", cat: "antojitos", icon: "🌭" },
+    { name: "Huevo con chile molcajete", cat: "antojitos", icon: "🍳" },
+    { name: "Huevo con salchicha", cat: "antojitos", icon: "🍳" },
+    { name: "Champiñones a la crema", cat: "verduras", icon: "🍄" },
+    { name: "Champiñones al ajillo", cat: "verduras", icon: "🍄" },
+    { name: "Nopales guisados", cat: "verduras", icon: "🌵" },
+    { name: "Nopales en ensalada", cat: "verduras", icon: "🥗" },
+    { name: "Papas guisadas", cat: "verduras", icon: "🥔" },
+    { name: "Papas con nopales", cat: "verduras", icon: "🥔" },
+    { name: "Garbanzos guisados", cat: "verduras", icon: "🫘" },
+    { name: "Arroz blanco", cat: "bases", icon: "🍚" },
+    { name: "Arroz rojo tradicional", cat: "bases", icon: "🍚" },
+    { name: "Frijoles refritos", cat: "bases", icon: "🫘" },
+    { name: "Frijoles de la olla", cat: "bases", icon: "🫘" }
+  ];
+
   const packages = {
-    '30-50': { 
-      name: 'Paquete Tradicional', 
-      max: 7, 
-      range: '30 a 50 personas',
-      perks: '7 guisados calientes, botana tradicional de rancho, 1 vitrolero de agua fresca natural (20L) y tortillas calientes al momento.' 
-    },
-    '50-80': { 
-      name: 'Paquete Fiesta Mexicana', 
-      max: 7, 
-      range: '50 a 80 personas',
-      perks: '7 guisados calientes, botana tradicional con ensalada de cueritos, 2 vitroleros de agua fresca natural (40L) y tortillas a mano en comal vivo.' 
-    },
-    '80+': { 
-      name: 'Paquete Gran Banquete', 
-      max: 8, 
-      range: '80+ personas',
-      perks: '8 guisados calientes (¡1 cazuela más!), botana monumental completa, 2 vitroleros de agua natural (40L) y servicio continuo en comal.' 
-    }
+    '30-50': { name: 'Paquete Tradicional', max: 7, benefits: '7 guisados, botana, 1 vitrolero 20L y tortillas calientes.' },
+    '50-80': { name: 'Paquete Fiesta Mexicana', max: 7, benefits: '7 guisados, botana con ensalada de cueritos, 2 vitroleros (40L) y tortillas a mano en comal.' },
+    '80+': { name: 'Paquete Gran Banquete', max: 8, benefits: '8 guisados (¡1 cazuela más!), botana monumental completa, 2 vitroleros y tortillas a mano o máquina.' }
   };
 
-  let currentPkgKey = '50-80';
-  let guestCount = 65;
+  let currentPkg = '50-80';
+  let guests = 65;
   const selectedDishes = new Set();
-  const selectedSpecialties = new Set();
+  const selectedExtras = new Set();
+  let currentFilter = 'all';
 
   /* ==========================================================================
-     1. SCROLLYTELLING EN PANTALLA COMPLETA (#historia)
+     1. RENDERIZADO DINÁMICO Y FILTRADO DE LOS 32 GUISADOS (#pillsGrid)
      ========================================================================== */
-  function initScrollytelling() {
-    const container = document.getElementById('historia');
-    const stage = document.getElementById('scrollyStage');
-    const layers = [
-      document.getElementById('layer-0'),
-      document.getElementById('layer-1'),
-      document.getElementById('layer-2')
-    ];
-    const medias = [
-      document.getElementById('media-0'),
-      document.getElementById('media-1'),
-      document.getElementById('media-2')
-    ];
-    const dots = [
-      document.getElementById('dot-0'),
-      document.getElementById('dot-1'),
-      document.getElementById('dot-2')
-    ];
+  function renderDishes(filter = 'all') {
+    currentFilter = filter;
+    const wrap = document.getElementById('pillsGrid');
+    if (!wrap) return;
 
-    if (!container || !stage) return;
+    wrap.innerHTML = '';
 
-    let currentStep = -1;
-    let ticking = false;
+    const list = dishes.filter(d => filter === 'all' || d.cat === filter);
 
-    function handleScroll() {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          updateScrollyProgress();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }
-
-    function updateScrollyProgress() {
-      const rect = container.getBoundingClientRect();
-      const totalScrollable = container.offsetHeight - window.innerHeight;
-
-      if (totalScrollable <= 0) return;
-
-      // Progreso normalizado de 0 a 1
-      const rawProgress = -rect.top / totalScrollable;
-      const progress = Math.min(Math.max(rawProgress, 0), 1);
-
-      // 0% - 33%: Capa 0 | 34% - 66%: Capa 1 | 67% - 100%: Capa 2
-      let activeStep = 0;
-      if (progress > 0.66) {
-        activeStep = 2;
-      } else if (progress > 0.33) {
-        activeStep = 1;
-      } else {
-        activeStep = 0;
-      }
-
-      if (activeStep !== currentStep) {
-        currentStep = activeStep;
-        applyStep(activeStep);
-      }
-    }
-
-    function applyStep(step) {
-      // Alternar medios derechos
-      medias.forEach((m, idx) => {
-        if (!m) return;
-        if (idx === step) m.classList.add('active');
-        else m.classList.remove('active');
-      });
-
-      // Alternar textos sincronizados izquierdos
-      layers.forEach((l, idx) => {
-        if (!l) return;
-        if (idx === step) l.classList.add('active');
-        else l.classList.remove('active');
-      });
-
-      // Alternar puntos de progreso
-      dots.forEach((d, idx) => {
-        if (!d) return;
-        if (idx === step) d.classList.add('active');
-        else d.classList.remove('active');
-      });
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    updateScrollyProgress();
+    list.forEach(d => {
+      const pill = document.createElement('div');
+      pill.className = 'dish-pill' + (selectedDishes.has(d.name) ? ' selected' : '');
+      pill.setAttribute('data-category', d.cat);
+      pill.setAttribute('data-name', d.name);
+      pill.innerHTML = `<span>${d.icon}</span> ${d.name}`;
+      
+      pill.addEventListener('click', () => toggleDish(d.name, pill));
+      wrap.appendChild(pill);
+    });
   }
 
-  /* ==========================================================================
-     2. ESPECIALIDADES DE LA CASA (VISOR INTERACTIVO SHOWCASE TABS)
-     ========================================================================== */
-  window.switchSpecialtyTab = function(key, btn) {
-    document.querySelectorAll('.spec-tab, .spec-tab-btn').forEach(b => b.classList.remove('active'));
-    if (btn) {
-      btn.classList.add('active');
-    } else {
-      const match = document.querySelector(`.spec-tab[data-target="${key}"], .spec-tab-btn[data-target="${key}"]`);
-      if (match) match.classList.add('active');
+  function toggleDish(name, el) {
+    const max = packages[currentPkg].max;
+
+    // Microanimación táctil de pulsación
+    if (el) {
+      el.classList.add('pop-anim');
+      setTimeout(() => el.classList.remove('pop-anim'), 360);
     }
 
-    const views = document.querySelectorAll('.specialty-panel-view');
-    views.forEach(v => {
-      v.classList.remove('active');
-      v.style.display = 'none';
+    if (selectedDishes.has(name)) {
+      selectedDishes.delete(name);
+      if (el) el.classList.remove('selected');
+    } else {
+      if (selectedDishes.size >= max) {
+        alert(`Tu paquete incluye hasta ${max} cazuelas. Quita una para elegir otra.`);
+        return;
+      }
+      selectedDishes.add(name);
+      if (el) el.classList.add('selected');
+    }
+
+    updateSummary();
+  }
+
+  window.filterDishes = function(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    renderDishes(cat);
+  };
+
+  window.choosePackage = function(key) {
+    currentPkg = key;
+    document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('active'));
+    const target = document.getElementById(`pkg-${key}`);
+    if (target) target.classList.add('active');
+
+    const max = packages[key].max;
+    const limitEl = document.getElementById('cLimit');
+    if (limitEl) limitEl.textContent = max;
+
+    if (selectedDishes.size > max) {
+      const arr = Array.from(selectedDishes);
+      while (selectedDishes.size > max) {
+        selectedDishes.delete(arr.pop());
+      }
+      renderDishes(currentFilter);
+    }
+    updateSummary();
+  };
+
+  window.onGuestSlider = function(val) {
+    guests = val;
+    const display = document.getElementById('guestDisplay');
+    if (display) display.textContent = `${val} Personas`;
+
+    if (val <= 50 && currentPkg !== '30-50') window.choosePackage('30-50');
+    else if (val > 50 && val <= 80 && currentPkg !== '50-80') window.choosePackage('50-80');
+    else if (val > 80 && currentPkg !== '80+') window.choosePackage('80+');
+    updateSummary();
+  };
+
+  window.toggleExtra = function(el, name) {
+    if (selectedExtras.has(name)) {
+      selectedExtras.delete(name);
+      if (el) el.classList.remove('selected');
+    } else {
+      selectedExtras.add(name);
+      if (el) el.classList.add('selected');
+    }
+    updateSummary();
+  };
+
+  /* ==========================================================================
+     2. VISOR INTERACTIVO DE ESPECIALIDADES (#menu) CON TABS Y FADE-IN
+     ========================================================================== */
+  window.switchSpecialty = function(key, btn) {
+    document.querySelectorAll('.spec-tab').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    const panels = document.querySelectorAll('.specialty-panel');
+    panels.forEach(p => {
+      p.classList.remove('active');
+      p.style.display = 'none';
     });
 
-    const activeView = document.getElementById(`spec-view-${key}`);
-    if (activeView) {
-      activeView.style.display = 'grid';
-      void activeView.offsetWidth; // Forzar reflow para disparo suave de fade-in
-      activeView.classList.add('active');
+    const activePanel = document.getElementById(`spec-panel-${key}`);
+    if (activePanel) {
+      activePanel.style.display = 'grid';
+      void activePanel.offsetWidth; // Forzar reflow para animación fade-in limpia
+      activePanel.classList.add('active');
     }
   };
 
-  window.addSpecialtyToOrder = function(name, btn) {
-    selectedSpecialties.add(name);
+  window.addSpecialty = function(name, btn) {
+    selectedExtras.add(name);
 
+    // Sincronizar visualmente con las tarjetas de extras en el cotizador
+    document.querySelectorAll('.extra-item').forEach(item => {
+      const text = item.textContent.toLowerCase();
+      if (
+        (name.includes('Chilaquiles') && text.includes('chilaquiles')) ||
+        (name.includes('Tortas') && text.includes('tortas')) ||
+        (name.includes('Menudo') && text.includes('menudo'))
+      ) {
+        item.classList.add('selected');
+      }
+    });
+
+    // Feedback visual en el botón sin desplazar la pantalla (sin hacer scroll)
     if (btn) {
       const origText = btn.innerHTML;
-      btn.innerHTML = '✓ ¡Agregado a tu Cotización!';
+      btn.innerHTML = '✓ ¡Especialidad Agregada!';
       btn.style.background = 'var(--pastel-menta-deep)';
       btn.style.borderColor = 'var(--pastel-menta-deep)';
       btn.style.color = '#FFFFFF';
@@ -166,269 +201,379 @@
       }, 2200);
     }
 
-    updateComandaUI();
+    updateSummary();
   };
 
   /* ==========================================================================
-     3. FILTRADO Y SELECCIÓN DEL MENÚ DE DEGUSTACIÓN (#degustacion)
+     BARRA DE PROGRESO DE LA CANASTA GOURMET & RESUMEN DE COMANDA
      ========================================================================== */
-  window.applyDishCategoryFilter = function(cat, btn) {
-    document.querySelectorAll('.filter-btn, .cat-filter-btn').forEach(b => b.classList.remove('active'));
-    if (btn) {
-      btn.classList.add('active');
-    } else {
-      const match = document.querySelector(`.filter-btn[data-filter="${cat}"], .cat-filter-btn[data-filter="${cat}"]`);
-      if (match) match.classList.add('active');
-    }
+  function updateBasket(meta) {
+    const basket = document.getElementById('gourmetBasket');
+    const bar = document.getElementById('basketProgressBar');
+    const title = document.getElementById('basketTitle');
+    const subtitle = document.getElementById('basketSubtitle');
+    const icon = document.getElementById('basketIcon');
 
-    const dishes = document.querySelectorAll('#tastingDishesContainer .dish-entry');
-    dishes.forEach(dish => {
-      const dishCat = dish.getAttribute('data-category');
-      if (cat === 'all' || dishCat === cat) {
-        dish.style.display = 'flex';
-      } else {
-        dish.style.display = 'none';
-      }
-    });
-  };
-
-  window.toggleDishSelection = function(name, rowEl) {
-    const max = packages[currentPkgKey].max;
-    const warningEl = document.getElementById('limitNoticeMsg');
-
-    if (selectedDishes.has(name)) {
-      selectedDishes.delete(name);
-      if (rowEl) {
-        rowEl.classList.remove('selected');
-        const sign = rowEl.querySelector('.dish-entry-sign');
-        if (sign) sign.textContent = '+';
-      }
-      if (warningEl) warningEl.style.display = 'none';
-    } else {
-      if (selectedDishes.size >= max) {
-        if (warningEl) {
-          warningEl.style.display = 'block';
-          warningEl.textContent = `Has alcanzado el límite de ${max} cazuelas de tu paquete. Quita una para elegir otra.`;
-          setTimeout(() => {
-            if (warningEl) warningEl.style.display = 'none';
-          }, 3500);
-        }
-        return;
-      }
-
-      selectedDishes.add(name);
-      if (rowEl) {
-        rowEl.classList.add('selected');
-        const sign = rowEl.querySelector('.dish-entry-sign');
-        if (sign) sign.textContent = '✕';
-      }
-      if (warningEl) warningEl.style.display = 'none';
-    }
-
-    updateComandaUI();
-  };
-
-  /* ==========================================================================
-     4. COMANDA LATERAL & LÓGICA DE PAQUETES
-     ========================================================================== */
-  window.choosePackagePlan = function(pkgKey) {
-    currentPkgKey = pkgKey;
-    document.querySelectorAll('.pkg-nav-btn').forEach(b => b.classList.remove('active'));
-    
-    const targetBtn = document.getElementById(`btn-pkg-${pkgKey}`);
-    if (targetBtn) targetBtn.classList.add('active');
-
-    const pkg = packages[pkgKey];
-    const max = pkg.max;
-    
-    const maxDisplay = document.getElementById('pkgLimitMaxDisplay');
-    if (maxDisplay) maxDisplay.textContent = `${max} Cazuelas`;
-
-    const perksBox = document.getElementById('comandaPerksBox');
-    if (perksBox) {
-      perksBox.innerHTML = `<strong>Incluye:</strong> ${pkg.perks}`;
-    }
-
-    // Si se redujo el límite y hay más guisados seleccionados
-    if (selectedDishes.size > max) {
-      const arr = Array.from(selectedDishes);
-      while (selectedDishes.size > max) {
-        const removed = arr.pop();
-        selectedDishes.delete(removed);
-        const row = document.querySelector(`.dish-entry[data-name="${removed}"]`);
-        if (row) {
-          row.classList.remove('selected');
-          const sign = row.querySelector('.dish-entry-sign');
-          if (sign) sign.textContent = '+';
-        }
-      }
-    }
-
-    updateComandaUI();
-  };
-
-  window.handleGuestSlider = function(val) {
-    guestCount = parseInt(val, 10);
-    const label = document.getElementById('guestCountLabel');
-    if (label) label.textContent = `${val} Personas`;
-
-    // Sincronización automática de paquete sugerido
-    if (guestCount <= 50 && currentPkgKey !== '30-50') {
-      window.choosePackagePlan('30-50');
-    } else if (guestCount > 50 && guestCount <= 80 && currentPkgKey !== '50-80') {
-      window.choosePackagePlan('50-80');
-    } else if (guestCount > 80 && currentPkgKey !== '80+') {
-      window.choosePackagePlan('80+');
-    }
-
-    updateComandaUI();
-  };
-
-  window.removeDishFromOrder = function(name) {
-    if (selectedDishes.has(name)) {
-      selectedDishes.delete(name);
-      const row = document.querySelector(`.dish-entry[data-name="${name}"]`);
-      if (row) {
-        row.classList.remove('selected');
-        const sign = row.querySelector('.dish-entry-sign');
-        if (sign) sign.textContent = '+';
-      }
-      updateComandaUI();
-    }
-  };
-
-  function updateComandaUI() {
-    const pkg = packages[currentPkgKey];
-    const counter = document.getElementById('comandaDishesCounter');
-    const bar = document.getElementById('comandaProgressBar');
-    const listUl = document.getElementById('comandaSelectedUl');
+    if (!basket || !bar) return;
 
     const count = selectedDishes.size;
-    const max = pkg.max;
+    const max = meta.max;
+    const remaining = Math.max(0, max - count);
+    const percent = Math.min(100, Math.round((count / max) * 100));
 
-    if (counter) counter.textContent = `${count} de ${max}`;
+    bar.style.width = `${percent}%`;
 
-    if (bar) {
-      const percent = Math.min(100, Math.round((count / max) * 100));
-      bar.style.width = `${percent}%`;
-    }
-
-    if (listUl) {
-      if (selectedDishes.size === 0 && selectedSpecialties.size === 0) {
-        listUl.innerHTML = `<li class="comanda-empty-notice">Selecciona tus platillos en el menú de degustación a la izquierda.</li>`;
-      } else {
-        listUl.innerHTML = '';
-
-        // Guisados en Cursiva Elegante
-        let idx = 1;
-        selectedDishes.forEach(name => {
-          const li = document.createElement('li');
-          li.innerHTML = `
-            <span>${idx < 10 ? '0' + idx : idx}. <em>${name}</em></span>
-            <button type="button" class="comanda-remove-item-btn" title="Quitar cazuela" onclick="removeDishFromOrder('${name}')">✕</button>
-          `;
-          listUl.appendChild(li);
-          idx++;
-        });
-
-        // Especialidades agregadas
-        selectedSpecialties.forEach(sp => {
-          const li = document.createElement('li');
-          li.style.color = 'var(--pastel-menta-deep)';
-          li.innerHTML = `
-            <span>✨ <em>${sp}</em></span>
-            <button type="button" class="comanda-remove-item-btn" title="Quitar especialidad" onclick="removeSpecialtyFromOrder('${sp}')">✕</button>
-          `;
-          listUl.appendChild(li);
-        });
-      }
+    if (count === 0) {
+      if (title) title.textContent = 'Canasta Gourmet en Vivo';
+      if (subtitle) subtitle.textContent = `Te faltan ${max} cazuelas para completar tu paquete`;
+      if (icon) icon.textContent = '🧺';
+      basket.classList.remove('complete');
+    } else if (remaining > 0) {
+      if (title) title.textContent = `Canasta Gourmet (${count} de ${max})`;
+      if (subtitle) subtitle.textContent = `Te falta${remaining > 1 ? 'n' : ''} ${remaining} cazuela${remaining > 1 ? 's' : ''} por elegir`;
+      if (icon) icon.textContent = '🥘';
+      basket.classList.remove('complete');
+    } else {
+      if (title) title.textContent = `¡Canasta Completa! (${max} de ${max})`;
+      if (subtitle) subtitle.textContent = `Has seleccionado todas las cazuelas de tu ${meta.name}`;
+      if (icon) icon.textContent = '🎉';
+      basket.classList.add('complete');
     }
   }
 
-  window.removeSpecialtyFromOrder = function(sp) {
-    selectedSpecialties.delete(sp);
-    updateComandaUI();
-  };
+  function triggerConfetti() {
+    const comanda = document.getElementById('stickyComanda');
+    if (!comanda) return;
+
+    const colors = ['#0D827E', '#D94878', '#22C55E', '#D8F3F1', '#FCE8EF', '#F59E0B'];
+    const container = document.createElement('div');
+    container.style.position = 'absolute';
+    container.style.inset = '0';
+    container.style.pointerEvents = 'none';
+    container.style.overflow = 'hidden';
+    container.style.borderRadius = '28px';
+    container.style.zIndex = '15';
+
+    comanda.style.position = 'sticky';
+    comanda.appendChild(container);
+
+    for (let i = 0; i < 35; i++) {
+      const particle = document.createElement('div');
+      const size = Math.floor(Math.random() * 8) + 5;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const startX = Math.random() * 100;
+      const destX = startX + (Math.random() * 40 - 20);
+      const destY = Math.random() * 180 + 80;
+      const rot = Math.random() * 720 - 360;
+      const duration = Math.random() * 1000 + 1000;
+
+      particle.style.cssText = `
+        position: absolute;
+        top: -10px;
+        left: ${startX}%;
+        width: ${size}px;
+        height: ${size * (Math.random() > 0.5 ? 1 : 1.6)}px;
+        background-color: ${color};
+        border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+        opacity: 1;
+        transition: transform ${duration}ms cubic-bezier(0.25, 1, 0.5, 1), opacity ${duration}ms ease-out;
+      `;
+
+      container.appendChild(particle);
+
+      requestAnimationFrame(() => {
+        particle.style.transform = `translate3d(${destX - startX}px, ${destY}px, 0) rotate(${rot}deg)`;
+        particle.style.opacity = '0';
+      });
+    }
+
+    setTimeout(() => {
+      container.remove();
+    }, 2200);
+  }
+
+  function updateSummary() {
+    const meta = packages[currentPkg];
+    const sumPkg = document.getElementById('sumPkg');
+    const sumGuests = document.getElementById('sumGuests');
+    const sumGuisos = document.getElementById('sumGuisos');
+    const cCount = document.getElementById('cCount');
+    const sumBenefits = document.getElementById('sumBenefits');
+    const sumList = document.getElementById('sumList');
+
+    if (sumPkg) sumPkg.textContent = meta.name;
+    if (sumGuests) sumGuests.textContent = `${guests} Personas`;
+    if (sumGuisos) sumGuisos.textContent = `${selectedDishes.size} / ${meta.max}`;
+    if (cCount) cCount.textContent = selectedDishes.size;
+    if (sumBenefits) sumBenefits.textContent = meta.benefits;
+
+    if (sumList) {
+      if (selectedDishes.size === 0) {
+        sumList.innerHTML = '<em>Selecciona tus cazuelas en las pastillas de la izquierda para armar tu menú.</em>';
+      } else {
+        sumList.innerHTML = '<ol>' + Array.from(selectedDishes).map(d => `<li><strong>${d}</strong></li>`).join('') + '</ol>';
+      }
+    }
+
+    // Actualizar Barra de Progreso de la Canasta
+    updateBasket(meta);
+
+    // Destello de Menú Completo
+    const comanda = document.getElementById('stickyComanda');
+    const celebrationSlot = document.getElementById('comandaCelebration');
+
+    if (selectedDishes.size === meta.max) {
+      if (comanda && !comanda.classList.contains('completed-glow')) {
+        comanda.classList.add('completed-glow');
+        triggerConfetti();
+      }
+      if (celebrationSlot && celebrationSlot.innerHTML === '') {
+        celebrationSlot.innerHTML = `<div class="comanda-celebration-banner">✨ ¡Menú completo, listo para confirmar por WhatsApp!</div>`;
+      }
+    } else {
+      if (comanda) comanda.classList.remove('completed-glow');
+      if (celebrationSlot) celebrationSlot.innerHTML = '';
+    }
+  }
 
   /* ==========================================================================
-     5. COMPILACIÓN FORMAL DE WHATSAPP PARA CLAUDIA AL 477 802 0791
+     3. COMPILADOR LIMPIO DE WHATSAPP
      ========================================================================== */
-  window.submitComandaWhatsApp = function(e) {
+  window.sendToWhatsApp = function(e) {
     if (e && e.preventDefault) e.preventDefault();
+    const nameEl = document.getElementById('custName');
+    const dateEl = document.getElementById('custDate');
+    const cityEl = document.getElementById('custCity');
 
-    const nameInput = document.getElementById('guestNameInput');
-    const dateInput = document.getElementById('eventDateInput');
-    const cityInput = document.getElementById('eventCityInput');
+    const name = nameEl && nameEl.value.trim() ? nameEl.value.trim() : 'Cliente interesado';
+    const date = dateEl && dateEl.value ? dateEl.value : 'Por definir';
+    const city = cityEl && cityEl.value.trim() ? cityEl.value.trim() : 'León, Gto.';
+    const meta = packages[currentPkg] || { name: 'Paquete Fiesta Mexicana', max: 7 };
 
-    const name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : 'Cliente interesado';
-    const date = dateInput && dateInput.value ? dateInput.value : 'Por definir';
-    const city = cityInput && cityInput.value.trim() ? cityInput.value.trim() : 'León, Gto.';
-    const pkg = packages[currentPkgKey];
+    let guisosMsg = selectedDishes.size > 0
+      ? '\n\n🍲 *Cazuelas Elegidas (' + selectedDishes.size + ' de ' + meta.max + '):*\n' + Array.from(selectedDishes).map((d, i) => `  ${i + 1}. ${d}`).join('\n')
+      : '\n\n🍲 *Cazuelas:* ' + meta.max + ' cazuelas tradicionales a convenir';
 
-    let dishesText = selectedDishes.size > 0
-      ? '\n\n🍲 *Cazuelas Elegidas (' + selectedDishes.size + ' de ' + pkg.max + '):*\n' + 
-        Array.from(selectedDishes).map((d, i) => `  ${i + 1 < 10 ? '0' + (i + 1) : i + 1}. ${d}`).join('\n')
-      : '\n\n🍲 *Cazuelas:* ' + pkg.max + ' cazuelas tradicionales a convenir';
-
-    let specialtiesText = selectedSpecialties.size > 0
-      ? '\n\n✨ *Especialidades Agregadas:*\n' + 
-        Array.from(selectedSpecialties).map(s => `  • ${s}`).join('\n')
+    let extrasMsg = selectedExtras.size > 0
+      ? '\n\n✨ *Especialidades / Extras:*\n' + Array.from(selectedExtras).map(x => `  • ${x}`).join('\n')
       : '';
 
-    const text = `¡Hola Claudia! Me gustaría cotizar un banquete tradicional con *La Lola* 🌮🎉\n\n` +
+    const text = `¡Hola Claudia! Me gustaría cotizar un banquete con *La Lola* 🌮🎉\n\n` +
       `👤 *Nombre:* ${name}\n` +
-      `👥 *Invitados:* ${guestCount} personas\n` +
-      `📦 *Paquete:* ${pkg.name} (${pkg.range})\n` +
+      `👥 *Invitados:* ${guests} personas\n` +
+      `📦 *Paquete:* ${meta.name}\n` +
       `📅 *Fecha:* ${date}\n` +
       `📍 *Ciudad / Lugar:* ${city}` +
-      dishesText + specialtiesText +
-      `\n\n¿Podrías confirmarme disponibilidad de fecha y el presupuesto formal? ¡Muchas gracias!`;
+      guisosMsg + extrasMsg +
+      `\n\n¿Podrías confirmarme disponibilidad de fecha y presupuesto formal? ¡Muchas gracias!`;
 
-    const waUrl = 'https://wa.me/524778020791?text=' + encodeURIComponent(text);
-    window.open(waUrl, '_blank');
+    const url = 'https://wa.me/524778020791?text=' + encodeURIComponent(text);
+    window.open(url, '_blank');
   };
 
-  // Header scroll appearance
+  // Header scroll & Smooth anchors
   window.addEventListener('scroll', () => {
-    const header = document.getElementById('siteHeader');
+    const header = document.querySelector('.site-header');
     if (header) {
-      if (window.scrollY > 30) header.classList.add('scrolled');
+      if (window.scrollY > 20) header.classList.add('scrolled');
       else header.classList.remove('scrolled');
     }
   }, { passive: true });
 
   /* ==========================================================================
-     6. INICIALIZACIÓN ROBUSTA DENTRO DE DOMContentLoaded
+     HERO: PARALLAX 3D MULTICAPA CON LERP CINEMATOGRÁFICO (60 FPS)
      ========================================================================== */
-  let isReady = false;
+  function initHeroParallax() {
+    const heroSection = document.getElementById('heroSection');
+    const heroBadge = document.getElementById('heroBadge');
+    const heroTitle = document.getElementById('heroTitle');
+    const heroDesc = document.getElementById('heroDesc');
+    const heroCta = document.getElementById('heroCta');
+    const heroBenefits = document.getElementById('heroBenefits');
+    const heroVisual = document.getElementById('heroVisual');
+    const heroFrame = document.getElementById('heroFrame');
+    const heroFloatCard = document.getElementById('heroFloatCard');
 
-  function initApp() {
-    if (isReady) return;
-    isReady = true;
+    if (!heroSection || !heroVisual) return;
 
-    // Listeners para pestañas de especialidades
-    document.querySelectorAll('.spec-tab, .spec-tab-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const target = this.getAttribute('data-spec') || this.getAttribute('data-target');
-        if (target) window.switchSpecialtyTab(target, this);
-      });
+    let targetX = 0, targetY = 0;
+    let currentX = 0, currentY = 0;
+    let isHovering = false;
+    let animId = null;
+
+    heroSection.addEventListener('mouseenter', () => {
+      isHovering = true;
+      if (!animId) animId = requestAnimationFrame(render);
     });
 
-    // Listeners para botones de filtro
-    document.querySelectorAll('.filter-btn, .cat-filter-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const filter = this.getAttribute('data-filter');
-        if (filter) window.applyDishCategoryFilter(filter, this);
-      });
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      targetX = (e.clientX - rect.left) / rect.width - 0.5;
+      targetY = (e.clientY - rect.top) / rect.height - 0.5;
     });
 
-    initScrollytelling();
-    updateComandaUI();
+    heroSection.addEventListener('mouseleave', () => {
+      isHovering = false;
+      targetX = 0;
+      targetY = 0;
+    });
+
+    function render() {
+      currentX += (targetX - currentX) * 0.075;
+      currentY += (targetY - currentY) * 0.075;
+
+      if (heroBadge) heroBadge.style.transform = `translate3d(${currentX * -14}px, ${currentY * -10}px, 0)`;
+      if (heroTitle) heroTitle.style.transform = `translate3d(${currentX * -30}px, ${currentY * -22}px, 0)`;
+      if (heroDesc) heroDesc.style.transform = `translate3d(${currentX * -18}px, ${currentY * -14}px, 0)`;
+      if (heroCta) heroCta.style.transform = `translate3d(${currentX * -12}px, ${currentY * -9}px, 0)`;
+      if (heroBenefits) heroBenefits.style.transform = `translate3d(${currentX * -8}px, ${currentY * -6}px, 0)`;
+
+      const rotY = currentX * 10;
+      const rotX = -currentY * 10;
+      if (heroFrame) {
+        heroFrame.style.transform = `translate3d(${currentX * 32}px, ${currentY * 24}px, 0) rotateY(${rotY}deg) rotateX(${rotX}deg)`;
+      }
+
+      if (heroFloatCard) {
+        heroFloatCard.style.transform = `translate3d(${currentX * 46}px, ${currentY * 34}px, 24px)`;
+      }
+
+      if (isHovering || Math.abs(currentX) > 0.001 || Math.abs(currentY) > 0.001) {
+        animId = requestAnimationFrame(render);
+      } else {
+        animId = null;
+        if (heroBadge) heroBadge.style.transform = '';
+        if (heroTitle) heroTitle.style.transform = '';
+        if (heroDesc) heroDesc.style.transform = '';
+        if (heroCta) heroCta.style.transform = '';
+        if (heroBenefits) heroBenefits.style.transform = '';
+        if (heroFrame) heroFrame.style.transform = '';
+        if (heroFloatCard) heroFloatCard.style.transform = '';
+      }
+    }
   }
 
+  function initMagneticButtons() {
+    const magneticBtns = document.querySelectorAll('.btn-magnetic');
+
+    magneticBtns.forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        btn.style.transform = `translate3d(${x * 0.28}px, ${y * 0.28}px, 0)`;
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate3d(0, 0, 0)';
+        setTimeout(() => {
+          btn.style.transform = '';
+        }, 280);
+      });
+    });
+  }
+
+  /* ==========================================================================
+     4. BENTO GRID: INCLINACIÓN 3D AL CURSOR (TILT EFFECT CON MOUSEMOVE / MOUSELEAVE)
+     ========================================================================== */
+  function initBentoTilt() {
+    const cards = document.querySelectorAll('.bento-card');
+
+    cards.forEach(card => {
+      card.style.transformStyle = 'preserve-3d';
+      card.style.willChange = 'transform';
+
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        // Inclinación 3D precisa calculando ángulos con mousemove
+        const rotateX = -((y - centerY) / centerY) * 10;
+        const rotateY = ((x - centerX) / centerX) * 10;
+
+        card.style.transition = 'transform 0.1s ease-out';
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        // Restablecimiento suave con mouseleave
+        card.style.transition = 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)';
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        setTimeout(() => {
+          if (!card.matches(':hover')) {
+            card.style.transform = '';
+          }
+        }, 460);
+      });
+    });
+  }
+
+  // Controles de Video en Hover (Audio & Pantalla Completa)
+  window.toggleVideoAudio = function() {
+    const video = document.getElementById('eventVideo');
+    const btn = document.getElementById('btnVideoAudio');
+    if (!video || !btn) return;
+
+    video.muted = !video.muted;
+    const icon = btn.querySelector('.audio-icon');
+    const label = btn.querySelector('.audio-label');
+
+    if (video.muted) {
+      if (icon) icon.textContent = '🔇';
+      if (label) label.textContent = 'Activar Audio';
+    } else {
+      if (icon) icon.textContent = '🔊';
+      if (label) label.textContent = 'Silenciar';
+      video.play().catch(() => {});
+    }
+  };
+
+  window.toggleVideoFullscreen = function() {
+    const video = document.getElementById('eventVideo');
+    if (!video) return;
+
+    if (!document.fullscreenElement) {
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) {
+        video.msRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  };
+
+  /* ==========================================================================
+     5. EJECUCIÓN TRAS EL EVENTO DOMContentLoaded
+     ========================================================================== */
+  let initialized = false;
+
+  function init() {
+    if (initialized) return;
+    initialized = true;
+
+    // Renderizado dinámico inmediato de los 32 guisados
+    renderDishes('all');
+    updateSummary();
+
+    // Efectos escénicos e interacciones
+    initHeroParallax();
+    initMagneticButtons();
+    initBentoTilt();
+  }
+
+  // Asegurar ejecución tras DOMContentLoaded
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initApp);
+    document.addEventListener('DOMContentLoaded', init);
   } else {
-    initApp();
+    init();
   }
 })();
