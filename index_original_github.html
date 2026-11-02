@@ -2373,6 +2373,52 @@
             line-height: 1.45;
         }
 
+        /* Botones de Selección (Pills) para elegir 1 opción por tiempo */
+        .holiday-choice-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: 0.55rem;
+        }
+
+        .holiday-choice-pill {
+            background: #FFFDF8;
+            border: 1.5px solid #D4AF37;
+            color: var(--chocolate-texto);
+            font-family: var(--font-folk);
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 0.32rem 0.75rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(36, 17, 8, 0.05);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            text-align: left;
+        }
+
+        .holiday-choice-pill:hover {
+            border-color: #C62828;
+            background: #FFEBEE;
+            color: #C62828;
+            transform: translateY(-1px);
+        }
+
+        .holiday-choice-pill.active {
+            background: linear-gradient(135deg, #C62828, #B71C1C) !important;
+            border-color: #8E0000 !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 3px 10px rgba(198, 40, 40, 0.35) !important;
+            font-weight: 900;
+        }
+
+        .holiday-choice-pill.active::after {
+            content: " ✓";
+            font-weight: 900;
+        }
+
         /* Controles de Selección de Charcutería Extra */
         .holiday-extra-pill {
             background: #FFF3E0;
@@ -2713,56 +2759,75 @@
                         <span style="font-size: 1.6rem;">🎁</span>
                         <div>
                             <strong>¡Todo Incluido en tu Paquete Decembrino!</strong>
-                            <span>Entrada + Plato Fuerte + Guarnición + Postre + Bebida Caliente</span>
+                            <span>1 Entrada + Pierna Rellena + 1 Guarnición + 1 Postre + 1 Bebida Caliente (1 opción por plato)</span>
                         </div>
                     </div>
 
                     <div class="holiday-courses-grid">
-                        <!-- 1. Entrada (Foto 3) -->
+                        <!-- 1. Entrada (Foto 3) - 1 a elegir -->
                         <div class="holiday-course-card" onclick="openLightbox('FOTOS/3.jpg')">
                             <div class="holiday-course-thumb">
-                                <img src="FOTOS/3.jpg" alt="Entrada festiva: Papitas cambray y queso Philadelphia">
+                                <img src="FOTOS/3.jpg" alt="Entrada festiva: Papitas cambray o queso Philadelphia">
                                 <span class="course-mini-tag">1. Entrada</span>
                             </div>
                             <div class="holiday-course-content">
-                                <h4>🥔 Entradas de Bienvenida</h4>
-                                <p>Papitas cambray sazonadas al romero + Queso Philadelphia artesanal decorado con diferentes toppings gourmet (arándanos, nueces y aderezos de casa).</p>
+                                <h4>🥔 1. Entrada (Elige 1 opción)</h4>
+                                <p style="margin-bottom: 0.35rem;">Elige 1 opción para recibir a tus invitados:</p>
+                                <div class="holiday-choice-row" onclick="event.stopPropagation()">
+                                    <button type="button" class="holiday-choice-pill active" onclick="setHolidayChoice('entrada', 'Papitas cambray', this)">🥔 Papitas cambray</button>
+                                    <button type="button" class="holiday-choice-pill" onclick="setHolidayChoice('entrada', 'Queso Philadelphia con toppings', this)">🧀 Queso Philadelphia c/ toppings</button>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- 2. Guarnición (Foto 4) -->
+                        <!-- 2. Guarnición (Foto 4) - 1 a elegir -->
                         <div class="holiday-course-card" onclick="openLightbox('FOTOS/4.jpg')">
                             <div class="holiday-course-thumb">
-                                <img src="FOTOS/4.jpg" alt="Guarniciones festivas: Espagueti verde, puré y ensalada">
+                                <img src="FOTOS/4.jpg" alt="Guarniciones festivas: Espagueti verde, puré o ensalada verde">
                                 <span class="course-mini-tag">2. Guarnición</span>
                             </div>
                             <div class="holiday-course-content">
-                                <h4>🍝 Guarniciones de Gala</h4>
-                                <p>Espagueti verde cremoso en salsa poblana, puré de papa suave con mantequilla y ensalada verde fresca de fiesta.</p>
+                                <h4>🍝 2. Guarnición (Elige 1 opción)</h4>
+                                <p style="margin-bottom: 0.35rem;">Elige 1 guarnición para acompañar tu pierna:</p>
+                                <div class="holiday-choice-row" onclick="event.stopPropagation()">
+                                    <button type="button" class="holiday-choice-pill active" onclick="setHolidayChoice('guarnicion', 'Espagueti verde', this)">🍝 Espagueti verde</button>
+                                    <button type="button" class="holiday-choice-pill" onclick="setHolidayChoice('guarnicion', 'Puré de papa', this)">🥔 Puré de papa</button>
+                                    <button type="button" class="holiday-choice-pill" onclick="setHolidayChoice('guarnicion', 'Ensalada verde', this)">🥗 Ensalada verde</button>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- 3. Postre (Foto 5) -->
+                        <!-- 3. Postre (Foto 5) - 1 a elegir -->
                         <div class="holiday-course-card" onclick="openLightbox('FOTOS/5.jpg')">
                             <div class="holiday-course-thumb">
                                 <img src="FOTOS/5.jpg" alt="Postre navideño: Ensalada de manzana, zanahoria o pay de queso">
                                 <span class="course-mini-tag">3. Postre</span>
                             </div>
                             <div class="holiday-course-content">
-                                <h4>🥧 Postre Tradicional</h4>
-                                <p>Tradicional ensalada de manzana navideña con crema y nuez, ensalada dulce de zanahoria con pasas o pay cremoso de queso horneado.</p>
+                                <h4>🥧 3. Postre Navideño (Elige 1 opción)</h4>
+                                <p style="margin-bottom: 0.35rem;">Elige 1 postre tradicional para endulzar tu evento:</p>
+                                <div class="holiday-choice-row" onclick="event.stopPropagation()">
+                                    <button type="button" class="holiday-choice-pill active" onclick="setHolidayChoice('postre', 'Ensalada de manzana', this)">🍎 Ensalada de manzana</button>
+                                    <button type="button" class="holiday-choice-pill" onclick="setHolidayChoice('postre', 'Ensalada de zanahoria', this)">🥕 Ensalada de zanahoria</button>
+                                    <button type="button" class="holiday-choice-pill" onclick="setHolidayChoice('postre', 'Pay de queso', this)">🍰 Pay de queso</button>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- 4. Bebida Tradicional Caliente (Foto 9) -->
+                        <!-- 4. Bebida Tradicional Caliente (Foto 9) - 1 a elegir -->
                         <div class="holiday-course-card" onclick="openLightbox('FOTOS/9.jpg')">
                             <div class="holiday-course-thumb">
-                                <img src="FOTOS/9.jpg" alt="Bebidas calientitas: Ponche navideño, chocolate caliente o café de olla">
+                                <img src="FOTOS/9.jpg" alt="Bebidas calientitas: Chocolate caliente, ponche o café de olla">
                                 <span class="course-mini-tag">4. Bebida</span>
                             </div>
                             <div class="holiday-course-content">
-                                <h4>☕ Bebida Calientita Tradicional</h4>
-                                <p>Ponche navideño de frutas naturales con tejocote, caña y piloncillo, rico chocolate caliente artesanal o café de olla colado con canela.</p>
+                                <h4>☕ 4. Bebida Calientita (Elige 1 opción)</h4>
+                                <p style="margin-bottom: 0.35rem;">Elige 1 bebida caliente tradicional para tu reunión:</p>
+                                <div class="holiday-choice-row" onclick="event.stopPropagation()">
+                                    <button type="button" class="holiday-choice-pill active" onclick="setHolidayChoice('bebida', 'Chocolate caliente', this)">🍫 Chocolate caliente</button>
+                                    <button type="button" class="holiday-choice-pill" onclick="setHolidayChoice('bebida', 'Ponche navideño', this)">🍎 Ponche navideño</button>
+                                    <button type="button" class="holiday-choice-pill" onclick="setHolidayChoice('bebida', 'Café de olla', this)">☕ Café de olla</button>
+                                </div>
                             </div>
                         </div>
 
@@ -3957,6 +4022,28 @@
             window.acceptSpecialtyAndGoToStep4(type);
         };
 
+        // GESTIÓN DE SELECCIÓN DE 1 OPCIÓN POR TIEMPO EN FIESTAS DECEMBRINAS
+        window.holidayChoices = {
+            entrada: 'Papitas cambray',
+            guarnicion: 'Espagueti verde',
+            postre: 'Ensalada de manzana',
+            bebida: 'Chocolate caliente'
+        };
+
+        window.setHolidayChoice = function(category, choice, btnEl) {
+            window.holidayChoices[category] = choice;
+            if (btnEl) {
+                var row = btnEl.closest('.holiday-choice-row');
+                if (row) {
+                    row.querySelectorAll('.holiday-choice-pill').forEach(function(b) {
+                        b.classList.remove('active');
+                    });
+                }
+                btnEl.classList.add('active');
+            }
+            window.updateLiveSummary();
+        };
+
         // GESTIÓN DEL EXTRA OPCIONAL: CHARCUTERÍA EN FIESTAS DECEMBRINAS
         window.holidayCharcuterieSelected = false;
         window.toggleHolidayCharcuterie = function(e) {
@@ -4010,16 +4097,21 @@
                 if (summaryList) {
                     if (spec.type === 'decembrina') {
                         var charcuteriaLine = window.holidayCharcuterieSelected
-                            ? '<li style="color: #2E7D32; font-weight: 800;">✓ <strong>🧀 Extra Seleccionado:</strong> Tabla Monumental de Charcutería Fina</li>'
+                            ? '<li style="color: #2E7D32; font-weight: 800;">✓ <strong>🧀 Extra Opcional:</strong> Tabla Monumental de Charcutería Fina</li>'
                             : '<li style="color: #8D6E63;"><em>🧀 Extra Charcutería: No agregada (puedes activarla tocando la tarjeta en la sección decembrina)</em></li>';
 
+                        var hEntrada = window.holidayChoices.entrada || 'Papitas cambray';
+                        var hGuarnicion = window.holidayChoices.guarnicion || 'Espagueti verde';
+                        var hPostre = window.holidayChoices.postre || 'Ensalada de manzana';
+                        var hBebida = window.holidayChoices.bebida || 'Chocolate caliente';
+
                         summaryList.innerHTML = '<div style="color: #C62828; font-weight: 900; font-size: 1.05rem;">🎄 ' + spec.name + '</div>' +
-                            '<ul style="margin: 0.5rem 0 0 1.2rem; padding-left: 0.2rem; color: var(--chocolate-texto); font-size: 0.9rem; line-height: 1.55;">' +
-                            '<li><strong>🍖 Plato Fuerte:</strong> Pierna Horneada Rellena tradicional</li>' +
-                            '<li><strong>🥔 Entrada:</strong> Papitas cambray al romero + Queso Philadelphia con toppings gourmet</li>' +
-                            '<li><strong>🍝 Guarnición:</strong> Espagueti verde, puré de papa suave y ensalada verde</li>' +
-                            '<li><strong>🥧 Postre:</strong> Ensalada de manzana, ensalada de zanahoria o pay de queso</li>' +
-                            '<li><strong>☕ Bebida:</strong> Ponche navideño, chocolate caliente o café de olla</li>' +
+                            '<ul style="margin: 0.5rem 0 0 1.2rem; padding-left: 0.2rem; color: var(--chocolate-texto); font-size: 0.9rem; line-height: 1.6;">' +
+                            '<li><strong>🍖 Plato Fuerte:</strong> Pierna Horneada Rellena artesanal (Fijo)</li>' +
+                            '<li><strong>🥔 Entrada (1 elegida):</strong> ' + hEntrada + '</li>' +
+                            '<li><strong>🍝 Guarnición (1 elegida):</strong> ' + hGuarnicion + '</li>' +
+                            '<li><strong>🥧 Postre (1 elegido):</strong> ' + hPostre + '</li>' +
+                            '<li><strong>☕ Bebida Caliente (1 elegida):</strong> ' + hBebida + '</li>' +
                             charcuteriaLine +
                             '</ul>' +
                             '<p style="margin: 0.4rem 0 0 0; color: #2E7D32; font-size: 0.84rem; font-weight: 800;">✓ Servicio completo para ' + spec.guests + ' personas con montaje festivo.</p>';
@@ -4029,8 +4121,13 @@
                     }
                 }
                 if (summaryBenefits) {
+                    var hE = window.holidayChoices.entrada || 'Papitas cambray';
+                    var hG = window.holidayChoices.guarnicion || 'Espagueti verde';
+                    var hP = window.holidayChoices.postre || 'Ensalada de manzana';
+                    var hB = window.holidayChoices.bebida || 'Chocolate caliente';
+
                     summaryBenefits.textContent = (spec.type === 'decembrina')
-                        ? ('Paquete de Fiestas Decembrinas: Pierna rellena horneada, entradas de papitas y Philadelphia, guarniciones (espagueti, puré y ensalada), postre navideño y bebida calientita' + (window.holidayCharcuterieSelected ? ' + Tabla de Charcutería extra.' : '.'))
+                        ? ('Paquete Especial Fiestas Decembrinas (' + spec.guests + ' pers.): Pierna rellena horneada + Entrada (' + hE + ') + Guarnición (' + hG + ') + Postre (' + hP + ') + Bebida caliente (' + hB + ')' + (window.holidayCharcuterieSelected ? ' + Tabla de Charcutería fina extra.' : '.'))
                         : 'Servicio completo de ' + spec.name + ' con barra de complementos, salsas y atención tradicional.';
                 }
             } else if (currentPackage) {
@@ -4120,15 +4217,20 @@
                         ? '🧀 *Extra Agregado:* SÍ incluir Tabla Monumental de Charcutería fina\n'
                         : '🧀 *Extra Charcutería:* No agregada (sin charcutería)\n';
 
+                    const hEntrada = window.holidayChoices.entrada || 'Papitas cambray';
+                    const hGuarnicion = window.holidayChoices.guarnicion || 'Espagueti verde';
+                    const hPostre = window.holidayChoices.postre || 'Ensalada de manzana';
+                    const hBebida = window.holidayChoices.bebida || 'Chocolate caliente';
+
                     raw = '¡Hola Claudia! Me gustaría cotizar y reservar el *Paquete Especial Fiestas Decembrinas* con *La Lola — Sabores de México* 🎄✨\n\n' +
                         '👤 *Nombre:* ' + name + '\n' +
                         '🎉 *Tipo de Evento:* ' + type + '\n' +
                         '👥 *Comensales:* ' + spec.guests + ' personas (Mínimo 30 pers.)\n' +
-                        '🍖 *Plato Fuerte Estelar:* Pierna Horneada Rellena Especial\n' +
-                        '🥔 *Entrada:* Papitas cambray al romero + Queso Philadelphia con toppings gourmet\n' +
-                        '🍝 *Guarniciones:* Espagueti verde cremoso, puré de papa suave y ensalada verde\n' +
-                        '🥧 *Postre:* Ensalada de manzana navideña, ensalada de zanahoria o pay de queso\n' +
-                        '☕ *Bebida Caliente:* Ponche navideño tradicional, chocolate caliente o café de olla\n' +
+                        '🍖 *Plato Fuerte Estelar:* Pierna Horneada Rellena Especial (Fijo)\n' +
+                        '🥔 *Entrada elegida (1):* ' + hEntrada + '\n' +
+                        '🍝 *Guarnición elegida (1):* ' + hGuarnicion + '\n' +
+                        '🥧 *Postre elegido (1):* ' + hPostre + '\n' +
+                        '☕ *Bebida Caliente elegida (1):* ' + hBebida + '\n' +
                         charcuteriaLine +
                         '📅 *Fecha Estimada:* ' + (date || 'Por definir') + '\n' +
                         '📍 *Ubicación:* ' + city + '\n\n' +
