@@ -21,7 +21,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&family=Great+Vibes&family=Montserrat:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=block" rel="stylesheet">
     
     <!-- ANTI-FOUT: Evita 100% el brinco visual al recargar la página -->
-    <style>
+        /* Header CTA button: No wrap, aligned */
+        .btn-header-quote {
+            padding: 0.65rem 1.35rem !important;
+            font-size: 0.88rem !important;
+            white-space: nowrap !important;
+            flex-shrink: 0 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 0.4rem !important;
+        }
         html.wf-loading body { opacity: 0 !important; visibility: hidden !important; }
         html.wf-active body { opacity: 1 !important; visibility: visible !important; transition: opacity 0.25s ease-in; }
     </style>
@@ -1652,36 +1661,6 @@
             margin-left: 0;
         }
 
-        .video-tap-hint {
-            position: absolute;
-            bottom: 14px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(20, 5, 2, 0.88);
-            color: #FFE082;
-            font-size: 0.8rem;
-            font-weight: 800;
-            padding: 5px 14px;
-            border-radius: 20px;
-            border: 1.5px solid rgba(255, 224, 130, 0.5);
-            white-space: nowrap;
-            z-index: 6;
-            cursor: pointer;
-            pointer-events: auto;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            transition: all 0.3s ease;
-        }
-
-        .video-media-wrapper.is-playing .video-tap-hint {
-            opacity: 0.45;
-            background: rgba(0, 0, 0, 0.65);
-        }
-
-        .video-media-wrapper.is-playing:hover .video-tap-hint {
-            opacity: 0.95;
-            background: rgba(20, 5, 2, 0.9);
-        }
-
         .video-media-wrapper:hover .video-play-btn-overlay {
             transform: translate(-50%, -50%) scale(1.1);
             background: var(--rosa-mexicano);
@@ -2760,6 +2739,84 @@
             font-weight: 900;
         }
 
+        /* Controles de Selección de Proteínas en Chilaquiles (Máx 2) */
+        .protein-choice-pill {
+            background: #FFFDF8;
+            border: 1.5px solid #E2CCA8;
+            color: var(--chocolate-texto);
+            font-family: var(--font-folk);
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 0.35rem 0.65rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(36, 17, 8, 0.05);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            text-align: center;
+        }
+
+        .protein-choice-pill:hover {
+            border-color: var(--cempasuchil-fuego);
+            background: #FFF3E0;
+            color: var(--cempasuchil-fuego);
+            transform: translateY(-1px);
+        }
+
+        .protein-choice-pill.active {
+            background: linear-gradient(135deg, var(--cempasuchil-fuego), #D84315) !important;
+            border-color: #BF360C !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 3px 10px rgba(230, 81, 0, 0.35) !important;
+            font-weight: 900;
+        }
+
+        .protein-choice-pill.active::after {
+            content: " ✓";
+            font-weight: 900;
+        }
+
+        /* Controles de Selección de Guisados Adicionales */
+        .extra-guisado-pill {
+            background: #FFFDF8;
+            border: 1.5px solid #E2CCA8;
+            color: var(--chocolate-texto);
+            font-family: var(--font-folk);
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 0.4rem 0.85rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(36, 17, 8, 0.04);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .extra-guisado-pill:hover {
+            border-color: var(--rosa-mexicano);
+            background: #FCE4EC;
+            color: var(--rosa-mexicano-dark);
+            transform: translateY(-1px);
+        }
+
+        .extra-guisado-pill.active {
+            background: linear-gradient(135deg, var(--rosa-mexicano), #D81B60) !important;
+            border-color: #AD1457 !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 3px 10px rgba(233, 30, 99, 0.35) !important;
+            font-weight: 800;
+        }
+
+        .extra-guisado-pill.active::after {
+            content: " ✓";
+            font-weight: 900;
+        }
+
         /* Controles de Selección de Charcutería Extra */
         .holiday-extra-pill {
             background: #FFF3E0;
@@ -2873,11 +2930,11 @@
             <li><a href="#arma-tu-banquete" class="nav-link">Arma tu Banquete</a></li>
             <li><a href="#especialidades-detalle" class="nav-link">Especialidades</a></li>
             <li><a href="#galeria-eventos" class="nav-link">Nuestros Eventos</a></li>
+            <li><a href="#preguntas-frecuentes" class="nav-link">Preguntas</a></li>
             <li><a href="#tarjeta-contacto" class="nav-link">Contacto</a></li>
         </ul>
-        <a href="#arma-tu-banquete" class="btn-turquesa-3d" style="padding: 0.75rem 1.7rem; font-size: 0.95rem;">
-            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            🌮 Armar mi Banquete
+        <a href="#arma-tu-banquete" class="btn-turquesa-3d btn-header-quote">
+            🌮 Armar Banquete
         </a>
     </header>
 
@@ -2900,16 +2957,6 @@
                 <p class="hero-scenic-desc">
                     Llevamos la alegría, el colorido y la calidez de la auténtica fiesta mexicana a tus mejores celebraciones. Cazuelas de barro curadas, tortillas hechas a mano en comal y atención familiar con todo el corazón.
                 </p>
-
-                <div style="display: flex; gap: 1.2rem; flex-wrap: wrap;">
-                    <a href="#arma-tu-banquete" class="btn-turquesa-3d">
-                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                        🌮 Armar mi Banquete
-                    </a>
-                    <a href="#galeria-real" class="btn-turquesa-3d" style="background: var(--rosa-mexicano); box-shadow: 0 6px 0 var(--rosa-mexicano-dark);">
-                        📸 Ver Fotos Reales & Clientes
-                    </a>
-                </div>
             </div>
 
             <!-- 2. LOLA EN EL ESCENARIO HERO -->
@@ -3220,8 +3267,18 @@
                         <p>
                             Crujientes totopos de maíz bañados en salsa verde tatemada o roja de molcajete, frijoles refritos, crema, queso fresco y aguacate tierno.
                         </p>
-                        <p style="font-weight: 800; color: var(--cempasuchil-fuego); font-size: 0.82rem; margin-bottom: 0.8rem;">
-                            🍗 Incluye 2 Proteínas a elegir: Pollo deshebrado, Huevo al gusto, Milanesa crujiente o Carne Asada + ¡Bolillo Calientito!
+                        <p style="font-weight: 800; color: var(--cempasuchil-fuego); font-size: 0.82rem; margin-bottom: 0.5rem;">
+                            🍗 Elige 2 Proteínas para tus chilaquiles (eliges 2):
+                        </p>
+                        <!-- Selector interactivo de 2 proteínas -->
+                        <div class="chilaquiles-proteins-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem; margin-bottom: 0.75rem;">
+                            <button type="button" class="protein-choice-pill" onclick="toggleChilaquilesProtein('Pollo deshebrado', this)">🍗 Pollo deshebrado</button>
+                            <button type="button" class="protein-choice-pill" onclick="toggleChilaquilesProtein('Huevo al gusto', this)">🍳 Huevo al gusto</button>
+                            <button type="button" class="protein-choice-pill" onclick="toggleChilaquilesProtein('Milanesa crujiente', this)">🥩 Milanesa crujiente</button>
+                            <button type="button" class="protein-choice-pill" onclick="toggleChilaquilesProtein('Carne Asada', this)">🥩 Carne Asada</button>
+                        </div>
+                        <p style="font-size: 0.78rem; font-weight: 700; color: var(--chocolate-suave); margin-bottom: 0.8rem;">
+                            🥖 Bolillo calientito incluido de cajón.
                         </p>
                     </div>
 
@@ -3280,7 +3337,7 @@
                     </div>
                     <div>
                         <span style="background: #FFF3E0; border: 2px solid var(--cempasuchil-fuego); color: var(--cempasuchil-fuego); padding: 0.35rem 0.8rem; border-radius: 30px; font-family: var(--font-folk); font-size: 0.76rem; font-weight: 800; text-transform: uppercase;">🍲 Rey de la Tornafiesta</span>
-                        <h3>El Tradicional Menudo en Cazuela</h3>
+                        <h3>El Tradicional Menudo</h3>
                         <p>
                             Pancita tierna, pata bien cocida, callo y libro en caldo rojo con orégano, cebolla, limones y tortillas al comal.
                         </p>
@@ -3406,8 +3463,12 @@
 
                             <ul class="package-features">
                                 <li class="package-feature-item">
+                                    <span class="package-feature-icon">🍚</span>
+                                    <div><strong>Guarnición a Elegir:</strong> Arroz casero o Frijoles refritos.</div>
+                                </li>
+                                <li class="package-feature-item">
                                     <span class="package-feature-icon">🥘</span>
-                                    <div><strong>7 Guisados</strong> a elegir en el Paso 2 + Arroz o Frijoles.</div>
+                                    <div><strong>7 Guisados Tradicionales:</strong> Mayor variedad para armar tu banquete.</div>
                                 </li>
                                 <li class="package-feature-item">
                                     <span class="package-feature-icon">🌮</span>
@@ -3438,8 +3499,12 @@
 
                             <ul class="package-features">
                                 <li class="package-feature-item">
+                                    <span class="package-feature-icon">🍚</span>
+                                    <div><strong>Guarnición a Elegir:</strong> Arroz casero o Frijoles refritos.</div>
+                                </li>
+                                <li class="package-feature-item">
                                     <span class="package-feature-icon">🥘</span>
-                                    <div><strong>7 Guisados</strong> a elegir en el Paso 2 + Arroz o Frijoles.</div>
+                                    <div><strong>7 Guisados Tradicionales:</strong> Mayor variedad para armar tu banquete.</div>
                                 </li>
                                 <li class="package-feature-item">
                                     <span class="package-feature-icon">🥗</span>
@@ -3470,8 +3535,12 @@
 
                             <ul class="package-features">
                                 <li class="package-feature-item">
+                                    <span class="package-feature-icon">🍚</span>
+                                    <div><strong>Guarnición a Elegir:</strong> Arroz casero o Frijoles refritos.</div>
+                                </li>
+                                <li class="package-feature-item">
                                     <span class="package-feature-icon">🥘</span>
-                                    <div><strong>8 Guisados (¡1 Guisado Más!):</strong> Mayor variedad + Arroz o Frijoles.</div>
+                                    <div><strong>8 Guisados Tradicionales:</strong> ¡1 guisado extra para mayor abundancia!</div>
                                 </li>
                                 <li class="package-feature-item">
                                     <span class="package-feature-icon">🌮</span>
@@ -3483,7 +3552,7 @@
                                 </li>
                                 <li class="package-feature-item">
                                     <span class="package-feature-icon">🫓</span>
-                                    <div><strong>Tortillas Calientes:</strong> De máquina incluidas (opción de comalera con costo extra).</div>
+                                    <div><strong>Tortillas Calientes:</strong> De máquina incluidas (hasta 100 personas comalera con costo extra; más de 100 personas comalera al comal incluida u opcional).</div>
                                 </li>
                             </ul>
                         </div>
@@ -3658,13 +3727,30 @@
                         </div>
                     </div>
 
-                    <!-- Extra 2: Cazuela Extra de Guisado -->
+                    <!-- Extra 2: Guisado Adicional -->
                     <div class="extra-card" id="extra-cazuela" onclick="toggleExtra('cazuela')">
                         <div class="extra-card-checkbox" id="chk-cazuela">✓</div>
-                        <div>
-                            <strong style="display: block; font-family: var(--font-folk); font-size: 1.05rem; color: var(--chocolate-texto);">🥘 Cazuela Adicional de Guisado</strong>
-                            <p style="font-size: 0.88rem; color: var(--chocolate-suave); margin-top: 0.3rem;">Añade una cazuela extra para ofrecer aún más variedad y abundancia a tus invitados.</p>
+                        <div style="flex: 1;">
+                            <strong style="display: block; font-family: var(--font-folk); font-size: 1.05rem; color: var(--chocolate-texto);">🍲 Guisado Adicional</strong>
+                            <p style="font-size: 0.88rem; color: var(--chocolate-suave); margin-top: 0.3rem;">Añade guisados adicionales para ofrecer aún más variedad y abundancia a tus invitados.</p>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Sub-panel para elegir los Guisados Adicionales cuando se activa el extra -->
+                <div id="extra-guisados-container" style="display: none; margin-top: 1.4rem; background: #FFFDF9; border: 2.5px dashed var(--rosa-mexicano); border-radius: 20px; padding: 1.3rem 1.6rem; box-shadow: 0 4px 18px rgba(233, 30, 99, 0.08);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 0.8rem;">
+                        <div>
+                            <span style="font-family: var(--font-folk); font-size: 0.78rem; font-weight: 900; text-transform: uppercase; color: var(--rosa-mexicano); letter-spacing: 0.08em; display: block;">🍲 Guisados Extras a Contratar</span>
+                            <strong style="font-family: var(--font-folk); font-size: 1.08rem; color: var(--chocolate-texto);">Elige cuál(es) guisado(s) adicional(es) deseas sumar a tu banquete:</strong>
+                        </div>
+                        <span id="extraGuisadosCounterBadge" style="background: #FCE4EC; border: 1.5px solid var(--rosa-mexicano); color: var(--rosa-mexicano-dark); padding: 0.3rem 0.85rem; border-radius: 20px; font-size: 0.82rem; font-weight: 800; font-family: var(--font-folk);">0 elegidos</span>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--chocolate-suave); margin-bottom: 0.9rem;">
+                        Toca los guisados extras que deseas contratar:
+                    </p>
+                    <div id="extraGuisadosPillsGrid" style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
+                        <!-- Se poblará con las opciones de guisados -->
                     </div>
                 </div>
             </div>
@@ -3885,7 +3971,6 @@
                                 <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
                             </div>
-                            <span class="video-tap-hint">▶ Toca para ver video</span>
                         </div>
                         <div class="video-card-caption">
                             <h4>🍲 Comida & Banquete ADE1000</h4>
@@ -3905,7 +3990,6 @@
                                 <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
                             </div>
-                            <span class="video-tap-hint">▶ Toca para ver video</span>
                         </div>
                         <div class="video-card-caption">
                             <h4>🎉 Fiesta, Montaje & Calidez</h4>
@@ -3913,6 +3997,71 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SECCIÓN DE PREGUNTAS FRECUENTES (FAQ)
+             ========================================== -->
+        <section class="section-folk-block" id="preguntas-frecuentes">
+            <div class="section-folk-heading" style="text-align: center;">
+                <span class="eyebrow-folk">Resolvemos tus Dudas</span>
+                <h2>Preguntas <span>Frecuentes</span></h2>
+                <p style="font-size: 1.05rem; color: var(--chocolate-suave); max-width: 750px; margin: 0.5rem auto 2rem auto;">
+                    Todo lo que necesitas saber para organizar tu banquete o taquiza con total tranquilidad y confianza.
+                </p>
+            </div>
+
+            <div style="max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;">
+                <details style="background: #FFFDF9; border: 2.5px solid #E2CCA8; border-radius: 18px; padding: 1.2rem 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.04); transition: border-color 0.2s ease;">
+                    <summary style="font-family: var(--font-folk); font-size: 1.08rem; font-weight: 800; color: var(--chocolate-texto); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>📅 ¿Con cuánta anticipación debo reservar mi fecha?</span>
+                        <span style="color: var(--rosa-mexicano); font-size: 1.2rem; font-weight: 900;">➕</span>
+                    </summary>
+                    <p style="margin-top: 0.8rem; font-size: 0.95rem; color: var(--chocolate-suave); line-height: 1.6;">
+                        Para eventos familiares recomendamos apartar con <strong>1 a 2 semanas de anticipación</strong>. Para eventos grandes, bodas, XV años o temporadas de alta demanda (fiestas patrias en septiembre y posadas en diciembre), sugerimos apartar con <strong>3 a 4 semanas</strong> para asegurar tu día preferido.
+                    </p>
+                </details>
+
+                <details style="background: #FFFDF9; border: 2.5px solid #E2CCA8; border-radius: 18px; padding: 1.2rem 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.04); transition: border-color 0.2s ease;">
+                    <summary style="font-family: var(--font-folk); font-size: 1.08rem; font-weight: 800; color: var(--chocolate-texto); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>🔥 ¿Cómo se mantiene la comida calientita durante todo el evento?</span>
+                        <span style="color: var(--rosa-mexicano); font-size: 1.2rem; font-weight: 900;">➕</span>
+                    </summary>
+                    <p style="margin-top: 0.8rem; font-size: 0.95rem; color: var(--chocolate-suave); line-height: 1.6;">
+                        Montamos nuestras <strong>auténticas cazuelas de barro</strong> sobre bufeteras con mecheros de calor constante que mantienen los guisados, el arroz y los frijoles bien calientes y humeando durante todo el horario de servicio.
+                    </p>
+                </details>
+
+                <details style="background: #FFFDF9; border: 2.5px solid #E2CCA8; border-radius: 18px; padding: 1.2rem 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.04); transition: border-color 0.2s ease;">
+                    <summary style="font-family: var(--font-folk); font-size: 1.08rem; font-weight: 800; color: var(--chocolate-texto); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>👥 ¿A partir de cuántas personas realizan servicios?</span>
+                        <span style="color: var(--rosa-mexicano); font-size: 1.2rem; font-weight: 900;">➕</span>
+                    </summary>
+                    <p style="margin-top: 0.8rem; font-size: 0.95rem; color: var(--chocolate-suave); line-height: 1.6;">
+                        Atendemos desde <strong>30 comensales</strong> en reuniones íntimas hasta <strong>eventos masivos de más de 1,000 personas</strong> (como comedores industriales y fiestas corporativas), garantizando la misma calidez y sazón.
+                    </p>
+                </details>
+
+                <details style="background: #FFFDF9; border: 2.5px solid #E2CCA8; border-radius: 18px; padding: 1.2rem 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.04); transition: border-color 0.2s ease;">
+                    <summary style="font-family: var(--font-folk); font-size: 1.08rem; font-weight: 800; color: var(--chocolate-texto); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>🫓 ¿Cómo funciona el servicio de tortillas al comal y máquina?</span>
+                        <span style="color: var(--rosa-mexicano); font-size: 1.2rem; font-weight: 900;">➕</span>
+                    </summary>
+                    <p style="margin-top: 0.8rem; font-size: 0.95rem; color: var(--chocolate-suave); line-height: 1.6;">
+                        Todos nuestros paquetes incluyen tortillas calientes de máquina. Para eventos de hasta 100 personas puedes contratar comaleras en vivo con costo adicional. <strong>Para eventos de más de 100 personas, las tortillas de comal van incluidas u opcionales</strong> según tu preferencia.
+                    </p>
+                </details>
+
+                <details style="background: #FFFDF9; border: 2.5px solid #E2CCA8; border-radius: 18px; padding: 1.2rem 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.04); transition: border-color 0.2s ease;">
+                    <summary style="font-family: var(--font-folk); font-size: 1.08rem; font-weight: 800; color: var(--chocolate-texto); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        <span>💵 ¿Cómo es el apartado y las formas de pago?</span>
+                        <span style="color: var(--rosa-mexicano); font-size: 1.2rem; font-weight: 900;">➕</span>
+                    </summary>
+                    <p style="margin-top: 0.8rem; font-size: 0.95rem; color: var(--chocolate-suave); line-height: 1.6;">
+                        Apartas tu fecha con un anticipo accesible mediante transferencia bancaria, depósito o efectivo. El saldo restante se liquida el día de tu evento cuando nuestro equipo llega y deja el montaje listo para servir.
+                    </p>
+                </details>
             </div>
         </section>
 
@@ -3941,6 +4090,9 @@
             </div>
 
             <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+                <a href="FOTOS/WhatsApp Image 2026-07-25 at 20.02.30 (1).jpeg" download="Tarjeta_Presentacion_La_Lola_Banquetes.jpeg" class="btn-turquesa-3d" style="background: var(--rosa-mexicano); box-shadow: 0 5px 0 var(--rosa-mexicano-dark);">
+                    📥 Descargar Tarjeta de Presentación
+                </a>
                 <a href="https://wa.me/524778020791?text=Hola%20Claudia%2C%20guard%C3%A9%20su%20tarjeta%20de%20contacto%20y%20me%20gustar%C3%ADa%20cotizar%20un%20evento%20🍽️" class="btn-turquesa-3d" target="_blank">
                     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                     Enviar WhatsApp a Claudia
@@ -4036,19 +4188,19 @@
             '30-50': {
                 title: 'Paquete Tradicional (30 a 50 personas)',
                 max: 7,
-                benefits: '7 guisados, botana mexicana (chicharrón duro, tacos dorados, salsa de jitomate), 1 vitrolero de 20L de agua fresca y tortillas de máquina calientes (opción de comalera con costo extra).',
+                benefits: '7 guisados tradicionales, guarnición a elegir (arroz o frijoles), botana mexicana (chicharrón duro, tacos dorados, salsa de jitomate), 1 vitrolero de 20L de agua fresca y tortillas de máquina calientes (hasta 100 personas comalera con costo extra).',
                 defaultGuests: 40
             },
             '50-80': {
                 title: 'Paquete Fiesta Mexicana (50 a 80 personas)',
                 max: 7,
-                benefits: '7 guisados, botana con ensalada de cueritos, 2 vitroleros de 20L de agua fresca y tortillas de máquina calientes (opción de comalera con costo extra).',
+                benefits: '7 guisados tradicionales, guarnición a elegir (arroz o frijoles), botana con ensalada de cueritos, 2 vitroleros de 20L de agua fresca y tortillas de máquina calientes (hasta 100 personas comalera con costo extra).',
                 defaultGuests: 70
             },
             '80+': {
                 title: 'Paquete Gran Banquete (80 a 150 personas)',
                 max: 8,
-                benefits: '8 guisados (¡1 guisado más!), botana monumental completa, 2 vitroleros de 20L de agua fresca y tortillas de máquina calientes (opción de comalera con costo extra).',
+                benefits: '8 guisados tradicionales (¡1 guisado más!), guarnición a elegir (arroz o frijoles), botana monumental completa, 2 vitroleros de 20L de agua fresca y tortillas calientes (hasta 100 personas comalera con costo extra; más de 100 personas comalera al comal incluida u opcional).',
                 defaultGuests: 100
             }
         };
@@ -4262,6 +4414,45 @@
             }
         }
 
+        // GESTIÓN DE GUISADOS ADICIONALES (EXTRA)
+        window.selectedExtraGuisados = [];
+
+        function populateExtraGuisadosPills() {
+            var grid = document.getElementById('extraGuisadosPillsGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            var cards = document.querySelectorAll('.guisado-item-card');
+            cards.forEach(function(card) {
+                var name = card.dataset.name;
+                var displayName = card.querySelector('.guisado-item-name') ? card.querySelector('.guisado-item-name').textContent.trim() : name;
+                var btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'extra-guisado-pill' + (window.selectedExtraGuisados.includes(name) ? ' active' : '');
+                btn.textContent = displayName;
+                btn.onclick = function() {
+                    window.toggleExtraGuisadoItem(name, btn);
+                };
+                grid.appendChild(btn);
+            });
+        }
+
+        window.toggleExtraGuisadoItem = function(name, btn) {
+            var idx = window.selectedExtraGuisados.indexOf(name);
+            if (idx > -1) {
+                window.selectedExtraGuisados.splice(idx, 1);
+                if (btn) btn.classList.remove('active');
+            } else {
+                window.selectedExtraGuisados.push(name);
+                if (btn) btn.classList.add('active');
+            }
+            var badge = document.getElementById('extraGuisadosCounterBadge');
+            if (badge) {
+                var len = window.selectedExtraGuisados.length;
+                badge.textContent = len + (len === 1 ? ' elegido' : ' elegidos');
+            }
+            window.updateLiveSummary();
+        };
+
         // FUNCIÓN: TOGGLE EXTRAS (SOLO DISPONIBLE PARA BANQUETE DE GUISADOS)
         window.toggleExtra = function(extraKey) {
             if (!currentPackage) return;
@@ -4269,9 +4460,26 @@
             if (selectedExtras.has(extraKey)) {
                 selectedExtras.delete(extraKey);
                 if (card) card.classList.remove('selected');
+                if (extraKey === 'cazuela') {
+                    var container = document.getElementById('extra-guisados-container');
+                    if (container) container.style.display = 'none';
+                    window.selectedExtraGuisados = [];
+                    var badge = document.getElementById('extraGuisadosCounterBadge');
+                    if (badge) badge.textContent = '0 elegidos';
+                    document.querySelectorAll('.extra-guisado-pill').forEach(function(p) {
+                        p.classList.remove('active');
+                    });
+                }
             } else {
                 selectedExtras.add(extraKey);
                 if (card) card.classList.add('selected');
+                if (extraKey === 'cazuela') {
+                    var container = document.getElementById('extra-guisados-container');
+                    if (container) {
+                        container.style.display = 'block';
+                        populateExtraGuisadosPills();
+                    }
+                }
             }
             updateLiveSummary();
         };
@@ -4283,6 +4491,32 @@
             }
             const target = document.getElementById('paso-3');
             if (target) target.scrollIntoView({ behavior: 'smooth' });
+        };
+
+        // GESTIÓN DE PROTEÍNAS PARA CHILAQUILES (HASTA 2 A ELEGIR)
+        window.selectedChilaquilesProteins = [];
+        window.toggleChilaquilesProtein = function(protein, btn) {
+            var idx = window.selectedChilaquilesProteins.indexOf(protein);
+            if (idx > -1) {
+                window.selectedChilaquilesProteins.splice(idx, 1);
+                if (btn) btn.classList.remove('active');
+            } else {
+                if (window.selectedChilaquilesProteins.length >= 2) {
+                    var removed = window.selectedChilaquilesProteins.shift();
+                    document.querySelectorAll('.protein-choice-pill').forEach(function(b) {
+                        if (b.textContent.includes(removed)) b.classList.remove('active');
+                    });
+                }
+                window.selectedChilaquilesProteins.push(protein);
+                if (btn) btn.classList.add('active');
+            }
+
+            if (specialtyGuests.chilaquiles === 0) {
+                specialtyGuests.chilaquiles = 30;
+                var el = document.getElementById('guests-chilaquiles');
+                if (el) el.textContent = '30';
+            }
+            window.updateLiveSummary();
         };
 
         // GESTIÓN DE ESPECIALIDADES INDEPENDIENTES (MÍNIMO 30 PERSONAS, COMIENZA EN 0)
@@ -4297,7 +4531,7 @@
         var specialtyNames = {
             chilaquiles: 'Chilaquiles Tradicionales de la Casa',
             tortas: 'Las Famosas Tortas de Chilaquiles',
-            menudo: 'El Tradicional Menudo en Cazuela',
+            menudo: 'El Tradicional Menudo',
             pozole: 'Pozole Tradicional de Fiesta',
             decembrina: 'Paquete Especial Fiestas Decembrinas (Pierna Rellena & Banquete Completo)'
         };
@@ -4426,6 +4660,10 @@
 
         window.cancelIndependentSpecialty = function() {
             window.selectedIndependentSpecialty = null;
+            window.selectedChilaquilesProteins = [];
+            document.querySelectorAll('.protein-choice-pill').forEach(function(b) {
+                b.classList.remove('active');
+            });
             window.holidayChoices = { entrada: '', guarnicion: '', postre: '', bebida: '' };
             document.querySelectorAll('.holiday-choice-pill').forEach(function(b) {
                 b.classList.remove('active');
@@ -4556,6 +4794,12 @@
                             charcuteriaLine +
                             '</ul>' +
                             '<p style="margin: 0.4rem 0 0 0; color: #2E7D32; font-size: 0.84rem; font-weight: 800;">✓ Servicio completo para ' + spec.guests + ' personas con montaje festivo.</p>';
+                    } else if (spec.type === 'chilaquiles') {
+                        var protText = window.selectedChilaquilesProteins.length > 0 
+                            ? ('<br><span style="color: var(--cempasuchil-fuego); font-weight: 800;">🍗 2 Proteínas elegidas:</span> ' + window.selectedChilaquilesProteins.join(', '))
+                            : '<br><span style="color: #D32F2F; font-weight: 800;">🍗 Proteínas: Faltan por elegir (Selecciona hasta 2 opciones arriba)</span>';
+                        summaryList.innerHTML = '<div style="color: var(--rosa-mexicano); font-weight: 800; font-size: 1rem;">✨ ' + spec.name + '</div>' +
+                            '<p style="margin: 0.35rem 0 0 0; color: var(--chocolate-suave); font-size: 0.88rem;">Servicio completo e independiente para ' + spec.guests + ' personas (Mínimo 30 personas). Incluye salsas tatemadas, frijolitos refritos, crema, queso fresco, aguacate tierno y 🥖 <strong>bolillo calientito incluido de cajón</strong>.' + protText + '</p>';
                     } else {
                         summaryList.innerHTML = '<div style="color: var(--rosa-mexicano); font-weight: 800; font-size: 1rem;">✨ ' + spec.name + '</div>' +
                             '<p style="margin: 0.35rem 0 0 0; color: var(--chocolate-suave); font-size: 0.88rem;">Servicio completo e independiente para ' + spec.guests + ' personas (Mínimo 30 personas). Incluye complementos, salsas y montaje en cazuela tradicional.</p>';
@@ -4631,7 +4875,13 @@
             if (summaryExtras) {
                 const extraNames = [];
                 if (selectedExtras.has('comal')) extraNames.push('Comaleras & Tortillas al Comal Hechas a Mano');
-                if (selectedExtras.has('cazuela')) extraNames.push('Cazuela Adicional de Guisado');
+                if (selectedExtras.has('cazuela')) {
+                    if (window.selectedExtraGuisados.length > 0) {
+                        extraNames.push('🍲 Guisado(s) Adicional(es): ' + window.selectedExtraGuisados.join(', '));
+                    } else {
+                        extraNames.push('🍲 Guisado Adicional (guisados a definir)');
+                    }
+                }
 
                 summaryExtras.textContent = extraNames.length > 0 ? extraNames.join(' • ') : 'Ningún extra adicional seleccionado.';
             }
@@ -4679,6 +4929,21 @@
                         '📍 *Ciudad / Municipio:* ' + city + '\n' +
                         '🏠 *Domicilio del Evento:* ' + (address || 'Por confirmar') + '\n\n' +
                         '¿Podrías confirmarme disponibilidad para esta fecha decembrina y la cotización formal? ¡Muchas gracias!';
+                } else if (spec.type === 'chilaquiles') {
+                    var protStr = window.selectedChilaquilesProteins.length > 0
+                        ? window.selectedChilaquilesProteins.join(' y ')
+                        : 'Por definir (2 proteínas a elegir)';
+                    raw = '¡Hola Claudia! Me gustaría reservar el menú independiente de *' + spec.name + '* con *La Lola — Sabores de México* 🌮🎉\n\n' +
+                        '👤 *Nombre:* ' + name + '\n' +
+                        '🎉 *Tipo de Evento:* ' + type + '\n' +
+                        '👥 *Comensales:* ' + spec.guests + ' personas (Mínimo 30 pers.)\n' +
+                        '🍽️ *Menú Independiente:* ' + spec.name + '\n' +
+                        '🍗 *Proteínas Elegidas (2):* ' + protStr + '\n' +
+                        '🥖 *Pan:* Bolillo calientito incluido de cajón\n' +
+                        '📅 *Fecha Estimada:* ' + (date || 'Por definir') + '\n' +
+                        '📍 *Ciudad / Municipio:* ' + city + '\n' +
+                        '🏠 *Domicilio del Evento:* ' + (address || 'Por confirmar') + '\n\n' +
+                        '¿Podrías confirmarme disponibilidad para esta fecha y la cotización formal? ¡Muchas gracias!';
                 } else {
                     raw = '¡Hola Claudia! Me gustaría reservar el menú independiente de *' + spec.name + '* con *La Lola — Sabores de México* 🌮🎉\n\n' +
                         '👤 *Nombre:* ' + name + '\n' +
@@ -4714,7 +4979,12 @@
             if (selectedExtras.size > 0) {
                 const extrasArr = [];
                 if (selectedExtras.has('comal')) extrasArr.push('• Comaleras & Tortillas al Comal Hechas a Mano');
-                if (selectedExtras.has('cazuela')) extrasArr.push('• Cazuela Extra de Guisado');
+                if (selectedExtras.has('cazuela')) {
+                    var extraGuisadosText = window.selectedExtraGuisados.length > 0
+                        ? (' (' + window.selectedExtraGuisados.join(', ') + ')')
+                        : ' (guisados a definir)';
+                    extrasArr.push('• Guisado(s) Adicional(es)' + extraGuisadosText);
+                }
                 extrasText = '\n\n✨ *Extras Agregados:*\n' + extrasArr.join('\n');
             }
 
@@ -4738,18 +5008,15 @@
         document.querySelectorAll('.video-media-wrapper').forEach(function(wrapper) {
             var video = wrapper.querySelector('video');
             var btn = wrapper.querySelector('.video-play-btn-overlay');
-            var hint = wrapper.querySelector('.video-tap-hint');
             if (!video || !btn) return;
 
             function syncUI() {
                 if (video.paused) {
                     wrapper.classList.remove('is-playing');
                     btn.setAttribute('title', 'Reproducir video');
-                    if (hint) hint.textContent = '▶ Toca para ver video';
                 } else {
                     wrapper.classList.add('is-playing');
                     btn.setAttribute('title', 'Pausar video');
-                    if (hint) hint.textContent = '❚❚ Toca para pausar';
                 }
             }
 
@@ -4772,13 +5039,12 @@
                 }
             }
 
-            // Click directo en el botón central o en el texto
+            // Click directo en el botón central de reproducir/pausar
             btn.addEventListener('click', togglePlayback);
-            if (hint) hint.addEventListener('click', togglePlayback);
 
             // Click en la zona del video (sin interferir con la barra de progreso inferior de controles)
             wrapper.addEventListener('click', function(e) {
-                if (e.target === btn || btn.contains(e.target) || e.target === hint || (hint && hint.contains(e.target))) {
+                if (e.target === btn || btn.contains(e.target)) {
                     return; // Ya procesado por el botón
                 }
                 var rect = wrapper.getBoundingClientRect();
