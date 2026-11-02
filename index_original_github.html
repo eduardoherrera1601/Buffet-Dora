@@ -2373,6 +2373,67 @@
             line-height: 1.45;
         }
 
+        /* Controles de Selección de Charcutería Extra */
+        .holiday-extra-pill {
+            background: #FFF3E0;
+            border: 1.5px solid var(--cempasuchil-fuego);
+            color: var(--cempasuchil-fuego);
+            font-family: var(--font-folk);
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(230, 81, 0, 0.15);
+        }
+
+        .holiday-course-card.highlight-extra.extra-selected {
+            background: linear-gradient(135deg, #FFFDF0 0%, #FFF3D6 100%) !important;
+            border: 2.5px solid #2E7D32 !important;
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.22) !important;
+        }
+
+        .holiday-course-card.highlight-extra.extra-selected .holiday-extra-pill {
+            background: #E8F5E9;
+            border-color: #2E7D32;
+            color: #2E7D32;
+            font-weight: 900;
+        }
+
+        .holiday-extra-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            font-family: var(--font-folk);
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #7A5540;
+        }
+
+        .extra-check-box {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            border: 2px solid #C4A89A;
+            background: #FFFFFF;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.82rem;
+            font-weight: 900;
+            color: transparent;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .holiday-course-card.highlight-extra.extra-selected .extra-check-box {
+            background: #2E7D32;
+            border-color: #2E7D32;
+            color: #FFFFFF;
+        }
+
         @media (max-width: 960px) {
             .holiday-showcase-container {
                 grid-template-columns: 1fr;
@@ -2610,8 +2671,8 @@
                 <div class="holiday-hero-col">
                     <div class="holiday-main-card">
                         <span class="ribbon-holiday-star">⭐ PLATO FUERTE ESTELAR</span>
-                        <div class="holiday-hero-photo-frame" onclick="openLightbox('FOTOS/1.jpeg')">
-                            <img src="FOTOS/1.jpeg" alt="Pierna Rellena Horneada Tradicional de Fiestas Decembrinas" class="holiday-hero-photo">
+                        <div class="holiday-hero-photo-frame" onclick="openLightbox('FOTOS/1.jpg')">
+                            <img src="FOTOS/1.jpg" alt="Pierna Rellena Horneada Tradicional de Fiestas Decembrinas" class="holiday-hero-photo">
                             <div class="holiday-photo-badge-zoom">🔍 Toca para ampliar foto real</div>
                         </div>
                         <div class="holiday-main-info">
@@ -2646,7 +2707,7 @@
                     </div>
                 </div>
 
-                <!-- Columna Derecha: El Menú Completo Incluido en este Paquete con Fotos Reales (3, 4, 5, 6) -->
+                <!-- Columna Derecha: El Menú Completo Incluido en este Paquete con Fotos Reales (3, 4, 5, 9, 6) -->
                 <div class="holiday-courses-col">
                     <div class="holiday-package-badge-banner">
                         <span style="font-size: 1.6rem;">🎁</span>
@@ -2658,9 +2719,9 @@
 
                     <div class="holiday-courses-grid">
                         <!-- 1. Entrada (Foto 3) -->
-                        <div class="holiday-course-card" onclick="openLightbox('FOTOS/3.jpeg')">
+                        <div class="holiday-course-card" onclick="openLightbox('FOTOS/3.jpg')">
                             <div class="holiday-course-thumb">
-                                <img src="FOTOS/3.jpeg" alt="Entrada festiva: Papitas cambray y queso Philadelphia">
+                                <img src="FOTOS/3.jpg" alt="Entrada festiva: Papitas cambray y queso Philadelphia">
                                 <span class="course-mini-tag">1. Entrada</span>
                             </div>
                             <div class="holiday-course-content">
@@ -2670,9 +2731,9 @@
                         </div>
 
                         <!-- 2. Guarnición (Foto 4) -->
-                        <div class="holiday-course-card" onclick="openLightbox('FOTOS/4.jpeg')">
+                        <div class="holiday-course-card" onclick="openLightbox('FOTOS/4.jpg')">
                             <div class="holiday-course-thumb">
-                                <img src="FOTOS/4.jpeg" alt="Guarniciones festivas: Espagueti verde, puré y ensalada">
+                                <img src="FOTOS/4.jpg" alt="Guarniciones festivas: Espagueti verde, puré y ensalada">
                                 <span class="course-mini-tag">2. Guarnición</span>
                             </div>
                             <div class="holiday-course-content">
@@ -2682,9 +2743,9 @@
                         </div>
 
                         <!-- 3. Postre (Foto 5) -->
-                        <div class="holiday-course-card" onclick="openLightbox('FOTOS/5.jpeg')">
+                        <div class="holiday-course-card" onclick="openLightbox('FOTOS/5.jpg')">
                             <div class="holiday-course-thumb">
-                                <img src="FOTOS/5.jpeg" alt="Postre navideño: Ensalada de manzana, zanahoria o pay de queso">
+                                <img src="FOTOS/5.jpg" alt="Postre navideño: Ensalada de manzana, zanahoria o pay de queso">
                                 <span class="course-mini-tag">3. Postre</span>
                             </div>
                             <div class="holiday-course-content">
@@ -2693,10 +2754,10 @@
                             </div>
                         </div>
 
-                        <!-- 4. Bebida Tradicional Caliente -->
-                        <div class="holiday-course-card no-photo">
-                            <div class="holiday-course-thumb beverage-thumb">
-                                <span style="font-size: 2.2rem;">🫖</span>
+                        <!-- 4. Bebida Tradicional Caliente (Foto 9) -->
+                        <div class="holiday-course-card" onclick="openLightbox('FOTOS/9.jpg')">
+                            <div class="holiday-course-thumb">
+                                <img src="FOTOS/9.jpg" alt="Bebidas calientitas: Ponche navideño, chocolate caliente o café de olla">
                                 <span class="course-mini-tag">4. Bebida</span>
                             </div>
                             <div class="holiday-course-content">
@@ -2705,15 +2766,22 @@
                             </div>
                         </div>
 
-                        <!-- 5. Extras: Charcutería (Foto 6) -->
-                        <div class="holiday-course-card highlight-extra" onclick="openLightbox('FOTOS/6.jpeg')">
-                            <div class="holiday-course-thumb">
-                                <img src="FOTOS/6.jpeg" alt="Tabla Monumental de Charcutería Fina">
+                        <!-- 5. Extras: Charcutería Opcional (Foto 6 - Click para agregar como extra) -->
+                        <div class="holiday-course-card highlight-extra" id="card-extra-charcuteria" onclick="toggleHolidayCharcuterie(event)">
+                            <div class="holiday-course-thumb" onclick="event.stopPropagation(); openLightbox('FOTOS/6.jpg');" title="Toca para ampliar foto">
+                                <img src="FOTOS/6.jpg" alt="Tabla Monumental de Charcutería Fina">
                                 <span class="course-mini-tag gold">Extra Opcional</span>
                             </div>
                             <div class="holiday-course-content">
-                                <h4>🧀 Tabla Monumental de Charcutería</h4>
-                                <p>Aperitivo premium de gala: selección de carnes frías (jamón serrano, salami), quesos selectos, uvas frescas, frutos secos y galletitas finas.</p>
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; flex-wrap: wrap;">
+                                    <h4>🧀 Tabla Monumental de Charcutería</h4>
+                                    <div class="holiday-extra-pill" id="charcuteria-pill">+ Agregar como Extra</div>
+                                </div>
+                                <p>Aperitivo premium opcional para abrir el apetito: selección de carnes frías (jamón serrano, salami), quesos finos, uvas, frutos secos y galletitas.</p>
+                                <div class="holiday-extra-status">
+                                    <span class="extra-check-box" id="charcuteria-check"></span>
+                                    <small id="charcuteria-label">Toca la tarjeta para agregar este extra a tu cotización</small>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -3889,6 +3957,29 @@
             window.acceptSpecialtyAndGoToStep4(type);
         };
 
+        // GESTIÓN DEL EXTRA OPCIONAL: CHARCUTERÍA EN FIESTAS DECEMBRINAS
+        window.holidayCharcuterieSelected = false;
+        window.toggleHolidayCharcuterie = function(e) {
+            if (e) e.stopPropagation();
+            window.holidayCharcuterieSelected = !window.holidayCharcuterieSelected;
+            var card = document.getElementById('card-extra-charcuteria');
+            var pill = document.getElementById('charcuteria-pill');
+            var check = document.getElementById('charcuteria-check');
+            var label = document.getElementById('charcuteria-label');
+            if (window.holidayCharcuterieSelected) {
+                if (card) card.classList.add('extra-selected');
+                if (pill) pill.textContent = '✓ Extra Agregado';
+                if (check) check.textContent = '✓';
+                if (label) label.textContent = '✓ Agregada como extra a tu cotización';
+            } else {
+                if (card) card.classList.remove('extra-selected');
+                if (pill) pill.textContent = '+ Agregar como Extra';
+                if (check) check.textContent = '';
+                if (label) label.textContent = 'Toca la tarjeta para agregar este extra a tu cotización';
+            }
+            window.updateLiveSummary();
+        };
+
         // FUNCIÓN: ACTUALIZAR RESUMEN EN TIEMPO REAL
         window.updateLiveSummary = function() {
             const summaryTitle = document.getElementById('summaryPackageTitle');
@@ -3918,16 +4009,20 @@
                 if (baseRow) baseRow.style.display = 'none';
                 if (summaryList) {
                     if (spec.type === 'decembrina') {
+                        var charcuteriaLine = window.holidayCharcuterieSelected
+                            ? '<li style="color: #2E7D32; font-weight: 800;">✓ <strong>🧀 Extra Seleccionado:</strong> Tabla Monumental de Charcutería Fina</li>'
+                            : '<li style="color: #8D6E63;"><em>🧀 Extra Charcutería: No agregada (puedes activarla tocando la tarjeta en la sección decembrina)</em></li>';
+
                         summaryList.innerHTML = '<div style="color: #C62828; font-weight: 900; font-size: 1.05rem;">🎄 ' + spec.name + '</div>' +
                             '<ul style="margin: 0.5rem 0 0 1.2rem; padding-left: 0.2rem; color: var(--chocolate-texto); font-size: 0.9rem; line-height: 1.55;">' +
                             '<li><strong>🍖 Plato Fuerte:</strong> Pierna Horneada Rellena tradicional</li>' +
                             '<li><strong>🥔 Entrada:</strong> Papitas cambray al romero + Queso Philadelphia con toppings gourmet</li>' +
                             '<li><strong>🍝 Guarnición:</strong> Espagueti verde, puré de papa suave y ensalada verde</li>' +
                             '<li><strong>🥧 Postre:</strong> Ensalada de manzana, ensalada de zanahoria o pay de queso</li>' +
-                            '<li><strong>☕ Bebida:</strong> Chocolate caliente, ponche de frutas o café de olla</li>' +
-                            '<li><strong>🧀 Extra disponible:</strong> Tabla monumental de charcutería fina</li>' +
+                            '<li><strong>☕ Bebida:</strong> Ponche navideño, chocolate caliente o café de olla</li>' +
+                            charcuteriaLine +
                             '</ul>' +
-                            '<p style="margin: 0.4rem 0 0 0; color: #2E7D32; font-size: 0.84rem; font-weight: 800;">✓ Servicio completo incluido para ' + spec.guests + ' personas con montaje festivo.</p>';
+                            '<p style="margin: 0.4rem 0 0 0; color: #2E7D32; font-size: 0.84rem; font-weight: 800;">✓ Servicio completo para ' + spec.guests + ' personas con montaje festivo.</p>';
                     } else {
                         summaryList.innerHTML = '<div style="color: var(--rosa-mexicano); font-weight: 800; font-size: 1rem;">✨ ' + spec.name + '</div>' +
                             '<p style="margin: 0.35rem 0 0 0; color: var(--chocolate-suave); font-size: 0.88rem;">Servicio completo e independiente para ' + spec.guests + ' personas (Mínimo 30 personas). Incluye complementos, salsas y montaje en cazuela tradicional.</p>';
@@ -3935,7 +4030,7 @@
                 }
                 if (summaryBenefits) {
                     summaryBenefits.textContent = (spec.type === 'decembrina')
-                        ? 'Paquete completo de Fiestas Decembrinas: Pierna rellena horneada, entradas de papitas y Philadelphia, guarniciones (espagueti, puré y ensalada), postre navideño y bebida calientita.'
+                        ? ('Paquete de Fiestas Decembrinas: Pierna rellena horneada, entradas de papitas y Philadelphia, guarniciones (espagueti, puré y ensalada), postre navideño y bebida calientita' + (window.holidayCharcuterieSelected ? ' + Tabla de Charcutería extra.' : '.'))
                         : 'Servicio completo de ' + spec.name + ' con barra de complementos, salsas y atención tradicional.';
                 }
             } else if (currentPackage) {
@@ -4021,6 +4116,10 @@
                 const spec = window.selectedIndependentSpecialty;
                 let raw = '';
                 if (spec.type === 'decembrina') {
+                    const charcuteriaLine = window.holidayCharcuterieSelected
+                        ? '🧀 *Extra Agregado:* SÍ incluir Tabla Monumental de Charcutería fina\n'
+                        : '🧀 *Extra Charcutería:* No agregada (sin charcutería)\n';
+
                     raw = '¡Hola Claudia! Me gustaría cotizar y reservar el *Paquete Especial Fiestas Decembrinas* con *La Lola — Sabores de México* 🎄✨\n\n' +
                         '👤 *Nombre:* ' + name + '\n' +
                         '🎉 *Tipo de Evento:* ' + type + '\n' +
@@ -4030,7 +4129,7 @@
                         '🍝 *Guarniciones:* Espagueti verde cremoso, puré de papa suave y ensalada verde\n' +
                         '🥧 *Postre:* Ensalada de manzana navideña, ensalada de zanahoria o pay de queso\n' +
                         '☕ *Bebida Caliente:* Ponche navideño tradicional, chocolate caliente o café de olla\n' +
-                        '🧀 *Extra Opcional:* Tabla Monumental de Charcutería fina\n' +
+                        charcuteriaLine +
                         '📅 *Fecha Estimada:* ' + (date || 'Por definir') + '\n' +
                         '📍 *Ubicación:* ' + city + '\n\n' +
                         '¿Podrías confirmarme disponibilidad para esta fecha decembrina y la cotización formal? ¡Muchas gracias!';
