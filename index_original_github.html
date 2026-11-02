@@ -2048,6 +2048,363 @@
             padding: 0.45rem 0.8rem;
             line-height: 1.3;
         }
+
+        /* ===== SECCIÓN ESPECIAL: FIESTAS DECEMBRINAS (NAVIDAD & POSADAS) ===== */
+        .festive-holiday-section {
+            background: linear-gradient(180deg, #FFFDF9 0%, #FFF5F2 45%, #FCEDE8 100%) !important;
+            border: 3.5px solid #D4AF37 !important;
+            border-top: 8px solid #C62828 !important;
+            border-radius: 26px;
+            box-shadow: 0 16px 45px rgba(198, 40, 40, 0.12), 0 4px 20px rgba(212, 175, 55, 0.18);
+            position: relative;
+            overflow: hidden;
+            margin-top: 2.5rem;
+        }
+
+        .eyebrow-holiday {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #C62828, #8E0000);
+            color: #FFFFFF;
+            font-family: var(--font-folk);
+            font-size: 0.85rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 4px 14px rgba(198, 40, 40, 0.35);
+            border: 1.5px solid #FFD54F;
+        }
+
+        .holiday-showcase-container {
+            display: grid;
+            grid-template-columns: 1.08fr 1fr;
+            gap: 2.2rem;
+            align-items: start;
+            margin-top: 1.8rem;
+        }
+
+        /* Columna Izquierda: Foto 1 (Hero Plato Fuerte) */
+        .holiday-main-card {
+            background: #FFFFFF;
+            border: 3px solid #EAD8C5;
+            border-radius: 22px;
+            padding: 1.5rem;
+            box-shadow: 0 12px 35px rgba(36, 17, 8, 0.08);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .holiday-main-card:hover {
+            border-color: #C62828;
+            box-shadow: 0 18px 45px rgba(198, 40, 40, 0.18);
+        }
+
+        .ribbon-holiday-star {
+            position: absolute;
+            top: -14px;
+            left: 20px;
+            background: linear-gradient(135deg, #D4AF37, #FF8F00);
+            color: #241108;
+            font-family: var(--font-folk);
+            font-size: 0.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.4rem 1.1rem;
+            border-radius: 25px;
+            box-shadow: 0 6px 16px rgba(255, 143, 0, 0.4);
+            border: 2px solid #FFFFFF;
+            z-index: 2;
+        }
+
+        .holiday-hero-photo-frame {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 4px solid #D4AF37;
+            background: #1A0A04;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+            cursor: pointer;
+            margin-bottom: 1.3rem;
+        }
+
+        .holiday-hero-photo {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .holiday-hero-photo-frame:hover .holiday-hero-photo {
+            transform: scale(1.05);
+        }
+
+        .holiday-photo-badge-zoom {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(20, 5, 2, 0.88);
+            backdrop-filter: blur(8px);
+            color: #FFD54F;
+            font-family: var(--font-folk);
+            font-size: 0.76rem;
+            font-weight: 800;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 213, 79, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .holiday-dish-category {
+            display: inline-block;
+            background: #FFEBEE;
+            color: #C62828;
+            border: 1.5px solid #FFCDD2;
+            font-family: var(--font-folk);
+            font-size: 0.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            padding: 0.35rem 0.9rem;
+            border-radius: 30px;
+            margin-bottom: 0.5rem;
+        }
+
+        .holiday-main-info h3 {
+            font-family: var(--font-title);
+            font-size: 1.95rem;
+            font-weight: 900;
+            color: var(--chocolate-texto);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .holiday-main-info p {
+            font-size: 0.95rem;
+            color: var(--chocolate-suave);
+            line-height: 1.6;
+            margin-bottom: 1.3rem;
+        }
+
+        .holiday-booking-box {
+            background: #FFFDF9;
+            border: 2px dashed #D4AF37;
+            border-radius: 18px;
+            padding: 1.2rem;
+        }
+
+        .holiday-select-btn {
+            width: 100%;
+            justify-content: center;
+            background: linear-gradient(135deg, #C62828, #D81B60) !important;
+            box-shadow: 0 5px 0 #8E0000, 0 10px 25px rgba(198, 40, 40, 0.45) !important;
+            font-size: 0.98rem !important;
+            padding: 0.9rem 1.2rem !important;
+            border-radius: 30px;
+        }
+
+        .holiday-wa-quick-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: #FFFFFF;
+            border: 2px solid #2E7D32;
+            color: #2E7D32;
+            text-decoration: none;
+            font-family: var(--font-folk);
+            font-size: 0.9rem;
+            font-weight: 800;
+            padding: 0.75rem 1rem;
+            border-radius: 30px;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .holiday-wa-quick-btn:hover {
+            background: #2E7D32;
+            color: #FFFFFF;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(46, 125, 50, 0.3);
+        }
+
+        /* Columna Derecha: El Menú Completo Incluido */
+        .holiday-package-badge-banner {
+            background: linear-gradient(135deg, #C62828 0%, #A51313 100%);
+            color: #FFFFFF;
+            border-radius: 18px;
+            padding: 1rem 1.4rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 8px 24px rgba(198, 40, 40, 0.28);
+            border: 2px solid #FFD54F;
+        }
+
+        .holiday-package-badge-banner strong {
+            display: block;
+            font-family: var(--font-folk);
+            font-size: 1.1rem;
+            color: #FFD54F;
+        }
+
+        .holiday-package-badge-banner span {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.95);
+            display: block;
+            margin-top: 0.15rem;
+        }
+
+        .holiday-courses-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .holiday-course-card {
+            background: #FFFFFF;
+            border: 2px solid #EAD8C5;
+            border-radius: 18px;
+            padding: 0.95rem 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 14px rgba(36, 17, 8, 0.05);
+            position: relative;
+        }
+
+        .holiday-course-card:hover {
+            border-color: #C62828;
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(198, 40, 40, 0.16);
+            background: #FFFDFB;
+        }
+
+        .holiday-course-card.highlight-extra {
+            border: 2.5px solid #D4AF37;
+            background: linear-gradient(135deg, #FFFDF8 0%, #FFF8E7 100%);
+        }
+
+        .holiday-course-card.highlight-extra:hover {
+            border-color: var(--cempasuchil-fuego);
+            box-shadow: 0 8px 25px rgba(229, 81, 0, 0.18);
+        }
+
+        .holiday-course-thumb {
+            width: 110px;
+            height: 90px;
+            border-radius: 14px;
+            overflow: hidden;
+            flex-shrink: 0;
+            position: relative;
+            border: 2.5px solid #D4AF37;
+            background: #FAF0E4;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .holiday-course-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .holiday-course-card:hover .holiday-course-thumb img {
+            transform: scale(1.1);
+        }
+
+        .holiday-course-thumb.beverage-thumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+            border-color: #E65100;
+        }
+
+        .course-mini-tag {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(198, 40, 40, 0.94);
+            color: #FFFFFF;
+            font-family: var(--font-folk);
+            font-size: 0.68rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 2.5px 0;
+            letter-spacing: 0.05em;
+        }
+
+        .course-mini-tag.gold {
+            background: #D4AF37;
+            color: #241108;
+        }
+
+        .holiday-course-content {
+            flex: 1;
+        }
+
+        .holiday-course-content h4 {
+            font-family: var(--font-folk);
+            font-size: 1.08rem;
+            font-weight: 900;
+            color: var(--chocolate-texto);
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .holiday-course-content p {
+            font-size: 0.88rem;
+            color: var(--chocolate-suave);
+            line-height: 1.45;
+        }
+
+        @media (max-width: 960px) {
+            .holiday-showcase-container {
+                grid-template-columns: 1fr;
+                gap: 1.8rem;
+            }
+            .holiday-hero-photo {
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .holiday-main-card {
+                padding: 1.1rem;
+            }
+            .holiday-hero-photo {
+                height: 230px;
+            }
+            .holiday-course-card {
+                padding: 0.8rem 0.85rem;
+                gap: 0.85rem;
+            }
+            .holiday-course-thumb {
+                width: 90px;
+                height: 78px;
+            }
+            .holiday-course-content h4 {
+                font-size: 0.98rem;
+            }
+            .holiday-course-content p {
+                font-size: 0.82rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2063,6 +2420,7 @@
             </div>
         </a>
         <ul class="nav-menu">
+            <li><a href="#fiestas-decembrinas" class="nav-link" style="color: #C62828; font-weight: 900;">🎄 Fiestas Decembrinas</a></li>
             <li><a href="#galeria-real" class="nav-link">Fotos Reales</a></li>
             <li><a href="#arma-tu-banquete" class="nav-link">Arma tu Banquete</a></li>
             <li><a href="#especialidades-detalle" class="nav-link">Especialidades</a></li>
@@ -2232,6 +2590,136 @@
                 <p style="font-size: 1.15rem; font-weight: 700; margin-top: 0.4rem; color: #FFFFFF;">El auténtico sazón de casa cocinado a fuego lento con amor y tradición.</p>
             </div>
         </div>
+
+        <!-- ==========================================
+             NUEVA SECCIÓN: PAQUETE ESPECIAL FIESTAS DECEMBRINAS
+             (PIERNA RELLENA, ENTRADAS, GUARNICIONES, POSTRE & BEBIDAS)
+             ========================================== -->
+        <section class="section-folk-block festive-holiday-section" id="fiestas-decembrinas">
+            <div class="section-folk-heading">
+                <span class="eyebrow-holiday">🎄 Especial de Temporada • Posadas, Navidad & Fin de Año</span>
+                <h2 style="color: #9C111E;">Banquete Especial <span>Fiestas Decembrinas</span></h2>
+                <p style="font-size: 1.15rem; color: var(--chocolate-suave); margin-top: 0.5rem; max-width: 820px; margin-left: auto; margin-right: auto;">
+                    Celebra tus reuniones decembrinas, posadas de empresa y cenas familiares con el sazón más cálido y festivo. <strong>Todo el menú incluido en un solo paquete completo de gala tradicional.</strong>
+                </p>
+            </div>
+
+            <!-- Contenedor del Paquete Decembrino -->
+            <div class="holiday-showcase-container">
+                <!-- Columna Izquierda: Plato Fuerte Estelar (Foto 1) -->
+                <div class="holiday-hero-col">
+                    <div class="holiday-main-card">
+                        <span class="ribbon-holiday-star">⭐ PLATO FUERTE ESTELAR</span>
+                        <div class="holiday-hero-photo-frame" onclick="openLightbox('FOTOS/1.jpeg')">
+                            <img src="FOTOS/1.jpeg" alt="Pierna Rellena Horneada Tradicional de Fiestas Decembrinas" class="holiday-hero-photo">
+                            <div class="holiday-photo-badge-zoom">🔍 Toca para ampliar foto real</div>
+                        </div>
+                        <div class="holiday-main-info">
+                            <span class="holiday-dish-category">🍖 El Corazón del Banquete</span>
+                            <h3>Pierna Horneada Rellena</h3>
+                            <p>
+                                Pierna tierna y jugosa marinada con especias de la casa, rellena artesanalmente y horneada a fuego lento. Se sirve bien calientita y rebanada al momento para consentir a todos tus invitados.
+                            </p>
+
+                            <!-- Selector de Invitados y Botones de Reserva -->
+                            <div class="holiday-booking-box">
+                                <div class="specialty-guest-selector" style="margin-bottom: 0.9rem;">
+                                    <span style="font-family: var(--font-folk); font-size: 0.85rem; font-weight: 800; color: var(--chocolate-texto);">👥 Invitados para tu Evento:</span>
+                                    <div class="guest-counter-control">
+                                        <button type="button" class="btn-guest-step" onclick="stepSpecialtyGuests('decembrina', -5)">−</button>
+                                        <span class="guest-number-val" id="guests-decembrina">0</span>
+                                        <button type="button" class="btn-guest-step" onclick="stepSpecialtyGuests('decembrina', 5)">+</button>
+                                        <span style="font-size: 0.82rem; font-weight: 700; color: var(--chocolate-suave);">pers.</span>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+                                    <button class="btn-turquesa-3d holiday-select-btn" id="btn-select-decembrina" onclick="acceptSpecialtyAndGoToStep4('decembrina')">
+                                        🎄 Elegir Paquete Decembrino (Mín. 30 pers.)
+                                    </button>
+                                    <a href="https://wa.me/524778020791?text=Hola%20Claudia%2C%20me%20gustar%C3%ADa%20cotizar%20el%20Paquete%20Especial%20de%20Fiestas%20Decembrinas%20(Pierna%20Rellena%2C%20Entradas%2C%20Guarniciones%20y%20Ponche)%20para%20mi%20posada%20o%20cena%20navide%C3%B1a%20🎄✨" class="holiday-wa-quick-btn" target="_blank">
+                                        💬 Preguntar Fecha Decembrina por WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: El Menú Completo Incluido en este Paquete con Fotos Reales (3, 4, 5, 6) -->
+                <div class="holiday-courses-col">
+                    <div class="holiday-package-badge-banner">
+                        <span style="font-size: 1.6rem;">🎁</span>
+                        <div>
+                            <strong>¡Todo Incluido en tu Paquete Decembrino!</strong>
+                            <span>Entrada + Plato Fuerte + Guarnición + Postre + Bebida Caliente</span>
+                        </div>
+                    </div>
+
+                    <div class="holiday-courses-grid">
+                        <!-- 1. Entrada (Foto 3) -->
+                        <div class="holiday-course-card" onclick="openLightbox('FOTOS/3.jpeg')">
+                            <div class="holiday-course-thumb">
+                                <img src="FOTOS/3.jpeg" alt="Entrada festiva: Papitas cambray y queso Philadelphia">
+                                <span class="course-mini-tag">1. Entrada</span>
+                            </div>
+                            <div class="holiday-course-content">
+                                <h4>🥔 Entradas de Bienvenida</h4>
+                                <p>Papitas cambray sazonadas al romero + Queso Philadelphia artesanal decorado con diferentes toppings gourmet (arándanos, nueces y aderezos de casa).</p>
+                            </div>
+                        </div>
+
+                        <!-- 2. Guarnición (Foto 4) -->
+                        <div class="holiday-course-card" onclick="openLightbox('FOTOS/4.jpeg')">
+                            <div class="holiday-course-thumb">
+                                <img src="FOTOS/4.jpeg" alt="Guarniciones festivas: Espagueti verde, puré y ensalada">
+                                <span class="course-mini-tag">2. Guarnición</span>
+                            </div>
+                            <div class="holiday-course-content">
+                                <h4>🍝 Guarniciones de Gala</h4>
+                                <p>Espagueti verde cremoso en salsa poblana, puré de papa suave con mantequilla y ensalada verde fresca de fiesta.</p>
+                            </div>
+                        </div>
+
+                        <!-- 3. Postre (Foto 5) -->
+                        <div class="holiday-course-card" onclick="openLightbox('FOTOS/5.jpeg')">
+                            <div class="holiday-course-thumb">
+                                <img src="FOTOS/5.jpeg" alt="Postre navideño: Ensalada de manzana, zanahoria o pay de queso">
+                                <span class="course-mini-tag">3. Postre</span>
+                            </div>
+                            <div class="holiday-course-content">
+                                <h4>🥧 Postre Tradicional</h4>
+                                <p>Tradicional ensalada de manzana navideña con crema y nuez, ensalada dulce de zanahoria con pasas o pay cremoso de queso horneado.</p>
+                            </div>
+                        </div>
+
+                        <!-- 4. Bebida Tradicional Caliente -->
+                        <div class="holiday-course-card no-photo">
+                            <div class="holiday-course-thumb beverage-thumb">
+                                <span style="font-size: 2.2rem;">🫖</span>
+                                <span class="course-mini-tag">4. Bebida</span>
+                            </div>
+                            <div class="holiday-course-content">
+                                <h4>☕ Bebida Calientita Tradicional</h4>
+                                <p>Ponche navideño de frutas naturales con tejocote, caña y piloncillo, rico chocolate caliente artesanal o café de olla colado con canela.</p>
+                            </div>
+                        </div>
+
+                        <!-- 5. Extras: Charcutería (Foto 6) -->
+                        <div class="holiday-course-card highlight-extra" onclick="openLightbox('FOTOS/6.jpeg')">
+                            <div class="holiday-course-thumb">
+                                <img src="FOTOS/6.jpeg" alt="Tabla Monumental de Charcutería Fina">
+                                <span class="course-mini-tag gold">Extra Opcional</span>
+                            </div>
+                            <div class="holiday-course-content">
+                                <h4>🧀 Tabla Monumental de Charcutería</h4>
+                                <p>Aperitivo premium de gala: selección de carnes frías (jamón serrano, salami), quesos selectos, uvas frescas, frutos secos y galletitas finas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- ==========================================
              ESPECIALIDADES DE LA CASA (SERVICIOS INDEPENDIENTES)
@@ -3245,13 +3733,15 @@
             chilaquiles: 0,
             tortas: 0,
             menudo: 0,
-            pozole: 0
+            pozole: 0,
+            decembrina: 0
         };
         var specialtyNames = {
             chilaquiles: 'Chilaquiles Tradicionales de la Casa',
             tortas: 'Las Famosas Tortas de Chilaquiles',
             menudo: 'El Tradicional Menudo en Cazuela',
-            pozole: 'Pozole Tradicional de Fiesta'
+            pozole: 'Pozole Tradicional de Fiesta',
+            decembrina: 'Paquete Especial Fiestas Decembrinas (Pierna Rellena & Banquete Completo)'
         };
 
         window.stepSpecialtyGuests = function(type, step) {
@@ -3274,7 +3764,9 @@
                     window.selectedIndependentSpecialty = null;
                 }
                 if (btn) {
-                    btn.innerHTML = 'Elegir Menú (Mín. 30 pers.)';
+                    btn.innerHTML = (type === 'decembrina')
+                        ? '🎄 Elegir Paquete Decembrino (Mín. 30 pers.)'
+                        : 'Elegir Menú (Mín. 30 pers.)';
                     btn.style.background = '';
                     btn.style.color = '';
                     btn.style.boxShadow = '';
@@ -3283,14 +3775,18 @@
                 if (isCurrentlySelected) {
                     window.selectedIndependentSpecialty.guests = newVal;
                     if (btn) {
-                        btn.innerHTML = '✓ Elegido (' + newVal + ' pers.) → Ir al Paso 4';
+                        btn.innerHTML = (type === 'decembrina')
+                            ? '✓ Paquete Decembrino Elegido (' + newVal + ' pers.) → Ir al Paso 4'
+                            : '✓ Elegido (' + newVal + ' pers.) → Ir al Paso 4';
                         btn.style.background = 'linear-gradient(135deg, var(--rosa-mexicano), #D81B60)';
                         btn.style.color = '#FFFFFF';
                         btn.style.boxShadow = '0 6px 18px rgba(233, 30, 99, 0.45)';
                     }
                 } else {
                     if (btn) {
-                        btn.innerHTML = '✓ Elegir (' + newVal + ' pers.) → Ir a Reservar';
+                        btn.innerHTML = (type === 'decembrina')
+                            ? '✓ Elegir Paquete Decembrino (' + newVal + ' pers.) → Ir a Reservar'
+                            : '✓ Elegir (' + newVal + ' pers.) → Ir a Reservar';
                         btn.style.background = 'linear-gradient(135deg, var(--rosa-mexicano), #D81B60)';
                         btn.style.color = '#FFFFFF';
                         btn.style.boxShadow = '0 6px 18px rgba(233, 30, 99, 0.45)';
@@ -3316,13 +3812,15 @@
                 if (el) el.textContent = '30';
             }
 
-            // Actualizar botones de las 4 especialidades
-            ['chilaquiles', 'tortas', 'menudo', 'pozole'].forEach(function(k) {
+            // Actualizar botones de todas las especialidades
+            ['chilaquiles', 'tortas', 'menudo', 'pozole', 'decembrina'].forEach(function(k) {
                 var b = document.getElementById('btn-select-' + k);
                 var g = document.getElementById('guests-' + k);
                 if (k === type) {
                     if (b) {
-                        b.innerHTML = '✓ Elegido (' + count + ' pers.) → Ir al Paso 4';
+                        b.innerHTML = (k === 'decembrina')
+                            ? '✓ Paquete Decembrino Elegido (' + count + ' pers.) → Ir al Paso 4'
+                            : '✓ Elegido (' + count + ' pers.) → Ir al Paso 4';
                         b.style.background = 'linear-gradient(135deg, var(--rosa-mexicano), #D81B60)';
                         b.style.color = '#FFFFFF';
                         b.style.boxShadow = '0 6px 18px rgba(233, 30, 99, 0.45)';
@@ -3331,7 +3829,9 @@
                     specialtyGuests[k] = 0;
                     if (g) g.textContent = '0';
                     if (b) {
-                        b.innerHTML = 'Elegir Menú (Mín. 30 pers.)';
+                        b.innerHTML = (k === 'decembrina')
+                            ? '🎄 Elegir Paquete Decembrino (Mín. 30 pers.)'
+                            : 'Elegir Menú (Mín. 30 pers.)';
                         b.style.background = '';
                         b.style.color = '';
                         b.style.boxShadow = '';
@@ -3368,13 +3868,15 @@
 
         window.cancelIndependentSpecialty = function() {
             window.selectedIndependentSpecialty = null;
-            ['chilaquiles', 'tortas', 'menudo', 'pozole'].forEach(function(k) {
+            ['chilaquiles', 'tortas', 'menudo', 'pozole', 'decembrina'].forEach(function(k) {
                 specialtyGuests[k] = 0;
                 var el = document.getElementById('guests-' + k);
                 if (el) el.textContent = '0';
                 var b = document.getElementById('btn-select-' + k);
                 if (b) {
-                    b.innerHTML = 'Elegir Menú (Mín. 30 pers.)';
+                    b.innerHTML = (k === 'decembrina')
+                        ? '🎄 Elegir Paquete Decembrino (Mín. 30 pers.)'
+                        : 'Elegir Menú (Mín. 30 pers.)';
                     b.style.background = '';
                     b.style.color = '';
                     b.style.boxShadow = '';
@@ -3412,13 +3914,30 @@
                 if (noticeName) noticeName.textContent = spec.name + ' (' + spec.guests + ' personas)';
                 if (summaryTitle) summaryTitle.textContent = spec.name;
                 if (summaryGuests) summaryGuests.textContent = spec.guests + ' Personas';
-                if (guisadosLabel) guisadosLabel.innerHTML = '🍽️ Menú Independiente Seleccionado:';
+                if (guisadosLabel) guisadosLabel.innerHTML = '🍽️ Menú Seleccionado:';
                 if (baseRow) baseRow.style.display = 'none';
                 if (summaryList) {
-                    summaryList.innerHTML = '<div style="color: var(--rosa-mexicano); font-weight: 800; font-size: 1rem;">✨ ' + spec.name + '</div>' +
-                        '<p style="margin: 0.35rem 0 0 0; color: var(--chocolate-suave); font-size: 0.88rem;">Servicio completo e independiente para ' + spec.guests + ' personas (Mínimo 30 personas). Incluye complementos, salsas y montaje en cazuela tradicional.</p>';
+                    if (spec.type === 'decembrina') {
+                        summaryList.innerHTML = '<div style="color: #C62828; font-weight: 900; font-size: 1.05rem;">🎄 ' + spec.name + '</div>' +
+                            '<ul style="margin: 0.5rem 0 0 1.2rem; padding-left: 0.2rem; color: var(--chocolate-texto); font-size: 0.9rem; line-height: 1.55;">' +
+                            '<li><strong>🍖 Plato Fuerte:</strong> Pierna Horneada Rellena tradicional</li>' +
+                            '<li><strong>🥔 Entrada:</strong> Papitas cambray al romero + Queso Philadelphia con toppings gourmet</li>' +
+                            '<li><strong>🍝 Guarnición:</strong> Espagueti verde, puré de papa suave y ensalada verde</li>' +
+                            '<li><strong>🥧 Postre:</strong> Ensalada de manzana, ensalada de zanahoria o pay de queso</li>' +
+                            '<li><strong>☕ Bebida:</strong> Chocolate caliente, ponche de frutas o café de olla</li>' +
+                            '<li><strong>🧀 Extra disponible:</strong> Tabla monumental de charcutería fina</li>' +
+                            '</ul>' +
+                            '<p style="margin: 0.4rem 0 0 0; color: #2E7D32; font-size: 0.84rem; font-weight: 800;">✓ Servicio completo incluido para ' + spec.guests + ' personas con montaje festivo.</p>';
+                    } else {
+                        summaryList.innerHTML = '<div style="color: var(--rosa-mexicano); font-weight: 800; font-size: 1rem;">✨ ' + spec.name + '</div>' +
+                            '<p style="margin: 0.35rem 0 0 0; color: var(--chocolate-suave); font-size: 0.88rem;">Servicio completo e independiente para ' + spec.guests + ' personas (Mínimo 30 personas). Incluye complementos, salsas y montaje en cazuela tradicional.</p>';
+                    }
                 }
-                if (summaryBenefits) summaryBenefits.textContent = 'Servicio completo de ' + spec.name + ' con barra de complementos, salsas y atención tradicional.';
+                if (summaryBenefits) {
+                    summaryBenefits.textContent = (spec.type === 'decembrina')
+                        ? 'Paquete completo de Fiestas Decembrinas: Pierna rellena horneada, entradas de papitas y Philadelphia, guarniciones (espagueti, puré y ensalada), postre navideño y bebida calientita.'
+                        : 'Servicio completo de ' + spec.name + ' con barra de complementos, salsas y atención tradicional.';
+                }
             } else if (currentPackage) {
                 if (paso3) paso3.style.display = 'block';
                 if (extrasBox) extrasBox.style.display = 'block';
@@ -3500,14 +4019,31 @@
 
             if (window.selectedIndependentSpecialty && window.selectedIndependentSpecialty.guests >= 30) {
                 const spec = window.selectedIndependentSpecialty;
-                const raw = '¡Hola Claudia! Me gustaría reservar el menú independiente de *' + spec.name + '* con *La Lola — Sabores de México* 🌮🎉\n\n' +
-                    '👤 *Nombre:* ' + name + '\n' +
-                    '🎉 *Tipo de Evento:* ' + type + '\n' +
-                    '👥 *Comensales:* ' + spec.guests + ' personas (Mínimo 30 pers.)\n' +
-                    '🍽️ *Menú Independiente:* ' + spec.name + '\n' +
-                    '📅 *Fecha Estimada:* ' + (date || 'Por definir') + '\n' +
-                    '📍 *Ubicación:* ' + city + '\n\n' +
-                    '¿Podrías confirmarme disponibilidad para esta fecha y la cotización formal? ¡Muchas gracias!';
+                let raw = '';
+                if (spec.type === 'decembrina') {
+                    raw = '¡Hola Claudia! Me gustaría cotizar y reservar el *Paquete Especial Fiestas Decembrinas* con *La Lola — Sabores de México* 🎄✨\n\n' +
+                        '👤 *Nombre:* ' + name + '\n' +
+                        '🎉 *Tipo de Evento:* ' + type + '\n' +
+                        '👥 *Comensales:* ' + spec.guests + ' personas (Mínimo 30 pers.)\n' +
+                        '🍖 *Plato Fuerte Estelar:* Pierna Horneada Rellena Especial\n' +
+                        '🥔 *Entrada:* Papitas cambray al romero + Queso Philadelphia con toppings gourmet\n' +
+                        '🍝 *Guarniciones:* Espagueti verde cremoso, puré de papa suave y ensalada verde\n' +
+                        '🥧 *Postre:* Ensalada de manzana navideña, ensalada de zanahoria o pay de queso\n' +
+                        '☕ *Bebida Caliente:* Ponche navideño tradicional, chocolate caliente o café de olla\n' +
+                        '🧀 *Extra Opcional:* Tabla Monumental de Charcutería fina\n' +
+                        '📅 *Fecha Estimada:* ' + (date || 'Por definir') + '\n' +
+                        '📍 *Ubicación:* ' + city + '\n\n' +
+                        '¿Podrías confirmarme disponibilidad para esta fecha decembrina y la cotización formal? ¡Muchas gracias!';
+                } else {
+                    raw = '¡Hola Claudia! Me gustaría reservar el menú independiente de *' + spec.name + '* con *La Lola — Sabores de México* 🌮🎉\n\n' +
+                        '👤 *Nombre:* ' + name + '\n' +
+                        '🎉 *Tipo de Evento:* ' + type + '\n' +
+                        '👥 *Comensales:* ' + spec.guests + ' personas (Mínimo 30 pers.)\n' +
+                        '🍽️ *Menú Independiente:* ' + spec.name + '\n' +
+                        '📅 *Fecha Estimada:* ' + (date || 'Por definir') + '\n' +
+                        '📍 *Ubicación:* ' + city + '\n\n' +
+                        '¿Podrías confirmarme disponibilidad para esta fecha y la cotización formal? ¡Muchas gracias!';
+                }
 
                 window.open('https://wa.me/524778020791?text=' + encodeURIComponent(raw), '_blank');
                 return;
