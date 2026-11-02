@@ -1346,6 +1346,115 @@
             gap: 1rem;
         }
 
+        /* ===== PASO 4: LAYOUT EN DOBLE COLUMNA HORIZONTAL (SPLIT 50/50 EN DESKTOP) ===== */
+        .quote-step4-split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.08fr;
+            gap: 1.8rem;
+            align-items: start;
+            margin-top: 1.4rem;
+        }
+
+        .quote-inputs-card {
+            background: #FFFFFF;
+            border: 2px solid #EAD8C5;
+            border-radius: 20px;
+            padding: 1.8rem;
+            box-shadow: 0 8px 25px rgba(36, 17, 8, 0.05);
+        }
+
+        .quote-card-header {
+            border-bottom: 2px dashed #EAD8C5;
+            padding-bottom: 1rem;
+            margin-bottom: 1.3rem;
+        }
+
+        .quote-card-header h4 {
+            font-family: var(--font-folk);
+            font-size: 1.22rem;
+            font-weight: 900;
+            color: var(--chocolate-texto);
+            margin-top: 0.2rem;
+        }
+
+        .quote-card-header p {
+            font-size: 0.88rem;
+            color: var(--chocolate-suave);
+            margin-top: 0.25rem;
+            line-height: 1.4;
+        }
+
+        .quote-fields-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1.05rem;
+        }
+
+        .form-group-folk {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .form-group-folk label {
+            font-family: var(--font-folk);
+            font-size: 0.84rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--chocolate-texto);
+            letter-spacing: 0.03em;
+        }
+
+        .form-group-folk input,
+        .form-group-folk select {
+            background: #FFFDFB;
+            border: 2px solid #D6C7B2;
+            border-radius: 12px;
+            padding: 0.85rem 1rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--chocolate-texto);
+            transition: all 0.2s ease;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-group-folk input:focus,
+        .form-group-folk select:focus {
+            border-color: var(--cempasuchil-fuego);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(229, 81, 0, 0.15);
+            background: #FFFFFF;
+        }
+
+        .form-row-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .quote-step4-split-layout .live-summary-box {
+            margin-top: 0;
+            position: sticky;
+            top: 20px;
+        }
+
+        @media (max-width: 992px) {
+            .quote-step4-split-layout {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .form-row-2col {
+                grid-template-columns: 1fr;
+            }
+            .quote-inputs-card {
+                padding: 1.3rem 1rem;
+            }
+            .quote-step4-split-layout .live-summary-box {
+                position: static;
+            }
+        }
+
         /* ===== GALERÍA DE EVENTOS Y CELEBRACIONES ===== */
         .ade-grid-gallery {
             display: grid;
@@ -3368,110 +3477,127 @@
                 <p class="step-desc">Completa tus datos y enviaremos el desglose completo y ordenado directo al WhatsApp de Claudia.</p>
 
                 <form id="unifiedQuoteForm" onsubmit="handleSendUnifiedQuote(event)">
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-bottom: 2rem;">
-                        <div style="display: flex; flex-direction: column; gap: 0.4rem;">
-                            <label style="font-family: var(--font-folk); font-size: 0.88rem; font-weight: 800; text-transform: uppercase; color: var(--chocolate-texto);">Tu Nombre Completo *</label>
-                            <input type="text" id="orderClientName" required placeholder="Ej. Mariana González" style="background: #FFFFFF; border: 2px solid #D6C7B2; border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.95rem; font-weight: 600;" oninput="updateLiveSummary()">
-                        </div>
-
-                        <div style="display: flex; flex-direction: column; gap: 0.4rem;">
-                            <label style="font-family: var(--font-folk); font-size: 0.88rem; font-weight: 800; text-transform: uppercase; color: var(--chocolate-texto);">Tipo de Evento</label>
-                            <select id="orderEventType" style="background: #FFFFFF; border: 2px solid #D6C7B2; border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.95rem; font-weight: 600;" onchange="updateLiveSummary()">
-                                <option value="Banquete Familiar / Cumpleaños">🎉 Banquete Familiar / Cumpleaños</option>
-                                <option value="Boda / Aniversario">💍 Boda / Aniversario</option>
-                                <option value="Fiesta de XV Años">👑 Fiesta de XV Años</option>
-                                <option value="Bautizo / Primera Comunión">🕊️ Bautizo / Primera Comunión</option>
-                                <option value="Evento Corporativo / Empresa">🏢 Evento Corporativo / Empresa</option>
-                                <option value="Desayuno o Tornaboda">🍳 Desayuno o Tornaboda</option>
-                            </select>
-                        </div>
-
-                        <div style="display: flex; flex-direction: column; gap: 0.4rem;">
-                            <label style="font-family: var(--font-folk); font-size: 0.88rem; font-weight: 800; text-transform: uppercase; color: var(--chocolate-texto);">Fecha Estimada *</label>
-                            <input type="date" id="orderEventDate" required style="background: #FFFFFF; border: 2px solid #D6C7B2; border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.95rem; font-weight: 600;" onchange="updateLiveSummary()">
-                        </div>
-
-                        <div style="display: flex; flex-direction: column; gap: 0.4rem;">
-                            <label style="font-family: var(--font-folk); font-size: 0.88rem; font-weight: 800; text-transform: uppercase; color: var(--chocolate-texto);">Ciudad / Municipio *</label>
-                            <input type="text" id="orderEventCity" required placeholder="Ej. León, Gto." value="León, Gto." style="background: #FFFFFF; border: 2px solid #D6C7B2; border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.95rem; font-weight: 600;" oninput="updateLiveSummary()">
-                        </div>
-
-                        <div style="display: flex; flex-direction: column; gap: 0.4rem; grid-column: 1 / -1;">
-                            <label style="font-family: var(--font-folk); font-size: 0.88rem; font-weight: 800; text-transform: uppercase; color: var(--chocolate-texto);">📍 Domicilio donde será el Evento *</label>
-                            <input type="text" id="orderEventAddress" placeholder="Ej. Calle Manuel Doblado #405, Col. Centro (o nombre del salón / jardín / quinta)" style="background: #FFFFFF; border: 2px solid #D6C7B2; border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.95rem; font-weight: 600;" oninput="updateLiveSummary()">
-                        </div>
-                    </div>
-
-                    <!-- Tarjeta de Resumen en Tiempo Real -->
-                    <div class="live-summary-box">
-                        <!-- Banner cuando se elige una Especialidad Independiente -->
-                        <div id="independentNoticeBanner" style="display: none; background: #FFF3E0; border: 2px solid var(--cempasuchil-fuego); border-radius: 12px; padding: 0.8rem 1.2rem; margin-bottom: 1.2rem; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem;">
-                            <div>
-                                <span style="font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; color: var(--cempasuchil-fuego); letter-spacing: 0.08em; display: block;">⭐ SERVICIO INDEPENDIENTE SELECCIONADO</span>
-                                <strong id="independentNoticeName" style="color: var(--chocolate-texto); font-size: 1.05rem;"></strong>
+                    <div class="quote-step4-split-layout">
+                        <!-- COLUMNA IZQUIERDA: FORMULARIO DE DATOS DEL EVENTO -->
+                        <div class="quote-inputs-card">
+                            <div class="quote-card-header">
+                                <span style="font-family: var(--font-folk); font-size: 0.76rem; font-weight: 800; text-transform: uppercase; color: var(--cempasuchil-fuego); letter-spacing: 0.08em; display: block;">📋 Datos de tu Evento</span>
+                                <h4>Información de Contacto & Fecha</h4>
+                                <p>Ingresa tus datos para verificar disponibilidad y enviarte la propuesta formal:</p>
                             </div>
-                            <button type="button" onclick="cancelIndependentSpecialty()" style="background: #FFFFFF; border: 1.5px solid var(--cempasuchil-fuego); border-radius: 8px; color: var(--chocolate-texto); font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; padding: 0.4rem 0.8rem; cursor: pointer;">
-                                ✕ Cambiar a Banquete de Cazuelas
+
+                            <div class="quote-fields-stack">
+                                <!-- Tu Nombre Completo -->
+                                <div class="form-group-folk">
+                                    <label>Tu Nombre Completo *</label>
+                                    <input type="text" id="orderClientName" required placeholder="Ej. Mariana González" oninput="updateLiveSummary()">
+                                </div>
+
+                                <!-- Tipo de Evento & Fecha Estimada en 2 columnas -->
+                                <div class="form-row-2col">
+                                    <div class="form-group-folk">
+                                        <label>Tipo de Evento</label>
+                                        <select id="orderEventType" onchange="updateLiveSummary()">
+                                            <option value="Banquete Familiar / Cumpleaños">🎉 Banquete Familiar / Cumpleaños</option>
+                                            <option value="Boda / Aniversario">💍 Boda / Aniversario</option>
+                                            <option value="Fiesta de XV Años">👑 Fiesta de XV Años</option>
+                                            <option value="Bautizo / Primera Comunión">🕊️ Bautizo / Primera Comunión</option>
+                                            <option value="Evento Corporativo / Empresa">🏢 Evento Corporativo / Empresa</option>
+                                            <option value="Desayuno o Tornaboda">🍳 Desayuno o Tornaboda</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group-folk">
+                                        <label>Fecha Estimada *</label>
+                                        <input type="date" id="orderEventDate" required onchange="updateLiveSummary()">
+                                    </div>
+                                </div>
+
+                                <!-- Ciudad / Municipio -->
+                                <div class="form-group-folk">
+                                    <label>Ciudad / Municipio *</label>
+                                    <input type="text" id="orderEventCity" required placeholder="Ej. León, Gto." value="León, Gto." oninput="updateLiveSummary()">
+                                </div>
+
+                                <!-- Domicilio donde será el Evento -->
+                                <div class="form-group-folk">
+                                    <label>📍 Domicilio donde será el Evento *</label>
+                                    <input type="text" id="orderEventAddress" placeholder="Ej. Calle Manuel Doblado #405, Col. Centro (o nombre del salón / jardín / quinta)" oninput="updateLiveSummary()">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- COLUMNA DERECHA: TARJETA DE RESUMEN EN TIEMPO REAL -->
+                        <div class="live-summary-box">
+                            <!-- Banner cuando se elige una Especialidad Independiente -->
+                            <div id="independentNoticeBanner" style="display: none; background: #FFF3E0; border: 2px solid var(--cempasuchil-fuego); border-radius: 12px; padding: 0.8rem 1.2rem; margin-bottom: 1.2rem; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem;">
+                                <div>
+                                    <span style="font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; color: var(--cempasuchil-fuego); letter-spacing: 0.08em; display: block;">⭐ SERVICIO INDEPENDIENTE SELECCIONADO</span>
+                                    <strong id="independentNoticeName" style="color: var(--chocolate-texto); font-size: 1.05rem;"></strong>
+                                </div>
+                                <button type="button" onclick="cancelIndependentSpecialty()" style="background: #FFFFFF; border: 1.5px solid var(--cempasuchil-fuego); border-radius: 8px; color: var(--chocolate-texto); font-family: var(--font-folk); font-size: 0.78rem; font-weight: 800; padding: 0.4rem 0.8rem; cursor: pointer;">
+                                    ✕ Cambiar a Banquete de Cazuelas
+                                </button>
+                            </div>
+
+                            <div class="summary-header-row">
+                                <div>
+                                    <span style="font-family: var(--font-folk); font-size: 0.82rem; font-weight: 800; text-transform: uppercase; color: var(--cempasuchil-fuego); letter-spacing: 0.1em;">Resumen de tu Cotización</span>
+                                    <h4 style="font-family: var(--font-title); font-size: 1.65rem; font-weight: 900; color: var(--chocolate-texto); margin-top: 0.2rem;" id="summaryPackageTitle">Elige tu Paquete en el Paso 1</h4>
+                                </div>
+                                <div style="text-align: right;">
+                                    <span style="font-family: var(--font-folk); font-size: 0.85rem; font-weight: 700; color: #7A6251;">Capacidad estimada:</span>
+                                    <div style="font-family: var(--font-title); font-size: 1.55rem; font-weight: 900; color: var(--chocolate-texto);" id="summaryGuestCount">Por definir</div>
+                                </div>
+                            </div>
+
+                            <!-- Guarnición Base Seleccionada -->
+                            <div id="summaryBaseRow" style="margin-bottom: 1.1rem; background: #FFF8E7; border: 1.5px solid #E2CCA8; border-radius: 12px; padding: 0.75rem 1.1rem; display: none; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+                                <div>
+                                    <span style="font-family: var(--font-folk); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--cempasuchil-fuego); letter-spacing: 0.08em; display: block;">Guarnición Base Incluida</span>
+                                    <strong style="font-family: var(--font-folk); font-size: 1rem; color: var(--chocolate-texto);"><span id="summaryBaseIcon">⚪</span> <span id="summaryBaseName">Sin seleccionar (a definir con Claudia)</span></strong>
+                                </div>
+                                <span id="summaryBaseBadge" style="font-size: 0.8rem; font-weight: 800; color: #B78103; background: #FFF8E1; border: 1px solid #FFE082; padding: 0.25rem 0.7rem; border-radius: 20px;">Opcional / Pendiente</span>
+                            </div>
+
+                            <!-- Desglose de Guisados Seleccionados -->
+                            <div style="margin-bottom: 1.1rem;" id="summaryCazuelasSection">
+                                <strong style="display: block; font-family: var(--font-folk); font-size: 0.95rem; color: var(--chocolate-texto); margin-bottom: 0.45rem;" id="summaryGuisadosLabel">
+                                    🥘 Guisados Seleccionados (<span id="summaryGuisadosCount">0</span> de <span id="summaryGuisadosLimit">0</span>):
+                                </strong>
+                                <div id="summaryGuisadosList" style="font-size: 0.9rem; color: var(--chocolate-suave); line-height: 1.55; background: #FFFDF9; border: 1.5px solid #E6D7C5; border-radius: 12px; padding: 0.8rem 1.1rem;">
+                                    <em>Selecciona primero un paquete en el Paso 1 para comenzar a armar tu banquete.</em>
+                                </div>
+                            </div>
+
+                            <!-- Desglose de Incluidos y Extras -->
+                            <div style="display: grid; grid-template-columns: 1fr; gap: 0.85rem; font-size: 0.88rem;">
+                                <div style="background: #FFFDF9; border: 1.5px solid #E6D7C5; border-radius: 12px; padding: 0.75rem 0.95rem;">
+                                    <strong style="display: block; color: var(--chocolate-texto); margin-bottom: 0.2rem;">📦 Lo que Incluye tu Paquete:</strong>
+                                    <span id="summaryPackageBenefits" style="color: var(--chocolate-suave);">Elige un paquete para ver los beneficios incluidos (botana, vitroleros de agua fresca, tortillas y guisados).</span>
+                                </div>
+
+                                <div id="summaryExtrasBox" style="background: #FFFDF9; border: 1.5px solid #E6D7C5; border-radius: 12px; padding: 0.75rem 0.95rem; display: none;">
+                                    <strong style="display: block; color: var(--chocolate-texto); margin-bottom: 0.2rem;">✨ Especialidades / Extras:</strong>
+                                    <span id="summaryExtrasList" style="color: var(--chocolate-suave);">Ningún extra adicional seleccionado.</span>
+                                </div>
+                            </div>
+
+                            <!-- 4A. LOLA EN EL RESUMEN FINAL DE COTIZACIÓN -->
+                            <div class="lola-doll-summary-badge" style="margin-top: 1rem;">
+                                <img src="img/muneca_lola.png" alt="Lola y Claudia listas para tu banquete" class="lola-doll-summary-img">
+                                <div class="lola-doll-summary-text">
+                                    <strong>¡Lola y Claudia listas para consentirte!</strong>
+                                    <span>Al enviar tu cotización, recibirás atención personalizada directa por WhatsApp para confirmar tu fecha y degustar el menú.</span>
+                                </div>
+                            </div>
+
+                            <!-- Botón Enviar Cotización -->
+                            <button type="submit" class="btn-turquesa-3d" style="width: 100%; margin-top: 1.3rem; font-size: 1.1rem; padding: 1.1rem; justify-content: center;">
+                                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                🎉 Enviar Presupuesto Completo a WhatsApp con Claudia
                             </button>
                         </div>
-
-                        <div class="summary-header-row">
-                            <div>
-                                <span style="font-family: var(--font-folk); font-size: 0.82rem; font-weight: 800; text-transform: uppercase; color: var(--cempasuchil-fuego); letter-spacing: 0.1em;">Resumen de tu Cotización</span>
-                                <h4 style="font-family: var(--font-title); font-size: 1.8rem; font-weight: 900; color: var(--chocolate-texto); margin-top: 0.2rem;" id="summaryPackageTitle">Elige tu Paquete en el Paso 1</h4>
-                            </div>
-                            <div style="text-align: right;">
-                                <span style="font-family: var(--font-folk); font-size: 0.9rem; font-weight: 700; color: #7A6251;">Capacidad estimada:</span>
-                                <div style="font-family: var(--font-title); font-size: 1.7rem; font-weight: 900; color: var(--chocolate-texto);" id="summaryGuestCount">Por definir</div>
-                            </div>
-                        </div>
-
-                        <!-- Guarnición Base Seleccionada -->
-                        <div id="summaryBaseRow" style="margin-bottom: 1.1rem; background: #FFF8E7; border: 1.5px solid #E2CCA8; border-radius: 12px; padding: 0.75rem 1.1rem; display: none; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
-                            <div>
-                                <span style="font-family: var(--font-folk); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--cempasuchil-fuego); letter-spacing: 0.08em; display: block;">Guarnición Base Incluida</span>
-                                <strong style="font-family: var(--font-folk); font-size: 1rem; color: var(--chocolate-texto);"><span id="summaryBaseIcon">⚪</span> <span id="summaryBaseName">Sin seleccionar (a definir con Claudia)</span></strong>
-                            </div>
-                            <span id="summaryBaseBadge" style="font-size: 0.8rem; font-weight: 800; color: #B78103; background: #FFF8E1; border: 1px solid #FFE082; padding: 0.25rem 0.7rem; border-radius: 20px;">Opcional / Pendiente</span>
-                        </div>
-
-                        <!-- Desglose de Guisados Seleccionados -->
-                        <div style="margin-bottom: 1.2rem;" id="summaryCazuelasSection">
-                            <strong style="display: block; font-family: var(--font-folk); font-size: 0.95rem; color: var(--chocolate-texto); margin-bottom: 0.5rem;" id="summaryGuisadosLabel">
-                                🥘 Guisados Seleccionados (<span id="summaryGuisadosCount">0</span> de <span id="summaryGuisadosLimit">0</span>):
-                            </strong>
-                            <div id="summaryGuisadosList" style="font-size: 0.92rem; color: var(--chocolate-suave); line-height: 1.6; background: #FFFDF9; border: 1.5px solid #E6D7C5; border-radius: 12px; padding: 0.8rem 1.2rem;">
-                                <em>Selecciona primero un paquete en el Paso 1 para comenzar a armar tu banquete.</em>
-                            </div>
-                        </div>
-
-                        <!-- Desglose de Incluidos y Extras -->
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; font-size: 0.9rem;">
-                            <div style="background: #FFFDF9; border: 1.5px solid #E6D7C5; border-radius: 12px; padding: 0.8rem 1rem;">
-                                <strong style="display: block; color: var(--chocolate-texto); margin-bottom: 0.2rem;">📦 Lo que Incluye tu Paquete:</strong>
-                                <span id="summaryPackageBenefits" style="color: var(--chocolate-suave);">Elige un paquete para ver los beneficios incluidos (botana, vitroleros de agua fresca, tortillas y guisados).</span>
-                            </div>
-
-                            <div id="summaryExtrasBox" style="background: #FFFDF9; border: 1.5px solid #E6D7C5; border-radius: 12px; padding: 0.8rem 1rem; display: none;">
-                                <strong style="display: block; color: var(--chocolate-texto); margin-bottom: 0.2rem;">✨ Especialidades / Extras:</strong>
-                                <span id="summaryExtrasList" style="color: var(--chocolate-suave);">Ningún extra adicional seleccionado.</span>
-                            </div>
-                        </div>
-
-                        <!-- 4A. LOLA EN EL RESUMEN FINAL DE COTIZACIÓN -->
-                        <div class="lola-doll-summary-badge">
-                            <img src="img/muneca_lola.png" alt="Lola y Claudia listas para tu banquete" class="lola-doll-summary-img">
-                            <div class="lola-doll-summary-text">
-                                <strong>¡Lola y Claudia listas para consentirte!</strong>
-                                <span>Al enviar tu cotización, recibirás atención personalizada directa por WhatsApp para confirmar tu fecha y degustar el menú.</span>
-                            </div>
-                        </div>
-
-                        <!-- Botón Enviar Cotización -->
-                        <button type="submit" class="btn-turquesa-3d" style="width: 100%; margin-top: 1.5rem; font-size: 1.15rem; padding: 1.15rem; justify-content: center;">
-                            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                            🎉 Enviar Presupuesto Completo a WhatsApp con Claudia
-                        </button>
                     </div>
                 </form>
             </div>
