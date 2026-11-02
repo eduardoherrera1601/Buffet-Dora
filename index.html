@@ -21,15 +21,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&family=Great+Vibes&family=Montserrat:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=block" rel="stylesheet">
     
     <!-- ANTI-FOUT: Evita 100% el brinco visual al recargar la página -->
+    <style>
         /* Header CTA button: No wrap, aligned */
-        .btn-header-quote {
-            padding: 0.65rem 1.35rem !important;
-            font-size: 0.88rem !important;
+        header .btn-header-quote {
             white-space: nowrap !important;
             flex-shrink: 0 !important;
             display: inline-flex !important;
             align-items: center !important;
+            justify-content: center !important;
             gap: 0.4rem !important;
+            padding: 0.6rem 1.15rem !important;
+            font-size: 0.85rem !important;
+            line-height: 1 !important;
+            min-width: max-content !important;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 1.1rem !important;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-link {
+            font-size: 0.9rem !important;
+            white-space: nowrap !important;
+        }
+        @media (min-width: 1025px) and (max-width: 1280px) {
+            header {
+                padding: 0.5rem 1rem !important;
+            }
+            .brand-name {
+                font-size: 2.2rem !important;
+            }
+            .brand-tag {
+                font-size: 0.65rem !important;
+            }
+            .nav-menu {
+                gap: 0.65rem !important;
+            }
+            .nav-link {
+                font-size: 0.8rem !important;
+            }
+            header .btn-header-quote {
+                padding: 0.5rem 0.85rem !important;
+                font-size: 0.78rem !important;
+            }
         }
         html.wf-loading body { opacity: 0 !important; visibility: hidden !important; }
         html.wf-active body { opacity: 1 !important; visibility: visible !important; transition: opacity 0.25s ease-in; }
@@ -3277,9 +3312,6 @@
                             <button type="button" class="protein-choice-pill" onclick="toggleChilaquilesProtein('Milanesa crujiente', this)">🥩 Milanesa crujiente</button>
                             <button type="button" class="protein-choice-pill" onclick="toggleChilaquilesProtein('Carne Asada', this)">🥩 Carne Asada</button>
                         </div>
-                        <p style="font-size: 0.78rem; font-weight: 700; color: var(--chocolate-suave); margin-bottom: 0.8rem;">
-                            🥖 Bolillo calientito incluido de cajón.
-                        </p>
                     </div>
 
                     <div class="specialty-guest-selector">
@@ -3544,7 +3576,7 @@
                                 </li>
                                 <li class="package-feature-item">
                                     <span class="package-feature-icon">🌮</span>
-                                    <div><strong>Botana Monumental Completa:</strong> Ensalada de cueritos, duro, tacos dorados y totopos.</div>
+                                    <div><strong>Botana Completa:</strong> Ensalada de cueritos, duro, tacos dorados y totopos.</div>
                                 </li>
                                 <li class="package-feature-item">
                                     <span class="package-feature-icon">🍹</span>
@@ -3552,7 +3584,7 @@
                                 </li>
                                 <li class="package-feature-item">
                                     <span class="package-feature-icon">🫓</span>
-                                    <div><strong>Tortillas Calientes:</strong> De máquina incluidas (hasta 100 personas comalera con costo extra; más de 100 personas comalera al comal incluida u opcional).</div>
+                                    <div><strong>Tortillas Calientes:</strong> De máquina incluidas (hasta 100 personas comalera con costo extra; más de 100 personas comalera incluida u opcional).</div>
                                 </li>
                             </ul>
                         </div>
@@ -3974,7 +4006,7 @@
                         </div>
                         <div class="video-card-caption">
                             <h4>🍲 Comida & Banquete ADE1000</h4>
-                            <p>Servicio masivo en vivo: pozole tradicional, aguas frescas y comensales disfrutando.</p>
+                            <p>Servicio en vivo: pozole tradicional, aguas frescas y comensales disfrutando.</p>
                         </div>
                     </div>
 
@@ -4200,7 +4232,7 @@
             '80+': {
                 title: 'Paquete Gran Banquete (80 a 150 personas)',
                 max: 8,
-                benefits: '8 guisados tradicionales (¡1 guisado más!), guarnición a elegir (arroz o frijoles), botana monumental completa, 2 vitroleros de 20L de agua fresca y tortillas calientes (hasta 100 personas comalera con costo extra; más de 100 personas comalera al comal incluida u opcional).',
+                benefits: '8 guisados tradicionales (¡1 guisado más!), guarnición a elegir (arroz o frijoles), botana completa (ensalada de cueritos, duro, tacos dorados y totopos), 2 vitroleros de 20L de agua fresca y tortillas calientes (hasta 100 personas comalera con costo extra; más de 100 personas comalera incluida u opcional).',
                 defaultGuests: 100
             }
         };
@@ -4799,7 +4831,7 @@
                             ? ('<br><span style="color: var(--cempasuchil-fuego); font-weight: 800;">🍗 2 Proteínas elegidas:</span> ' + window.selectedChilaquilesProteins.join(', '))
                             : '<br><span style="color: #D32F2F; font-weight: 800;">🍗 Proteínas: Faltan por elegir (Selecciona hasta 2 opciones arriba)</span>';
                         summaryList.innerHTML = '<div style="color: var(--rosa-mexicano); font-weight: 800; font-size: 1rem;">✨ ' + spec.name + '</div>' +
-                            '<p style="margin: 0.35rem 0 0 0; color: var(--chocolate-suave); font-size: 0.88rem;">Servicio completo e independiente para ' + spec.guests + ' personas (Mínimo 30 personas). Incluye salsas tatemadas, frijolitos refritos, crema, queso fresco, aguacate tierno y 🥖 <strong>bolillo calientito incluido de cajón</strong>.' + protText + '</p>';
+                            '<p style="margin: 0.35rem 0 0 0; color: var(--chocolate-suave); font-size: 0.88rem;">Servicio completo e independiente para ' + spec.guests + ' personas (Mínimo 30 personas). Incluye salsas tatemadas, frijolitos refritos, crema, queso fresco y aguacate tierno.' + protText + '</p>';
                     } else {
                         summaryList.innerHTML = '<div style="color: var(--rosa-mexicano); font-weight: 800; font-size: 1rem;">✨ ' + spec.name + '</div>' +
                             '<p style="margin: 0.35rem 0 0 0; color: var(--chocolate-suave); font-size: 0.88rem;">Servicio completo e independiente para ' + spec.guests + ' personas (Mínimo 30 personas). Incluye complementos, salsas y montaje en cazuela tradicional.</p>';
@@ -4939,7 +4971,6 @@
                         '👥 *Comensales:* ' + spec.guests + ' personas (Mínimo 30 pers.)\n' +
                         '🍽️ *Menú Independiente:* ' + spec.name + '\n' +
                         '🍗 *Proteínas Elegidas (2):* ' + protStr + '\n' +
-                        '🥖 *Pan:* Bolillo calientito incluido de cajón\n' +
                         '📅 *Fecha Estimada:* ' + (date || 'Por definir') + '\n' +
                         '📍 *Ciudad / Municipio:* ' + city + '\n' +
                         '🏠 *Domicilio del Evento:* ' + (address || 'Por confirmar') + '\n\n' +
