@@ -858,7 +858,39 @@
         }
 
         .lightbox-modal.active { opacity: 1; visibility: visible; }
-        .lightbox-modal img { max-width: 90vw; max-height: 85vh; border-radius: 18px; border: 4px solid var(--talavera-amarillo); }
+        .lightbox-modal img {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 18px;
+            border: 4px solid var(--talavera-amarillo);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            object-fit: contain;
+            cursor: default;
+        }
+
+        .lightbox-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: rgba(255, 255, 255, 0.25);
+            border: 2px solid #FFFFFF;
+            color: #FFFFFF;
+            font-size: 1.5rem;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            z-index: 10005;
+        }
+
+        .lightbox-close-btn:hover {
+            background: #C62828;
+            transform: scale(1.12);
+        }
 
         /* ===== SECCIÓN PAQUETES TRADICIONALES ===== */
         .packages-grid {
@@ -2160,6 +2192,7 @@
             display: flex;
             align-items: center;
             gap: 0.4rem;
+            pointer-events: none;
         }
 
         .holiday-dish-category {
@@ -2774,7 +2807,7 @@
                                 <h4>🥔 1. Entrada (Elige 1 opción)</h4>
                                 <p style="margin-bottom: 0.35rem;">Elige 1 opción para recibir a tus invitados:</p>
                                 <div class="holiday-choice-row" onclick="event.stopPropagation()">
-                                    <button type="button" class="holiday-choice-pill active" onclick="setHolidayChoice('entrada', 'Papitas cambray', this)">🥔 Papitas cambray</button>
+                                    <button type="button" class="holiday-choice-pill" onclick="setHolidayChoice('entrada', 'Papitas cambray', this)">🥔 Papitas cambray</button>
                                     <button type="button" class="holiday-choice-pill" onclick="setHolidayChoice('entrada', 'Queso Philadelphia con toppings', this)">🧀 Queso Philadelphia c/ toppings</button>
                                 </div>
                             </div>
@@ -2790,7 +2823,7 @@
                                 <h4>🍝 2. Guarnición (Elige 1 opción)</h4>
                                 <p style="margin-bottom: 0.35rem;">Elige 1 guarnición para acompañar tu pierna:</p>
                                 <div class="holiday-choice-row" onclick="event.stopPropagation()">
-                                    <button type="button" class="holiday-choice-pill active" onclick="setHolidayChoice('guarnicion', 'Espagueti verde', this)">🍝 Espagueti verde</button>
+                                    <button type="button" class="holiday-choice-pill" onclick="setHolidayChoice('guarnicion', 'Espagueti verde', this)">🍝 Espagueti verde</button>
                                     <button type="button" class="holiday-choice-pill" onclick="setHolidayChoice('guarnicion', 'Puré de papa', this)">🥔 Puré de papa</button>
                                     <button type="button" class="holiday-choice-pill" onclick="setHolidayChoice('guarnicion', 'Ensalada verde', this)">🥗 Ensalada verde</button>
                                 </div>
@@ -2807,7 +2840,7 @@
                                 <h4>🥧 3. Postre Navideño (Elige 1 opción)</h4>
                                 <p style="margin-bottom: 0.35rem;">Elige 1 postre tradicional para endulzar tu evento:</p>
                                 <div class="holiday-choice-row" onclick="event.stopPropagation()">
-                                    <button type="button" class="holiday-choice-pill active" onclick="setHolidayChoice('postre', 'Ensalada de manzana', this)">🍎 Ensalada de manzana</button>
+                                    <button type="button" class="holiday-choice-pill" onclick="setHolidayChoice('postre', 'Ensalada de manzana', this)">🍎 Ensalada de manzana</button>
                                     <button type="button" class="holiday-choice-pill" onclick="setHolidayChoice('postre', 'Ensalada de zanahoria', this)">🥕 Ensalada de zanahoria</button>
                                     <button type="button" class="holiday-choice-pill" onclick="setHolidayChoice('postre', 'Pay de queso', this)">🍰 Pay de queso</button>
                                 </div>
@@ -2824,7 +2857,7 @@
                                 <h4>☕ 4. Bebida Calientita (Elige 1 opción)</h4>
                                 <p style="margin-bottom: 0.35rem;">Elige 1 bebida caliente tradicional para tu reunión:</p>
                                 <div class="holiday-choice-row" onclick="event.stopPropagation()">
-                                    <button type="button" class="holiday-choice-pill active" onclick="setHolidayChoice('bebida', 'Chocolate caliente', this)">🍫 Chocolate caliente</button>
+                                    <button type="button" class="holiday-choice-pill" onclick="setHolidayChoice('bebida', 'Chocolate caliente', this)">🍫 Chocolate caliente</button>
                                     <button type="button" class="holiday-choice-pill" onclick="setHolidayChoice('bebida', 'Ponche navideño', this)">🍎 Ponche navideño</button>
                                     <button type="button" class="holiday-choice-pill" onclick="setHolidayChoice('bebida', 'Café de olla', this)">☕ Café de olla</button>
                                 </div>
@@ -3362,6 +3395,11 @@
                             <label style="font-family: var(--font-folk); font-size: 0.88rem; font-weight: 800; text-transform: uppercase; color: var(--chocolate-texto);">Ciudad / Municipio *</label>
                             <input type="text" id="orderEventCity" required placeholder="Ej. León, Gto." value="León, Gto." style="background: #FFFFFF; border: 2px solid #D6C7B2; border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.95rem; font-weight: 600;" oninput="updateLiveSummary()">
                         </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 0.4rem; grid-column: 1 / -1;">
+                            <label style="font-family: var(--font-folk); font-size: 0.88rem; font-weight: 800; text-transform: uppercase; color: var(--chocolate-texto);">📍 Domicilio donde será el Evento *</label>
+                            <input type="text" id="orderEventAddress" placeholder="Ej. Calle Manuel Doblado #405, Col. Centro (o nombre del salón / jardín / quinta)" style="background: #FFFFFF; border: 2px solid #D6C7B2; border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.95rem; font-weight: 600;" oninput="updateLiveSummary()">
+                        </div>
                     </div>
 
                     <!-- Tarjeta de Resumen en Tiempo Real -->
@@ -3568,13 +3606,39 @@
 
     <!-- LIGHTBOX -->
     <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
-        <img src="" alt="Ampliación" id="lightboxImg">
+        <button type="button" class="lightbox-close-btn" onclick="closeLightbox()" aria-label="Cerrar ampliación">✕</button>
+        <img src="" alt="Ampliación" id="lightboxImg" onclick="event.stopPropagation()">
     </div>
 
     <!-- SCRIPTS -->
     <script>
     (function() {
         'use strict';
+
+        // GESTIÓN DEL VISOR LIGHTBOX GLOBAL
+        window.openLightbox = function(src) {
+            const modal = document.getElementById('lightboxModal');
+            const img = document.getElementById('lightboxImg');
+            if (modal && img) {
+                img.src = src;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        window.closeLightbox = function() {
+            const modal = document.getElementById('lightboxModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        };
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                window.closeLightbox();
+            }
+        });
 
         // ESTADO GLOBAL DEL ARMADOR
         let currentPackage = null; // Inicia desmarcado: el cliente elige su paquete
@@ -4001,6 +4065,10 @@
 
         window.cancelIndependentSpecialty = function() {
             window.selectedIndependentSpecialty = null;
+            window.holidayChoices = { entrada: '', guarnicion: '', postre: '', bebida: '' };
+            document.querySelectorAll('.holiday-choice-pill').forEach(function(b) {
+                b.classList.remove('active');
+            });
             ['chilaquiles', 'tortas', 'menudo', 'pozole', 'decembrina'].forEach(function(k) {
                 specialtyGuests[k] = 0;
                 var el = document.getElementById('guests-' + k);
@@ -4022,24 +4090,28 @@
             window.acceptSpecialtyAndGoToStep4(type);
         };
 
-        // GESTIÓN DE SELECCIÓN DE 1 OPCIÓN POR TIEMPO EN FIESTAS DECEMBRINAS
+        // GESTIÓN DE SELECCIÓN DE 1 OPCIÓN POR TIEMPO EN FIESTAS DECEMBRINAS (Inician sin marcar)
         window.holidayChoices = {
-            entrada: 'Papitas cambray',
-            guarnicion: 'Espagueti verde',
-            postre: 'Ensalada de manzana',
-            bebida: 'Chocolate caliente'
+            entrada: '',
+            guarnicion: '',
+            postre: '',
+            bebida: ''
         };
 
         window.setHolidayChoice = function(category, choice, btnEl) {
-            window.holidayChoices[category] = choice;
-            if (btnEl) {
-                var row = btnEl.closest('.holiday-choice-row');
+            var row = btnEl ? btnEl.closest('.holiday-choice-row') : null;
+            if (window.holidayChoices[category] === choice) {
+                // Si hace clic en la misma opción ya elegida, se desmarca
+                window.holidayChoices[category] = '';
+                if (btnEl) btnEl.classList.remove('active');
+            } else {
+                window.holidayChoices[category] = choice;
                 if (row) {
                     row.querySelectorAll('.holiday-choice-pill').forEach(function(b) {
                         b.classList.remove('active');
                     });
                 }
-                btnEl.classList.add('active');
+                if (btnEl) btnEl.classList.add('active');
             }
             window.updateLiveSummary();
         };
@@ -4100,10 +4172,18 @@
                             ? '<li style="color: #2E7D32; font-weight: 800;">✓ <strong>🧀 Extra Opcional:</strong> Tabla Monumental de Charcutería Fina</li>'
                             : '<li style="color: #8D6E63;"><em>🧀 Extra Charcutería: No agregada (puedes activarla tocando la tarjeta en la sección decembrina)</em></li>';
 
-                        var hEntrada = window.holidayChoices.entrada || 'Papitas cambray';
-                        var hGuarnicion = window.holidayChoices.guarnicion || 'Espagueti verde';
-                        var hPostre = window.holidayChoices.postre || 'Ensalada de manzana';
-                        var hBebida = window.holidayChoices.bebida || 'Chocolate caliente';
+                        var hEntrada = window.holidayChoices.entrada
+                            ? ('<span style="color: #2E7D32; font-weight: 800;">✓ ' + window.holidayChoices.entrada + '</span>')
+                            : '<span style="color: #D32F2F; font-weight: 800;">(Sin elegir aún — Elige Papitas cambray o Philadelphia arriba)</span>';
+                        var hGuarnicion = window.holidayChoices.guarnicion
+                            ? ('<span style="color: #2E7D32; font-weight: 800;">✓ ' + window.holidayChoices.guarnicion + '</span>')
+                            : '<span style="color: #D32F2F; font-weight: 800;">(Sin elegir aún — Elige Espagueti verde, Puré o Ensalada arriba)</span>';
+                        var hPostre = window.holidayChoices.postre
+                            ? ('<span style="color: #2E7D32; font-weight: 800;">✓ ' + window.holidayChoices.postre + '</span>')
+                            : '<span style="color: #D32F2F; font-weight: 800;">(Sin elegir aún — Elige Manzana, Zanahoria o Pay arriba)</span>';
+                        var hBebida = window.holidayChoices.bebida
+                            ? ('<span style="color: #2E7D32; font-weight: 800;">✓ ' + window.holidayChoices.bebida + '</span>')
+                            : '<span style="color: #D32F2F; font-weight: 800;">(Sin elegir aún — Elige Chocolate, Ponche o Café arriba)</span>';
 
                         summaryList.innerHTML = '<div style="color: #C62828; font-weight: 900; font-size: 1.05rem;">🎄 ' + spec.name + '</div>' +
                             '<ul style="margin: 0.5rem 0 0 1.2rem; padding-left: 0.2rem; color: var(--chocolate-texto); font-size: 0.9rem; line-height: 1.6;">' +
@@ -4121,10 +4201,10 @@
                     }
                 }
                 if (summaryBenefits) {
-                    var hE = window.holidayChoices.entrada || 'Papitas cambray';
-                    var hG = window.holidayChoices.guarnicion || 'Espagueti verde';
-                    var hP = window.holidayChoices.postre || 'Ensalada de manzana';
-                    var hB = window.holidayChoices.bebida || 'Chocolate caliente';
+                    var hE = window.holidayChoices.entrada || 'Entrada a elegir';
+                    var hG = window.holidayChoices.guarnicion || 'Guarnición a elegir';
+                    var hP = window.holidayChoices.postre || 'Postre a elegir';
+                    var hB = window.holidayChoices.bebida || 'Bebida caliente a elegir';
 
                     summaryBenefits.textContent = (spec.type === 'decembrina')
                         ? ('Paquete Especial Fiestas Decembrinas (' + spec.guests + ' pers.): Pierna rellena horneada + Entrada (' + hE + ') + Guarnición (' + hG + ') + Postre (' + hP + ') + Bebida caliente (' + hB + ')' + (window.holidayCharcuterieSelected ? ' + Tabla de Charcutería fina extra.' : '.'))
@@ -4203,11 +4283,13 @@
             const typeEl = document.getElementById('orderEventType');
             const dateEl = document.getElementById('orderEventDate');
             const cityEl = document.getElementById('orderEventCity');
+            const addressEl = document.getElementById('orderEventAddress');
 
             const name = nameEl ? nameEl.value.trim() : '';
             const type = typeEl ? typeEl.value : 'Banquete';
             const date = dateEl ? dateEl.value : '';
             const city = cityEl ? cityEl.value.trim() : 'León, Gto.';
+            const address = addressEl ? addressEl.value.trim() : '';
 
             if (window.selectedIndependentSpecialty && window.selectedIndependentSpecialty.guests >= 30) {
                 const spec = window.selectedIndependentSpecialty;
@@ -4217,10 +4299,10 @@
                         ? '🧀 *Extra Agregado:* SÍ incluir Tabla Monumental de Charcutería fina\n'
                         : '🧀 *Extra Charcutería:* No agregada (sin charcutería)\n';
 
-                    const hEntrada = window.holidayChoices.entrada || 'Papitas cambray';
-                    const hGuarnicion = window.holidayChoices.guarnicion || 'Espagueti verde';
-                    const hPostre = window.holidayChoices.postre || 'Ensalada de manzana';
-                    const hBebida = window.holidayChoices.bebida || 'Chocolate caliente';
+                    const hEntrada = window.holidayChoices.entrada || 'Pendiente de definir (Papitas cambray o Philadelphia)';
+                    const hGuarnicion = window.holidayChoices.guarnicion || 'Pendiente de definir (Espagueti, Puré o Ensalada)';
+                    const hPostre = window.holidayChoices.postre || 'Pendiente de definir (Manzana, Zanahoria o Pay)';
+                    const hBebida = window.holidayChoices.bebida || 'Pendiente de definir (Chocolate, Ponche o Café)';
 
                     raw = '¡Hola Claudia! Me gustaría cotizar y reservar el *Paquete Especial Fiestas Decembrinas* con *La Lola — Sabores de México* 🎄✨\n\n' +
                         '👤 *Nombre:* ' + name + '\n' +
@@ -4233,7 +4315,8 @@
                         '☕ *Bebida Caliente elegida (1):* ' + hBebida + '\n' +
                         charcuteriaLine +
                         '📅 *Fecha Estimada:* ' + (date || 'Por definir') + '\n' +
-                        '📍 *Ubicación:* ' + city + '\n\n' +
+                        '📍 *Ciudad / Municipio:* ' + city + '\n' +
+                        '🏠 *Domicilio del Evento:* ' + (address || 'Por confirmar') + '\n\n' +
                         '¿Podrías confirmarme disponibilidad para esta fecha decembrina y la cotización formal? ¡Muchas gracias!';
                 } else {
                     raw = '¡Hola Claudia! Me gustaría reservar el menú independiente de *' + spec.name + '* con *La Lola — Sabores de México* 🌮🎉\n\n' +
@@ -4242,7 +4325,8 @@
                         '👥 *Comensales:* ' + spec.guests + ' personas (Mínimo 30 pers.)\n' +
                         '🍽️ *Menú Independiente:* ' + spec.name + '\n' +
                         '📅 *Fecha Estimada:* ' + (date || 'Por definir') + '\n' +
-                        '📍 *Ubicación:* ' + city + '\n\n' +
+                        '📍 *Ciudad / Municipio:* ' + city + '\n' +
+                        '🏠 *Domicilio del Evento:* ' + (address || 'Por confirmar') + '\n\n' +
                         '¿Podrías confirmarme disponibilidad para esta fecha y la cotización formal? ¡Muchas gracias!';
                 }
 
@@ -4279,7 +4363,8 @@
                 '👥 *Invitados:* ' + guestCount + ' personas\n' +
                 '📦 *Paquete:* ' + meta.title + '\n' +
                 '📅 *Fecha:* ' + date + '\n' +
-                '📍 *Ubicación:* ' + city + '\n' +
+                '📍 *Ciudad / Municipio:* ' + city + '\n' +
+                '🏠 *Domicilio del Evento:* ' + (address || 'Por confirmar') + '\n' +
                 baseText +
                 guisadosText +
                 extrasText + '\n\n' +
