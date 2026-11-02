@@ -13,7 +13,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="La Lola">
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="img/mexican_folk_hero_banner.jpg">
+    <link rel="apple-touch-icon" href="img/mexican_folk_hero_banner.webp">
     
     <!-- Fuentes Google: Festivas y de Rótulo Tradicional Mexicano -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -68,6 +68,108 @@
         }
         html.wf-loading body { opacity: 0 !important; visibility: hidden !important; }
         html.wf-active body { opacity: 1 !important; visibility: visible !important; transition: opacity 0.25s ease-in; }
+
+        /* ===== BOTÓN FLOTANTE MÓVIL (QUICK CTA BAR) ===== */
+        .mobile-float-cta-bar {
+            position: fixed;
+            bottom: 20px;
+            right: 18px;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s;
+            pointer-events: none;
+        }
+
+        .mobile-float-cta-bar.is-visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .mobile-float-btn-quote {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.75rem 1.35rem;
+            background: linear-gradient(135deg, var(--azul-turquesa), #009E9E);
+            color: #FFFFFF !important;
+            font-family: var(--font-folk);
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid #FFFFFF;
+            box-shadow: 0 4px 0 var(--azul-turquesa-bevel), 0 8px 24px rgba(0, 194, 194, 0.45);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .mobile-float-btn-quote:hover,
+        .mobile-float-btn-quote:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 var(--azul-turquesa-bevel), 0 5px 15px rgba(0, 194, 194, 0.5);
+        }
+
+        .mobile-float-btn-quote .float-btn-icon {
+            font-size: 1.15rem;
+            display: inline-block;
+        }
+
+        .mobile-float-btn-wa {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: #25D366;
+            color: #FFFFFF;
+            border-radius: 50%;
+            border: 2px solid #FFFFFF;
+            box-shadow: 0 4px 0 #1B9E4B, 0 8px 24px rgba(37, 211, 102, 0.45);
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .mobile-float-btn-wa:hover,
+        .mobile-float-btn-wa:active {
+            transform: translateY(2px) scale(1.05);
+            box-shadow: 0 2px 0 #1B9E4B, 0 5px 15px rgba(37, 211, 102, 0.5);
+        }
+
+        .mobile-float-btn-wa svg {
+            width: 25px;
+            height: 25px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 480px) {
+            .mobile-float-cta-bar {
+                bottom: 14px;
+                right: 12px;
+                gap: 8px;
+            }
+            .mobile-float-btn-quote {
+                padding: 0.65rem 1.05rem;
+                font-size: 0.86rem;
+            }
+            .mobile-float-btn-wa {
+                width: 42px;
+                height: 42px;
+            }
+            .mobile-float-btn-wa svg {
+                width: 21px;
+                height: 21px;
+            }
+        }
+
     </style>
     <script>
         document.documentElement.classList.add('wf-loading');
@@ -135,7 +237,7 @@
             background-color: #F4ECE0;
             background-image: 
                 linear-gradient(rgba(255, 253, 248, 0.38), rgba(255, 253, 248, 0.38)),
-                url('img/mexican_folk_pattern_bg.jpg');
+                url('img/mexican_folk_pattern_bg.webp');
             background-size: auto, 580px auto;
             background-attachment: fixed;
             -webkit-font-smoothing: antialiased;
@@ -2990,7 +3092,7 @@
     <header id="mainHeader">
         <a href="#" class="brand-logo" style="flex-direction: row; align-items: center; gap: 0.8rem;">
             <!-- 1. LOLA EN EL LOGO / ENCABEZADO -->
-            <img src="img/muneca_lola.png" alt="Muñequita La Lola" class="lola-doll-header">
+            <img src="img/muneca_lola.webp" alt="Muñequita La Lola" class="lola-doll-header">
             <div style="display: flex; flex-direction: column;">
                 <span class="brand-name">La Lola</span>
                 <span class="brand-tag">Sabores de México & Banquetes</span>
@@ -3013,7 +3115,7 @@
     <!-- HERO: ESCENARIO VISUAL TRADICIONAL DE HACIENDA Y PAPEL PICADO -->
     <div class="hero-scenic-banner-container" id="inicio">
         <div class="hero-scenic-card">
-            <img src="img/mexican_folk_hero_banner.jpg" alt="Escenario tradicional mexicano con papel picado y cazuelas" class="hero-scenic-bg-img">
+            <img src="img/mexican_folk_hero_banner.webp" alt="Escenario tradicional mexicano con papel picado y cazuelas" class="hero-scenic-bg-img">
             <div class="hero-scenic-overlay-gradient"></div>
             
             <div class="hero-scenic-content">
@@ -3034,7 +3136,7 @@
             <!-- 2. LOLA EN EL ESCENARIO HERO -->
             <div class="lola-doll-hero-corner">
                 <div class="lola-doll-hero-bubble">¡Bienvenidos a la fiesta! 🌮🎉</div>
-                <img src="img/muneca_lola.png" alt="Lola Anfitriona" class="lola-doll-hero-img">
+                <img src="img/muneca_lola.webp" alt="Lola Anfitriona" class="lola-doll-hero-img">
             </div>
         </div>
     </div>
@@ -3059,15 +3161,15 @@
                         <div class="marquee-photo-caption">🎪 Montaje para el Evento</div>
                     </div>
                     <!-- FOTO 2 -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.05.jpeg')">
+                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.05.webp')">
                         <span class="ribbon-market-tag verde">🫓 AL COMAL</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05.jpeg" alt="Tortillas hechas a mano en comal en vivo" class="marquee-photo-img">
+                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05.webp" alt="Tortillas hechas a mano en comal en vivo" class="marquee-photo-img">
                         <div class="marquee-photo-caption">🫓 Tortillas al Comal en Vivo</div>
                     </div>
                     <!-- FOTO 3 -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg')">
+                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.webp')">
                         <span class="ribbon-market-tag rosa">🥘 GUISADOS</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg" alt="Cazuelas con guisados calientes y vitrolero" class="marquee-photo-img">
+                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.webp" alt="Cazuelas con guisados calientes y vitrolero" class="marquee-photo-img">
                         <div class="marquee-photo-caption">🥘 Cazuelas de Guisado & Vitrolero</div>
                     </div>
                     <!-- FOTO 4 -->
@@ -3083,33 +3185,33 @@
                         <div class="marquee-photo-caption">🥖 Tortas de Chilaquiles</div>
                     </div>
                     <!-- FOTO 6: MENUDO -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/7.jpg')">
+                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/7.webp')">
                         <span class="ribbon-market-tag amarillo">🍲 MENUDO</span>
-                        <img src="FOTOS/7.jpg" alt="El Tradicional Menudo" class="marquee-photo-img">
+                        <img src="FOTOS/7.webp" alt="El Tradicional Menudo" class="marquee-photo-img">
                         <div class="marquee-photo-caption">🍲 El Tradicional Menudo</div>
                     </div>
                     <!-- FOTO 7: POZOLE -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/10.jpg')">
+                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/10.webp')">
                         <span class="ribbon-market-tag verde">🥣 POZOLE</span>
-                        <img src="FOTOS/10.jpg" alt="Pozole Tradicional de Fiesta" class="marquee-photo-img">
+                        <img src="FOTOS/10.webp" alt="Pozole Tradicional de Fiesta" class="marquee-photo-img">
                         <div class="marquee-photo-caption">🥣 Pozole Tradicional</div>
                     </div>
                     <!-- FOTO 8 -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.jpeg')">
+                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.webp')">
                         <span class="ribbon-market-tag verde">👨‍👩‍👧‍👦 FAMILIAS</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.jpeg" alt="Invitados disfrutando del banquete" class="marquee-photo-img">
+                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.webp" alt="Invitados disfrutando del banquete" class="marquee-photo-img">
                         <div class="marquee-photo-caption">👨‍👩‍👧‍👦 Familias Felices & Satisfechas</div>
                     </div>
                     <!-- FOTO 9: GRAN BANQUETE Y BOTARGA -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/ADE1000/ade1000_equipo_botarga.jpg')">
+                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/ADE1000/ade1000_equipo_botarga.webp')">
                         <span class="ribbon-market-tag azul" style="background: var(--talavera-azul); color: #FFF;">🎉 EVENTOS</span>
-                        <img src="FOTOS/ADE1000/ade1000_equipo_botarga.jpg" alt="Celebración y banquete en vivo" class="marquee-photo-img">
+                        <img src="FOTOS/ADE1000/ade1000_equipo_botarga.webp" alt="Celebración y banquete en vivo" class="marquee-photo-img">
                         <div class="marquee-photo-caption">🎉 Fiesta & Banquete en Vivo</div>
                     </div>
                     <!-- FOTO 10: ADE 1000 BOTANA Y CUERITOS -->
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/ADE1000/ade1000_botana_cueritos_duros.jpg')">
+                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/ADE1000/ade1000_botana_cueritos_duros.webp')">
                         <span class="ribbon-market-tag rosa">🌮 BOTANA</span>
-                        <img src="FOTOS/ADE1000/ade1000_botana_cueritos_duros.jpg" alt="Ensalada de cueritos y botana tradicional" class="marquee-photo-img">
+                        <img src="FOTOS/ADE1000/ade1000_botana_cueritos_duros.webp" alt="Ensalada de cueritos y botana tradicional" class="marquee-photo-img">
                         <div class="marquee-photo-caption">🥗 Ensalada de Cueritos & Duros</div>
                     </div>
 
@@ -3119,14 +3221,14 @@
                         <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.10 (1).jpeg" alt="Montaje para el evento con cazuelas tradicionales" class="marquee-photo-img">
                         <div class="marquee-photo-caption">🎪 Montaje para el Evento</div>
                     </div>
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.05.jpeg')">
+                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.05.webp')">
                         <span class="ribbon-market-tag verde">🫓 AL COMAL</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05.jpeg" alt="Tortillas hechas a mano en comal en vivo" class="marquee-photo-img">
+                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.05.webp" alt="Tortillas hechas a mano en comal en vivo" class="marquee-photo-img">
                         <div class="marquee-photo-caption">🫓 Tortillas al Comal en Vivo</div>
                     </div>
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg')">
+                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.webp')">
                         <span class="ribbon-market-tag rosa">🥘 GUISADOS</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.jpeg" alt="Cazuelas con guisados calientes y vitrolero" class="marquee-photo-img">
+                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.04.webp" alt="Cazuelas con guisados calientes y vitrolero" class="marquee-photo-img">
                         <div class="marquee-photo-caption">🥘 Cazuelas de Guisado & Vitrolero</div>
                     </div>
                     <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.18.05 (2).jpeg')">
@@ -3139,29 +3241,29 @@
                         <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.18.06 (1).jpeg" alt="Tortas de chilaquiles con huevo" class="marquee-photo-img">
                         <div class="marquee-photo-caption">🥖 Tortas de Chilaquiles</div>
                     </div>
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/7.jpg')">
+                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/7.webp')">
                         <span class="ribbon-market-tag amarillo">🍲 MENUDO</span>
-                        <img src="FOTOS/7.jpg" alt="El Tradicional Menudo" class="marquee-photo-img">
+                        <img src="FOTOS/7.webp" alt="El Tradicional Menudo" class="marquee-photo-img">
                         <div class="marquee-photo-caption">🍲 El Tradicional Menudo</div>
                     </div>
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/10.jpg')">
+                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/10.webp')">
                         <span class="ribbon-market-tag verde">🥣 POZOLE</span>
-                        <img src="FOTOS/10.jpg" alt="Pozole Tradicional de Fiesta" class="marquee-photo-img">
+                        <img src="FOTOS/10.webp" alt="Pozole Tradicional de Fiesta" class="marquee-photo-img">
                         <div class="marquee-photo-caption">🥣 Pozole Tradicional</div>
                     </div>
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.jpeg')">
+                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.webp')">
                         <span class="ribbon-market-tag verde">👨‍👩‍👧‍👦 FAMILIAS</span>
-                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.jpeg" alt="Invitados disfrutando del banquete" class="marquee-photo-img">
+                        <img src="FOTOS/WhatsApp Image 2026-08-19 at 11.28.12.webp" alt="Invitados disfrutando del banquete" class="marquee-photo-img">
                         <div class="marquee-photo-caption">👨‍👩‍👧‍👦 Familias Felices & Satisfechas</div>
                     </div>
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/ADE1000/ade1000_equipo_botarga.jpg')">
+                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/ADE1000/ade1000_equipo_botarga.webp')">
                         <span class="ribbon-market-tag azul" style="background: var(--talavera-azul); color: #FFF;">🎉 EVENTOS</span>
-                        <img src="FOTOS/ADE1000/ade1000_equipo_botarga.jpg" alt="Celebración y banquete en vivo" class="marquee-photo-img">
+                        <img src="FOTOS/ADE1000/ade1000_equipo_botarga.webp" alt="Celebración y banquete en vivo" class="marquee-photo-img">
                         <div class="marquee-photo-caption">🎉 Fiesta & Banquete en Vivo</div>
                     </div>
-                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/ADE1000/ade1000_botana_cueritos_duros.jpg')">
+                    <div class="marquee-photo-card" onclick="openLightbox('FOTOS/ADE1000/ade1000_botana_cueritos_duros.webp')">
                         <span class="ribbon-market-tag rosa">🌮 BOTANA</span>
-                        <img src="FOTOS/ADE1000/ade1000_botana_cueritos_duros.jpg" alt="Ensalada de cueritos y botana tradicional" class="marquee-photo-img">
+                        <img src="FOTOS/ADE1000/ade1000_botana_cueritos_duros.webp" alt="Ensalada de cueritos y botana tradicional" class="marquee-photo-img">
                         <div class="marquee-photo-caption">🥗 Ensalada de Cueritos & Duros</div>
                     </div>
                 </div>
@@ -3171,7 +3273,7 @@
 
         <!-- BANNER BODEGÓN FESTIVO TRADICIONAL -->
         <div class="festive-flatlay-banner">
-            <img src="img/mexican_folk_festive_footer.jpg" alt="Mesa de banquete tradicional mexicano con cempasuchil y cazuelas">
+            <img src="img/mexican_folk_festive_footer.webp" alt="Mesa de banquete tradicional mexicano con cempasuchil y cazuelas">
             <div class="festive-flatlay-banner-text">
                 <h3>¡El Gran Banquete de Fiesta Mexicana!</h3>
                 <p style="font-size: 1.15rem; font-weight: 700; margin-top: 0.4rem; color: #FFFFFF;">El auténtico sazón de casa cocinado a fuego lento con amor y tradición.</p>
@@ -3197,8 +3299,8 @@
                 <div class="holiday-hero-col">
                     <div class="holiday-main-card">
                         <span class="ribbon-holiday-star">⭐ PLATO FUERTE ESTELAR</span>
-                        <div class="holiday-hero-photo-frame" onclick="openLightbox('FOTOS/1.jpg')">
-                            <img src="FOTOS/1.jpg" alt="Pierna Rellena Horneada Tradicional de Fiestas Decembrinas" class="holiday-hero-photo">
+                        <div class="holiday-hero-photo-frame" onclick="openLightbox('FOTOS/1.webp')">
+                            <img src="FOTOS/1.webp" alt="Pierna Rellena Horneada Tradicional de Fiestas Decembrinas" class="holiday-hero-photo">
                             <div class="holiday-photo-badge-zoom">🔍 Toca para ampliar foto real</div>
                         </div>
                         <div class="holiday-main-info">
@@ -3245,9 +3347,9 @@
 
                     <div class="holiday-courses-grid">
                         <!-- 1. Entrada (Foto 3) - 1 a elegir -->
-                        <div class="holiday-course-card" onclick="openLightbox('FOTOS/3.jpg')">
+                        <div class="holiday-course-card" onclick="openLightbox('FOTOS/3.webp')">
                             <div class="holiday-course-thumb">
-                                <img src="FOTOS/3.jpg" alt="Entrada festiva: Papitas cambray o queso Philadelphia">
+                                <img src="FOTOS/3.webp" alt="Entrada festiva: Papitas cambray o queso Philadelphia">
                                 <span class="course-mini-tag">1. Entrada</span>
                             </div>
                             <div class="holiday-course-content">
@@ -3261,9 +3363,9 @@
                         </div>
 
                         <!-- 2. Guarnición (Foto 4) - 1 a elegir -->
-                        <div class="holiday-course-card" onclick="openLightbox('FOTOS/4.jpg')">
+                        <div class="holiday-course-card" onclick="openLightbox('FOTOS/4.webp')">
                             <div class="holiday-course-thumb">
-                                <img src="FOTOS/4.jpg" alt="Guarniciones festivas: Espagueti verde, puré o ensalada verde">
+                                <img src="FOTOS/4.webp" alt="Guarniciones festivas: Espagueti verde, puré o ensalada verde">
                                 <span class="course-mini-tag">2. Guarnición</span>
                             </div>
                             <div class="holiday-course-content">
@@ -3278,9 +3380,9 @@
                         </div>
 
                         <!-- 3. Postre (Foto 5) - 1 a elegir -->
-                        <div class="holiday-course-card" onclick="openLightbox('FOTOS/5.jpg')">
+                        <div class="holiday-course-card" onclick="openLightbox('FOTOS/5.webp')">
                             <div class="holiday-course-thumb">
-                                <img src="FOTOS/5.jpg" alt="Postre navideño: Ensalada de manzana, zanahoria o pay de queso">
+                                <img src="FOTOS/5.webp" alt="Postre navideño: Ensalada de manzana, zanahoria o pay de queso">
                                 <span class="course-mini-tag">3. Postre</span>
                             </div>
                             <div class="holiday-course-content">
@@ -3295,9 +3397,9 @@
                         </div>
 
                         <!-- 4. Bebida Tradicional Caliente (Foto 9) - 1 a elegir -->
-                        <div class="holiday-course-card" onclick="openLightbox('FOTOS/9.jpg')">
+                        <div class="holiday-course-card" onclick="openLightbox('FOTOS/9.webp')">
                             <div class="holiday-course-thumb">
-                                <img src="FOTOS/9.jpg" alt="Bebidas calientitas: Chocolate caliente, ponche o café de olla">
+                                <img src="FOTOS/9.webp" alt="Bebidas calientitas: Chocolate caliente, ponche o café de olla">
                                 <span class="course-mini-tag">4. Bebida</span>
                             </div>
                             <div class="holiday-course-content">
@@ -3313,8 +3415,8 @@
 
                         <!-- 5. Extras: Charcutería Opcional (Foto 6 - Click para agregar como extra) -->
                         <div class="holiday-course-card highlight-extra" id="card-extra-charcuteria" onclick="toggleHolidayCharcuterie(event)">
-                            <div class="holiday-course-thumb" onclick="event.stopPropagation(); openLightbox('FOTOS/6.jpg');" title="Toca para ampliar foto">
-                                <img src="FOTOS/6.jpg" alt="Tabla Monumental de Charcutería Fina">
+                            <div class="holiday-course-thumb" onclick="event.stopPropagation(); openLightbox('FOTOS/6.webp');" title="Toca para ampliar foto">
+                                <img src="FOTOS/6.webp" alt="Tabla Monumental de Charcutería Fina">
                                 <span class="course-mini-tag gold">Extra Opcional</span>
                             </div>
                             <div class="holiday-course-content">
@@ -3421,8 +3523,8 @@
                 <!-- 3. Menudo -->
                 <div class="dish-folk-card-col">
                     <span class="ribbon-market-tag amarillo">🍲 TRADICIONAL</span>
-                    <div class="dish-photo-talavera-frame" onclick="openLightbox('FOTOS/7.jpg')">
-                        <img src="FOTOS/7.jpg" alt="Menudo tradicional calientito">
+                    <div class="dish-photo-talavera-frame" onclick="openLightbox('FOTOS/7.webp')">
+                        <img src="FOTOS/7.webp" alt="Menudo tradicional calientito">
                     </div>
                     <div>
                         <span style="background: #FFF3E0; border: 2px solid var(--cempasuchil-fuego); color: var(--cempasuchil-fuego); padding: 0.35rem 0.8rem; border-radius: 30px; font-family: var(--font-folk); font-size: 0.76rem; font-weight: 800; text-transform: uppercase;">🍲 Rey de la Tornafiesta</span>
@@ -3453,8 +3555,8 @@
                 <!-- 4. Pozole Tradicional -->
                 <div class="dish-folk-card-col">
                     <span class="ribbon-market-tag verde" style="background: #E8F5E9; border-color: #2E7D32; color: #1B5E20;">🇲🇽 FIESTA PATRIA</span>
-                    <div class="dish-photo-talavera-frame" onclick="openLightbox('FOTOS/10.jpg')">
-                        <img src="FOTOS/10.jpg" alt="Pozole tradicional bien servido con guarniciones">
+                    <div class="dish-photo-talavera-frame" onclick="openLightbox('FOTOS/10.webp')">
+                        <img src="FOTOS/10.webp" alt="Pozole tradicional bien servido con guarniciones">
                     </div>
                     <div>
                         <span style="background: #E8F5E9; border: 2px solid #2E7D32; color: #1B5E20; padding: 0.35rem 0.8rem; border-radius: 30px; font-family: var(--font-folk); font-size: 0.76rem; font-weight: 800; text-transform: uppercase;">🍲 Rojo o Blanco al Gusto</span>
@@ -3505,7 +3607,7 @@
 
                 <!-- 3. LOLA GUÍA ANFITRIONA EN EL ARMADOR DE BANQUETE -->
                 <div class="lola-doll-guide-card">
-                    <img src="img/muneca_lola.png" alt="Lola Anfitriona" class="lola-doll-guide-avatar">
+                    <img src="img/muneca_lola.webp" alt="Lola Anfitriona" class="lola-doll-guide-avatar">
                     <div class="lola-doll-guide-bubble">
                         <span class="lola-guide-tag">Tu Anfitriona de Banquete</span>
                         <p><strong>«¡Hola! Soy Lola.»</strong> Te acompaño a armar tu fiesta paso a paso. Mueve la barra de invitados y selecciona tus cazuelas favoritas calientitas.</p>
@@ -3959,7 +4061,7 @@
 
                             <!-- 4A. LOLA EN EL RESUMEN FINAL DE COTIZACIÓN -->
                             <div class="lola-doll-summary-badge" style="margin-top: 1rem;">
-                                <img src="img/muneca_lola.png" alt="Lola y Claudia listas para tu banquete" class="lola-doll-summary-img">
+                                <img src="img/muneca_lola.webp" alt="Lola y Claudia listas para tu banquete" class="lola-doll-summary-img">
                                 <div class="lola-doll-summary-text">
                                     <strong>¡Lola y Claudia listas para consentirte!</strong>
                                     <span>Al enviar tu cotización, recibirás atención personalizada directa por WhatsApp para confirmar tu fecha y degustar el menú.</span>
@@ -3993,43 +4095,43 @@
             <!-- Galería Visual Limpia (Sin textos publicitarios, ampliable con un clic) -->
             <div class="ade-grid-gallery" style="margin-bottom: 2.5rem;">
                 <!-- Foto 1: Montaje principal y equipo -->
-                <div class="ade-photo-card span-8" onclick="openLightbox('FOTOS/ADE1000/ade1000_equipo_botarga.jpg')">
-                    <img src="FOTOS/ADE1000/ade1000_equipo_botarga.jpg" alt="Equipo de servicio y cocina de La Lola en banquete">
+                <div class="ade-photo-card span-8" onclick="openLightbox('FOTOS/ADE1000/ade1000_equipo_botarga.webp')">
+                    <img src="FOTOS/ADE1000/ade1000_equipo_botarga.webp" alt="Equipo de servicio y cocina de La Lola en banquete">
                 </div>
 
                 <!-- Foto 2: Vitroleros de 20L y Aguas Frescas -->
-                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_vitroleros_aguas.jpg')">
-                    <img src="FOTOS/ADE1000/ade1000_vitroleros_aguas.jpg" alt="Estación de vitroleros de aguas frescas con mantel tradicional">
+                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_vitroleros_aguas.webp')">
+                    <img src="FOTOS/ADE1000/ade1000_vitroleros_aguas.webp" alt="Estación de vitroleros de aguas frescas con mantel tradicional">
                 </div>
 
                 <!-- Foto 3: Estación de Botana y Ensalada de Cueritos -->
-                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_botana_cueritos_duros.jpg')">
-                    <img src="FOTOS/ADE1000/ade1000_botana_cueritos_duros.jpg" alt="Botana tradicional: ensalada de cueritos y chicharrón duro">
+                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_botana_cueritos_duros.webp')">
+                    <img src="FOTOS/ADE1000/ade1000_botana_cueritos_duros.webp" alt="Botana tradicional: ensalada de cueritos y chicharrón duro">
                 </div>
 
                 <!-- Foto 4: Servicio de Comida Caliente -->
-                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_servicio_pozole.jpg')">
-                    <img src="FOTOS/ADE1000/ade1000_servicio_pozole.jpg" alt="Servicio de banquete caliente con guarniciones frescas">
+                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_servicio_pozole.webp')">
+                    <img src="FOTOS/ADE1000/ade1000_servicio_pozole.webp" alt="Servicio de banquete caliente con guarniciones frescas">
                 </div>
 
                 <!-- Foto 5: Invitados Disfrutando del Banquete -->
-                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_comedor_colaboradores.jpg')">
-                    <img src="FOTOS/ADE1000/ade1000_comedor_colaboradores.jpg" alt="Invitados disfrutando del banquete mexicano">
+                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_comedor_colaboradores.webp')">
+                    <img src="FOTOS/ADE1000/ade1000_comedor_colaboradores.webp" alt="Invitados disfrutando del banquete mexicano">
                 </div>
 
                 <!-- Foto 6: Cocineras con Cazuelas de Barro -->
-                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_equipo_cazuelas.jpg')">
-                    <img src="FOTOS/ADE1000/ade1000_equipo_cazuelas.jpg" alt="Cocineras tradicionales con cazuelas de barro y comal">
+                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_equipo_cazuelas.webp')">
+                    <img src="FOTOS/ADE1000/ade1000_equipo_cazuelas.webp" alt="Cocineras tradicionales con cazuelas de barro y comal">
                 </div>
 
                 <!-- Foto 7: Mesa de Botanas y Decoración Mexicana -->
-                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_mesa_botana_detalle.jpg')">
-                    <img src="FOTOS/ADE1000/ade1000_mesa_botana_detalle.jpg" alt="Montaje de botanas con chicharrón, tacos dorados y salsas">
+                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_mesa_botana_detalle.webp')">
+                    <img src="FOTOS/ADE1000/ade1000_mesa_botana_detalle.webp" alt="Montaje de botanas con chicharrón, tacos dorados y salsas">
                 </div>
 
                 <!-- Foto 8: Ambiente Festivo y Sonrisas -->
-                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_marco_fotografico.jpg')">
-                    <img src="FOTOS/ADE1000/ade1000_marco_fotografico.jpg" alt="Ambiente festivo y sonrisas en celebración">
+                <div class="ade-photo-card span-4" onclick="openLightbox('FOTOS/ADE1000/ade1000_marco_fotografico.webp')">
+                    <img src="FOTOS/ADE1000/ade1000_marco_fotografico.webp" alt="Ambiente festivo y sonrisas en celebración">
                 </div>
             </div>
 
@@ -4052,7 +4154,7 @@
                     <!-- Video 1: Comida y Banquete ADE1000 -->
                     <div class="video-vertical-card">
                         <div class="video-media-wrapper">
-                            <video loop muted playsinline controls preload="none" poster="FOTOS/ADE1000/ade1000_video_poster.jpg">
+                            <video loop muted playsinline controls preload="none" poster="FOTOS/ADE1000/ade1000_video_poster.webp">
                                 <source src="FOTOS/ADE1000/ade1000_video_resumen.mp4" type="video/mp4">
                                 Tu navegador no soporta la reproducción de video.
                             </video>
@@ -4070,7 +4172,7 @@
                     <!-- Video 2: video 1.mp4 (Atención y Fiesta) -->
                     <div class="video-vertical-card">
                         <div class="video-media-wrapper">
-                            <video loop muted playsinline controls preload="none" poster="FOTOS/video_1_poster.jpg">
+                            <video loop muted playsinline controls preload="none" poster="FOTOS/video_1_poster.webp">
                                 <source src="FOTOS/video%201.mp4" type="video/mp4">
                                 <source src="FOTOS/video 1.mp4" type="video/mp4">
                                 Tu navegador no soporta la reproducción de video.
@@ -4165,13 +4267,13 @@
             </div>
 
             <div style="display: flex; justify-content: center; align-items: center; gap: 2.2rem; flex-wrap: wrap; max-width: 820px; margin: 1.5rem auto;">
-                <div style="max-width: 520px; flex: 1 1 300px; border-radius: 20px; padding: 10px; background: linear-gradient(135deg, var(--rosa-mexicano), #FFFFFF 50%, var(--azul-turquesa)); box-shadow: 0 18px 45px rgba(0,0,0,0.2); cursor: pointer;" onclick="openLightbox('FOTOS/WhatsApp Image 2026-07-25 at 20.02.30 (1).jpeg')">
-                    <img src="FOTOS/WhatsApp Image 2026-07-25 at 20.02.30 (1).jpeg" alt="Tarjeta Oficial Banquetes y Taquisas La Lola" style="width: 100%; border-radius: 12px; display: block;">
+                <div style="max-width: 520px; flex: 1 1 300px; border-radius: 20px; padding: 10px; background: linear-gradient(135deg, var(--rosa-mexicano), #FFFFFF 50%, var(--azul-turquesa)); box-shadow: 0 18px 45px rgba(0,0,0,0.2); cursor: pointer;" onclick="openLightbox('FOTOS/tarjeta_presentacion_la_lola.webp')">
+                    <img src="FOTOS/tarjeta_presentacion_la_lola.webp" alt="Tarjeta Oficial Banquetes y Taquisas La Lola" style="width: 100%; border-radius: 12px; display: block;">
                 </div>
 
                 <!-- 4B. LOLA JUNTO A LA TARJETA OFICIAL -->
                 <div class="lola-doll-contact-companion">
-                    <img src="img/muneca_lola.png" alt="Lola y Claudia" class="lola-doll-contact-img">
+                    <img src="img/muneca_lola.webp" alt="Lola y Claudia" class="lola-doll-contact-img">
                     <div class="lola-doll-contact-speech">
                         <span>«¡Sazón de hogar, tortillas al comal y corazón mexicano!»</span>
                     </div>
@@ -4207,6 +4309,18 @@
             <p>© 2026 Banquetes y Taquisas La Lola — Auténtico Sabor Casero Mexicano. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+
+    <!-- BOTÓN FLOTANTE MÓVIL: COTIZAR BANQUETE & WHATSAPP DIRECTO -->
+    <div class="mobile-float-cta-bar" id="mobileFloatCta" aria-label="Acceso rápido a cotización">
+        <a href="#armar-banquete" class="mobile-float-btn-quote" id="btnFloatQuote">
+            <span class="float-btn-icon">🌮</span>
+            <span class="float-btn-text">Cotizar Banquete</span>
+        </a>
+        <a href="https://wa.me/524778020791?text=Hola%20Claudia%2C%20quisiera%20cotizar%20un%20banquete%20para%20un%20evento%20🎉" target="_blank" class="mobile-float-btn-wa" title="WhatsApp directo con Claudia" aria-label="Contactar por WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+    </div>
 
     <!-- LIGHTBOX -->
     <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
@@ -4341,7 +4455,27 @@
                     card.classList.add('selected');
                     if (limitAlert) limitAlert.style.display = 'none';
                 }
-                updateGuisadosTracker();
+        
+        // CONTROL DE VISIBILIDAD DEL BOTÓN FLOTANTE MÓVIL AL HACER SCROLL
+        const floatCta = document.getElementById('mobileFloatCta');
+        if (floatCta) {
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        if (window.scrollY > 350) {
+                            floatCta.classList.add('is-visible');
+                        } else {
+                            floatCta.classList.remove('is-visible');
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
+
+        updateGuisadosTracker();
                 updateLiveSummary();
             });
         });

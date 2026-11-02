@@ -1,3 +1,8 @@
+# Node & Scripts temporales
+node_modules/
+package-lock.json
+scratch/
+
 # Archivos de respaldo y descargas temporales
 Nueva carpeta/
 *.zip
