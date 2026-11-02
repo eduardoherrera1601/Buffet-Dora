@@ -1586,6 +1586,66 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
+        }
+
+        .video-play-btn-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 66px;
+            height: 66px;
+            background: rgba(233, 30, 99, 0.92);
+            border: 3.5px solid #FFE082;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 0 18px rgba(233, 30, 99, 0.6);
+            z-index: 4;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .video-play-btn-overlay svg {
+            width: 28px;
+            height: 28px;
+            fill: #FFFFFF;
+            margin-left: 3px;
+        }
+
+        .video-tap-hint {
+            position: absolute;
+            bottom: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 5, 2, 0.88);
+            color: #FFE082;
+            font-size: 0.8rem;
+            font-weight: 800;
+            padding: 5px 14px;
+            border-radius: 20px;
+            border: 1.5px solid rgba(255, 224, 130, 0.5);
+            white-space: nowrap;
+            z-index: 4;
+            pointer-events: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            transition: opacity 0.3s ease;
+        }
+
+        .video-media-wrapper.is-playing .video-play-btn-overlay,
+        .video-media-wrapper.is-playing .video-tap-hint {
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(-50%, -50%) scale(0.6);
+        }
+
+        .video-media-wrapper:hover .video-play-btn-overlay {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: var(--rosa-mexicano);
+            border-color: #FFFFFF;
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.85), 0 0 25px rgba(255, 224, 130, 0.8);
         }
 
         .video-vertical-card video {
@@ -3775,11 +3835,15 @@
                 <div class="videos-dual-grid">
                     <!-- Video 1: Comida y Banquete ADE1000 -->
                     <div class="video-vertical-card">
-                        <div class="video-media-wrapper">
-                            <video autoplay loop muted playsinline controls preload="auto" poster="FOTOS/ADE1000/ade1000_video_poster.jpg">
+                        <div class="video-media-wrapper" onclick="togglePlayVideo(this)">
+                            <video loop muted playsinline controls preload="none" poster="FOTOS/ADE1000/ade1000_video_poster.jpg">
                                 <source src="FOTOS/ADE1000/ade1000_video_resumen.mp4" type="video/mp4">
                                 Tu navegador no soporta la reproducción de video.
                             </video>
+                            <div class="video-play-btn-overlay" title="Toca para reproducir">
+                                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <span class="video-tap-hint">▶ Toca para ver video</span>
                         </div>
                         <div class="video-card-caption">
                             <h4>🍲 Comida & Banquete ADE1000</h4>
@@ -3789,12 +3853,16 @@
 
                     <!-- Video 2: video 1.mp4 (Atención y Fiesta) -->
                     <div class="video-vertical-card">
-                        <div class="video-media-wrapper">
-                            <video autoplay loop muted playsinline controls preload="auto" poster="FOTOS/video_1_poster.jpg">
+                        <div class="video-media-wrapper" onclick="togglePlayVideo(this)">
+                            <video loop muted playsinline controls preload="none" poster="FOTOS/video_1_poster.jpg">
                                 <source src="FOTOS/video%201.mp4" type="video/mp4">
                                 <source src="FOTOS/video 1.mp4" type="video/mp4">
                                 Tu navegador no soporta la reproducción de video.
                             </video>
+                            <div class="video-play-btn-overlay" title="Toca para reproducir">
+                                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <span class="video-tap-hint">▶ Toca para ver video</span>
                         </div>
                         <div class="video-card-caption">
                             <h4>🎉 Fiesta, Montaje & Calidez</h4>
@@ -4623,22 +4691,48 @@
             window.open('https://wa.me/524778020791?text=' + encodeURIComponent(raw), '_blank');
         };
 
-        // Reproducción de videos sin sonido (muted) con control de audio inteligente
-        document.querySelectorAll('.video-vertical-card video').forEach(function(vid) {
-            vid.muted = true;
-            var playPromise = vid.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(function() {
-                    // Espera interacción táctil o scroll si el navegador restringe
+        // Control bajo demanda (Click / Tap to Play) para ahorro de datos y fluidez movil
+        window.togglePlayVideo = function(wrapper) {
+            var video = wrapper.querySelector('video');
+            if (!video) return;
+
+            if (video.paused) {
+                // Pausar cualquier otro video activo
+                document.querySelectorAll('.video-vertical-card video').forEach(function(other) {
+                    if (other !== video && !other.paused) {
+                        other.pause();
+                        var otherWrapper = other.closest('.video-media-wrapper');
+                        if (otherWrapper) otherWrapper.classList.remove('is-playing');
+                    }
                 });
+                video.play();
+                wrapper.classList.add('is-playing');
+            } else {
+                video.pause();
+                wrapper.classList.remove('is-playing');
             }
-            // Si el usuario activa el volumen en uno, silenciar el otro
-            vid.addEventListener('volumechange', function() {
-                if (!vid.muted && vid.volume > 0) {
-                    document.querySelectorAll('.video-vertical-card video').forEach(function(other) {
-                        if (other !== vid) other.muted = true;
-                    });
-                }
+        };
+
+        // Escuchar eventos play, pause y ended para mantener sincronizada la interfaz
+        document.querySelectorAll('.video-vertical-card video').forEach(function(vid) {
+            vid.addEventListener('play', function() {
+                var wrap = vid.closest('.video-media-wrapper');
+                if (wrap) wrap.classList.add('is-playing');
+                document.querySelectorAll('.video-vertical-card video').forEach(function(other) {
+                    if (other !== vid && !other.paused) {
+                        other.pause();
+                        var otherWrap = other.closest('.video-media-wrapper');
+                        if (otherWrap) otherWrap.classList.remove('is-playing');
+                    }
+                });
+            });
+            vid.addEventListener('pause', function() {
+                var wrap = vid.closest('.video-media-wrapper');
+                if (wrap) wrap.classList.remove('is-playing');
+            });
+            vid.addEventListener('ended', function() {
+                var wrap = vid.closest('.video-media-wrapper');
+                if (wrap) wrap.classList.remove('is-playing');
             });
         });
 
